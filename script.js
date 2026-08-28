@@ -41,9 +41,9 @@ if (footer) {
     </footer>`;
 }
 
-// Homepage history paragraphs: academic-style first-line indentation.
+// Homepage history section: academic-style first-line indentation for every paragraph.
 if (document.body.dataset.page === 'index.html') {
-  document.querySelectorAll('#ns-history .history-copy p').forEach((paragraph) => {
+  document.querySelectorAll('#ns-history p').forEach((paragraph) => {
     paragraph.style.textIndent = '5em';
   });
 }
