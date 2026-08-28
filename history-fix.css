@@ -1,0 +1,16 @@
+/* Homepage history photo cleanup */
+#ns-history .history-visual::before,
+#ns-history .history-visual::after {
+  content: none !important;
+  display: none !important;
+}
+
+#ns-history .history-visual {
+  border: 3px solid rgba(255, 255, 255, 0.98) !important;
+  outline: 1px solid rgba(0, 48, 130, 0.18);
+  outline-offset: 0;
+  background-color: #eef3f8;
+  box-shadow:
+    0 22px 52px rgba(0, 48, 130, 0.14),
+    inset 0 0 0 1px rgba(0, 48, 130, 0.05) !important;
+}
