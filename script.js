@@ -46,6 +46,29 @@ if (document.body.dataset.page === 'index.html') {
   document.querySelectorAll('#ns-history p').forEach((paragraph) => {
     paragraph.style.textIndent = '5em';
   });
+
+  // Use the supplied historical photographs in each timeline image slot.
+  const historyImages = {
+    '.visual-1800': '1800s.webp',
+    '.visual-1837': '1837.webp',
+    '.visual-1900': '1900s.webp',
+    '.visual-1937': '1937.webp',
+    '.visual-1960': '1960s.webp',
+    '.visual-1995': '1995.webp',
+    '.visual-2000': '2000s.webp',
+    '.visual-now': 'now.webp'
+  };
+
+  Object.entries(historyImages).forEach(([selector, src]) => {
+    const visual = document.querySelector(selector);
+    if (!visual) return;
+    visual.style.backgroundImage = `url("${src}")`;
+    visual.style.backgroundSize = 'cover';
+    visual.style.backgroundPosition = 'center';
+    visual.style.backgroundRepeat = 'no-repeat';
+    const yearLabel = visual.querySelector('.visual-year');
+    if (yearLabel) yearLabel.hidden = true;
+  });
 }
 
 const toggle = document.querySelector('.menu-toggle');
