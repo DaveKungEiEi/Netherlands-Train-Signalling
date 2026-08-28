@@ -43,6 +43,11 @@ if (footer) {
 
 // Homepage history section: academic-style first-line indentation for every paragraph.
 if (document.body.dataset.page === 'index.html') {
+  const historyFixStylesheet = document.createElement('link');
+  historyFixStylesheet.rel = 'stylesheet';
+  historyFixStylesheet.href = 'history-fix.css';
+  document.head.appendChild(historyFixStylesheet);
+
   document.querySelectorAll('#ns-history p').forEach((paragraph) => {
     paragraph.style.textIndent = '5em';
   });
