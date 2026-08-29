@@ -1,4 +1,173 @@
-/* ERTMS / ETCS page-specific timeline */
+/* ERTMS / ETCS page-specific timeline and media layout */
+
+/* =========================================================
+   Image-ready layout
+   ========================================================= */
+body[data-page="ertms.html"] .ertms-hero-layout {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  gap: clamp(34px, 5vw, 68px);
+  align-items: center;
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  border: 1px dashed rgba(0,48,130,.28);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(0,48,130,.015), rgba(0,48,130,.12)),
+    radial-gradient(circle at 82% 16%, rgba(255,201,23,.28), transparent 27%),
+    linear-gradient(145deg, #f7fbff, #eaf2fa);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 14px 32px rgba(0,48,130,.06);
+  isolation: isolate;
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .5;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(0,48,130,.05) 49%, rgba(0,48,130,.05) 51%, transparent 52%),
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,48,130,.025) 38px 39px);
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
+  position: relative;
+  z-index: 2;
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: linear-gradient(180deg, rgba(247,251,255,.72), rgba(255,255,255,.96));
+  border-top: 1px solid rgba(0,48,130,.08);
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption strong {
+  color: #123d70;
+  font-size: .94rem;
+  font-weight: 800;
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption span {
+  color: #3b5672;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption small {
+  margin-top: 2px;
+  color: #657991;
+  font-size: .67rem;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+body[data-page="ertms.html"] .ertms-media-icon {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #003082;
+  color: #fff;
+  border: 4px solid rgba(255,255,255,.92);
+  font-size: .73rem;
+  font-weight: 850;
+  box-shadow: 0 8px 20px rgba(0,48,130,.18);
+}
+
+body[data-page="ertms.html"] .ertms-media-chip {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #ffc917;
+  color: #003082;
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .055em;
+}
+
+body[data-page="ertms.html"] .ertms-hero-media {
+  min-height: 330px;
+  aspect-ratio: 16 / 10;
+  border-style: solid;
+  border-color: rgba(0,48,130,.12);
+}
+
+body[data-page="ertms.html"] .ertms-media-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0 28px;
+}
+
+body[data-page="ertms.html"] .ertms-media-card {
+  min-height: 260px;
+  aspect-ratio: 4 / 3;
+}
+
+body[data-page="ertms.html"] .ertms-history-media {
+  min-height: 285px;
+  margin: 18px 0 22px 18px;
+  aspect-ratio: 16 / 9;
+  border-style: solid;
+  border-color: rgba(0,48,130,.13);
+}
+
+body[data-page="ertms.html"] .ertms-working-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(220px, .75fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+
+body[data-page="ertms.html"] .ertms-working-layout .signal-diagram {
+  margin: 0;
+  min-height: 100%;
+}
+
+body[data-page="ertms.html"] .ertms-level2-media {
+  min-height: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+body[data-page="ertms.html"] .ertms-netherlands-media {
+  min-height: 300px;
+  margin: 30px 0 0;
+  aspect-ratio: 21 / 9;
+  border-style: solid;
+  border-color: rgba(0,48,130,.13);
+}
+
+/* When real images are inserted later, use this structure:
+   <img class="ertms-media-image" src="..." alt="..."> */
+body[data-page="ertms.html"] .ertms-media-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* =========================================================
+   History timeline
+   ========================================================= */
 body[data-page="ertms.html"] #history .ertms-history-intro {
   margin-bottom: 28px;
 }
@@ -123,6 +292,23 @@ body[data-page="ertms.html"] .history-summary strong {
   color: #003082;
 }
 
+@media (max-width: 980px) {
+  body[data-page="ertms.html"] .ertms-hero-layout,
+  body[data-page="ertms.html"] .ertms-working-layout {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="ertms.html"] .ertms-hero-media {
+    width: 100%;
+    max-width: 720px;
+  }
+
+  body[data-page="ertms.html"] .ertms-level2-media {
+    min-height: 300px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 @media (max-width: 820px) {
   body[data-page="ertms.html"] .ertms-milestone {
     grid-template-columns: 1fr;
@@ -131,6 +317,20 @@ body[data-page="ertms.html"] .history-summary strong {
 
   body[data-page="ertms.html"] .ertms-scope {
     justify-self: start;
+  }
+}
+
+@media (max-width: 680px) {
+  body[data-page="ertms.html"] .ertms-media-pair {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="ertms.html"] .ertms-media-card,
+  body[data-page="ertms.html"] .ertms-history-media,
+  body[data-page="ertms.html"] .ertms-netherlands-media,
+  body[data-page="ertms.html"] .ertms-level2-media {
+    min-height: 240px;
+    aspect-ratio: 16 / 10;
   }
 }
 
@@ -153,5 +353,13 @@ body[data-page="ertms.html"] .history-summary strong {
     width: 12px;
     height: 12px;
     border-width: 3px;
+  }
+
+  body[data-page="ertms.html"] .ertms-history-media {
+    margin-left: 8px;
+  }
+
+  body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
+    padding: 15px 16px 17px;
   }
 }
