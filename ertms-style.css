@@ -17,13 +17,13 @@ body[data-page="ertms.html"] .ertms-media-placeholder {
   flex-direction: column;
   justify-content: flex-end;
   min-width: 0;
-  border: 1px dashed rgba(0,48,130,.28);
+  border: 1px solid rgba(0,48,130,.16);
   border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(0,48,130,.015), rgba(0,48,130,.12)),
-    radial-gradient(circle at 82% 16%, rgba(255,201,23,.28), transparent 27%),
-    linear-gradient(145deg, #f7fbff, #eaf2fa);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 14px 32px rgba(0,48,130,.06);
+  background-color: #eaf2fa;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 14px 32px rgba(0,48,130,.09);
   isolation: isolate;
 }
 
@@ -31,11 +31,9 @@ body[data-page="ertms.html"] .ertms-media-placeholder::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  opacity: .5;
-  background:
-    linear-gradient(135deg, transparent 48%, rgba(0,48,130,.05) 49%, rgba(0,48,130,.05) 51%, transparent 52%),
-    repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,48,130,.025) 38px 39px);
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 42%, rgba(1,25,57,.08) 62%, rgba(1,25,57,.74) 100%);
+  pointer-events: none;
 }
 
 body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
@@ -45,53 +43,44 @@ body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background: linear-gradient(180deg, rgba(247,251,255,.72), rgba(255,255,255,.96));
-  border-top: 1px solid rgba(0,48,130,.08);
+  background: transparent;
+  border-top: 0;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.34);
 }
 
-body[data-page="ertms.html"] .ertms-media-placeholder figcaption strong {
-  color: #123d70;
-  font-size: .94rem;
+/* Hide the old placeholder instructions. Real captions are supplied below. */
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption > * {
+  display: none;
+}
+
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption::before {
+  display: block;
+  color: #fff;
+  font-size: .95rem;
   font-weight: 800;
+  line-height: 1.35;
 }
 
-body[data-page="ertms.html"] .ertms-media-placeholder figcaption span {
-  color: #3b5672;
-  font-size: .78rem;
-  line-height: 1.55;
-}
-
-body[data-page="ertms.html"] .ertms-media-placeholder figcaption small {
-  margin-top: 2px;
-  color: #657991;
-  font-size: .67rem;
+body[data-page="ertms.html"] .ertms-media-placeholder figcaption::after {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.84);
+  font-size: .68rem;
   font-weight: 650;
+  line-height: 1.45;
   letter-spacing: .01em;
 }
 
 body[data-page="ertms.html"] .ertms-media-icon {
-  position: absolute;
-  left: 20px;
-  top: 18px;
-  z-index: 2;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #003082;
-  color: #fff;
-  border: 4px solid rgba(255,255,255,.92);
-  font-size: .73rem;
-  font-weight: 850;
-  box-shadow: 0 8px 20px rgba(0,48,130,.18);
+  display: none;
 }
 
 body[data-page="ertms.html"] .ertms-media-chip {
   position: absolute;
   right: 18px;
   top: 18px;
-  z-index: 2;
+  z-index: 3;
   padding: 7px 11px;
   border-radius: 999px;
   background: #ffc917;
@@ -99,13 +88,12 @@ body[data-page="ertms.html"] .ertms-media-chip {
   font-size: .65rem;
   font-weight: 850;
   letter-spacing: .055em;
+  box-shadow: 0 8px 18px rgba(0,48,130,.14);
 }
 
 body[data-page="ertms.html"] .ertms-hero-media {
   min-height: 330px;
   aspect-ratio: 16 / 10;
-  border-style: solid;
-  border-color: rgba(0,48,130,.12);
 }
 
 body[data-page="ertms.html"] .ertms-media-pair {
@@ -124,8 +112,6 @@ body[data-page="ertms.html"] .ertms-history-media {
   min-height: 285px;
   margin: 18px 0 22px 18px;
   aspect-ratio: 16 / 9;
-  border-style: solid;
-  border-color: rgba(0,48,130,.13);
 }
 
 body[data-page="ertms.html"] .ertms-working-layout {
@@ -150,19 +136,86 @@ body[data-page="ertms.html"] .ertms-netherlands-media {
   min-height: 300px;
   margin: 30px 0 0;
   aspect-ratio: 21 / 9;
-  border-style: solid;
-  border-color: rgba(0,48,130,.13);
 }
 
-/* When real images are inserted later, use this structure:
-   <img class="ertms-media-image" src="..." alt="..."> */
-body[data-page="ertms.html"] .ertms-media-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+/* =========================================================
+   Real CC0 imagery from Wikimedia Commons
+   All six files are dedicated to the public domain via CC0.
+   ========================================================= */
+body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HSL-Zuid%20railway.png?width=1600");
+  background-position: center 52%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] figcaption::before {
+  content: "HSL-Zuid — โครงข่ายรถไฟความเร็วสูงของเนเธอร์แลนด์";
+}
+body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] figcaption::after {
+  content: "ภาพ: Steven Lek · Wikimedia Commons · CC0";
+}
+
+body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/DMI%20160%204114.svg?width=1200");
+  background-size: contain;
+  background-color: #edf3f8;
+  background-position: center 42%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"]::before {
+  background: linear-gradient(180deg, transparent 55%, rgba(1,25,57,.12) 70%, rgba(1,25,57,.78) 100%);
+}
+body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"] figcaption::before {
+  content: "Driver Machine Interface (DMI) ของ ERTMS / ETCS";
+}
+body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"] figcaption::after {
+  content: "ภาพ: Marten de Vries · Wikimedia Commons · CC0";
+}
+
+body[data-page="ertms.html"] [data-slot="ertms-balise.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Eurobalise%20on%20Infrabel%20L202%2C%20front.jpg?width=1200");
+  background-position: center 58%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-balise.webp"] figcaption::before {
+  content: "Eurobalise — จุดอ้างอิงข้อมูลบนทางรถไฟ";
+}
+body[data-page="ertms.html"] [data-slot="ertms-balise.webp"] figcaption::after {
+  content: "Wikimedia Commons · CC0";
+}
+
+body[data-page="ertms.html"] [data-slot="ertms-history.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Betuweroute%2C%20Bemmel.jpg?width=1600");
+  background-position: center 54%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-history.webp"] figcaption::before {
+  content: "Betuweroute — หนึ่งในเส้นทาง ERTMS รุ่นแรกของเนเธอร์แลนด์";
+}
+body[data-page="ertms.html"] [data-slot="ertms-history.webp"] figcaption::after {
+  content: "ภาพ: Lendskaip · Wikimedia Commons · CC0";
+}
+
+body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ETCS%20L2%20en.svg?width=1400");
+  background-size: contain;
+  background-color: #fff;
+  background-position: center 38%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-level2.webp"]::before {
+  background: linear-gradient(180deg, transparent 58%, rgba(1,25,57,.08) 70%, rgba(1,25,57,.82) 100%);
+}
+body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] figcaption::before {
+  content: "แผนภาพหลักการทำงานของ ETCS Level 2";
+}
+body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] figcaption::after {
+  content: "Wikimedia Commons · CC0";
+}
+
+body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Spoorbrug%20Hanzelijn%20IJssel.jpg?width=1800");
+  background-position: center 50%;
+}
+body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::before {
+  content: "Hanzelijn — เส้นทางที่มีประสบการณ์ใช้งาน ERTMS ในเนเธอร์แลนด์";
+}
+body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::after {
+  content: "ภาพ: Apdency · Wikimedia Commons · CC0";
 }
 
 /* =========================================================
