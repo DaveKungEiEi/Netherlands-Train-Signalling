@@ -250,36 +250,37 @@ body[data-page="status.html"] .aside a:hover {
 }
 
 /* =========================================================
-   ATB → ETCS visual migration progress
-   50% is a presentation indicator requested for this page,
-   not an official national programme completion statistic.
+   ATB → ETCS field-deployment indicator
+   Approx. 6% = 25 km field-work corridor / 419 km Tranche 1 scope.
+   This is NOT an official overall programme-completion percentage.
    ========================================================= */
 body[data-page="status.html"] .page-badge {
   position: relative;
   min-width: min(100%, 330px);
-  padding-bottom: 126px !important;
+  padding-bottom: 138px !important;
   overflow: hidden;
 }
 
 body[data-page="status.html"] .page-badge::after {
-  content: "ภาพรวมการเปลี่ยนผ่าน · ตัวเลขเชิงนำเสนอ";
+  content: "≈25 km / 419 km · พื้นที่ที่เข้าสู่งานภาคสนาม (≈6%)\Aไม่ใช่เปอร์เซ็นต์ความสำเร็จรวมของโครงการ";
   position: absolute;
   left: 50%;
-  bottom: 16px;
-  width: calc(100% - 40px);
+  bottom: 12px;
+  width: calc(100% - 36px);
   transform: translateX(-50%);
   color: #687b90;
-  font-size: .68rem;
+  font-size: .66rem;
   font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: .015em;
+  line-height: 1.4;
+  letter-spacing: .01em;
   text-align: center;
+  white-space: pre-line;
 }
 
 body[data-page="status.html"] .page-badge .big::before,
 body[data-page="status.html"] .page-badge .big::after {
   position: absolute;
-  bottom: 69px;
+  bottom: 78px;
   z-index: 3;
   color: #173b68;
   font-size: .74rem;
@@ -304,15 +305,15 @@ body[data-page="status.html"] .page-badge p::before {
   z-index: 1;
   left: 58px;
   right: 64px;
-  bottom: 70px;
+  bottom: 79px;
   height: 8px;
   border-radius: 999px;
   background:
     linear-gradient(
       90deg,
       #003082 0%,
-      #1264bd 50%,
-      rgba(0,48,130,.13) 50%,
+      #1264bd 6%,
+      rgba(0,48,130,.13) 6%,
       rgba(0,48,130,.13) 100%
     );
   box-shadow:
@@ -321,13 +322,13 @@ body[data-page="status.html"] .page-badge p::before {
 }
 
 body[data-page="status.html"] .page-badge p::after {
-  content: "50%";
+  content: "≈6%";
   position: absolute;
   z-index: 4;
-  left: 50%;
-  bottom: 50px;
-  width: 48px;
-  height: 48px;
+  left: 21.5%;
+  bottom: 58px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   transform: translateX(-50%);
@@ -335,7 +336,7 @@ body[data-page="status.html"] .page-badge p::after {
   border-radius: 50%;
   background: #ffc917;
   color: #003082;
-  font-size: .72rem;
+  font-size: .68rem;
   font-weight: 850;
   font-variant-numeric: tabular-nums;
   box-shadow:
@@ -394,7 +395,7 @@ body[data-page="status.html"] .page-badge p::after {
 
   body[data-page="status.html"] .page-badge {
     min-width: 0;
-    padding-bottom: 118px !important;
+    padding-bottom: 132px !important;
   }
 
   body[data-page="status.html"] .page-badge .big::before {
@@ -408,5 +409,9 @@ body[data-page="status.html"] .page-badge p::after {
   body[data-page="status.html"] .page-badge p::before {
     left: 50px;
     right: 56px;
+  }
+
+  body[data-page="status.html"] .page-badge p::after {
+    left: 20.5%;
   }
 }
