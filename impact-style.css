@@ -1,0 +1,265 @@
+/* =========================================================
+   Impact page — legacy fleet retrofit section
+   ========================================================= */
+
+body[data-page="impact.html"] .retrofit-lead {
+  margin-bottom: 26px;
+}
+
+body[data-page="impact.html"] .retrofit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+body[data-page="impact.html"] .retrofit-card {
+  position: relative;
+  min-height: 230px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,201,23,.12), transparent 25%),
+    linear-gradient(145deg, #fff, #f8fbff);
+  box-shadow: 0 12px 30px rgba(0,48,130,.055);
+}
+
+body[data-page="impact.html"] .retrofit-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffc917, #003082);
+  opacity: .92;
+}
+
+body[data-page="impact.html"] .retrofit-card .retrofit-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 13px;
+  background: #edf4fb;
+  color: #003082;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+body[data-page="impact.html"] .retrofit-card h3 {
+  margin: 0 0 10px;
+  color: #173f6c;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+body[data-page="impact.html"] .retrofit-card p {
+  margin: 0;
+  color: #425b74;
+  line-height: 1.78;
+}
+
+body[data-page="impact.html"] .retrofit-card strong {
+  color: #173f6c;
+}
+
+body[data-page="impact.html"] .virm-case {
+  position: relative;
+  margin: 34px 0 28px;
+  padding: clamp(24px, 4vw, 38px);
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 86% 18%, rgba(255,201,23,.18), transparent 27%),
+    linear-gradient(135deg, #eef6ff, #fff 58%);
+  box-shadow: 0 18px 42px rgba(0,48,130,.08);
+}
+
+body[data-page="impact.html"] .virm-case::before {
+  content: "VIRM";
+  position: absolute;
+  right: 22px;
+  bottom: -24px;
+  color: rgba(0,48,130,.045);
+  font-size: clamp(5rem, 13vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.07em;
+  pointer-events: none;
+}
+
+body[data-page="impact.html"] .virm-case-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+body[data-page="impact.html"] .virm-case-head span {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #003082;
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+body[data-page="impact.html"] .virm-case h3 {
+  margin: 10px 0 0;
+  color: #123d70;
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  line-height: 1.3;
+}
+
+body[data-page="impact.html"] .virm-case-metric {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+body[data-page="impact.html"] .virm-case-metric strong {
+  display: block;
+  color: #003082;
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+body[data-page="impact.html"] .virm-case-metric small {
+  display: block;
+  margin-top: 6px;
+  color: #61758a;
+  font-size: .72rem;
+}
+
+body[data-page="impact.html"] .virm-facts {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body[data-page="impact.html"] .virm-fact {
+  padding: 17px 18px;
+  border: 1px solid rgba(0,48,130,.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,.75);
+  color: #405a73;
+  line-height: 1.68;
+}
+
+body[data-page="impact.html"] .virm-fact strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #173f6c;
+}
+
+body[data-page="impact.html"] .fleet-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 26px 0;
+}
+
+body[data-page="impact.html"] .fleet-compare > div {
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,48,130,.10);
+}
+
+body[data-page="impact.html"] .fleet-compare .legacy {
+  background: #fff9df;
+  border-color: rgba(177,132,0,.20);
+}
+
+body[data-page="impact.html"] .fleet-compare .newer {
+  background: #edf6ff;
+}
+
+body[data-page="impact.html"] .fleet-compare h3 {
+  margin: 0 0 10px;
+  color: #173f6c;
+}
+
+body[data-page="impact.html"] .fleet-compare p {
+  margin: 0;
+  color: #405a73;
+  line-height: 1.75;
+}
+
+body[data-page="impact.html"] .evidence-note {
+  margin: 28px 0;
+  padding: 20px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,48,130,.10);
+  background: linear-gradient(135deg, #f4f8fd, #fff);
+  color: #405a73;
+  line-height: 1.75;
+}
+
+body[data-page="impact.html"] .evidence-note strong {
+  color: #003082;
+}
+
+body[data-page="impact.html"] #retrofit .source-list {
+  margin-top: 28px;
+}
+
+body[data-page="impact.html"] #retrofit .source-list::before {
+  content: "แหล่งข้อมูลที่ใช้ในส่วนนี้";
+  display: block;
+  margin: 0 0 10px 2px;
+  color: #173f6c;
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .04em;
+}
+
+html[lang="en"] body[data-page="impact.html"] #retrofit .source-list::before {
+  content: "Sources used in this section";
+}
+
+@media (hover:hover) and (pointer:fine) {
+  body[data-page="impact.html"] .retrofit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,48,130,.20);
+    box-shadow: 0 18px 36px rgba(0,48,130,.09);
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="impact.html"] .retrofit-grid,
+  body[data-page="impact.html"] .virm-facts,
+  body[data-page="impact.html"] .fleet-compare {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="impact.html"] .retrofit-card {
+    min-height: 0;
+  }
+
+  body[data-page="impact.html"] .virm-case-head {
+    flex-direction: column;
+  }
+
+  body[data-page="impact.html"] .virm-case-metric {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="impact.html"] .retrofit-card {
+    transition: none !important;
+  }
+}
