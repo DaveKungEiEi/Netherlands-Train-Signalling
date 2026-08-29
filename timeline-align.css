@@ -69,8 +69,23 @@ body[data-page="status.html"] #timeline .status-row:hover {
 }
 
 /* ---------- ERTMS history timeline ---------- */
-/* Same geometry as Status: dot centres already use the declared rail x. */
+/*
+   The rail belongs to .ertms-history-timeline, while each dot belongs to a
+   milestone whose local origin starts after the timeline's left padding.
+   Use one centre axis for both instead of inheriting the old 9px/-30px pair.
+*/
+body[data-page="ertms.html"] .ertms-history-timeline {
+  --ertms-axis-x: 13px;
+  --ertms-content-offset: 32px;
+}
+
 body[data-page="ertms.html"] .ertms-history-timeline::before {
+  left: var(--ertms-axis-x);
+  transform: translateX(-50%);
+}
+
+body[data-page="ertms.html"] .ertms-milestone::before {
+  left: calc(var(--ertms-axis-x) - var(--ertms-content-offset));
   transform: translateX(-50%);
 }
 
@@ -96,8 +111,6 @@ body[data-page="comparison.html"] .comparison-era::before {
 }
 
 body[data-page="comparison.html"] .comparison-era-year {
-  /* Dot centre: 18px + 8.5px ≈ 26.5px.
-     Year line centre at this padding is visually aligned to the same height. */
   padding-top: 18px;
   padding-right: 0;
   text-align: right;
@@ -134,6 +147,13 @@ body[data-page="comparison.html"] .comparison-era-year {
   body[data-page="comparison.html"] .comparison-era-year {
     padding-top: 4px;
     text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-page="ertms.html"] .ertms-history-timeline {
+    --ertms-axis-x: 9px;
+    --ertms-content-offset: 24px;
   }
 }
 
