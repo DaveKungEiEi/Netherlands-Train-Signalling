@@ -40,9 +40,42 @@
   outline-offset: 2px;
 }
 
-.language-flag {
-  font-size: 1rem;
-  line-height: 1;
+/* Use real SVG flag artwork instead of Unicode flag emoji.
+   This prevents Windows/Chrome from rendering the flags as TH / GB text. */
+.language-flag,
+.language-option > span:first-child {
+  position: relative;
+  display: inline-block;
+  width: 23px;
+  height: 16px;
+  flex: 0 0 23px;
+  overflow: hidden;
+  border-radius: 3px;
+  font-size: 0;
+  line-height: 0;
+  box-shadow: 0 0 0 1px rgba(0,48,130,.12), 0 2px 5px rgba(14,38,70,.10);
+}
+
+.language-flag::before,
+.language-option > span:first-child::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* Thailand */
+body[data-lang="th"] .language-flag::before,
+.language-option[data-lang-option="th"] > span:first-child::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23A51931'/%3E%3Crect y='100' width='900' height='400' fill='%23F4F5F8'/%3E%3Crect y='200' width='900' height='200' fill='%232D2A4A'/%3E%3C/svg%3E");
+}
+
+/* United Kingdom */
+body[data-lang="en"] .language-flag::before,
+.language-option[data-lang-option="en"] > span:first-child::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='a'%3E%3Cpath d='M0 0v30h60V0z'/%3E%3C/clipPath%3E%3CclipPath id='b'%3E%3Cpath d='M30 15h30v15zv15H0zH0V0zV0h30z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='m0 0 60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='m0 0 60 30m0-30L0 30' clip-path='url(%23b)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .language-chevron {
