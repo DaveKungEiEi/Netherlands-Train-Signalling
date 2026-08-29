@@ -3,24 +3,33 @@
    Netherlands × Belgium × Germany
    ========================================================= */
 
+body[data-page="comparison.html"] .article-section > p {
+  color: #314c68;
+}
+
 body[data-page="comparison.html"] .comparison-country-grid {
   margin-top: 28px;
   align-items: stretch;
 }
 
 body[data-page="comparison.html"] .comparison-country-card {
-  min-height: 330px;
+  min-height: 345px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 25px;
   border-color: rgba(0,48,130,.11);
   background:
-    radial-gradient(circle at 100% 0%, rgba(0,48,130,.04), transparent 34%),
-    rgba(255,255,255,.96);
+    radial-gradient(circle at 100% 0%, rgba(0,48,130,.055), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,251,255,.94));
+  box-shadow: 0 13px 30px rgba(0,48,130,.06);
 }
 
 body[data-page="comparison.html"] .comparison-country-card-leading {
-  border-color: rgba(255,201,23,.42);
+  border-color: rgba(255,201,23,.46);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255,201,23,.13), transparent 36%),
+    linear-gradient(145deg, #fff, #fffdf5);
   box-shadow: 0 18px 38px rgba(120,91,0,.08), 0 12px 30px rgba(0,48,130,.055);
 }
 
@@ -30,42 +39,191 @@ body[data-page="comparison.html"] .comparison-status-chip {
   min-height: 28px;
   margin-bottom: 15px;
   padding: 5px 10px;
-  border: 1px solid rgba(0,48,130,.10);
+  border: 1px solid rgba(0,48,130,.12);
   border-radius: 999px;
   background: #edf4fb;
-  color: #315578;
-  font-size: .68rem;
+  color: #234d78;
+  font-size: .7rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
 body[data-page="comparison.html"] .comparison-country-card-leading .comparison-status-chip {
-  border-color: rgba(218,166,0,.24);
-  background: #fff5c9;
-  color: #624b00;
+  border-color: rgba(218,166,0,.28);
+  background: #fff3b8;
+  color: #584300;
 }
 
 body[data-page="comparison.html"] .comparison-country-card .metric {
   margin-top: 8px;
-  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
+  color: #003082;
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+  font-weight: 900;
   letter-spacing: -.04em;
 }
 
 body[data-page="comparison.html"] .comparison-country-card p {
   margin-top: 13px;
-  line-height: 1.75;
+  color: #39546f;
+  line-height: 1.78;
 }
 
 body[data-page="comparison.html"] .comparison-data-note {
+  margin-top: 25px;
+}
+
+/* ---------- Image placeholders ---------- */
+body[data-page="comparison.html"] .comparison-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 15px;
   margin-top: 24px;
 }
 
-/* Historical comparison timeline */
+body[data-page="comparison.html"] .comparison-media-placeholder {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 18px;
+  border: 1.5px dashed rgba(0,48,130,.25);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.76), rgba(238,246,255,.84)),
+    repeating-linear-gradient(45deg, rgba(0,48,130,.025) 0 10px, transparent 10px 20px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 10px 24px rgba(0,48,130,.045);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,48,130,.38);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 15px 30px rgba(0,48,130,.075);
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder::before {
+  content: "IMAGE SLOT";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.8);
+  color: #55708b;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  box-shadow: 0 0 0 1px rgba(0,48,130,.07);
+}
+
+html[lang="th"] body[data-page="comparison.html"] .comparison-media-placeholder::before {
+  content: "ช่องใส่รูป";
+  letter-spacing: .02em;
+}
+
+body[data-page="comparison.html"] .comparison-media-icon {
+  width: fit-content;
+  min-width: 48px;
+  min-height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 8px 11px;
+  border-radius: 13px;
+  background: #003082;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .035em;
+  box-shadow: 0 8px 18px rgba(0,48,130,.17);
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+  margin-top: auto;
+  padding: 14px 15px;
+  border: 1px solid rgba(255,255,255,.78);
+  border-radius: 15px;
+  background: rgba(255,255,255,.78);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: 0 8px 20px rgba(0,48,130,.055);
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption strong {
+  color: #123d6d;
+  font-size: .9rem;
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption span {
+  color: #3e5b77;
+  font-size: .76rem;
+  line-height: 1.55;
+}
+
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption small {
+  color: #667b90;
+  font-size: .66rem;
+  line-height: 1.45;
+}
+
+body[data-page="comparison.html"] .comparison-media-wide {
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  margin-top: 30px;
+  padding: 22px;
+}
+
+body[data-page="comparison.html"] .comparison-media-wide .comparison-media-icon {
+  min-width: 70px;
+  min-height: 50px;
+}
+
+body[data-page="comparison.html"] .comparison-media-wide figcaption {
+  max-width: 640px;
+}
+
+/* ---------- Timeline ---------- */
+body[data-page="comparison.html"] .comparison-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+body[data-page="comparison.html"] .comparison-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border: 1px solid rgba(0,48,130,.09);
+  border-radius: 999px;
+  background: #f7faff;
+  color: #415c77;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+body[data-page="comparison.html"] .legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+body[data-page="comparison.html"] .nl-dot { background: #21468b; }
+body[data-page="comparison.html"] .be-dot { background: #ffd90c; box-shadow: inset 0 0 0 2px #161616; }
+body[data-page="comparison.html"] .de-dot { background: #dd0000; }
+
 body[data-page="comparison.html"] .comparison-timeline {
   position: relative;
   display: grid;
   gap: 0;
-  margin-top: 34px;
+  margin-top: 30px;
 }
 
 body[data-page="comparison.html"] .comparison-timeline::before {
@@ -118,7 +276,7 @@ body[data-page="comparison.html"] .comparison-era-year {
 }
 
 body[data-page="comparison.html"] .comparison-era-body {
-  padding: 24px;
+  padding: 25px;
   border: 1px solid rgba(0,48,130,.10);
   border-radius: 24px;
   background: linear-gradient(145deg, #fff, #f7fbff);
@@ -126,15 +284,15 @@ body[data-page="comparison.html"] .comparison-era-body {
 }
 
 body[data-page="comparison.html"] .comparison-era-current .comparison-era-body {
-  border-color: rgba(255,201,23,.34);
+  border-color: rgba(255,201,23,.36);
   background:
-    radial-gradient(circle at 100% 0%, rgba(255,201,23,.11), transparent 32%),
+    radial-gradient(circle at 100% 0%, rgba(255,201,23,.12), transparent 32%),
     linear-gradient(145deg, #fff, #f9fbfe);
 }
 
 body[data-page="comparison.html"] .comparison-era-body > h3 {
   margin-bottom: 19px;
-  color: #123b6b;
+  color: #103a69;
   font-size: clamp(1.12rem, 2vw, 1.4rem);
 }
 
@@ -146,17 +304,17 @@ body[data-page="comparison.html"] .comparison-era-grid {
 
 body[data-page="comparison.html"] .comparison-era-country {
   min-width: 0;
-  padding: 17px 16px 18px;
-  border: 1px solid rgba(0,48,130,.08);
+  padding: 18px 17px 19px;
+  border: 1px solid rgba(0,48,130,.09);
   border-radius: 17px;
-  background: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.88);
 }
 
 body[data-page="comparison.html"] .country-code {
   display: inline-grid;
   place-items: center;
-  width: 32px;
-  height: 24px;
+  width: 34px;
+  height: 25px;
   margin-bottom: 11px;
   border-radius: 7px;
   color: #fff;
@@ -172,43 +330,57 @@ body[data-page="comparison.html"] .de-code { background: linear-gradient(#111 0 
 body[data-page="comparison.html"] .comparison-era-country strong {
   display: block;
   min-height: 2.9em;
-  color: #163f6e;
+  color: #123d6c;
   font-size: .92rem;
   line-height: 1.45;
 }
 
 body[data-page="comparison.html"] .comparison-era-country p {
   margin: 9px 0 0;
-  color: #435c75;
-  font-size: .82rem;
-  line-height: 1.72;
+  color: #3c5873;
+  font-size: .84rem;
+  line-height: 1.76;
 }
 
-/* TBL1+ is a later Belgian enhancement (2000s), so do not label it as
-   part of the pre-2000 starting point. Keep the underlying text intact
-   while presenting the historically precise heading in both languages. */
-body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong {
-  font-size: 0;
-}
-body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong::after {
-  content: "Memor-Crocodile และ TBL";
-  font-size: .92rem;
-}
-html[lang="en"] body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong::after {
-  content: "Memor-Crocodile and TBL";
+/* ---------- Comparison table ---------- */
+body[data-page="comparison.html"] #table .compare-table-wrap {
+  margin-top: 25px;
 }
 
-/* Lessons */
+body[data-page="comparison.html"] #table th {
+  color: #0a315e;
+  font-weight: 850;
+}
+
+body[data-page="comparison.html"] #table td {
+  color: #354f69;
+  line-height: 1.65;
+}
+
+body[data-page="comparison.html"] #table td:first-child {
+  min-width: 150px;
+  color: #153f6d;
+  font-weight: 800;
+  background: rgba(236,244,252,.68);
+}
+
+/* ---------- Lessons ---------- */
 body[data-page="comparison.html"] .comparison-lessons-grid {
   grid-template-columns: repeat(3, minmax(0,1fr));
   margin-top: 26px;
 }
 
 body[data-page="comparison.html"] .comparison-lessons-grid .info-card {
-  min-height: 255px;
+  min-height: 270px;
+  padding: 24px;
 }
 
-/* Cross-border flow */
+body[data-page="comparison.html"] .comparison-lessons-grid .info-card p {
+  color: #39546f;
+  line-height: 1.76;
+}
+
+/* ---------- Cross-border flow ---------- */
 body[data-page="comparison.html"] .comparison-border-flow {
   display: grid;
   grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
@@ -217,7 +389,7 @@ body[data-page="comparison.html"] .comparison-border-flow {
   margin-top: 28px;
   padding: 22px;
   border: 1px solid rgba(0,48,130,.11);
-  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(239,246,253,.88));
+  background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(239,246,253,.9));
 }
 
 body[data-page="comparison.html"] .comparison-border-flow > div {
@@ -226,19 +398,19 @@ body[data-page="comparison.html"] .comparison-border-flow > div {
   grid-template-columns: 36px minmax(0,1fr);
   column-gap: 10px;
   align-items: center;
-  padding: 14px;
+  padding: 15px;
   border-radius: 16px;
   background: #fff;
   box-shadow: 0 7px 18px rgba(0,48,130,.045);
 }
 
 body[data-page="comparison.html"] .comparison-border-flow strong {
-  color: #143e6d;
+  color: #123d6b;
 }
 
 body[data-page="comparison.html"] .comparison-border-flow small {
   grid-column: 2;
-  color: #587087;
+  color: #4d6882;
   line-height: 1.45;
 }
 
@@ -260,6 +432,23 @@ body[data-page="comparison.html"] .border-arrow {
   font-weight: 900;
 }
 
+body[data-page="comparison.html"] .comparison-reference-link {
+  width: fit-content;
+  margin-top: 18px;
+}
+
+@media (max-width: 1040px) {
+  body[data-page="comparison.html"] .comparison-photo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body[data-page="comparison.html"] .comparison-photo-grid > :last-child {
+    grid-column: 1 / -1;
+    width: min(100%, 520px);
+    justify-self: center;
+  }
+}
+
 @media (max-width: 980px) {
   body[data-page="comparison.html"] .comparison-era-grid,
   body[data-page="comparison.html"] .comparison-lessons-grid {
@@ -272,6 +461,27 @@ body[data-page="comparison.html"] .border-arrow {
 }
 
 @media (max-width: 760px) {
+  body[data-page="comparison.html"] .comparison-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="comparison.html"] .comparison-photo-grid > :last-child {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  body[data-page="comparison.html"] .comparison-media-placeholder {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    padding: 15px;
+    border-radius: 19px;
+  }
+
+  body[data-page="comparison.html"] .comparison-media-wide {
+    aspect-ratio: auto;
+    min-height: 330px;
+  }
+
   body[data-page="comparison.html"] .comparison-timeline::before {
     left: 8px;
   }
@@ -305,5 +515,9 @@ body[data-page="comparison.html"] .border-arrow {
   body[data-page="comparison.html"] .border-arrow {
     justify-self: center;
     transform: rotate(90deg);
+  }
+
+  body[data-page="comparison.html"] .comparison-reference-link {
+    width: 100%;
   }
 }
