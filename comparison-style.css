@@ -184,6 +184,20 @@ body[data-page="comparison.html"] .comparison-era-country p {
   line-height: 1.72;
 }
 
+/* TBL1+ is a later Belgian enhancement (2000s), so do not label it as
+   part of the pre-2000 starting point. Keep the underlying text intact
+   while presenting the historically precise heading in both languages. */
+body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong {
+  font-size: 0;
+}
+body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong::after {
+  content: "Memor-Crocodile และ TBL";
+  font-size: .92rem;
+}
+html[lang="en"] body[data-page="comparison.html"] #timeline .comparison-era:first-child .comparison-era-country:nth-child(2) strong::after {
+  content: "Memor-Crocodile and TBL";
+}
+
 /* Lessons */
 body[data-page="comparison.html"] .comparison-lessons-grid {
   grid-template-columns: repeat(3, minmax(0,1fr));
