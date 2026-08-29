@@ -113,6 +113,15 @@ if (pageStyles[currentPage] && !document.querySelector(`link[href="${pageStyles[
   document.head.appendChild(pageStylesheet);
 }
 
+// Final geometry pass for all timeline designs. This stylesheet is deliberately
+// loaded after shared and page-specific CSS so every page uses the same axis rule.
+if (!document.querySelector('link[href="timeline-align.css"]')) {
+  const timelineStylesheet = document.createElement('link');
+  timelineStylesheet.rel = 'stylesheet';
+  timelineStylesheet.href = 'timeline-align.css';
+  document.head.appendChild(timelineStylesheet);
+}
+
 const languageSwitcherMarkup = `
   <div class="language-switcher">
     <button class="language-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="${text.languageLabel}">
