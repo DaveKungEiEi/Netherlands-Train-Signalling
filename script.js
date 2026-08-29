@@ -73,15 +73,18 @@ if (footer) {
             จาก ATB สู่ ERTMS/ETCS และผลต่อระบบรถไฟในยุคดิจิทัล
           </p>
 
-          <div class="footer-route" aria-label="เส้นทางการเปลี่ยนผ่านจาก ATB สู่ ETCS">
+          <div class="footer-route" aria-label="สถานะการเปลี่ยนผ่านจาก ATB สู่ ETCS: ประมาณ 6 เปอร์เซ็นต์ของขอบเขต Tranche 1 เข้าสู่งานภาคสนามแล้ว">
             <div class="footer-route-stop footer-route-stop-atb">
               <span class="footer-route-dot"></span>
-              <div><strong>ATB</strong><small>Legacy system</small></div>
+              <div><strong>ATB</strong><small>ระบบเดิม</small></div>
             </div>
-            <div class="footer-route-line" aria-hidden="true"><span></span></div>
+            <div class="footer-route-progress">
+              <div class="footer-route-line" aria-hidden="true"><span></span></div>
+              <div class="footer-route-status"><strong>สถานะการเปลี่ยนผ่าน ≈6%</strong><small>≈25 km / 419 km ของ Tranche 1 เข้าสู่งานภาคสนาม</small></div>
+            </div>
             <div class="footer-route-stop footer-route-stop-etcs">
               <span class="footer-route-dot"></span>
-              <div><strong>ETCS</strong><small>Digital future</small></div>
+              <div><strong>ETCS</strong><small>ระบบเป้าหมาย</small></div>
             </div>
           </div>
         </section>
