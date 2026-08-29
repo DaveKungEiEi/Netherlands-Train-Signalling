@@ -1,0 +1,230 @@
+/* =========================================================
+   Language switcher — Thai / English
+   ========================================================= */
+.language-switcher {
+  position: relative;
+  flex: 0 0 auto;
+  margin-left: 4px;
+}
+
+.language-toggle {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 999px;
+  background: rgba(255,255,255,.62);
+  color: #173b68;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.language-toggle:hover,
+.language-switcher.open .language-toggle {
+  background: rgba(255,255,255,.84);
+  border-color: rgba(0,48,130,.18);
+  box-shadow: 0 7px 20px rgba(0,48,130,.09), inset 0 1px 0 rgba(255,255,255,.92);
+}
+
+.language-toggle:focus-visible {
+  outline: 3px solid rgba(255,201,23,.72);
+  outline-offset: 2px;
+}
+
+.language-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.language-chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform .2s ease;
+}
+
+.language-switcher.open .language-chevron {
+  transform: rotate(180deg);
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 120;
+  min-width: 178px;
+  padding: 7px;
+  border: 1px solid rgba(255,255,255,.88);
+  border-radius: 17px;
+  background: rgba(248,251,255,.88);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+  backdrop-filter: blur(24px) saturate(155%);
+  box-shadow: 0 18px 48px rgba(16,50,92,.18), inset 0 1px 0 rgba(255,255,255,.92);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px) scale(.98);
+  transform-origin: top right;
+  transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+}
+
+.language-switcher.open .language-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.language-option {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25px minmax(0,1fr) 18px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 11px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #29445f;
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .16s ease, color .16s ease;
+}
+
+.language-option:hover,
+.language-option:focus-visible {
+  background: #edf4fb;
+  color: #003082;
+}
+
+.language-option:focus-visible {
+  outline: 2px solid #ffc917;
+  outline-offset: -1px;
+}
+
+.language-option.active {
+  background: rgba(0,48,130,.075);
+  color: #003082;
+  font-weight: 800;
+}
+
+.language-option .check {
+  color: #003082;
+  font-size: .8rem;
+  text-align: center;
+  opacity: 0;
+}
+
+.language-option.active .check { opacity: 1; }
+
+/* English typography: keep the editorial rhythm without Thai-style 5em indentation. */
+html[lang="en"] body:not(.home-page) .article-section > p,
+html[lang="en"] body[data-page="status.html"] .article-section > p {
+  text-indent: 2em !important;
+  text-align: justify;
+  text-justify: auto;
+}
+
+html[lang="en"] #ns-history p,
+html[lang="en"] #ns-history .lead {
+  text-indent: 2em !important;
+  text-align: justify;
+  text-justify: auto;
+}
+
+/* English text for status-page CSS-generated progress note. */
+html[lang="en"] body[data-page="status.html"] .page-badge::after {
+  content: "≈25 km / 419 km · Tranche 1 scope entered field works (≈6%)\AThis is not the programme's overall completion percentage";
+}
+
+/* English captions for the ERTMS image cards generated in CSS. */
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] figcaption::before {
+  content: "HSL-Zuid — the Netherlands' high-speed railway corridor";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] figcaption::after {
+  content: "Image: Steven Lek · Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"] figcaption::before {
+  content: "ERTMS / ETCS Driver Machine Interface (DMI)";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-dmi.webp"] figcaption::after {
+  content: "Image: Marten de Vries · Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-balise.webp"] figcaption::before {
+  content: "Eurobalise — a trackside data and position reference";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-balise.webp"] figcaption::after {
+  content: "Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-history.webp"] figcaption::before {
+  content: "Betuweroute — one of the Netherlands' early ERTMS corridors";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-history.webp"] figcaption::after {
+  content: "Image: Lendskaip · Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] figcaption::before {
+  content: "How ETCS Level 2 works";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] figcaption::after {
+  content: "Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::before {
+  content: "Hanzelijn — practical ERTMS experience in the Netherlands";
+}
+html[lang="en"] body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::after {
+  content: "Image: Apdency · Wikimedia Commons · CC0";
+}
+
+@media (max-width: 1120px) {
+  .language-toggle .language-name { display: none; }
+  .language-toggle { width: 40px; padding-inline: 8px; }
+  .language-chevron { display: none; }
+}
+
+@media (max-width: 900px) {
+  .language-switcher {
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 0 4px;
+  }
+
+  .language-toggle {
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 10px 13px;
+    border-radius: 13px;
+  }
+
+  .language-toggle .language-name { display: inline; }
+  .language-chevron { display: block; margin-left: auto; }
+
+  .language-menu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 7px;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 10px 26px rgba(0,48,130,.10);
+  }
+
+  .language-switcher.open .language-menu { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-toggle,
+  .language-chevron,
+  .language-menu { transition: none !important; }
+}
