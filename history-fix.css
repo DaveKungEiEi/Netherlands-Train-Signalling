@@ -55,6 +55,17 @@
   line-height: 1.15;
 }
 
+/* Keep the existing Liquid Glass styling; only rebalance the inner content. */
+.home-page .scroll-down {
+  gap: 4px;
+}
+
+.home-page .scroll-down > span {
+  position: relative;
+  top: 3px;
+  line-height: 1.3;
+}
+
 @media (max-width: 720px) {
   #ns-history .history-copy p,
   #ns-history .section-head-editorial .lead {
@@ -64,5 +75,9 @@
   #ns-history .history-marker span {
     padding-inline: 9px;
     box-shadow: 0 0 0 5px rgba(247, 249, 252, 0.98);
+  }
+
+  .home-page .scroll-down > span {
+    top: 2px;
   }
 }
