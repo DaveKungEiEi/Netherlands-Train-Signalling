@@ -72,7 +72,7 @@ body[data-page="comparison.html"] .comparison-data-note {
   margin-top: 25px;
 }
 
-/* ---------- Image placeholders ---------- */
+/* ---------- Image cards ---------- */
 body[data-page="comparison.html"] .comparison-photo-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -87,89 +87,77 @@ body[data-page="comparison.html"] .comparison-media-placeholder {
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   overflow: hidden;
-  padding: 18px;
-  border: 1.5px dashed rgba(0,48,130,.25);
+  padding: 0;
+  border: 1px solid rgba(0,48,130,.14);
   border-radius: 22px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.76), rgba(238,246,255,.84)),
-    repeating-linear-gradient(45deg, rgba(0,48,130,.025) 0 10px, transparent 10px 20px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 10px 24px rgba(0,48,130,.045);
-  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  background-color: #eaf2fa;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 14px 30px rgba(0,48,130,.09);
+  isolation: isolate;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
 }
 
 body[data-page="comparison.html"] .comparison-media-placeholder:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0,48,130,.38);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 15px 30px rgba(0,48,130,.075);
+  transform: translateY(-3px);
+  border-color: rgba(0,48,130,.28);
+  box-shadow: 0 20px 40px rgba(0,48,130,.14);
 }
 
 body[data-page="comparison.html"] .comparison-media-placeholder::before {
-  content: "IMAGE SLOT";
+  content: "";
   position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.8);
-  color: #55708b;
-  font-size: .58rem;
-  font-weight: 850;
-  letter-spacing: .08em;
-  box-shadow: 0 0 0 1px rgba(0,48,130,.07);
-}
-
-html[lang="th"] body[data-page="comparison.html"] .comparison-media-placeholder::before {
-  content: "ช่องใส่รูป";
-  letter-spacing: .02em;
+  inset: 0;
+  z-index: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(3,24,52,.08) 53%, rgba(3,24,52,.84) 100%);
+  box-shadow: none;
+  pointer-events: none;
 }
 
 body[data-page="comparison.html"] .comparison-media-icon {
-  width: fit-content;
-  min-width: 48px;
-  min-height: 42px;
-  display: grid;
-  place-items: center;
-  padding: 8px 11px;
-  border-radius: 13px;
-  background: #003082;
-  color: #fff;
-  font-size: .75rem;
-  font-weight: 900;
-  letter-spacing: .035em;
-  box-shadow: 0 8px 18px rgba(0,48,130,.17);
+  display: none;
 }
 
 body[data-page="comparison.html"] .comparison-media-placeholder figcaption {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
   display: grid;
-  gap: 4px;
-  margin-top: auto;
-  padding: 14px 15px;
-  border: 1px solid rgba(255,255,255,.78);
-  border-radius: 15px;
-  background: rgba(255,255,255,.78);
-  -webkit-backdrop-filter: blur(16px) saturate(130%);
-  backdrop-filter: blur(16px) saturate(130%);
-  box-shadow: 0 8px 20px rgba(0,48,130,.055);
+  gap: 5px;
+  margin: auto 0 0;
+  padding: 24px 19px 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.38);
+  box-shadow: none;
 }
 
-body[data-page="comparison.html"] .comparison-media-placeholder figcaption strong {
-  color: #123d6d;
-  font-size: .9rem;
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption > * {
+  display: none;
 }
 
-body[data-page="comparison.html"] .comparison-media-placeholder figcaption span {
-  color: #3e5b77;
-  font-size: .76rem;
-  line-height: 1.55;
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption::before {
+  display: block;
+  color: #fff;
+  font-size: .91rem;
+  font-weight: 850;
+  line-height: 1.45;
 }
 
-body[data-page="comparison.html"] .comparison-media-placeholder figcaption small {
-  color: #667b90;
-  font-size: .66rem;
+body[data-page="comparison.html"] .comparison-media-placeholder figcaption::after {
+  display: block;
+  color: rgba(255,255,255,.82);
+  font-size: .65rem;
+  font-weight: 600;
   line-height: 1.45;
 }
 
@@ -177,16 +165,102 @@ body[data-page="comparison.html"] .comparison-media-wide {
   aspect-ratio: 16 / 9;
   min-height: 320px;
   margin-top: 30px;
-  padding: 22px;
-}
-
-body[data-page="comparison.html"] .comparison-media-wide .comparison-media-icon {
-  min-width: 70px;
-  min-height: 50px;
 }
 
 body[data-page="comparison.html"] .comparison-media-wide figcaption {
-  max-width: 640px;
+  max-width: 720px;
+}
+
+/* Netherlands — HSL-Zuid, an early Dutch ERTMS route. */
+body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HSL-Zuid%20railway.png?width=1400");
+  background-position: center 52%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::before {
+  content: "HSL-Zuid — หนึ่งในเส้นทาง ERTMS ยุคแรกของเนเธอร์แลนด์";
+}
+body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::after {
+  content: "ภาพ: Steven Lek · Wikimedia Commons · CC0";
+}
+
+/* Belgium — HSL 4 / Schoten. */
+body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/A1-E19%20HSL%20Schoten.jpg?width=1400");
+  background-position: center 48%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::before {
+  content: "HSL 4 บริเวณ Schoten — เส้นทางความเร็วสูงของเบลเยียม";
+}
+body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::after {
+  content: "ภาพ: Rafaël Delaedt (Arafi) · Wikimedia Commons · CC BY-SA 3.0";
+}
+
+/* Germany — Rheintalbahn in Freiburg, the wider corridor used in the Freiburg–Basel ETCS discussion. */
+body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Basler%20Stra%C3%9Fe%20in%20Freiburg%20mit%20Br%C3%BCcken%20der%20Rheintalbahn%2C%20am%20linken%20Bildrand%20das%20DB-Regio%20Werk%20Freiburg.jpg?width=1400");
+  background-position: center 46%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::before {
+  content: "Rheintalbahn ที่ Freiburg — บริบทของแนวเส้นทาง Freiburg–Basel";
+}
+body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::after {
+  content: "ภาพ: Andreas Schwarzkopf · Wikimedia Commons · CC BY-SA 4.0";
+}
+
+/* Historical comparison — Betuweroute near Bemmel. */
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Betuweroute%2C%20Bemmel.jpg?width=1800");
+  background-position: center 54%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::before {
+  content: "Betuweroute — ตัวอย่างการใช้ ERTMS ระยะแรกของเนเธอร์แลนด์ตั้งแต่ปี 2007";
+}
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::after {
+  content: "ภาพ: Lendskaip · Wikimedia Commons · CC0";
+}
+
+/* Cross-border — LIMAX / Drielandentrein at Maastricht. */
+body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Maastricht%20station%20-%20Drielandentrein%20%28LIMAX%29%20richting%20Li%C3%A8ge-Guillemins%20-%202024-08-14.jpg?width=1800");
+  background-position: center 46%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::before {
+  content: "Drielandentrein / LIMAX — รถไฟที่เชื่อม Liège–Maastricht–Aachen";
+}
+body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::after {
+  content: "ภาพ: Sjenghai · Wikimedia Commons · CC BY 4.0";
+}
+
+/* English image captions */
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::before {
+  content: "HSL-Zuid — one of the Netherlands' early ERTMS routes";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::after {
+  content: "Image: Steven Lek · Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::before {
+  content: "HSL 4 near Schoten — part of Belgium's high-speed railway network";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::after {
+  content: "Image: Rafaël Delaedt (Arafi) · Wikimedia Commons · CC BY-SA 3.0";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::before {
+  content: "Rheintalbahn in Freiburg — context for the Freiburg–Basel corridor";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::after {
+  content: "Image: Andreas Schwarzkopf · Wikimedia Commons · CC BY-SA 4.0";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::before {
+  content: "Betuweroute — an early Dutch ERTMS corridor in service since 2007";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::after {
+  content: "Image: Lendskaip · Wikimedia Commons · CC0";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::before {
+  content: "Drielandentrein / LIMAX — connecting Liège, Maastricht and Aachen";
+}
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::after {
+  content: "Image: Sjenghai · Wikimedia Commons · CC BY 4.0";
 }
 
 /* ---------- Timeline ---------- */
@@ -473,13 +547,12 @@ body[data-page="comparison.html"] .comparison-reference-link {
   body[data-page="comparison.html"] .comparison-media-placeholder {
     aspect-ratio: 4 / 3;
     min-height: 0;
-    padding: 15px;
     border-radius: 19px;
   }
 
   body[data-page="comparison.html"] .comparison-media-wide {
-    aspect-ratio: auto;
-    min-height: 330px;
+    aspect-ratio: 16 / 10;
+    min-height: 300px;
   }
 
   body[data-page="comparison.html"] .comparison-timeline::before {
