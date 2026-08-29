@@ -42,10 +42,30 @@
 }
 
 /* ---------- Status timeline ---------- */
-/* The existing dots are centred on x=10px (desktop) / x=6px (mobile).
-   Translate the rail by half its own width so its centre uses the same x. */
+/*
+   The rail lives in .status-list while each dot lives in .status-row.
+   Those elements use different coordinate origins because .status-list has
+   left padding. Define one explicit axis and convert it into the row's local
+   coordinate system instead of compensating with a magic left-edge value.
+*/
+body[data-page="status.html"] #timeline .status-list {
+  --status-axis-x: 16px;
+  --status-content-offset: 34px;
+}
+
 body[data-page="status.html"] #timeline .status-list::before {
+  left: var(--status-axis-x);
   transform: translateX(-50%);
+}
+
+body[data-page="status.html"] #timeline .status-row::before {
+  left: calc(var(--status-axis-x) - var(--status-content-offset));
+  transform: translateX(-50%);
+}
+
+/* A horizontal hover translation would move the dot away from the fixed rail. */
+body[data-page="status.html"] #timeline .status-row:hover {
+  transform: none;
 }
 
 /* ---------- ERTMS history timeline ---------- */
@@ -86,6 +106,11 @@ body[data-page="comparison.html"] .comparison-era-year {
 
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
+  body[data-page="status.html"] #timeline .status-list {
+    --status-axis-x: 12px;
+    --status-content-offset: 24px;
+  }
+
   body[data-page="comparison.html"] .comparison-timeline {
     --comparison-axis-x: 12px;
   }
