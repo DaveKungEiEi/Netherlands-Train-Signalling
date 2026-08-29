@@ -7,6 +7,7 @@ body[data-page="comparison.html"] .article-section > p {
   color: #314c68;
 }
 
+/* ---------- Country overview ---------- */
 body[data-page="comparison.html"] .comparison-country-grid {
   margin-top: 28px;
   align-items: stretch;
@@ -18,7 +19,7 @@ body[data-page="comparison.html"] .comparison-country-card {
   flex-direction: column;
   align-items: flex-start;
   padding: 25px;
-  border-color: rgba(0,48,130,.11);
+  border: 1px solid rgba(0,48,130,.11);
   background:
     radial-gradient(circle at 100% 0%, rgba(0,48,130,.055), transparent 34%),
     linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,251,255,.94));
@@ -112,11 +113,7 @@ body[data-page="comparison.html"] .comparison-media-placeholder::before {
   position: absolute;
   inset: 0;
   z-index: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: linear-gradient(180deg, transparent 34%, rgba(3,24,52,.08) 53%, rgba(3,24,52,.84) 100%);
-  box-shadow: none;
+  background: linear-gradient(180deg, transparent 30%, rgba(3,24,52,.08) 50%, rgba(3,24,52,.88) 100%);
   pointer-events: none;
 }
 
@@ -132,13 +129,10 @@ body[data-page="comparison.html"] .comparison-media-placeholder figcaption {
   display: grid;
   gap: 5px;
   margin: auto 0 0;
-  padding: 24px 19px 18px;
-  border: 0;
-  border-radius: 0;
+  padding: 25px 19px 18px;
   background: transparent;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,.38);
-  box-shadow: none;
+  text-shadow: 0 2px 12px rgba(0,0,0,.42);
 }
 
 body[data-page="comparison.html"] .comparison-media-placeholder figcaption > * {
@@ -155,7 +149,7 @@ body[data-page="comparison.html"] .comparison-media-placeholder figcaption::befo
 
 body[data-page="comparison.html"] .comparison-media-placeholder figcaption::after {
   display: block;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.84);
   font-size: .65rem;
   font-weight: 600;
   line-height: 1.45;
@@ -168,99 +162,95 @@ body[data-page="comparison.html"] .comparison-media-wide {
 }
 
 body[data-page="comparison.html"] .comparison-media-wide figcaption {
-  max-width: 720px;
+  max-width: 760px;
 }
 
-/* Netherlands — HSL-Zuid, an early Dutch ERTMS route. */
+/* New image set: each image tells a different part of the story. */
 body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HSL-Zuid%20railway.png?width=1400");
-  background-position: center 52%;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Arriva%20Stadler%20610%20op%20Station%20Harlingen-Haven.jpg?width=1400");
+  background-position: center 48%;
 }
 body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::before {
-  content: "HSL-Zuid — หนึ่งในเส้นทาง ERTMS ยุคแรกของเนเธอร์แลนด์";
+  content: "Harlingen Haven — จุดเริ่มงานภาคสนามของ Tranche 1 ในเนเธอร์แลนด์";
 }
 body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::after {
-  content: "ภาพ: Steven Lek · Wikimedia Commons · CC0";
+  content: "ภาพ: Roepers · Wikimedia Commons · CC BY-SA 4.0";
 }
 
-/* Belgium — HSL 4 / Schoten. */
 body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/A1-E19%20HSL%20Schoten.jpg?width=1400");
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Infrabel%20L202%20Eurobalises%20for%20signal%20F-M.4.jpg?width=1400");
   background-position: center 48%;
 }
 body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::before {
-  content: "HSL 4 บริเวณ Schoten — เส้นทางความเร็วสูงของเบลเยียม";
+  content: "Eurobalise ของ Infrabel — อุปกรณ์ ETCS บนโครงข่ายเบลเยียม";
 }
 body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::after {
-  content: "ภาพ: Rafaël Delaedt (Arafi) · Wikimedia Commons · CC BY-SA 3.0";
+  content: "ภาพ: M!dgard · Wikimedia Commons · CC0";
 }
 
-/* Germany — Rheintalbahn in Freiburg, the wider corridor used in the Freiburg–Basel ETCS discussion. */
 body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Basler%20Stra%C3%9Fe%20in%20Freiburg%20mit%20Br%C3%BCcken%20der%20Rheintalbahn%2C%20am%20linken%20Bildrand%20das%20DB-Regio%20Werk%20Freiburg.jpg?width=1400");
-  background-position: center 46%;
-}
-body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::before {
-  content: "Rheintalbahn ที่ Freiburg — บริบทของแนวเส้นทาง Freiburg–Basel";
-}
-body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::after {
-  content: "ภาพ: Andreas Schwarzkopf · Wikimedia Commons · CC BY-SA 4.0";
-}
-
-/* Historical comparison — Betuweroute near Bemmel. */
-body[data-page="comparison.html"] [data-slot="comparison-history.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Betuweroute%2C%20Bemmel.jpg?width=1800");
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/F%C3%BChrerstand%20ICE%201%20ETCS.jpg?width=1400");
   background-position: center 54%;
 }
-body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::before {
-  content: "Betuweroute — ตัวอย่างการใช้ ERTMS ระยะแรกของเนเธอร์แลนด์ตั้งแต่ปี 2007";
+body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::before {
+  content: "ห้องขับ ICE 1 ที่ติดตั้ง ETCS — ตัวอย่างการปรับขบวนรถของเยอรมนี";
 }
-body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::after {
-  content: "ภาพ: Lendskaip · Wikimedia Commons · CC0";
+body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::after {
+  content: "ภาพ: Sese Ingolstadt · Wikimedia Commons · CC BY 3.0";
 }
 
-/* Cross-border — LIMAX / Drielandentrein at Maastricht. */
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Monument%20treinramp%20Harmelen%2026052012%2007.JPG?width=1800");
+  background-position: center 48%;
+}
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::before {
+  content: "อนุสรณ์เหตุ Harmelen — เหตุการณ์ปี 1962 ที่เร่งการนำ ATB มาใช้ในเนเธอร์แลนด์";
+}
+body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::after {
+  content: "ภาพ: Onderwijsgek · Wikimedia Commons · CC BY-SA 3.0";
+}
+
 body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Maastricht%20station%20-%20Drielandentrein%20%28LIMAX%29%20richting%20Li%C3%A8ge-Guillemins%20-%202024-08-14.jpg?width=1800");
-  background-position: center 46%;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/RE%2018%20006%20%28cropped%29.jpg?width=1800");
+  background-position: center 44%;
 }
 body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::before {
-  content: "Drielandentrein / LIMAX — รถไฟที่เชื่อม Liège–Maastricht–Aachen";
+  content: "Drielandentrein / LIMAX ที่ Aachen — รถไฟเชื่อมเยอรมนี เนเธอร์แลนด์ และเบลเยียม";
 }
 body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::after {
-  content: "ภาพ: Sjenghai · Wikimedia Commons · CC BY 4.0";
+  content: "ภาพ: Magicman0361 · Wikimedia Commons · CC BY-SA 4.0";
 }
 
 /* English image captions */
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::before {
-  content: "HSL-Zuid — one of the Netherlands' early ERTMS routes";
+  content: "Harlingen Haven — the first Tranche 1 field-work corridor in the Netherlands";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-netherlands.webp"] figcaption::after {
-  content: "Image: Steven Lek · Wikimedia Commons · CC0";
+  content: "Image: Roepers · Wikimedia Commons · CC BY-SA 4.0";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::before {
-  content: "HSL 4 near Schoten — part of Belgium's high-speed railway network";
+  content: "Infrabel Eurobalises — ETCS equipment on the Belgian network";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-belgium.webp"] figcaption::after {
-  content: "Image: Rafaël Delaedt (Arafi) · Wikimedia Commons · CC BY-SA 3.0";
+  content: "Image: M!dgard · Wikimedia Commons · CC0";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::before {
-  content: "Rheintalbahn in Freiburg — context for the Freiburg–Basel corridor";
+  content: "ICE 1 cab fitted with ETCS — an example of German rolling-stock conversion";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-germany.webp"] figcaption::after {
-  content: "Image: Andreas Schwarzkopf · Wikimedia Commons · CC BY-SA 4.0";
+  content: "Image: Sese Ingolstadt · Wikimedia Commons · CC BY 3.0";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::before {
-  content: "Betuweroute — an early Dutch ERTMS corridor in service since 2007";
+  content: "Harmelen memorial — the 1962 disaster that accelerated Dutch ATB deployment";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-history.webp"] figcaption::after {
-  content: "Image: Lendskaip · Wikimedia Commons · CC0";
+  content: "Image: Onderwijsgek · Wikimedia Commons · CC BY-SA 3.0";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::before {
-  content: "Drielandentrein / LIMAX — connecting Liège, Maastricht and Aachen";
+  content: "Drielandentrein / LIMAX at Aachen — linking Germany, the Netherlands and Belgium";
 }
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-crossborder.webp"] figcaption::after {
-  content: "Image: Sjenghai · Wikimedia Commons · CC BY 4.0";
+  content: "Image: Magicman0361 · Wikimedia Commons · CC BY-SA 4.0";
 }
 
 /* ---------- Timeline ---------- */
@@ -293,6 +283,8 @@ body[data-page="comparison.html"] .nl-dot { background: #21468b; }
 body[data-page="comparison.html"] .be-dot { background: #ffd90c; box-shadow: inset 0 0 0 2px #161616; }
 body[data-page="comparison.html"] .de-dot { background: #dd0000; }
 
+/* Keep the year label fully to the left of the timeline rail.
+   The old 170px year column crossed the rail at 84px and caused overlap. */
 body[data-page="comparison.html"] .comparison-timeline {
   position: relative;
   display: grid;
@@ -303,7 +295,7 @@ body[data-page="comparison.html"] .comparison-timeline {
 body[data-page="comparison.html"] .comparison-timeline::before {
   content: "";
   position: absolute;
-  left: 84px;
+  left: 108px;
   top: 10px;
   bottom: 12px;
   width: 3px;
@@ -314,15 +306,15 @@ body[data-page="comparison.html"] .comparison-timeline::before {
 body[data-page="comparison.html"] .comparison-era {
   position: relative;
   display: grid;
-  grid-template-columns: 170px minmax(0,1fr);
-  gap: 26px;
+  grid-template-columns: 86px minmax(0,1fr);
+  gap: 52px;
   padding: 0 0 34px;
 }
 
 body[data-page="comparison.html"] .comparison-era::before {
   content: "";
   position: absolute;
-  left: 77px;
+  left: 100px;
   top: 18px;
   width: 17px;
   height: 17px;
@@ -339,12 +331,15 @@ body[data-page="comparison.html"] .comparison-era-current::before {
 }
 
 body[data-page="comparison.html"] .comparison-era-year {
+  position: relative;
+  z-index: 3;
   padding-top: 12px;
-  padding-right: 26px;
+  padding-right: 0;
   color: #003082;
   font-size: .82rem;
   font-weight: 850;
   text-align: right;
+  white-space: nowrap;
   line-height: 1.35;
   font-variant-numeric: tabular-nums;
 }
@@ -417,20 +412,9 @@ body[data-page="comparison.html"] .comparison-era-country p {
 }
 
 /* ---------- Comparison table ---------- */
-body[data-page="comparison.html"] #table .compare-table-wrap {
-  margin-top: 25px;
-}
-
-body[data-page="comparison.html"] #table th {
-  color: #0a315e;
-  font-weight: 850;
-}
-
-body[data-page="comparison.html"] #table td {
-  color: #354f69;
-  line-height: 1.65;
-}
-
+body[data-page="comparison.html"] #table .compare-table-wrap { margin-top: 25px; }
+body[data-page="comparison.html"] #table th { color: #0a315e; font-weight: 850; }
+body[data-page="comparison.html"] #table td { color: #354f69; line-height: 1.65; }
 body[data-page="comparison.html"] #table td:first-child {
   min-width: 150px;
   color: #153f6d;
@@ -443,12 +427,10 @@ body[data-page="comparison.html"] .comparison-lessons-grid {
   grid-template-columns: repeat(3, minmax(0,1fr));
   margin-top: 26px;
 }
-
 body[data-page="comparison.html"] .comparison-lessons-grid .info-card {
   min-height: 270px;
   padding: 24px;
 }
-
 body[data-page="comparison.html"] .comparison-lessons-grid .info-card p {
   color: #39546f;
   line-height: 1.76;
@@ -465,7 +447,6 @@ body[data-page="comparison.html"] .comparison-border-flow {
   border: 1px solid rgba(0,48,130,.11);
   background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(239,246,253,.9));
 }
-
 body[data-page="comparison.html"] .comparison-border-flow > div {
   min-width: 0;
   display: grid;
@@ -477,17 +458,12 @@ body[data-page="comparison.html"] .comparison-border-flow > div {
   background: #fff;
   box-shadow: 0 7px 18px rgba(0,48,130,.045);
 }
-
-body[data-page="comparison.html"] .comparison-border-flow strong {
-  color: #123d6b;
-}
-
+body[data-page="comparison.html"] .comparison-border-flow strong { color: #123d6b; }
 body[data-page="comparison.html"] .comparison-border-flow small {
   grid-column: 2;
   color: #4d6882;
   line-height: 1.45;
 }
-
 body[data-page="comparison.html"] .flag-mini {
   grid-row: 1 / span 2;
   width: 34px;
@@ -495,27 +471,21 @@ body[data-page="comparison.html"] .flag-mini {
   border-radius: 5px;
   box-shadow: 0 0 0 1px rgba(0,48,130,.10);
 }
-
 body[data-page="comparison.html"] .flag-mini.nl { background: linear-gradient(#ae1c28 0 33.33%,#fff 33.33% 66.66%,#21468b 66.66%); }
 body[data-page="comparison.html"] .flag-mini.be { background: linear-gradient(90deg,#111 0 33.33%,#ffd90c 33.33% 66.66%,#ef3340 66.66%); }
 body[data-page="comparison.html"] .flag-mini.de { background: linear-gradient(#111 0 33.33%,#dd0000 33.33% 66.66%,#ffce00 66.66%); }
-
 body[data-page="comparison.html"] .border-arrow {
   color: #ae1c28;
   font-size: 1.35rem;
   font-weight: 900;
 }
-
 body[data-page="comparison.html"] .comparison-reference-link {
   width: fit-content;
   margin-top: 18px;
 }
 
 @media (max-width: 1040px) {
-  body[data-page="comparison.html"] .comparison-photo-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
+  body[data-page="comparison.html"] .comparison-photo-grid { grid-template-columns: 1fr 1fr; }
   body[data-page="comparison.html"] .comparison-photo-grid > :last-child {
     grid-column: 1 / -1;
     width: min(100%, 520px);
@@ -525,72 +495,58 @@ body[data-page="comparison.html"] .comparison-reference-link {
 
 @media (max-width: 980px) {
   body[data-page="comparison.html"] .comparison-era-grid,
-  body[data-page="comparison.html"] .comparison-lessons-grid {
-    grid-template-columns: 1fr;
-  }
-
-  body[data-page="comparison.html"] .comparison-era-country strong {
-    min-height: 0;
-  }
+  body[data-page="comparison.html"] .comparison-lessons-grid { grid-template-columns: 1fr; }
+  body[data-page="comparison.html"] .comparison-era-country strong { min-height: 0; }
 }
 
 @media (max-width: 760px) {
-  body[data-page="comparison.html"] .comparison-photo-grid {
-    grid-template-columns: 1fr;
-  }
-
+  body[data-page="comparison.html"] .comparison-photo-grid { grid-template-columns: 1fr; }
   body[data-page="comparison.html"] .comparison-photo-grid > :last-child {
     grid-column: auto;
     width: 100%;
   }
-
   body[data-page="comparison.html"] .comparison-media-placeholder {
     aspect-ratio: 4 / 3;
     min-height: 0;
     border-radius: 19px;
   }
-
   body[data-page="comparison.html"] .comparison-media-wide {
     aspect-ratio: 16 / 10;
     min-height: 300px;
   }
 
-  body[data-page="comparison.html"] .comparison-timeline::before {
-    left: 8px;
-  }
-
+  /* Mobile timeline: rail stays at the left; year moves to the content side. */
+  body[data-page="comparison.html"] .comparison-timeline::before { left: 8px; }
   body[data-page="comparison.html"] .comparison-era {
     grid-template-columns: 1fr;
     gap: 10px;
-    padding-left: 28px;
+    padding-left: 32px;
   }
-
   body[data-page="comparison.html"] .comparison-era::before {
     left: 0;
     top: 9px;
   }
-
   body[data-page="comparison.html"] .comparison-era-year {
     padding: 4px 0 0;
     text-align: left;
+    white-space: normal;
   }
-
   body[data-page="comparison.html"] .comparison-era-body {
     padding: 19px 16px;
     border-radius: 20px;
   }
-
   body[data-page="comparison.html"] .comparison-border-flow {
     grid-template-columns: 1fr;
     gap: 10px;
   }
-
   body[data-page="comparison.html"] .border-arrow {
     justify-self: center;
     transform: rotate(90deg);
   }
+  body[data-page="comparison.html"] .comparison-reference-link { width: 100%; }
+}
 
-  body[data-page="comparison.html"] .comparison-reference-link {
-    width: 100%;
-  }
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="comparison.html"] .comparison-media-placeholder { transition: none; }
+  body[data-page="comparison.html"] .comparison-media-placeholder:hover { transform: none; }
 }
