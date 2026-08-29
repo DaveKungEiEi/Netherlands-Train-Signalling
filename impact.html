@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ผลกระทบของ ERTMS ETCS ต่อรถไฟทางไกลในเนเธอร์แลนด์">
+  <meta name="description" content="ผลกระทบของ ERTMS ETCS ต่อรถไฟทางไกลในเนเธอร์แลนด์ รวมถึงการติดตั้ง ETCS เพิ่มเติมบนขบวนรถรุ่นเดิม">
   <meta name="theme-color" content="#003082">
   <title>ผลกระทบต่อรถไฟทางไกล | Netherlands Train System</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -11,19 +11,80 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="impact-style.css">
 </head>
 <body data-page="impact.html">
   <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
   <div data-site-header></div>
-  
-<header class="page-hero"><div class="page-hero-inner"><div class="reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 04.2</div><h1>ผลกระทบต่อ <span style="color:#003082">รถไฟทางไกลโดยตรง</span></h1><p class="hero-copy">ERTMS มีผลทั้งต่อวิธีขับรถไฟ การจัดตาราง การรองรับรถไฟระหว่างประเทศ และความน่าเชื่อถือของระบบ แต่ในช่วงเปลี่ยนผ่านก็สร้างข้อจำกัดด้าน fleet และการปิดทางเพื่อทดสอบ</p></div><div class="page-badge glass-card reveal"><div class="big">Intercity + International</div><p>ผลกระทบชัดเจนที่สุดกับขบวนที่วิ่งไกลและผ่านหลายระบบ</p></div></div></header>
+
+<header class="page-hero"><div class="page-hero-inner"><div class="reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 04.2</div><h1>ผลกระทบต่อ <span style="color:#003082">รถไฟทางไกลโดยตรง</span></h1><p class="hero-copy">ERTMS/ETCS ช่วยเพิ่มความปลอดภัยและทำให้รถไฟยุโรปใช้มาตรฐานร่วมกันมากขึ้น แต่ในช่วงเปลี่ยนผ่าน รถไฟเดิมจำนวนมากต้องถูกดัดแปลง ติดตั้งอุปกรณ์ใหม่ ทดสอบ และนำออกจากบริการชั่วคราวก่อนจะพร้อมใช้งานจริง</p></div><div class="page-badge glass-card reveal"><div class="big">Intercity + International</div><p>ผลกระทบชัดเจนที่สุดกับขบวนที่วิ่งไกล ใช้งานหนัก และต้องผ่านหลายระบบ</p></div></div></header>
+
 <main id="main" class="page-sheet"><section class="section"><div class="container content-grid"><article class="article">
-<section class="article-section reveal" id="effects"><div class="kicker">Direct impact</div><h2>ผลกระทบหลัก 6 ด้าน</h2><div class="impact-grid"><div class="impact-card glass-card"><div class="num">01</div><h3>ความปลอดภัย</h3><p>ETCS กำกับความเร็วและเส้นโค้งการเบรกอย่างต่อเนื่อง ลดการพึ่งพาการมองเห็นสัญญาณข้างทางเพียงอย่างเดียวและสามารถสั่งเบรกเมื่อรถเข้าใกล้ขีดจำกัดที่ไม่ปลอดภัย</p></div><div class="impact-card glass-card"><div class="num">02</div><h3>การเดินรถข้ามพรมแดน</h3><p>มาตรฐานร่วมช่วยลดความจำเป็นที่รถไฟระหว่างประเทศต้องติดตั้งระบบป้องกันประจำชาติหลายชุดในระยะยาว ทำให้เส้นทางเนเธอร์แลนด์–เบลเยียม–เยอรมนีมีโอกาสทำงานเป็นระบบเดียวกันมากขึ้น</p></div><div class="impact-card glass-card"><div class="num">03</div><h3>ความจุของโครงข่าย</h3><p>ข้อมูลตำแหน่งและการควบคุมแบบดิจิทัลเป็นฐานสำหรับการจัด headway และการใช้โครงข่ายอย่างมีประสิทธิภาพมากขึ้น แม้ผลประโยชน์จริงขึ้นกับ layout, timetable และระบบประกอบอื่น</p></div><div class="impact-card glass-card"><div class="num">04</div><h3>ห้องขับและการปฏิบัติงาน</h3><p>พนักงานขับอ่านข้อมูลสำคัญจาก DMI มากขึ้น ต้องเรียนรู้ mode, transition และ procedure ใหม่ ทำให้การฝึกอบรมและ human factors มีบทบาทสำคัญ</p></div><div class="impact-card glass-card"><div class="num">05</div><h3>ความพร้อมของขบวนรถ</h3><p>รถไฟต้องติดตั้ง onboard ETCS ที่ compatible กับเส้นทาง และในช่วงเปลี่ยนผ่านยังต้องรองรับ ATB ผ่าน STM จึงเกิดข้อจำกัดด้าน fleet planning และ maintenance</p></div><div class="impact-card glass-card"><div class="num">06</div><h3>ผลกระทบชั่วคราวต่อผู้โดยสาร</h3><p>การติดตั้งและทดสอบอาจทำให้ต้องปิดทาง ปรับตาราง หรือจำกัดเส้นทางชั่วคราว ผลประโยชน์ระยะยาวจึงมาพร้อมต้นทุนการเปลี่ยนผ่านในระยะสั้นถึงกลาง</p></div></div></section>
-<section class="article-section reveal" id="longdistance"><div class="kicker">Long-distance services</div><h2>เหตุใดรถไฟทางไกลได้รับผลโดยตรงมาก</h2><p>รถไฟทางไกลเคลื่อนผ่านหลายเขตควบคุมและหลายประเภทโครงสร้างพื้นฐานมากกว่ารถไฟท้องถิ่น เส้นทาง international services ยังผ่านพรมแดนและระบบประจำชาติหลายชนิด การเปลี่ยนสู่ ETCS จึงลด “ภาระการพกหลาย signalling systems” ในระยะยาวได้มากที่สุดกับกลุ่มนี้</p><p>ด้านผู้โดยสาร ผลประโยชน์ไม่ได้ปรากฏในรูป “หน้าจอ ETCS” โดยตรง แต่สะท้อนผ่านศักยภาพด้านความปลอดภัย ความน่าเชื่อถือ ความต่อเนื่องข้ามพรมแดน และการรองรับตารางรถที่หนาแน่นขึ้น</p></section>
-<section class="article-section reveal" id="balance"><div class="kicker">Balanced view</div><h2>ผลดีระยะยาว vs ภาระช่วงเปลี่ยนผ่าน</h2><div class="compare-table-wrap"><table><thead><tr><th>ระยะเปลี่ยนผ่าน</th><th>เมื่อระบบมีความพร้อมสูง</th></tr></thead><tbody><tr><td>ต้องติดตั้งอุปกรณ์รถเพิ่มและรองรับ ATB + ETCS</td><td>ลดการพึ่งพาระบบประจำชาติหลายชุด</td></tr><tr><td>มี engineering possession และ test window</td><td>โครงข่ายดิจิทัลพร้อมต่อยอดด้าน capacity และ automation</td></tr><tr><td>บุคลากรต้องเรียนรู้ procedure ใหม่</td><td>ข้อมูลในห้องขับมีรูปแบบมาตรฐานและ supervision ละเอียดขึ้น</td></tr><tr><td>ความเสี่ยงจาก integration และ software version</td><td>มีฐานเทคโนโลยีร่วมกับประเทศยุโรปอื่นมากขึ้น</td></tr></tbody></table></div></section>
+
+<section class="article-section reveal" id="effects"><div class="kicker">Direct impact</div><h2>ผลกระทบหลัก 6 ด้าน</h2><div class="impact-grid">
+<div class="impact-card glass-card"><div class="num">01</div><h3>ความปลอดภัย</h3><p>ETCS ตรวจสอบความเร็ว ระยะทางที่รถได้รับอนุญาตให้วิ่ง และจุดที่ต้องเริ่มเบรกอย่างต่อเนื่อง หากรถเข้าใกล้ขีดจำกัดที่ไม่ปลอดภัย ระบบสามารถเตือนและสั่งเบรกได้</p></div>
+<div class="impact-card glass-card"><div class="num">02</div><h3>การเดินรถข้ามพรมแดน</h3><p>ในระยะยาว มาตรฐานร่วมช่วยลดจำนวนระบบป้องกันรถไฟประจำชาติที่รถระหว่างประเทศต้องติดตั้ง ทำให้การวิ่งระหว่างเนเธอร์แลนด์ เบลเยียม และเยอรมนีง่ายขึ้นเมื่อแต่ละประเทศเปลี่ยนระบบสำเร็จ</p></div>
+<div class="impact-card glass-card"><div class="num">03</div><h3>การใช้โครงข่ายได้มีประสิทธิภาพขึ้น</h3><p>ข้อมูลตำแหน่งและการควบคุมแบบดิจิทัลช่วยให้การจัดระยะห่างระหว่างขบวนมีความละเอียดขึ้น แต่ ETCS เพียงอย่างเดียวไม่ได้ทำให้ความจุเพิ่มขึ้นทันที ผลจริงยังขึ้นกับทางรถไฟ ตารางเดินรถ และระบบควบคุมอื่นร่วมกัน</p></div>
+<div class="impact-card glass-card"><div class="num">04</div><h3>ห้องขับและวิธีทำงานเปลี่ยนไป</h3><p>พนักงานขับต้องอ่านข้อมูลสำคัญจากหน้าจอ DMI มากขึ้น และต้องเรียนรู้โหมดการทำงาน การเปลี่ยนจากระบบหนึ่งสู่อีกระบบ และวิธีรับมือเมื่อระบบผิดปกติ</p></div>
+<div class="impact-card glass-card"><div class="num">05</div><h3>รถไฟรุ่นเดิมต้องถูกดัดแปลง</h3><p>รถที่สร้างมาก่อนยุค ETCS ต้องเพิ่มคอมพิวเตอร์ หน้าจอ อุปกรณ์สื่อสาร เสาอากาศ เซนเซอร์ และสายไฟ รวมถึงเชื่อมระบบใหม่เข้ากับระบบเดิมของรถ จึงเป็นงานวิศวกรรมที่ซับซ้อนกว่าการสั่งรถใหม่ที่เตรียม ETCS มาจากโรงงาน</p></div>
+<div class="impact-card glass-card"><div class="num">06</div><h3>มีผลต่อจำนวนรถที่พร้อมให้บริการชั่วคราว</h3><p>ระหว่างการติดตั้งและทดสอบ รถบางส่วนต้องออกจากการให้บริการ ผู้ประกอบการจึงต้องวางแผนรถสำรองและตารางซ่อมอย่างรอบคอบเพื่อไม่ให้กระทบผู้โดยสารมากเกินไป</p></div>
+</div></section>
+
+<section class="article-section reveal" id="retrofit">
+  <div class="kicker">Legacy Fleet Retrofit</div>
+  <h2>ทำไมการติดตั้ง ETCS บนรถไฟรุ่นเดิมจึงเป็นงานใหญ่</h2>
+  <p class="retrofit-lead">รถไฟรุ่นเดิมหรือ <strong>Legacy Fleets</strong> ถูกออกแบบในช่วงที่ ETCS ยังไม่ได้เป็นมาตรฐานหลัก จึงไม่มีพื้นที่ จุดต่อไฟฟ้า ระบบสื่อสาร หรือโครงสร้างซอฟต์แวร์ที่เตรียมไว้สำหรับอุปกรณ์ ETCS ตั้งแต่แรก การติดตั้งเพิ่มภายหลังจึงไม่ใช่เพียง “นำกล่องคอมพิวเตอร์ไปใส่ในรถ” แต่ต้องออกแบบให้ระบบใหม่ทำงานร่วมกับระบบเดิมได้อย่างปลอดภัย</p>
+
+  <div class="retrofit-grid">
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">SPACE</div><h3>1. พื้นที่ติดตั้งมีจำกัด</h3><p>ต้องหาตำแหน่งสำหรับคอมพิวเตอร์ ETCS หรือ OBU, หน้าจอ DMI, อุปกรณ์วิทยุ, เสาอากาศ และอุปกรณ์วัดตำแหน่ง บนรถรุ่นเก่าพื้นที่เหล่านี้มักถูกใช้งานอยู่แล้ว จึงอาจต้องย้ายอุปกรณ์เดิมหรือดัดแปลงโครงสร้างบางส่วน</p></div>
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">ELEC</div><h3>2. ระบบไฟฟ้าและข้อมูลเดิมอาจไม่เข้ากัน</h3><p>ETCS ต้องเชื่อมกับไฟเลี้ยง ระบบเบรก ระบบวัดความเร็ว และระบบควบคุมของรถเดิม รถที่มีอายุมากอาจใช้แรงดัน การเดินสาย หรือรูปแบบการสื่อสารที่ต่างจากอุปกรณ์รุ่นใหม่ จึงต้องเพิ่มตัวเชื่อมต่อหรือปรับระบบไฟฟ้าให้เหมาะสม</p></div>
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">€</div><h3>3. ค่าใช้จ่ายไม่ได้มีแค่ราคาอุปกรณ์</h3><p>ต้นทุนรวมถึงการออกแบบต้นแบบ งานติดตั้ง ซอฟต์แวร์ การเดินสาย การทดสอบ และการรับรองความปลอดภัยของรถหลังการดัดแปลง เอกสารของ European Commission แยกค่าใช้จ่าย “on-board retrofit & upgrades” เป็นส่วนสำคัญของการลงทุน ERTMS ระดับยุโรป</p></div>
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">TIME</div><h3>4. รถต้องหยุดให้บริการระหว่างดัดแปลง</h3><p>การติดตั้ง การตรวจสอบสายไฟ การทดสอบซอฟต์แวร์ และการทดสอบบนทางจริงต้องใช้เวลา รถที่กำลังดัดแปลงจึงไม่สามารถออกให้บริการตามปกติได้ในช่วงหนึ่ง และหากเป็นรถรุ่นที่มีจำนวนมาก การวางคิวเข้าศูนย์ซ่อมต้องทำเป็นลำดับ</p></div>
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">ATB</div><h3>5. ในเนเธอร์แลนด์ รถที่แปลงแล้วก็ยังต้องวิ่งบน ATB</h3><p>เพราะโครงข่ายไม่ได้เปลี่ยนเป็น ERTMS พร้อมกันทั้งประเทศ รถที่ติดตั้ง ETCS แล้วจึงยังต้องเข้าใจ ATB ผ่าน <strong>STM-ATB</strong> จนกว่าเส้นทางเดิมจะเปลี่ยนระบบเสร็จ นั่นหมายถึงรถหนึ่งขบวนต้องรองรับทั้งเทคโนโลยีใหม่และระบบเดิมในช่วงเปลี่ยนผ่าน</p></div>
+    <div class="retrofit-card info-card glass-card"><div class="retrofit-icon">AUTH</div><h3>6. ดัดแปลงแล้วต้องพิสูจน์ว่าปลอดภัย</h3><p>การเปลี่ยนระบบสำคัญบนรถที่ได้รับอนุญาตใช้งานแล้วอาจเกี่ยวข้องกับกระบวนการประเมินและอนุญาตรถอีกครั้ง ERA ระบุว่าการเปลี่ยนแปลงรถเดิมต้องพิจารณาข้อกำหนด การตรวจสอบ และการรับรองให้สอดคล้องกับพื้นที่ที่รถจะนำไปใช้งาน</p></div>
+  </div>
+
+  <div class="virm-case glass-card">
+    <div class="virm-case-head">
+      <div><span>กรณีศึกษาจริงในเนเธอร์แลนด์</span><h3>VIRM แสดงให้เห็นว่า “Retrofit” ใหญ่กว่าการติดตั้งกล่องหนึ่งใบ</h3></div>
+      <div class="virm-case-metric"><strong>176</strong><small>ขบวน VIRM ในสัญญา ERTMS ที่ NS ประกาศปี 2022</small></div>
+    </div>
+    <div class="virm-facts">
+      <div class="virm-fact"><strong>อุปกรณ์ใหม่หลายระบบ</strong>NS อธิบายว่ารถต้องเพิ่มคอมพิวเตอร์ ETCS อุปกรณ์สื่อสารดิจิทัล เช่น GSM-R และหน้าจอสำหรับพนักงานขับ</div>
+      <div class="virm-fact"><strong>สายไฟเพิ่มจำนวนมาก</strong>Programma ERTMS ในปี 2026 นำเสนอการติดตั้ง VIRM ภายใต้หัวข้อ “500 kilo nieuwe kabels voor de VIRM” สะท้อนขนาดของงานเดินสายภายในรถ</div>
+      <div class="virm-fact"><strong>ห้องขับต้องปรับใหม่</strong>โครงการ VIRM มีการปรับโต๊ะควบคุมและวิธีที่พนักงานขับรับข้อมูล เพื่อให้ใช้งาน ETCS ได้อย่างเป็นธรรมชาติและปลอดภัย</div>
+      <div class="virm-fact"><strong>ยังต้องรองรับ ATB ระหว่างทาง</strong>ในปี 2025 NS ทดสอบ STM-ATB EG บน VIRM สำเร็จ เพื่อให้รถที่มี ERTMS แล้วสามารถวิ่งต่อบนเส้นทาง ATB ได้</div>
+    </div>
+  </div>
+
+  <div class="fleet-compare">
+    <div class="legacy"><h3>รถรุ่นเดิม เช่น VIRM / SLT / FLIRT</h3><p>ต้องติดตั้งหรือปรับอุปกรณ์บนรถและเชื่อมเข้ากับระบบเดิม การออกแบบแต่ละรุ่นจึงมีรายละเอียดต่างกันและต้องมีการทดสอบเฉพาะรุ่น</p></div>
+    <div class="newer"><h3>รถรุ่นใหม่ เช่น SNG / ICNG</h3><p>NS ระบุว่ารถรุ่นใหม่เหล่านี้มี ERTMS อยู่บนรถแล้ว จึงเน้นการอัปเดตหรืออัปเกรดให้เข้ากับรุ่นระบบที่ต้องใช้ แทนการเริ่มติดตั้งใหม่ทั้งหมด</p></div>
+  </div>
+
+  <div class="evidence-note"><strong>มองในระดับยุโรป:</strong> Work Plan ของ European Coordinator for ERTMS ปี 2020 ประเมินค่าใช้จ่ายสำหรับการติดตั้งและอัปเกรด ERTMS บนรถไว้ราว <strong>€5 พันล้าน</strong> จากภาพรวมการลงทุน ERTMS ทั้งหมด ตัวเลขนี้เป็นประมาณการเพื่อการวางแผนในปี 2020 ไม่ใช่งบประมาณปัจจุบันของเนเธอร์แลนด์ แต่ช่วยให้เห็นว่าการปรับรถเป็นงานลงทุนขนาดใหญ่จริง</div>
+
+  <div class="callout"><strong>ผลต่อผู้โดยสารเกิดขึ้นทางอ้อม:</strong> ผู้โดยสารอาจไม่เห็นการติดตั้ง ETCS โดยตรง แต่ถ้ารถจำนวนมากต้องเข้าศูนย์ดัดแปลงพร้อมกัน จำนวนรถที่พร้อมใช้งานอาจลดลงชั่วคราว ดังนั้นผู้ประกอบการต้องจัดคิวงาน รถสำรอง และการทดสอบให้สอดคล้องกับตารางเดินรถ</div>
+
+  <div class="source-list">
+    <a class="source-link" href="https://www.eke-electronics.com/how-does-etcs-impact-legacy-fleets/" target="_blank" rel="noopener"><span>EKE-Electronics — How Does ETCS Impact Legacy Fleets? (พื้นที่ ระบบไฟฟ้า ต้นทุน และ downtime)</span><span>↗</span></a>
+    <a class="source-link" href="https://ertms.nl/nieuws/i/VZeMI/ns-start-met-implementatie-nieuw-beveiligingssysteem-treinen" target="_blank" rel="noopener"><span>Programma ERTMS / NS — การติดตั้ง ERTMS ใน VIRM 176 ขบวน และความแตกต่างระหว่างรถเดิมกับรถใหม่</span><span>↗</span></a>
+    <a class="source-link" href="https://ertms.nl/p/About%20ERTMS/i/LtPxh/kijk-in-de-praktijk-500-kilo-nieuwe-kabels-voor-de-virm" target="_blank" rel="noopener"><span>Programma ERTMS — VIRM: 500 kilo nieuwe kabels (19 มีนาคม 2026)</span><span>↗</span></a>
+    <a class="source-link" href="https://ertms.nl/kennisbank/i/eUyTD/stm-atb" target="_blank" rel="noopener"><span>Programma ERTMS — STM-ATB และการรองรับ ATB + ERTMS ในรถคันเดียวช่วงเปลี่ยนผ่าน</span><span>↗</span></a>
+    <a class="source-link" href="https://www.era.europa.eu/domains/applicants/applications-vehicle-type-authorisations_en" target="_blank" rel="noopener"><span>European Union Agency for Railways — Vehicle authorisation หลังการเปลี่ยนแปลงรถ</span><span>↗</span></a>
+    <a class="source-link" href="https://transport.ec.europa.eu/system/files/2022-09/work_plan_ertms_2020.pdf" target="_blank" rel="noopener"><span>European Commission — ERTMS Work Plan 2020: ประมาณการต้นทุน on-board retrofit & upgrades</span><span>↗</span></a>
+  </div>
+</section>
+
+<section class="article-section reveal" id="longdistance"><div class="kicker">Long-distance services</div><h2>เหตุใดรถไฟทางไกลได้รับผลโดยตรงมาก</h2><p>รถไฟทางไกลวิ่งผ่านหลายพื้นที่ควบคุมและมักใช้งานต่อเนื่องเป็นเวลานาน จึงต้องมีความพร้อมของระบบบนรถสูงกว่าการใช้งานเฉพาะพื้นที่ โดยเฉพาะรถระหว่างประเทศที่ต้องผ่านพรมแดนและเจอกับระบบอาณัติสัญญาณของหลายประเทศ</p><p>สำหรับผู้โดยสาร ประโยชน์ของ ETCS ไม่ได้ปรากฏเป็นสิ่งที่มองเห็นง่ายเหมือนเบาะหรือสถานี แต่จะสะท้อนผ่านความปลอดภัย ความน่าเชื่อถือของการเดินรถ ความต่อเนื่องข้ามพรมแดน และความสามารถในการพัฒนาตารางเดินรถในอนาคต</p></section>
+
+<section class="article-section reveal" id="balance"><div class="kicker">Balanced view</div><h2>ผลดีระยะยาวกับภาระในช่วงเปลี่ยนผ่าน</h2><div class="compare-table-wrap"><table><thead><tr><th>ในช่วงเปลี่ยนผ่าน</th><th>เมื่อระบบมีความพร้อมสูง</th></tr></thead><tbody><tr><td>รถเดิมต้องติดตั้งอุปกรณ์และอาจต้องรองรับทั้ง ATB + ETCS</td><td>ลดการพึ่งพาระบบป้องกันรถไฟประจำชาติหลายชุด</td></tr><tr><td>รถบางส่วนต้องออกจากบริการเพื่อดัดแปลงและทดสอบ</td><td>รถที่ผ่านการปรับแล้วสามารถใช้มาตรฐาน ETCS ร่วมกับโครงข่ายยุโรปได้มากขึ้น</td></tr><tr><td>พนักงานต้องเรียนรู้หน้าจอและวิธีปฏิบัติงานใหม่</td><td>ข้อมูลสำคัญในห้องขับมีรูปแบบมาตรฐานและการกำกับความเร็วละเอียดขึ้น</td></tr><tr><td>มีความเสี่ยงจากการเชื่อมระบบเดิมกับฮาร์ดแวร์และซอฟต์แวร์ใหม่</td><td>มีฐานเทคโนโลยีร่วมสำหรับการพัฒนาระบบรถไฟดิจิทัลในอนาคต</td></tr></tbody></table></div></section>
+
 <section class="article-section reveal" id="sources"><div class="kicker">Sources</div><h2>แหล่งข้อมูล</h2><div class="source-list"><a class="source-link" href="https://ertms.nl/over-het-programma/ertms-in-nederland" target="_blank" rel="noopener"><span>Programma ERTMS — safety, capacity, border interoperability</span><span>↗</span></a><a class="source-link" href="https://www.ns.nl/en/about-ns/train-and-tracks/high-speed-line" target="_blank" rel="noopener"><span>NS — High-speed line and international services context</span><span>↗</span></a><a class="source-link" href="https://www.prorail.nl/siteassets/homepage/samenwerken/vervoerders/documenten/2026-netverklaring/network-statement-2026---initial-issue-dated-13-december-2024.pdf" target="_blank" rel="noopener"><span>ProRail Network Statement 2026 — ERTMS-only and dual rolling stock</span><span>↗</span></a></div></section>
-</article><aside class="aside glass-card"><p class="aside-title">ในหน้านี้</p><a href="#effects">ผลกระทบ 6 ด้าน</a><a href="#longdistance">รถไฟทางไกล</a><a href="#balance">ระยะเปลี่ยนผ่าน vs ระยะยาว</a><a href="#sources">แหล่งข้อมูล</a></aside></div></section></main>
+
+</article><aside class="aside glass-card"><p class="aside-title">ในหน้านี้</p><a href="#effects">ผลกระทบ 6 ด้าน</a><a href="#retrofit">รถรุ่นเดิมกับการติดตั้ง ETCS</a><a href="#longdistance">รถไฟทางไกล</a><a href="#balance">ช่วงเปลี่ยนผ่าน vs ระยะยาว</a><a href="#sources">แหล่งอ้างอิง</a></aside></div></section></main>
   <div data-site-footer></div>
   <script src="script.js"></script>
+  <script src="impact-en.js"></script>
 </body>
 </html>
