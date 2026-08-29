@@ -9,7 +9,7 @@ const pages = [
   ['other.html','อื่น ๆ']
 ];
 
-// Load the shared premium footer style on every page.
+// Load the shared footer style on every page.
 if (!document.querySelector('link[href="footer-style.css"]')) {
   const footerStylesheet = document.createElement('link');
   footerStylesheet.rel = 'stylesheet';
@@ -42,11 +42,83 @@ if (header) {
 const footer = document.querySelector('[data-site-footer]');
 if (footer) {
   footer.innerHTML = `
-    <footer class="site-footer site-footer-simple">
-      <div class="footer-simple-inner">
-        <p>&copy; 2026 Railway Technical School.<br>Developed by Thakrn Jaitham.</p>
+    <footer class="site-footer footer-v3">
+      <div class="footer-v3-accent" aria-hidden="true"></div>
+
+      <div class="footer-v3-main">
+        <section class="footer-v3-brand" aria-labelledby="footer-brand-title">
+          <a class="footer-v3-brand-link" href="index.html" aria-label="กลับไปหน้าแรก Netherlands Train System">
+            <span class="footer-v3-logo-wrap">
+              <img src="logo.webp" alt="" class="footer-v3-logo" onerror="this.style.display='none'">
+            </span>
+            <span id="footer-brand-title">Netherlands Train System</span>
+          </a>
+
+          <p class="footer-v3-summary">
+            การศึกษาเส้นทางการเปลี่ยนผ่านระบบอาณัติสัญญาณรถไฟทางไกลของเนเธอร์แลนด์
+            จาก ATB สู่ ERTMS/ETCS และผลต่อระบบรถไฟในยุคดิจิทัล
+          </p>
+
+          <div class="footer-route" aria-label="เส้นทางการเปลี่ยนผ่านจาก ATB สู่ ETCS">
+            <div class="footer-route-stop footer-route-stop-atb">
+              <span class="footer-route-dot"></span>
+              <div><strong>ATB</strong><small>Legacy system</small></div>
+            </div>
+            <div class="footer-route-line" aria-hidden="true"><span></span></div>
+            <div class="footer-route-stop footer-route-stop-etcs">
+              <span class="footer-route-dot"></span>
+              <div><strong>ETCS</strong><small>Digital future</small></div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="footer-v3-nav" aria-label="เมนูท้ายเว็บไซต์">
+          <section class="footer-link-group">
+            <h2>ระบบอาณัติสัญญาณ</h2>
+            <a href="atb.html">ATB</a>
+            <a href="ertms.html">ERTMS / ETCS</a>
+          </section>
+
+          <section class="footer-link-group">
+            <h2>การเปลี่ยนผ่าน</h2>
+            <a href="status.html">สถานะปัจจุบัน</a>
+            <a href="problems.html">ปัญหาและความท้าทาย</a>
+            <a href="impact.html">ผลกระทบ</a>
+          </section>
+
+          <section class="footer-link-group">
+            <h2>สำรวจเพิ่มเติม</h2>
+            <a href="comparison.html">เปรียบเทียบประเทศเพื่อนบ้าน</a>
+            <a href="other.html">ข้อมูลอื่น ๆ</a>
+            <a href="index.html">หน้าแรก</a>
+          </section>
+        </nav>
+      </div>
+
+      <div class="footer-v3-bottom">
+        <div class="footer-v3-bottom-inner">
+          <div class="footer-v3-meta">
+            <strong>Railway Technical School</strong>
+            <span>Academic Railway Research Website · 2026</span>
+            <span>Designed &amp; developed by Thakrn Jaitham</span>
+          </div>
+
+          <button class="footer-to-top" type="button" aria-label="กลับขึ้นด้านบนของหน้า">
+            <span>กลับด้านบน</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </footer>`;
+}
+
+const footerTopButton = document.querySelector('.footer-to-top');
+if (footerTopButton) {
+  footerTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 // Homepage history section: academic-style first-line indentation for every paragraph.
