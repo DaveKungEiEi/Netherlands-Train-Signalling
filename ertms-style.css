@@ -1,7 +1,10 @@
-/* ERTMS / ETCS page-specific timeline and media layout */
+/* =========================================================
+   ERTMS / ETCS page-specific design
+   Timeline, imagery and ETCS Level 2 process layout
+   ========================================================= */
 
 /* =========================================================
-   Image-ready layout
+   Media system
    ========================================================= */
 body[data-page="ertms.html"] .ertms-hero-layout {
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
@@ -23,7 +26,9 @@ body[data-page="ertms.html"] .ertms-media-placeholder {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 14px 32px rgba(0,48,130,.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 14px 32px rgba(0,48,130,.09);
   isolation: isolate;
 }
 
@@ -49,7 +54,6 @@ body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
   text-shadow: 0 2px 12px rgba(0,0,0,.34);
 }
 
-/* Hide the old placeholder instructions. Real captions are supplied below. */
 body[data-page="ertms.html"] .ertms-media-placeholder figcaption > * {
   display: none;
 }
@@ -114,24 +118,6 @@ body[data-page="ertms.html"] .ertms-history-media {
   aspect-ratio: 16 / 9;
 }
 
-body[data-page="ertms.html"] .ertms-working-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(220px, .75fr);
-  gap: 18px;
-  align-items: stretch;
-  margin-top: 28px;
-}
-
-body[data-page="ertms.html"] .ertms-working-layout .signal-diagram {
-  margin: 0;
-  min-height: 100%;
-}
-
-body[data-page="ertms.html"] .ertms-level2-media {
-  min-height: 100%;
-  aspect-ratio: 4 / 5;
-}
-
 body[data-page="ertms.html"] .ertms-netherlands-media {
   min-height: 300px;
   margin: 30px 0 0;
@@ -140,7 +126,6 @@ body[data-page="ertms.html"] .ertms-netherlands-media {
 
 /* =========================================================
    Real CC0 imagery from Wikimedia Commons
-   All six files are dedicated to the public domain via CC0.
    ========================================================= */
 body[data-page="ertms.html"] [data-slot="ertms-hero.webp"] {
   background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HSL-Zuid%20railway.png?width=1600");
@@ -192,13 +177,13 @@ body[data-page="ertms.html"] [data-slot="ertms-history.webp"] figcaption::after 
 }
 
 body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ETCS%20L2%20en.svg?width=1400");
-  background-size: contain;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ETCS%20L2%20en.svg?width=1600");
+  background-size: 82% auto;
   background-color: #fff;
-  background-position: center 38%;
+  background-position: center 36%;
 }
 body[data-page="ertms.html"] [data-slot="ertms-level2.webp"]::before {
-  background: linear-gradient(180deg, transparent 58%, rgba(1,25,57,.08) 70%, rgba(1,25,57,.82) 100%);
+  background: linear-gradient(180deg, transparent 62%, rgba(1,25,57,.04) 72%, rgba(1,25,57,.86) 100%);
 }
 body[data-page="ertms.html"] [data-slot="ertms-level2.webp"] figcaption::before {
   content: "แผนภาพหลักการทำงานของ ETCS Level 2";
@@ -216,6 +201,156 @@ body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::be
 }
 body[data-page="ertms.html"] [data-slot="ertms-netherlands.webp"] figcaption::after {
   content: "ภาพ: Apdency · Wikimedia Commons · CC0";
+}
+
+/* =========================================================
+   ETCS Level 2 — working principle
+   Full-width process first, illustration below.
+   ========================================================= */
+body[data-page="ertms.html"] #working .ertms-working-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+body[data-page="ertms.html"] #working .signal-diagram {
+  position: relative;
+  margin: 0;
+  padding: 62px 26px 28px;
+  min-height: 0;
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,201,23,.10), transparent 24%),
+    linear-gradient(145deg, #f8fbff 0%, #edf5fc 100%);
+  box-shadow:
+    0 16px 38px rgba(0,48,130,.075),
+    inset 0 1px 0 rgba(255,255,255,.96);
+  overflow: hidden;
+}
+
+body[data-page="ertms.html"] #working .signal-diagram::before {
+  content: "ลำดับการประมวลผลของ ETCS Level 2";
+  position: absolute;
+  left: 26px;
+  top: 22px;
+  color: #123d70;
+  font-size: .82rem;
+  font-weight: 850;
+  letter-spacing: .025em;
+}
+
+body[data-page="ertms.html"] #working .signal-diagram::after {
+  content: "TRACKSIDE  →  RADIO  →  ONBOARD SUPERVISION";
+  position: absolute;
+  right: 26px;
+  top: 24px;
+  color: #60758c;
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .055em;
+}
+
+body[data-page="ertms.html"] #working .diagram-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+  position: relative;
+}
+
+body[data-page="ertms.html"] #working .diagram-node {
+  position: relative;
+  min-width: 0;
+  min-height: 190px;
+  padding: 30px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 20px;
+  background: rgba(255,255,255,.96);
+  box-shadow:
+    0 10px 24px rgba(0,48,130,.055),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+body[data-page="ertms.html"] #working .diagram-node:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0,48,130,.22);
+  box-shadow: 0 15px 30px rgba(0,48,130,.09);
+}
+
+body[data-page="ertms.html"] #working .diagram-node::before {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #edf4fb;
+  color: #003082;
+  font-size: .62rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page="ertms.html"] #working .diagram-node:nth-child(1)::before { content: "01"; }
+body[data-page="ertms.html"] #working .diagram-node:nth-child(2)::before { content: "02"; }
+body[data-page="ertms.html"] #working .diagram-node:nth-child(3)::before { content: "03"; }
+body[data-page="ertms.html"] #working .diagram-node:nth-child(4)::before { content: "04"; }
+body[data-page="ertms.html"] #working .diagram-node:nth-child(5)::before { content: "05"; }
+
+body[data-page="ertms.html"] #working .diagram-node:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  z-index: 4;
+  right: -21px;
+  top: 50%;
+  width: 22px;
+  transform: translateY(-50%);
+  color: #ae1c28;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 0 #fff;
+}
+
+body[data-page="ertms.html"] #working .diagram-node:last-child::after {
+  content: none;
+}
+
+body[data-page="ertms.html"] #working .diagram-node strong {
+  margin: 14px 0 12px;
+  color: #113c6d;
+  font-size: clamp(.92rem, 1.25vw, 1.08rem);
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+body[data-page="ertms.html"] #working .diagram-node small {
+  color: #405a74;
+  font-size: .78rem;
+  line-height: 1.65;
+}
+
+body[data-page="ertms.html"] #working .ertms-level2-media {
+  width: 100%;
+  min-height: 350px;
+  aspect-ratio: 16 / 7;
+  border-radius: 26px;
+  box-shadow: 0 16px 38px rgba(0,48,130,.08);
+}
+
+body[data-page="ertms.html"] #working .callout {
+  margin-top: 24px;
 }
 
 /* =========================================================
@@ -345,9 +480,11 @@ body[data-page="ertms.html"] .history-summary strong {
   color: #003082;
 }
 
+/* =========================================================
+   Responsive
+   ========================================================= */
 @media (max-width: 980px) {
-  body[data-page="ertms.html"] .ertms-hero-layout,
-  body[data-page="ertms.html"] .ertms-working-layout {
+  body[data-page="ertms.html"] .ertms-hero-layout {
     grid-template-columns: 1fr;
   }
 
@@ -356,8 +493,40 @@ body[data-page="ertms.html"] .history-summary strong {
     max-width: 720px;
   }
 
-  body[data-page="ertms.html"] .ertms-level2-media {
-    min-height: 300px;
+  body[data-page="ertms.html"] #working .diagram-flow {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body[data-page="ertms.html"] #working .diagram-node {
+    min-height: 0;
+    padding: 20px 20px 20px 58px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  body[data-page="ertms.html"] #working .diagram-node::before {
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  body[data-page="ertms.html"] #working .diagram-node strong {
+    margin: 0 0 5px;
+  }
+
+  body[data-page="ertms.html"] #working .diagram-node:not(:last-child)::after {
+    content: "↓";
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: -19px;
+    width: 24px;
+    transform: translateX(-50%);
+  }
+
+  body[data-page="ertms.html"] #working .ertms-level2-media {
+    min-height: 310px;
     aspect-ratio: 16 / 9;
   }
 }
@@ -381,9 +550,26 @@ body[data-page="ertms.html"] .history-summary strong {
   body[data-page="ertms.html"] .ertms-media-card,
   body[data-page="ertms.html"] .ertms-history-media,
   body[data-page="ertms.html"] .ertms-netherlands-media,
-  body[data-page="ertms.html"] .ertms-level2-media {
+  body[data-page="ertms.html"] #working .ertms-level2-media {
     min-height: 240px;
     aspect-ratio: 16 / 10;
+  }
+
+  body[data-page="ertms.html"] #working .signal-diagram {
+    padding: 66px 16px 20px;
+    border-radius: 22px;
+  }
+
+  body[data-page="ertms.html"] #working .signal-diagram::before {
+    left: 18px;
+    top: 19px;
+  }
+
+  body[data-page="ertms.html"] #working .signal-diagram::after {
+    left: 18px;
+    right: auto;
+    top: 41px;
+    font-size: .56rem;
   }
 }
 
@@ -414,5 +600,11 @@ body[data-page="ertms.html"] .history-summary strong {
 
   body[data-page="ertms.html"] .ertms-media-placeholder figcaption {
     padding: 15px 16px 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="ertms.html"] #working .diagram-node {
+    transition: none !important;
   }
 }
