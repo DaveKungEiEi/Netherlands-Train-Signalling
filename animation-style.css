@@ -1,0 +1,342 @@
+/* =========================================================
+   Netherlands Train System — shared motion system
+   Calm, editorial motion for every page.
+   Relies on the existing .reveal -> .visible IntersectionObserver.
+   ========================================================= */
+
+:root {
+  --motion-fast: 260ms;
+  --motion-medium: 560ms;
+  --motion-slow: 760ms;
+  --motion-ease: cubic-bezier(.22, .78, .22, 1);
+  --motion-ease-soft: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ---------- Base reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(.992);
+  filter: blur(5px);
+  transition:
+    opacity var(--motion-slow) var(--motion-ease),
+    transform var(--motion-slow) var(--motion-ease),
+    filter var(--motion-medium) ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* ---------- Navbar entrance ---------- */
+.site-header .nav-shell {
+  animation: nts-nav-enter 680ms var(--motion-ease) both;
+  transform-origin: 50% 0;
+}
+
+@keyframes nts-nav-enter {
+  from { opacity: 0; transform: translateY(-18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Hero ---------- */
+.hero-editorial .hero-editorial-inner.reveal,
+.page-hero .page-hero-inner > .reveal {
+  transform: translate3d(0, 34px, 0) scale(.985);
+}
+
+.hero-editorial .hero-editorial-inner.reveal.visible,
+.page-hero .page-hero-inner > .reveal.visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.page-hero .page-badge.reveal.visible {
+  transition-delay: 90ms;
+}
+
+.hero-orb-yellow {
+  animation: nts-orb-float-a 8s ease-in-out infinite alternate;
+}
+
+.hero-orb-blue {
+  animation: nts-orb-float-b 10s ease-in-out infinite alternate;
+}
+
+@keyframes nts-orb-float-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(12px, -10px, 0) scale(1.035); }
+}
+
+@keyframes nts-orb-float-b {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-14px, 12px, 0) scale(1.025); }
+}
+
+/* ---------- Section heading sequence ---------- */
+.article-section.reveal > .kicker,
+.article-section.reveal > h2,
+.article-section.reveal > p,
+.section-head.reveal .kicker,
+.section-head.reveal h2,
+.section-head.reveal .lead {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 540ms var(--motion-ease), transform 540ms var(--motion-ease);
+}
+
+.article-section.reveal.visible > .kicker,
+.section-head.reveal.visible .kicker {
+  opacity: 1;
+  transform: none;
+  transition-delay: 60ms;
+}
+
+.article-section.reveal.visible > h2,
+.section-head.reveal.visible h2 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 125ms;
+}
+
+.article-section.reveal.visible > p,
+.section-head.reveal.visible .lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 190ms;
+}
+
+.article-section.reveal.visible > p:nth-of-type(2) { transition-delay: 230ms; }
+.article-section.reveal.visible > p:nth-of-type(3) { transition-delay: 270ms; }
+
+/* ---------- Generic staggered content ---------- */
+.article-section.reveal :is(
+  .info-card,
+  .impact-card,
+  .country-card,
+  .stat,
+  .status-row,
+  .diagram-node,
+  .term,
+  .source-link,
+  .comparison-era-country,
+  .comparison-media-placeholder,
+  .ertms-media-placeholder,
+  .ref-card,
+  .reference-card
+) {
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+}
+
+.article-section.reveal.visible :is(
+  .info-card,
+  .impact-card,
+  .country-card,
+  .stat,
+  .status-row,
+  .diagram-node,
+  .term,
+  .source-link,
+  .comparison-era-country,
+  .comparison-media-placeholder,
+  .ertms-media-placeholder,
+  .ref-card,
+  .reference-card
+) {
+  animation: nts-card-rise 640ms var(--motion-ease) both;
+}
+
+.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(2) { animation-delay: 70ms; }
+.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(3) { animation-delay: 140ms; }
+.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(4) { animation-delay: 210ms; }
+.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(5) { animation-delay: 280ms; }
+.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(6) { animation-delay: 350ms; }
+
+@keyframes nts-card-rise {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Homepage history ---------- */
+.history-item.reveal .history-marker {
+  opacity: 0;
+  transform: scale(.72);
+}
+
+.history-item.reveal .history-copy,
+.history-item.reveal .history-visual {
+  opacity: 0;
+  transition: opacity 680ms var(--motion-ease), transform 680ms var(--motion-ease);
+}
+
+.history-item.reveal .history-copy { transform: translateX(-24px); }
+.history-item-reveal .history-visual { transform: translateX(24px); }
+.history-item-reverse.reveal .history-copy { transform: translateX(24px); }
+.history-item-reverse.reveal .history-visual { transform: translateX(-24px); }
+
+.history-item.reveal.visible .history-marker {
+  animation: nts-marker-pop 540ms var(--motion-ease) 90ms both;
+}
+
+.history-item.reveal.visible .history-copy,
+.history-item.reveal.visible .history-visual {
+  opacity: 1;
+  transform: none;
+}
+
+.history-item.reveal.visible .history-copy { transition-delay: 130ms; }
+.history-item.reveal.visible .history-visual { transition-delay: 220ms; }
+
+@keyframes nts-marker-pop {
+  0% { opacity: 0; transform: scale(.68); }
+  68% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Status / ERTMS / comparison timeline ---------- */
+.article-section.reveal .ertms-milestone,
+.article-section.reveal .comparison-era,
+.article-section.reveal #timeline .status-row {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.article-section.reveal.visible .ertms-milestone,
+.article-section.reveal.visible .comparison-era,
+.article-section.reveal.visible #timeline .status-row {
+  animation: nts-timeline-row 620ms var(--motion-ease) both;
+}
+
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(2) { animation-delay: 80ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(3) { animation-delay: 150ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(4) { animation-delay: 220ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(5) { animation-delay: 290ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(6) { animation-delay: 360ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(7) { animation-delay: 430ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(8) { animation-delay: 500ms; }
+
+@keyframes nts-timeline-row {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Current timeline dots softly breathe after appearing. */
+body[data-page="ertms.html"] .ertms-milestone.current::before,
+body[data-page="comparison.html"] .comparison-era-current::before {
+  animation: nts-current-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes nts-current-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(255,201,23,0)); }
+  50% { filter: drop-shadow(0 0 7px rgba(255,201,23,.48)); }
+}
+
+/* ---------- Tables ---------- */
+.article-section.reveal table tbody tr {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.article-section.reveal.visible table tbody tr {
+  animation: nts-table-row 500ms var(--motion-ease-soft) both;
+}
+
+.article-section.reveal.visible table tbody tr:nth-child(2) { animation-delay: 55ms; }
+.article-section.reveal.visible table tbody tr:nth-child(3) { animation-delay: 110ms; }
+.article-section.reveal.visible table tbody tr:nth-child(4) { animation-delay: 165ms; }
+.article-section.reveal.visible table tbody tr:nth-child(5) { animation-delay: 220ms; }
+.article-section.reveal.visible table tbody tr:nth-child(6) { animation-delay: 275ms; }
+.article-section.reveal.visible table tbody tr:nth-child(7) { animation-delay: 330ms; }
+.article-section.reveal.visible table tbody tr:nth-child(8) { animation-delay: 385ms; }
+
+@keyframes nts-table-row {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Micro interactions ---------- */
+:is(.info-card,.impact-card,.country-card,.stat,.term,.source-link,.comparison-media-placeholder,.ertms-media-placeholder) {
+  transition:
+    transform var(--motion-fast) var(--motion-ease),
+    box-shadow var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :is(.info-card,.impact-card,.country-card,.stat,.term,.source-link):hover {
+    transform: translateY(-4px);
+  }
+
+  .comparison-media-placeholder:hover,
+  .ertms-media-placeholder:hover {
+    transform: translateY(-4px) scale(1.008);
+  }
+
+  .aside a {
+    transition: transform var(--motion-fast) var(--motion-ease), background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+  }
+
+  .aside a:hover { transform: translateX(3px); }
+}
+
+/* ---------- Sheet handle ---------- */
+main.page-sheet::before {
+  animation: nts-handle-breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes nts-handle-breathe {
+  0%,100% { opacity: .72; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.14); }
+}
+
+/* ---------- Footer ---------- */
+.footer-v3-brand,
+.footer-v3-nav {
+  animation: nts-footer-enter 720ms var(--motion-ease) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 32%;
+}
+
+.footer-v3-nav { animation-delay: 80ms; }
+
+@keyframes nts-footer-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Mobile: lighter transforms ---------- */
+@media (max-width: 720px) {
+  .reveal { transform: translate3d(0, 16px, 0); filter: blur(3px); }
+
+  .history-item.reveal .history-copy,
+  .history-item-reveal .history-visual,
+  .history-item-reverse.reveal .history-copy,
+  .history-item-reverse.reveal .history-visual {
+    transform: translateY(14px);
+  }
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal.visible,
+  .article-section.reveal > *,
+  .article-section.reveal :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.comparison-media-placeholder,.ertms-media-placeholder,.ertms-milestone,.comparison-era),
+  .history-item.reveal .history-marker,
+  .history-item.reveal .history-copy,
+  .history-item.reveal .history-visual,
+  .article-section.reveal table tbody tr {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
