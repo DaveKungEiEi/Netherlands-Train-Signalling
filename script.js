@@ -19,6 +19,15 @@ if (!document.querySelector('link[href="footer-style.css"]')) {
   document.head.appendChild(footerStylesheet);
 }
 
+// Shared NS-inspired design system for all content pages.
+// The homepage keeps its own editorial timeline design.
+if (currentPage !== 'index.html' && !document.querySelector('link[href="content-page-style.css"]')) {
+  const contentStylesheet = document.createElement('link');
+  contentStylesheet.rel = 'stylesheet';
+  contentStylesheet.href = 'content-page-style.css';
+  document.head.appendChild(contentStylesheet);
+}
+
 // Page-specific visual systems.
 const pageStyles = {
   'status.html': 'status-style.css',
