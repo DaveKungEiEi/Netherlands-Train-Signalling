@@ -1,10 +1,13 @@
-/* English descriptions for the expanded Chapter 04.1 reference list. */
-html[lang="en"] #ref-comparison .reference-card:nth-child(n+5) .reference-source-note {
-  font-size: .82rem !important;
-  line-height: 1.55;
-}
-
-html[lang="en"] #ref-comparison .reference-card:nth-child(n+5) .reference-source-note::after {
-  content: none !important;
-  display: none !important;
-}
+/* English descriptions for the expanded Chapter 04.1 reference list.
+   The first four cards are already covered by language-style.css. */
+html[lang="en"] #ref-comparison .reference-card:nth-child(5) .reference-source-note::after { content: "Confirms that Belgium completed nationwide ERTMS deployment in December 2025, covering about 6,400 km of its main railway network."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(6) .reference-source-note::after { content: "ERA confirmation of 100% ETCS deployment on the Belgian network and its role as an early full-scale European implementation."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(7) .reference-source-note::after { content: "Official Dutch background on the Harmelen accident, the introduction of ATB-EG from the late 1960s and the decades-long national rollout."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(8) .reference-source-note::after { content: "Confirms early Dutch ERTMS operation on the Betuweroute (2007), HSL-Zuid (2009) and Hanzelijn (2012)."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(9) .reference-source-note::after { content: "Current Dutch ERTMS programme, including the 419 km Tranche 1 scope and the staged migration from ATB."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(10) .reference-source-note::after { content: "Historical Deutsche Bahn evidence for the approximately 100 km ETCS Level 2 pilot between Jüterbog and Leipzig prepared for testing in 2005."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(11) .reference-source-note::after { content: "DB InfraGO year-end 2025 figures: total ETCS-equipped route length reached 683 km, including 157 km added during 2025."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(12) .reference-source-note::after { content: "Explains why Germany withdrew its 2024 ETCS migration strategy in 2025 and began updating it with the Federal Government and rail sector."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(13) .reference-source-note::after { content: "European Commission country profile: the Dutch NIP plans ERTMS Level 2 across the network and nationwide Class-B replacement by 2050."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(14) .reference-source-note::after { content: "European Commission country profile and planning context for Germany's mixed ETCS deployment and long-term migration."; }
+html[lang="en"] #ref-comparison .reference-card:nth-child(15) .reference-source-note::after { content: "Cross-border example showing one train needing ETCS in Belgium, ATB in the Netherlands and PZB in Germany during the migration period."; }
