@@ -1,0 +1,10 @@
+/* English descriptions for the expanded Chapter 04.1 reference list. */
+html[lang="en"] #ref-comparison .reference-card:nth-child(n+5) .reference-source-note {
+  font-size: .82rem !important;
+  line-height: 1.55;
+}
+
+html[lang="en"] #ref-comparison .reference-card:nth-child(n+5) .reference-source-note::after {
+  content: none !important;
+  display: none !important;
+}
