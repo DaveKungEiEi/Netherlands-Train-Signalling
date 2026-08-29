@@ -131,6 +131,31 @@ if (footer) {
     </footer>`;
 }
 
+// Animate the ATB → ETCS migration indicator when it enters the viewport.
+const footerRoute = document.querySelector('.footer-route');
+if (footerRoute) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    footerRoute.classList.add('is-active', 'is-settled');
+  } else {
+    const footerRouteObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        footerRoute.classList.add('is-active');
+        window.setTimeout(() => {
+          footerRoute.classList.add('is-settled');
+        }, 1450);
+
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.45 });
+
+    footerRouteObserver.observe(footerRoute);
+  }
+}
+
 const footerTopButton = document.querySelector('.footer-to-top');
 if (footerTopButton) {
   footerTopButton.addEventListener('click', () => {
