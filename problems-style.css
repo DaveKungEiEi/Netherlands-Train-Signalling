@@ -1,0 +1,490 @@
+/* =========================================================
+   Problems page — 2026 evidence-led layout
+   ========================================================= */
+
+body[data-page="problems.html"] .problem-lead {
+  max-width: 900px;
+  margin-bottom: 26px;
+}
+
+body[data-page="problems.html"] .problem-snapshot {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+body[data-page="problems.html"] .problem-snapshot-card {
+  min-height: 170px;
+  padding: 20px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,201,23,.16), transparent 26%),
+    linear-gradient(145deg, #fff, #f6faff);
+  box-shadow: 0 12px 30px rgba(0,48,130,.055);
+}
+
+body[data-page="problems.html"] .problem-snapshot-card > span,
+body[data-page="problems.html"] .impact-label,
+body[data-page="problems.html"] .people-tech-grid article > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 28px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #003082;
+  color: #fff;
+  font-size: .66rem;
+  font-weight: 850;
+  letter-spacing: .055em;
+}
+
+body[data-page="problems.html"] .problem-snapshot-card strong {
+  display: block;
+  margin-top: 20px;
+  color: #123d70;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+body[data-page="problems.html"] .problem-snapshot-card small {
+  display: block;
+  margin-top: 8px;
+  color: #506983;
+  font-size: .78rem;
+  line-height: 1.65;
+}
+
+body[data-page="problems.html"] .delay-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+body[data-page="problems.html"] .delay-card {
+  position: relative;
+  min-height: 250px;
+  padding: 26px 24px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff, #f8fbff);
+}
+
+body[data-page="problems.html"] .delay-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #ffc917, #003082);
+}
+
+body[data-page="problems.html"] .delay-card > span {
+  color: #ae1c28;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+body[data-page="problems.html"] .delay-card h3 {
+  margin: 12px 0 10px;
+  color: #173f6c;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+body[data-page="problems.html"] .delay-card p,
+body[data-page="problems.html"] .freight-side p,
+body[data-page="problems.html"] .people-tech-grid p {
+  margin: 0;
+  color: #425d77;
+  line-height: 1.75;
+}
+
+body[data-page="problems.html"] .problem-note {
+  margin: 26px 0;
+  padding: 20px 22px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-left: 5px solid #003082;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eff6fd, #fff);
+  color: #405a73;
+  line-height: 1.75;
+}
+
+body[data-page="problems.html"] .problem-note.warning {
+  border-left-color: #d19800;
+  background: linear-gradient(135deg, #fff9df, #fff);
+}
+
+body[data-page="problems.html"] .problem-note strong {
+  color: #003082;
+}
+
+body[data-page="problems.html"] .cost-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+body[data-page="problems.html"] .cost-metric {
+  min-height: 220px;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(0,48,130,.10);
+  background: #f7fbff;
+}
+
+body[data-page="problems.html"] .cost-metric.featured {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(255,201,23,.26), transparent 30%),
+    #003082;
+  border-color: #003082;
+  color: #fff;
+}
+
+body[data-page="problems.html"] .cost-metric small {
+  color: #667b90;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+body[data-page="problems.html"] .cost-metric strong {
+  display: block;
+  margin: 22px 0 10px;
+  color: #003082;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+body[data-page="problems.html"] .cost-metric span {
+  display: block;
+  color: #4b637b;
+  line-height: 1.65;
+  font-size: .82rem;
+}
+
+body[data-page="problems.html"] .cost-metric.featured small,
+body[data-page="problems.html"] .cost-metric.featured strong,
+body[data-page="problems.html"] .cost-metric.featured span {
+  color: #fff;
+}
+
+body[data-page="problems.html"] .dual-bridge {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center;
+  gap: 14px;
+  margin: 28px 0;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 26px;
+  background: linear-gradient(135deg, #f7fbff, #fff);
+}
+
+body[data-page="problems.html"] .dual-node {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,48,130,.10);
+  background: #fff;
+}
+
+body[data-page="problems.html"] .dual-node.bridge {
+  background: #fff7d2;
+  border-color: rgba(198,146,0,.24);
+}
+
+body[data-page="problems.html"] .dual-node.target {
+  background: #edf6ff;
+}
+
+body[data-page="problems.html"] .dual-node > span,
+body[data-page="problems.html"] .dual-node small {
+  color: #60758b;
+  font-size: .74rem;
+}
+
+body[data-page="problems.html"] .dual-node strong {
+  margin: 12px 0 8px;
+  color: #123d70;
+  font-size: 1.25rem;
+}
+
+body[data-page="problems.html"] .dual-arrow {
+  color: #ae1c28;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+body[data-page="problems.html"] .reliability-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr);
+  gap: 18px;
+  margin: 28px 0;
+}
+
+body[data-page="problems.html"] .reliability-story {
+  padding: clamp(24px, 4vw, 34px);
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,201,23,.15), transparent 28%),
+    linear-gradient(145deg, #fff, #f6faff);
+}
+
+body[data-page="problems.html"] .reliability-story h3 {
+  margin: 18px 0 12px;
+  color: #123d70;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.35;
+}
+
+body[data-page="problems.html"] .reliability-story p {
+  margin: 0;
+  color: #405a73;
+  line-height: 1.8;
+}
+
+body[data-page="problems.html"] .reliability-principles {
+  display: grid;
+  gap: 12px;
+}
+
+body[data-page="problems.html"] .reliability-principles > div {
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,48,130,.10);
+  background: #fff;
+}
+
+body[data-page="problems.html"] .reliability-principles strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #173f6c;
+}
+
+body[data-page="problems.html"] .reliability-principles span {
+  color: #526b83;
+  font-size: .8rem;
+  line-height: 1.65;
+}
+
+body[data-page="problems.html"] .freight-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 18px;
+  margin: 28px 0;
+}
+
+body[data-page="problems.html"] .freight-main {
+  padding: clamp(26px, 4vw, 38px);
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,201,23,.20), transparent 30%),
+    linear-gradient(145deg, #edf6ff, #fff 65%);
+}
+
+body[data-page="problems.html"] .freight-main h3 {
+  margin: 18px 0 12px;
+  color: #123d70;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.35;
+}
+
+body[data-page="problems.html"] .freight-main > p {
+  color: #405a73;
+  line-height: 1.8;
+}
+
+body[data-page="problems.html"] .freight-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+body[data-page="problems.html"] .freight-stats > div {
+  padding: 18px;
+  border-radius: 17px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(0,48,130,.08);
+}
+
+body[data-page="problems.html"] .freight-stats strong {
+  display: block;
+  color: #003082;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+body[data-page="problems.html"] .freight-stats span {
+  display: block;
+  margin-top: 6px;
+  color: #5a7087;
+  font-size: .74rem;
+  line-height: 1.55;
+}
+
+body[data-page="problems.html"] .freight-side {
+  display: grid;
+  gap: 12px;
+}
+
+body[data-page="problems.html"] .freight-side article {
+  position: relative;
+  padding: 18px 20px 18px 54px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,48,130,.10);
+  background: #fff;
+}
+
+body[data-page="problems.html"] .freight-side article > span {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  color: #ae1c28;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+body[data-page="problems.html"] .freight-side h3 {
+  margin: 0 0 7px;
+  color: #173f6c;
+  font-size: 1rem;
+}
+
+body[data-page="problems.html"] .people-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+body[data-page="problems.html"] .people-tech-grid article {
+  min-height: 245px;
+  padding: 24px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff, #f8fbff);
+}
+
+body[data-page="problems.html"] .people-tech-grid h3 {
+  margin: 18px 0 10px;
+  color: #173f6c;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+body[data-page="problems.html"] .problem-conclusion {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255,201,23,.14), transparent 26%),
+    linear-gradient(145deg, #f3f8fd, #fff);
+}
+
+body[data-page="problems.html"] .reference-jump {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 18px 20px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 17px;
+  background: #fff;
+  text-decoration: none;
+  color: #35516d;
+}
+
+body[data-page="problems.html"] .reference-jump strong {
+  color: #003082;
+  white-space: nowrap;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  body[data-page="problems.html"] .problem-snapshot-card:hover,
+  body[data-page="problems.html"] .delay-card:hover,
+  body[data-page="problems.html"] .people-tech-grid article:hover,
+  body[data-page="problems.html"] .freight-side article:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,48,130,.20);
+    box-shadow: 0 16px 34px rgba(0,48,130,.08);
+  }
+
+  body[data-page="problems.html"] .reference-jump:hover {
+    border-color: rgba(0,48,130,.24);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 980px) {
+  body[data-page="problems.html"] .problem-snapshot,
+  body[data-page="problems.html"] .people-tech-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  body[data-page="problems.html"] .cost-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="problems.html"] .cost-metric {
+    min-height: 0;
+  }
+
+  body[data-page="problems.html"] .reliability-layout,
+  body[data-page="problems.html"] .freight-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="problems.html"] .problem-snapshot,
+  body[data-page="problems.html"] .delay-grid,
+  body[data-page="problems.html"] .people-tech-grid,
+  body[data-page="problems.html"] .freight-stats {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="problems.html"] .problem-snapshot-card,
+  body[data-page="problems.html"] .delay-card,
+  body[data-page="problems.html"] .people-tech-grid article {
+    min-height: 0;
+  }
+
+  body[data-page="problems.html"] .dual-bridge {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="problems.html"] .dual-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  body[data-page="problems.html"] .reference-jump {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="problems.html"] .problem-snapshot-card,
+  body[data-page="problems.html"] .delay-card,
+  body[data-page="problems.html"] .people-tech-grid article,
+  body[data-page="problems.html"] .freight-side article,
+  body[data-page="problems.html"] .reference-jump {
+    transition: none !important;
+  }
+}
