@@ -76,7 +76,7 @@
   margin-top: 34px;
   padding: 18px 20px;
   display: grid;
-  grid-template-columns: auto minmax(52px, 1fr) auto;
+  grid-template-columns: auto minmax(92px, 1fr) auto;
   align-items: center;
   gap: 16px;
   border-radius: 20px;
@@ -127,30 +127,69 @@
   box-shadow: 0 0 0 4px rgba(255, 201, 23, .15);
 }
 
+.footer-route-progress {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
 .footer-route-line {
   position: relative;
-  height: 2px;
-  background: #d8e0e9;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 201, 23, .88);
   overflow: visible;
+  box-shadow: inset 0 0 0 1px rgba(0, 48, 130, .04);
 }
 
 .footer-route-line::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #003082 0 43%, #ffc917 43% 100%);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6%;
+  min-width: 3px;
+  border-radius: 999px 0 0 999px;
+  background: #003082;
 }
 
 .footer-route-line span {
   position: absolute;
-  left: 43%;
+  left: 6%;
   top: 50%;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #fff;
-  border: 2px solid #6d7d90;
+  border: 2px solid #003082;
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, .22);
+}
+
+.footer-route-status {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.footer-route-status strong {
+  color: #003082;
+  font-size: .68rem;
+  line-height: 1.25;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.footer-route-status small {
+  color: #7b8998;
+  font-size: .56rem;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
 .footer-v3-nav {
@@ -351,6 +390,14 @@
     display: none;
   }
 
+  .footer-route-status small {
+    display: none;
+  }
+
+  .footer-route-status strong {
+    font-size: .62rem;
+  }
+
   .footer-v3-nav {
     grid-template-columns: 1fr 1fr;
     gap: 34px 24px;
@@ -392,7 +439,11 @@
   }
 
   .footer-route {
-    grid-template-columns: auto minmax(28px, 1fr) auto;
+    grid-template-columns: auto minmax(54px, 1fr) auto;
+  }
+
+  .footer-route-status strong {
+    white-space: normal;
   }
 }
 
