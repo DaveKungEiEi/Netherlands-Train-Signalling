@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ERTMS ETCS คืออะไร ประวัติและหลักการทำงานในเนเธอร์แลนด์">
+  <meta name="description" content="ERTMS ETCS คืออะไร ประวัติ พัฒนาการ และหลักการทำงานจนถึงสถานะปัจจุบันปี 2026">
   <meta name="theme-color" content="#003082">
   <title>ERTMS / ETCS | Netherlands Train System</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -15,15 +15,170 @@
 <body data-page="ertms.html">
   <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
   <div data-site-header></div>
-  
-<header class="page-hero"><div class="page-hero-inner"><div class="reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 02</div><h1>ERTMS <span style="color:#ae1c28">/</span> ETCS <span style="color:#003082">จากสัญญาณริมทางสู่ข้อมูลในห้องขับ</span></h1><p class="hero-copy">ERTMS คือกรอบมาตรฐานการจัดการและควบคุมการเดินรถของยุโรป โดย ETCS เป็นส่วนหลักด้านการควบคุมและป้องกันรถไฟที่กำลังเข้ามาแทน ATB ในเนเธอร์แลนด์</p></div><div class="page-badge glass-card reveal"><div class="big">L2</div><p>เนเธอร์แลนด์มุ่งใช้ ETCS Level 2 บนเส้นทางในขอบเขตการเปลี่ยนผ่านหลัก</p></div></div></header>
-<main id="main" class="page-sheet"><section class="section"><div class="container content-grid"><article class="article">
-<section class="article-section reveal" id="what"><div class="kicker">2.1</div><h2>ERTMS/ETCS คืออะไร</h2><p><strong>ERTMS (European Rail Traffic Management System)</strong> คือมาตรฐานยุโรปสำหรับระบบควบคุม-สั่งการและการป้องกันรถไฟ ส่วน <strong>ETCS (European Train Control System)</strong> คือองค์ประกอบสำคัญที่กำกับความเร็ว การอนุญาตให้เคลื่อนที่ และการเบรกของรถไฟ</p><p>หัวใจของแนวคิดคือการทำให้ข้อมูลที่จำเป็นต่อพนักงานขับรถไฟปรากฏบนจอในห้องขับอย่างเป็นมาตรฐานเดียวกัน และให้ระบบคำนวณเส้นโค้งการเบรกเพื่อตรวจสอบว่าขบวนรถยังสามารถหยุดได้อย่างปลอดภัยก่อนถึงจุดอันตราย</p><div class="info-grid"><div class="info-card glass-card"><div class="icon">DMI</div><h3>Driver Machine Interface</h3><p>จอแสดงข้อมูลความเร็วเป้าหมาย ระยะทาง และสถานะ ETCS ในห้องขับ</p></div><div class="info-card glass-card"><div class="icon">MA</div><h3>Movement Authority</h3><p>สิทธิการเคลื่อนที่ที่ระบุขอบเขตและเงื่อนไขที่รถไฟได้รับอนุญาตให้วิ่ง</p></div><div class="info-card glass-card"><div class="icon">RBC</div><h3>Radio Block Centre</h3><p>ศูนย์ที่สื่อสารข้อมูลการอนุญาตการเคลื่อนที่กับรถไฟใน ETCS Level 2</p></div><div class="info-card glass-card"><div class="icon">B</div><h3>Eurobalise</h3><p>บีคอนบนรางที่ช่วยระบุตำแหน่งและส่งข้อมูลเฉพาะจุดให้กับอุปกรณ์ ETCS บนรถ</p></div></div></section>
-<section class="article-section reveal" id="history"><div class="kicker">2.2</div><h2>ประวัติของ ERTMS/ETCS</h2><p>ERTMS เกิดจากความพยายามของยุโรปในการลดความแตกต่างระหว่างระบบควบคุมรถไฟประจำชาติหลายสิบระบบ ซึ่งทำให้รถไฟระหว่างประเทศต้องติดตั้งอุปกรณ์หลายชุด แนวทางมาตรฐานเดียวจึงถูกพัฒนาตั้งแต่ทศวรรษ 1990 และต่อยอดเป็นข้อกำหนดร่วมของสหภาพยุโรป</p><p>สำหรับเนเธอร์แลนด์ การนำ ERTMS มาใช้ได้รับการกำหนดเป็นโครงการระดับประเทศ และในปี 2019 รัฐบาลมี Program Decision ให้เดินหน้าติดตั้ง ERTMS บนโครงข่ายหลัก โดย ProRail และ Programma ERTMS รับบทสำคัญในการประสานงานภาคส่วนและแปลงโครงสร้างพื้นฐาน</p></section>
-<section class="article-section reveal" id="working"><div class="kicker">2.3</div><h2>หลักการทำงานของ ETCS Level 2</h2><p>ใน ETCS Level 2 ข้อมูลสำคัญถูกส่งเข้าสู่ห้องขับแบบดิจิทัล รถไฟระบุตำแหน่งโดยอาศัย balise และ odometry ขณะที่การสื่อสารกับระบบภาคพื้นใช้เครือข่ายวิทยุ ระบบจะคำนวณความเร็วที่ปลอดภัยแบบต่อเนื่องและสามารถสั่งเบรกเมื่อรถไฟเข้าใกล้ขีดจำกัดที่อนุญาต</p><div class="signal-diagram glass-card"><div class="diagram-flow"><div class="diagram-node"><strong>Interlocking</strong><small>สถานะทางและประแจ</small></div><div class="diagram-node"><strong>RBC / CSS</strong><small>ประมวลผลสิทธิการเคลื่อนที่</small></div><div class="diagram-node"><strong>Radio link</strong><small>ส่งข้อมูลสู่รถไฟ</small></div><div class="diagram-node"><strong>EVC + DMI</strong><small>คำนวณและแสดงผล</small></div><div class="diagram-node"><strong>Brake curve</strong><small>กำกับจนถึงจุดหยุด</small></div></div></div><div class="callout"><strong>ต่างจาก ATB อย่างมีนัยสำคัญ:</strong> ETCS ไม่เพียงตรวจ “ระดับความเร็ว” แต่รู้ข้อมูลการเคลื่อนที่และคำนวณเส้นโค้งการเบรกของรถไฟ ทำให้กำกับการหยุดก่อนถึง End of Authority ได้ละเอียดกว่า</div></section>
-<section class="article-section reveal" id="netherlands"><div class="kicker">Netherlands Design</div><h2>แนวทางที่เนเธอร์แลนด์เลือก</h2><p>ในเส้นทางที่อยู่ใน scope ของการ rollout ปัจจุบัน ProRail ระบุการใช้ <strong>ERTMS System Version 2.1 และ Level 2</strong> โดยแนวคิดเป็น ERTMS-only infrastructure หลังผ่านการทดสอบและพร้อมใช้งาน กล่าวคือ ATB จะถูกถอดออกจากโครงสร้างพื้นฐานของเส้นทางนั้นในที่สุด</p><p>ระหว่างช่วงเปลี่ยนผ่าน รถไฟที่ติดตั้ง ERTMS ยังต้องวิ่งผ่านทางที่ใช้ ATB ได้ จึงมี <strong>STM-ATB (Specific Transmission Module)</strong> เป็นตัวเชื่อมให้ระบบ ERTMS บนรถสามารถรับและแปลข้อมูล ATB ได้</p></section>
-<section class="article-section reveal" id="sources"><div class="kicker">Sources</div><h2>แหล่งข้อมูล</h2><div class="source-list"><a class="source-link" href="https://ertms.nl/over-het-programma/ertms-in-nederland" target="_blank" rel="noopener"><span>Programma ERTMS — ERTMS in Nederland</span><span>↗</span></a><a class="source-link" href="https://ertms.nl/kennisbank/i/eUyTD/stm-atb" target="_blank" rel="noopener"><span>Programma ERTMS — STM-ATB</span><span>↗</span></a><a class="source-link" href="https://www.prorail.nl/programmas/ertms" target="_blank" rel="noopener"><span>ProRail — ERTMS programme</span><span>↗</span></a></div></section>
-</article><aside class="aside glass-card"><p class="aside-title">ในหน้านี้</p><a href="#what">2.1 ERTMS/ETCS คืออะไร</a><a href="#history">2.2 ประวัติ</a><a href="#working">2.3 หลักการทำงาน</a><a href="#netherlands">แนวทางเนเธอร์แลนด์</a><a href="#sources">แหล่งข้อมูล</a></aside></div></section></main>
+
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 02 • Updated 2026</div>
+        <h1>ERTMS <span style="color:#ae1c28">/</span> ETCS <span style="color:#003082">มาตรฐานรถไฟดิจิทัลของยุโรป</span></h1>
+        <p class="hero-copy">ERTMS ถูกสร้างขึ้นเพื่อลดปัญหาที่แต่ละประเทศในยุโรปใช้ระบบป้องกันรถไฟต่างกัน โดย ETCS เป็นส่วนสำคัญที่คอยตรวจความเร็ว ระยะทาง และสั่งเบรกเมื่อรถไฟกำลังเข้าใกล้ขีดจำกัดที่ไม่ปลอดภัย</p>
+      </div>
+      <div class="page-badge glass-card reveal">
+        <div class="big">L2</div>
+        <p>เนเธอร์แลนด์มุ่งใช้ ETCS Level 2 เป็นมาตรฐานหลักในการเปลี่ยนระบบรุ่นใหม่</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-sheet">
+    <section class="section">
+      <div class="container content-grid">
+        <article class="article">
+
+          <section class="article-section reveal" id="what">
+            <div class="kicker">2.1</div>
+            <h2>ERTMS/ETCS คืออะไร</h2>
+            <p><strong>ERTMS (European Rail Traffic Management System)</strong> คือกรอบมาตรฐานยุโรปสำหรับการควบคุม การสั่งการ และการสื่อสารของระบบรถไฟ ปัจจุบัน ERTMS ประกอบด้วยส่วนสำคัญอย่าง <strong>ETCS</strong> สำหรับการป้องกันและควบคุมรถไฟ, <strong>RMR</strong> สำหรับการสื่อสารทางวิทยุของรถไฟ และ <strong>ATO</strong> สำหรับการเดินรถอัตโนมัติในระดับที่กำหนด</p>
+            <p><strong>ETCS (European Train Control System)</strong> คือส่วนที่ดูแลความปลอดภัยโดยตรง ระบบจะตรวจว่ารถไฟกำลังวิ่งเร็วเกินไปหรือเข้าใกล้จุดที่ไม่ได้รับอนุญาตหรือไม่ พร้อมคำนวณระยะเบรกที่เหมาะสมและสามารถสั่งเบรกได้หากพนักงานขับไม่ลดความเร็วตามที่ระบบกำหนด</p>
+            <div class="info-grid">
+              <div class="info-card glass-card"><div class="icon">DMI</div><h3>Driver Machine Interface</h3><p>หน้าจอในห้องขับที่แสดงความเร็วเป้าหมาย ระยะทาง และสถานะของ ETCS ให้พนักงานขับเห็นในรูปแบบมาตรฐาน</p></div>
+              <div class="info-card glass-card"><div class="icon">MA</div><h3>Movement Authority</h3><p>ขอบเขตที่ระบบอนุญาตให้รถไฟเคลื่อนที่ พร้อมเงื่อนไขด้านความเร็วและระยะทาง</p></div>
+              <div class="info-card glass-card"><div class="icon">RBC</div><h3>Radio Block Centre</h3><p>ศูนย์ที่รับข้อมูลจากระบบภาคพื้นและส่งคำสั่งอนุญาตการเคลื่อนที่ไปยังรถไฟใน ETCS Level 2</p></div>
+              <div class="info-card glass-card"><div class="icon">B</div><h3>Eurobalise</h3><p>อุปกรณ์ที่ติดตั้งบนทางรถไฟ ใช้เป็นจุดอ้างอิงตำแหน่งและส่งข้อมูลบางประเภทให้ระบบ ETCS บนรถ</p></div>
+            </div>
+          </section>
+
+          <section class="article-section reveal" id="history">
+            <div class="kicker">2.2</div>
+            <h2>ประวัติของ ERTMS/ETCS จากอดีตถึงปัจจุบัน</h2>
+            <p class="ertms-history-intro">ก่อนมี ERTMS ประเทศต่าง ๆ ในยุโรปใช้ระบบป้องกันรถไฟของตนเอง เมื่อรถไฟวิ่งข้ามประเทศจึงมักต้องติดตั้งอุปกรณ์หลายระบบไว้บนรถคันเดียว ยิ่งการเดินรถระหว่างประเทศเพิ่มขึ้น ปัญหานี้ยิ่งซับซ้อน ยุโรปจึงเริ่มพัฒนามาตรฐานกลางที่รถไฟและโครงสร้างพื้นฐานของหลายประเทศสามารถทำงานร่วมกันได้</p>
+
+            <div class="ertms-history-timeline" aria-label="Timeline ประวัติ ERTMS และ ETCS">
+              <div class="ertms-milestone">
+                <span class="ertms-year">ทศวรรษ 1980</span>
+                <div class="ertms-milestone-copy"><strong>เริ่มมองหามาตรฐานร่วมของยุโรป</strong><span>การรถไฟในยุโรปเริ่มหารือถึงแนวทางร่วมสำหรับระบบควบคุมรถไฟ และประชาคมยุโรปสนับสนุนโครงการวิจัยเพื่อแก้ปัญหาที่แต่ละประเทศใช้ระบบป้องกันรถไฟไม่เหมือนกัน</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">1990</span>
+                <div class="ertms-milestone-copy"><strong>ก่อตั้ง ERTMS Users’ Group</strong><span>กลุ่มผู้จัดการโครงสร้างพื้นฐานรถไฟจากหลายประเทศร่วมกันสร้างแนวคิด ERTMS รุ่นแรก เพื่อพิสูจน์ว่ารถไฟจากประเทศหนึ่งสามารถทำงานร่วมกับระบบของอีกประเทศได้โดยใช้มาตรฐานเดียวกัน</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">1996</span>
+                <div class="ertms-milestone-copy"><strong>แนวคิด interoperability ถูกใส่ไว้ในกฎหมายยุโรป</strong><span>Directive 96/48/EC ว่าด้วยรถไฟความเร็วสูงกำหนดแนวคิดเรื่องระบบควบคุมและอาณัติสัญญาณที่สามารถทำงานร่วมกันข้ามประเทศ นับเป็นก้าวสำคัญที่ทำให้ ERTMS มีฐานทางกฎหมายชัดขึ้น</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">1998–2000</span>
+                <div class="ertms-milestone-copy"><strong>ผู้ผลิตระบบเข้ามาร่วมกำหนดมาตรฐาน และเกิดสเปกชุดแรก</strong><span>กลุ่มผู้ผลิตระบบอาณัติสัญญาณในชื่อ UNISIG เข้ามาร่วมพัฒนารายละเอียดทางเทคนิค และในปี 2000 ได้จัดทำข้อกำหนดทางเทคนิค ERTMS ชุดแรกที่เป็นรากฐานของมาตรฐานในเวลาต่อมา</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2002</span>
+                <div class="ertms-milestone-copy"><strong>ERTMS เข้าสู่ข้อกำหนดของรถไฟความเร็วสูงอย่างเป็นทางการ</strong><span>คณะกรรมาธิการยุโรปนำข้อกำหนด ERTMS เข้าไว้ใน Technical Specification for Interoperability หรือ TSI สำหรับระบบควบคุมและอาณัติสัญญาณของโครงข่ายรถไฟความเร็วสูงยุโรป</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2005–2006</span>
+                <div class="ertms-milestone-copy"><strong>จากมาตรฐานสำหรับรถไฟความเร็วสูง สู่โครงข่ายรถไฟทั่วไป</strong><span>ยุโรปลงนาม Memorandum of Understanding เพื่อผลักดันการติดตั้ง ERTMS และแต่งตั้ง European Coordinator คนแรก จากนั้นในปี 2006 มีข้อกำหนด CCS TSI สำหรับโครงข่ายรถไฟทั่วไป ทำให้ ERTMS ไม่ได้จำกัดอยู่เฉพาะรถไฟความเร็วสูงอีกต่อไป</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2007–2012</span>
+                <div class="ertms-milestone-copy"><strong>เนเธอร์แลนด์เริ่มมีประสบการณ์ใช้งาน ERTMS บนเส้นทางจริง</strong><span>ERTMS ถูกใช้งานบนเส้นทางสำคัญของเนเธอร์แลนด์ เช่น Betuweroute, HSL-Zuid และ Hanzelijn ทำให้ประเทศมีประสบการณ์กับระบบดิจิทัลนี้ก่อนจะเริ่มโครงการเปลี่ยนระบบระดับประเทศในเวลาต่อมา</span></div>
+                <span class="ertms-scope nl">เนเธอร์แลนด์</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2012</span>
+                <div class="ertms-milestone-copy"><strong>รวมข้อกำหนดรถไฟความเร็วสูงและรถไฟทั่วไปเข้าด้วยกัน</strong><span>ข้อกำหนดด้าน Control-Command and Signalling ของยุโรปถูกจัดรวมให้ครอบคลุมทั้งรถไฟความเร็วสูงและรถไฟทั่วไป ทำให้กรอบมาตรฐานมีความเป็นระบบเดียวกันมากขึ้น</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2014 / 2019</span>
+                <div class="ertms-milestone-copy"><strong>เนเธอร์แลนด์ยกระดับ ERTMS เป็นโครงการเปลี่ยนระบบระดับประเทศ</strong><span>ปี 2014 รัฐบาลเลือก ERTMS เป็นแนวทางหลักสำหรับอนาคตของระบบป้องกันรถไฟ และในวันที่ 17 พฤษภาคม 2019 มี Programmabeslissing ERTMS ซึ่งตัดสินใจเดินหน้าการแทนระบบเดิมด้วย ERTMS ในระดับประเทศ</span></div>
+                <span class="ertms-scope nl">เนเธอร์แลนด์</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2015–2017</span>
+                <div class="ertms-milestone-copy"><strong>มาตรฐาน Baseline 3 มีความสมบูรณ์และแผนติดตั้งยุโรปชัดขึ้น</strong><span>Baseline 3 เพิ่มฟังก์ชันและแก้ข้อจำกัดจากรุ่นก่อน โดย Baseline 3 Release 2 ถูกออกในปี 2016 และถูกมองว่าเป็นรุ่นที่มีความเสถียรทางฟังก์ชัน จากนั้น European Deployment Plan ฉบับปรับปรุงถูกเผยแพร่ในปี 2017 เพื่อกำหนดทิศทางการติดตั้งบนโครงข่ายหลักของยุโรป</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2019</span>
+                <div class="ertms-milestone-copy"><strong>ERA มีบทบาทกลางมากขึ้นในการรักษาความเข้ากันได้ของระบบ</strong><span>ภายใต้ Fourth Railway Package บทบาทของ European Union Agency for Railways หรือ ERA ในฐานะหน่วยงานระบบ ERTMS แข็งแรงขึ้น รวมถึงการตรวจสอบความเข้ากันได้และการอนุมัติด้านระบบภาคพื้นก่อนนำไปใช้งาน</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone">
+                <span class="ertms-year">2023</span>
+                <div class="ertms-milestone-copy"><strong>เข้าสู่ยุค Baseline 4 และเตรียมรองรับรถไฟดิจิทัลรุ่นถัดไป</strong><span>CCS TSI 2023 นำ Baseline 4 มาเป็นชุดข้อกำหนดปัจจุบัน พร้อมรองรับการพัฒนาต่อ เช่น ATO, การสื่อสารยุคใหม่ FRMCS และแนวทาง ETCS Level 2 ที่สามารถพัฒนาไปสู่ moving block ได้</span></div>
+                <span class="ertms-scope eu">ยุโรป</span>
+              </div>
+
+              <div class="ertms-milestone current">
+                <span class="ertms-year">2026</span>
+                <div class="ertms-milestone-copy"><strong>ERTMS อยู่ในช่วงขยายการใช้งานจริง แต่ยุโรปยังต้องเร่งการติดตั้ง</strong><span>Third ERTMS Work Plan ที่เผยแพร่ในเดือนกุมภาพันธ์ 2026 ระบุว่า ณ สิ้นปี 2024 มี ETCS ใช้งานบนโครงข่าย TEN-T ประมาณ 12,400 กิโลเมตร หรือราว 10% และมีรถไฟในสหภาพยุโรปราว 8,730 คัน หรือประมาณ 19% ของ fleet ที่ติดตั้ง ETCS แล้ว ความคืบหน้ามีต่อเนื่อง แต่ยังช้ากว่าเป้าหมายที่ยุโรปกำหนดไว้</span></div>
+                <span class="ertms-scope eu">ปัจจุบัน</span>
+              </div>
+            </div>
+
+            <div class="history-summary"><strong>สรุปให้เข้าใจง่าย:</strong> ERTMS เริ่มจากการแก้ปัญหา “รถไฟหนึ่งขบวนต้องพกระบบป้องกันหลายประเทศ” แล้วค่อยพัฒนาเป็นมาตรฐานร่วมของยุโรป จากข้อกำหนดสำหรับรถไฟความเร็วสูง สู่มาตรฐานสำหรับโครงข่ายทั่วไป และปัจจุบันกำลังพัฒนาไปสู่ระบบรถไฟดิจิทัลที่รองรับการสื่อสารและการเดินรถอัตโนมัติมากขึ้น</div>
+          </section>
+
+          <section class="article-section reveal" id="working">
+            <div class="kicker">2.3</div>
+            <h2>หลักการทำงานของ ETCS Level 2</h2>
+            <p>ใน ETCS Level 2 รถไฟกับระบบภาคพื้นสื่อสารข้อมูลกันผ่านเครือข่ายวิทยุอย่างต่อเนื่อง รถไฟใช้ Eurobalise และระบบวัดระยะบนรถเพื่อช่วยระบุตำแหน่ง จากนั้นระบบภาคพื้นจะส่ง Movement Authority หรือขอบเขตที่อนุญาตให้รถไฟเคลื่อนที่กลับมายังรถไฟ</p>
+            <p>คอมพิวเตอร์บนรถจะนำข้อมูลเส้นทาง ความเร็ว และระยะทางที่เหลือมาคำนวณเส้นโค้งการเบรก หากรถไฟเร็วเกินไปหรือกำลังเข้าใกล้จุดสิ้นสุดของพื้นที่ที่ได้รับอนุญาต ระบบจะเตือนพนักงานขับ และสามารถสั่งเบรกอัตโนมัติได้หากจำเป็น</p>
+            <div class="signal-diagram glass-card"><div class="diagram-flow"><div class="diagram-node"><strong>Interlocking</strong><small>ตรวจสถานะทางและประแจ</small></div><div class="diagram-node"><strong>RBC / CSS</strong><small>ประมวลผลสิทธิการเคลื่อนที่</small></div><div class="diagram-node"><strong>Radio link</strong><small>ส่งข้อมูลระหว่างทางกับรถไฟ</small></div><div class="diagram-node"><strong>EVC + DMI</strong><small>คำนวณและแสดงข้อมูลให้พนักงานขับ</small></div><div class="diagram-node"><strong>Brake curve</strong><small>ควบคุมความเร็วให้หยุดได้อย่างปลอดภัย</small></div></div></div>
+            <div class="callout"><strong>ต่างจาก ATB อย่างสำคัญ:</strong> ETCS ไม่ได้ตรวจเพียงว่ารถไฟอยู่ใน “ระดับความเร็ว” ที่กำหนดหรือไม่ แต่ยังรู้ว่ารถไฟได้รับอนุญาตให้วิ่งไปได้ไกลแค่ไหน และคำนวณว่าต้องเริ่มลดความเร็วเมื่อใดจึงจะหยุดได้อย่างปลอดภัย</div>
+          </section>
+
+          <section class="article-section reveal" id="netherlands">
+            <div class="kicker">Netherlands Design</div>
+            <h2>แนวทางที่เนเธอร์แลนด์เลือก</h2>
+            <p>ในโครงการเปลี่ยนระบบรุ่นปัจจุบัน เนเธอร์แลนด์มุ่งใช้ <strong>ETCS Level 2</strong> และค่อย ๆ เปลี่ยนเส้นทางเป็น ERTMS-only เมื่อระบบ รถไฟ บุคลากร และขั้นตอนปฏิบัติงานผ่านการทดสอบจนพร้อมใช้งานแล้ว นั่นหมายความว่าในระยะยาว ATB จะถูกถอดออกจากเส้นทางที่เปลี่ยนระบบเสร็จสมบูรณ์</p>
+            <p>แต่ในช่วงเปลี่ยนผ่าน รถไฟที่ติดตั้ง ERTMS ยังต้องวิ่งบนเส้นทางที่ใช้ ATB อยู่ จึงมี <strong>STM-ATB (Specific Transmission Module)</strong> ทำหน้าที่เป็นตัวกลาง ให้ระบบ ERTMS บนรถสามารถรับและตีความข้อมูลจาก ATB ได้จนกว่าการเปลี่ยนระบบของโครงข่ายจะก้าวหน้าไปมากกว่านี้</p>
+            <div class="callout"><strong>หากต้องการดูความคืบหน้าของเนเธอร์แลนด์โดยละเอียด:</strong> หน้า <a href="status.html" style="color:#003082;font-weight:800">สถานะการเปลี่ยนระบบ</a> แสดง Timeline ตั้งแต่การใช้งาน ERTMS รุ่นแรกจนถึง Tranche 1 และสถานะล่าสุดปี 2026</div>
+          </section>
+
+          <section class="article-section reveal" id="sources">
+            <div class="kicker">Sources</div>
+            <h2>แหล่งข้อมูล</h2>
+            <div class="source-list">
+              <a class="source-link" href="https://transport.ec.europa.eu/transport-modes/rail/ertms/history-ertms_en" target="_blank" rel="noopener"><span>European Commission — History of ERTMS</span><span>↗</span></a>
+              <a class="source-link" href="https://transport.ec.europa.eu/transport-modes/rail/ertms/faq-ertms_en" target="_blank" rel="noopener"><span>European Commission — ERTMS FAQ / ETCS Baselines</span><span>↗</span></a>
+              <a class="source-link" href="https://transport.ec.europa.eu/news-events/news/third-ertms-work-plan-ertms-deployment-progressing-more-must-be-done-2026-02-23_en" target="_blank" rel="noopener"><span>European Commission — Third ERTMS Work Plan, 2026</span><span>↗</span></a>
+              <a class="source-link" href="https://www.rijksoverheid.nl/documenten/kamerstukken/2019/05/17/programmabeslissing-ertms" target="_blank" rel="noopener"><span>Rijksoverheid — Programmabeslissing ERTMS, 2019</span><span>↗</span></a>
+              <a class="source-link" href="https://ertms.nl/over-het-programma/ertms-in-nederland" target="_blank" rel="noopener"><span>Programma ERTMS — ERTMS in Nederland</span><span>↗</span></a>
+              <a class="source-link" href="https://ertms.nl/kennisbank/i/eUyTD/stm-atb" target="_blank" rel="noopener"><span>Programma ERTMS — STM-ATB</span><span>↗</span></a>
+            </div>
+          </section>
+        </article>
+
+        <aside class="aside glass-card">
+          <p class="aside-title">ในหน้านี้</p>
+          <a href="#what">2.1 ERTMS/ETCS คืออะไร</a>
+          <a href="#history">2.2 ประวัติและ Timeline</a>
+          <a href="#working">2.3 หลักการทำงาน</a>
+          <a href="#netherlands">แนวทางเนเธอร์แลนด์</a>
+          <a href="#sources">แหล่งข้อมูล</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
   <div data-site-footer></div>
   <script src="script.js"></script>
 </body>
