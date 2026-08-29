@@ -1,0 +1,124 @@
+/* =========================================================
+   Timeline alignment system
+   One geometric rule for year labels, dots and rails.
+   Loaded after page-specific CSS so the axis stays consistent.
+   ========================================================= */
+
+/* ---------- Shared ATB timeline ---------- */
+.timeline {
+  --timeline-axis-x: 34px;
+}
+
+.timeline::before {
+  left: var(--timeline-axis-x);
+  transform: translateX(-50%);
+}
+
+/* Align the dot vertically with the first line (year) inside the card. */
+.timeline-dot {
+  margin-top: 24px;
+}
+
+/* ---------- Homepage history timeline ---------- */
+/* Desktop already uses a 50% axis; keep the rail centred on that exact axis. */
+.history-line {
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1040px) {
+  /* First timeline column is 68px wide, so its centre is exactly 34px. */
+  .history-line {
+    left: 34px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 760px) {
+  /* Mobile timeline column is 48px wide, so its centre is exactly 24px. */
+  .history-line {
+    left: 24px;
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Status timeline ---------- */
+/* The existing dots are centred on x=10px (desktop) / x=6px (mobile).
+   Translate the rail by half its own width so its centre uses the same x. */
+body[data-page="status.html"] #timeline .status-list::before {
+  transform: translateX(-50%);
+}
+
+/* ---------- ERTMS history timeline ---------- */
+/* Same geometry as Status: dot centres already use the declared rail x. */
+body[data-page="ertms.html"] .ertms-history-timeline::before {
+  transform: translateX(-50%);
+}
+
+/* ---------- Three-country comparison timeline ---------- */
+body[data-page="comparison.html"] .comparison-timeline {
+  --comparison-axis-x: 108px;
+}
+
+body[data-page="comparison.html"] .comparison-timeline::before {
+  left: var(--comparison-axis-x);
+  transform: translateX(-50%);
+}
+
+body[data-page="comparison.html"] .comparison-era {
+  /* 86px year + 44px centre gap -> axis sits exactly 22px from either side. */
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 44px;
+}
+
+body[data-page="comparison.html"] .comparison-era::before {
+  left: var(--comparison-axis-x);
+  transform: translateX(-50%);
+}
+
+body[data-page="comparison.html"] .comparison-era-year {
+  /* Dot centre: 18px + 8.5px ≈ 26.5px.
+     Year line centre at this padding is visually aligned to the same height. */
+  padding-top: 18px;
+  padding-right: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  body[data-page="comparison.html"] .comparison-timeline {
+    --comparison-axis-x: 12px;
+  }
+
+  body[data-page="comparison.html"] .comparison-timeline::before {
+    left: var(--comparison-axis-x);
+    transform: translateX(-50%);
+  }
+
+  body[data-page="comparison.html"] .comparison-era {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 34px;
+  }
+
+  body[data-page="comparison.html"] .comparison-era::before {
+    left: var(--comparison-axis-x);
+    transform: translateX(-50%);
+  }
+
+  body[data-page="comparison.html"] .comparison-era-year {
+    padding-top: 4px;
+    text-align: left;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-dot,
+  .history-marker,
+  body[data-page="status.html"] #timeline .status-row::before,
+  body[data-page="ertms.html"] .ertms-milestone::before,
+  body[data-page="comparison.html"] .comparison-era::before {
+    transition: none !important;
+  }
+}
