@@ -1,0 +1,289 @@
+/* =========================================================
+   Status page — project progress / railway migration design
+   ========================================================= */
+
+body[data-page="status.html"] .page-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,201,23,.23), transparent 28%),
+    radial-gradient(circle at 88% 72%, rgba(36,107,198,.14), transparent 34%),
+    linear-gradient(145deg, #f9fbfe 0%, #eef5fc 58%, #e7f0fa 100%);
+}
+
+body[data-page="status.html"] .page-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -4% 13% auto;
+  width: min(540px, 42vw);
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(0,48,130,.18) 0 42px, transparent 42px 58px);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+body[data-page="status.html"] .page-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page="status.html"] .page-badge {
+  border: 1px solid rgba(255,255,255,.88);
+  background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(241,248,255,.62));
+  box-shadow: 0 22px 54px rgba(0,48,130,.12), inset 0 1px 0 rgba(255,255,255,.96);
+  -webkit-backdrop-filter: blur(20px) saturate(145%);
+  backdrop-filter: blur(20px) saturate(145%);
+}
+
+body[data-page="status.html"] .page-badge .big {
+  color: #003082;
+  letter-spacing: -.045em;
+}
+
+body[data-page="status.html"] .article {
+  counter-reset: status-section;
+}
+
+body[data-page="status.html"] .article-section {
+  position: relative;
+  padding: clamp(30px, 4vw, 48px);
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,48,130,.09);
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(247,250,254,.90));
+  box-shadow: 0 16px 44px rgba(25,58,96,.07);
+  overflow: hidden;
+}
+
+body[data-page="status.html"] .article-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ffc917, #003082 62%, rgba(0,48,130,.15));
+}
+
+body[data-page="status.html"] .article-section h2 {
+  margin-bottom: 18px;
+  color: #102d53;
+  letter-spacing: -.035em;
+}
+
+body[data-page="status.html"] .article-section > p {
+  color: #465b73;
+  line-height: 1.88;
+}
+
+body[data-page="status.html"] .article-section .kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0,48,130,.07);
+  color: #003082;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+body[data-page="status.html"] .stats {
+  gap: 14px;
+  margin-top: 28px;
+}
+
+body[data-page="status.html"] .stat {
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0,48,130,.06);
+}
+
+body[data-page="status.html"] .stat-value {
+  color: #003082;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  letter-spacing: -.045em;
+}
+
+body[data-page="status.html"] .callout {
+  position: relative;
+  border: 1px solid rgba(255,201,23,.38);
+  border-left: 5px solid #ffc917;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,248,219,.92), rgba(255,252,239,.84));
+  color: #344a63;
+}
+
+/* Historical status timeline */
+body[data-page="status.html"] #timeline .status-list {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin-top: 28px;
+  padding-left: 28px;
+}
+
+body[data-page="status.html"] #timeline .status-list::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #003082 0%, #1973d2 62%, #ffc917 100%);
+}
+
+body[data-page="status.html"] #timeline .status-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: start;
+  padding: 22px 0 24px 26px;
+  border: 0;
+  border-bottom: 1px solid rgba(0,48,130,.08);
+  background: transparent;
+}
+
+body[data-page="status.html"] #timeline .status-row:last-child {
+  border-bottom: 0;
+}
+
+body[data-page="status.html"] #timeline .status-row::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #003082;
+  box-shadow: 0 0 0 5px rgba(0,48,130,.08);
+}
+
+body[data-page="status.html"] #timeline .status-row > strong:first-child {
+  font-size: 1.03rem;
+  color: #003082;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page="status.html"] #timeline .status-row > span:nth-child(2) {
+  line-height: 1.78;
+  color: #465b73;
+}
+
+/* Current deployment lists */
+body[data-page="status.html"] .article-section:not(#timeline) .status-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 24px;
+}
+
+body[data-page="status.html"] .article-section:not(#timeline) .status-row {
+  display: grid;
+  grid-template-columns: minmax(150px, .8fr) minmax(0, 2fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 19px 20px;
+  border: 1px solid rgba(0,48,130,.09);
+  border-radius: 18px;
+  background: rgba(255,255,255,.86);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+body[data-page="status.html"] .article-section:not(#timeline) .status-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,48,130,.18);
+  box-shadow: 0 12px 26px rgba(0,48,130,.07);
+}
+
+body[data-page="status.html"] .status-row > strong {
+  color: #183d68;
+}
+
+body[data-page="status.html"] .status-row > span:nth-child(2) {
+  color: #52657a;
+  line-height: 1.65;
+}
+
+body[data-page="status.html"] .pill {
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .01em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+}
+
+body[data-page="status.html"] .pill.done {
+  background: rgba(29,139,87,.10);
+  color: #117047;
+  border-color: rgba(29,139,87,.18);
+}
+
+body[data-page="status.html"] .pill.work {
+  background: rgba(0,96,196,.09);
+  color: #0057aa;
+  border-color: rgba(0,96,196,.16);
+}
+
+body[data-page="status.html"] .pill.plan {
+  background: rgba(255,201,23,.20);
+  color: #725800;
+  border-color: rgba(216,166,0,.26);
+}
+
+body[data-page="status.html"] .aside {
+  border-color: rgba(0,48,130,.10);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 14px 36px rgba(0,48,130,.07);
+}
+
+body[data-page="status.html"] .aside a {
+  border-radius: 11px;
+}
+
+body[data-page="status.html"] .aside a:hover {
+  background: rgba(0,48,130,.06);
+  color: #003082;
+}
+
+@media (max-width: 920px) {
+  body[data-page="status.html"] #timeline .status-row,
+  body[data-page="status.html"] .article-section:not(#timeline) .status-row {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  body[data-page="status.html"] #timeline .status-row .pill,
+  body[data-page="status.html"] .article-section:not(#timeline) .status-row .pill {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="status.html"] .article-section {
+    padding: 26px 20px 28px;
+    border-radius: 23px;
+  }
+
+  body[data-page="status.html"] #timeline .status-list {
+    padding-left: 20px;
+  }
+
+  body[data-page="status.html"] #timeline .status-list::before {
+    left: 5px;
+  }
+
+  body[data-page="status.html"] #timeline .status-row {
+    padding-left: 18px;
+  }
+
+  body[data-page="status.html"] #timeline .status-row::before {
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    border-width: 3px;
+  }
+}
