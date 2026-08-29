@@ -9,6 +9,8 @@ const pages = [
   ['other.html','อื่น ๆ']
 ];
 
+const currentPage = document.body.dataset.page || 'index.html';
+
 // Load the shared footer style on every page.
 if (!document.querySelector('link[href="footer-style.css"]')) {
   const footerStylesheet = document.createElement('link');
@@ -17,9 +19,21 @@ if (!document.querySelector('link[href="footer-style.css"]')) {
   document.head.appendChild(footerStylesheet);
 }
 
+// Page-specific visual systems.
+const pageStyles = {
+  'status.html': 'status-style.css',
+  'other.html': 'reference-style.css'
+};
+if (pageStyles[currentPage] && !document.querySelector(`link[href="${pageStyles[currentPage]}"]`)) {
+  const pageStylesheet = document.createElement('link');
+  pageStylesheet.rel = 'stylesheet';
+  pageStylesheet.href = pageStyles[currentPage];
+  document.head.appendChild(pageStylesheet);
+}
+
 const header = document.querySelector('[data-site-header]');
 if (header) {
-  const current = document.body.dataset.page || 'index.html';
+  const current = currentPage;
   header.innerHTML = `
     <div class="reading-progress" aria-hidden="true"></div>
     <div class="site-header">
@@ -89,7 +103,7 @@ if (footer) {
           <section class="footer-link-group">
             <h2>สำรวจเพิ่มเติม</h2>
             <a href="comparison.html">เปรียบเทียบประเทศเพื่อนบ้าน</a>
-            <a href="other.html">ข้อมูลอื่น ๆ</a>
+            <a href="other.html#sources">คำศัพท์และแหล่งอ้างอิง</a>
             <a href="index.html">หน้าแรก</a>
           </section>
         </nav>
@@ -121,8 +135,32 @@ if (footerTopButton) {
   });
 }
 
+// Centralise source references in other.html.
+// Content pages keep a direct navigation link to their matching reference group,
+// while the old in-page source block is removed from the rendered page.
+const referenceTargets = {
+  'atb.html': 'ref-atb',
+  'ertms.html': 'ref-ertms',
+  'status.html': 'ref-status',
+  'problems.html': 'ref-problems',
+  'comparison.html': 'ref-comparison',
+  'impact.html': 'ref-impact'
+};
+
+if (currentPage !== 'other.html' && referenceTargets[currentPage]) {
+  const oldSourcesSection = document.getElementById('sources');
+  if (oldSourcesSection) oldSourcesSection.remove();
+
+  const oldSourcesNav = document.querySelector('.aside a[href="#sources"]');
+  if (oldSourcesNav) {
+    oldSourcesNav.href = `other.html#${referenceTargets[currentPage]}`;
+    oldSourcesNav.textContent = 'แหล่งอ้างอิง';
+    oldSourcesNav.setAttribute('aria-label', 'เปิดแหล่งอ้างอิงของหัวข้อนี้ในหน้าอื่น ๆ');
+  }
+}
+
 // Homepage history section: academic-style first-line indentation for every paragraph.
-if (document.body.dataset.page === 'index.html') {
+if (currentPage === 'index.html') {
   const historyFixStylesheet = document.createElement('link');
   historyFixStylesheet.rel = 'stylesheet';
   historyFixStylesheet.href = 'history-fix.css';
