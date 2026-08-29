@@ -145,7 +145,9 @@
   .ref-card,
   .reference-card
 ) {
-  animation: nts-card-rise 640ms var(--motion-ease) both;
+  opacity: 1;
+  transform: none;
+  animation: nts-card-rise 640ms var(--motion-ease) backwards;
 }
 
 .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(2) { animation-delay: 70ms; }
@@ -172,7 +174,7 @@
 }
 
 .history-item.reveal .history-copy { transform: translateX(-24px); }
-.history-item-reveal .history-visual { transform: translateX(24px); }
+.history-item.reveal .history-visual { transform: translateX(24px); }
 .history-item-reverse.reveal .history-copy { transform: translateX(24px); }
 .history-item-reverse.reveal .history-visual { transform: translateX(-24px); }
 
@@ -198,24 +200,33 @@
 /* ---------- Status / ERTMS / comparison timeline ---------- */
 .article-section.reveal .ertms-milestone,
 .article-section.reveal .comparison-era,
-.article-section.reveal #timeline .status-row {
+body[data-page="status.html"] #timeline.reveal .status-row {
   opacity: 0;
   transform: translateY(16px);
 }
 
 .article-section.reveal.visible .ertms-milestone,
 .article-section.reveal.visible .comparison-era,
-.article-section.reveal.visible #timeline .status-row {
-  animation: nts-timeline-row 620ms var(--motion-ease) both;
+body[data-page="status.html"] #timeline.reveal.visible .status-row {
+  opacity: 1;
+  transform: none;
+  animation: nts-timeline-row 620ms var(--motion-ease) backwards;
 }
 
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(2) { animation-delay: 80ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(3) { animation-delay: 150ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(4) { animation-delay: 220ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(5) { animation-delay: 290ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(6) { animation-delay: 360ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(7) { animation-delay: 430ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era,#timeline .status-row):nth-child(8) { animation-delay: 500ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(2),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(2) { animation-delay: 80ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(3),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(3) { animation-delay: 150ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(4),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(4) { animation-delay: 220ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(5),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(5) { animation-delay: 290ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(6),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(6) { animation-delay: 360ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(7),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(7) { animation-delay: 430ms; }
+.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(8),
+body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(8) { animation-delay: 500ms; }
 
 @keyframes nts-timeline-row {
   from { opacity: 0; transform: translateY(16px); }
@@ -240,7 +251,9 @@ body[data-page="comparison.html"] .comparison-era-current::before {
 }
 
 .article-section.reveal.visible table tbody tr {
-  animation: nts-table-row 500ms var(--motion-ease-soft) both;
+  opacity: 1;
+  transform: none;
+  animation: nts-table-row 500ms var(--motion-ease-soft) backwards;
 }
 
 .article-section.reveal.visible table tbody tr:nth-child(2) { animation-delay: 55ms; }
@@ -299,8 +312,6 @@ main.page-sheet::before {
   animation-range: entry 0% entry 32%;
 }
 
-.footer-v3-nav { animation-delay: 80ms; }
-
 @keyframes nts-footer-enter {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
@@ -311,7 +322,7 @@ main.page-sheet::before {
   .reveal { transform: translate3d(0, 16px, 0); filter: blur(3px); }
 
   .history-item.reveal .history-copy,
-  .history-item-reveal .history-visual,
+  .history-item.reveal .history-visual,
   .history-item-reverse.reveal .history-copy,
   .history-item-reverse.reveal .history-visual {
     transform: translateY(14px);
