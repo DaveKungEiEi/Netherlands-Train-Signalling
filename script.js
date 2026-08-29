@@ -9,6 +9,14 @@ const pages = [
   ['other.html','อื่น ๆ']
 ];
 
+// Load the shared premium footer style on every page.
+if (!document.querySelector('link[href="footer-style.css"]')) {
+  const footerStylesheet = document.createElement('link');
+  footerStylesheet.rel = 'stylesheet';
+  footerStylesheet.href = 'footer-style.css';
+  document.head.appendChild(footerStylesheet);
+}
+
 const header = document.querySelector('[data-site-header]');
 if (header) {
   const current = document.body.dataset.page || 'index.html';
