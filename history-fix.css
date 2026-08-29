@@ -1,3 +1,5 @@
+@import url("animation-style.css");
+
 /* Homepage history photo cleanup */
 #ns-history .history-visual::before,
 #ns-history .history-visual::after {
