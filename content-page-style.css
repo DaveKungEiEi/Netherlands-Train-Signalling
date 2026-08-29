@@ -1,450 +1,101 @@
+@import url("content-page-style-base.css");
+
 /* =========================================================
-   Shared content-page design system
-   NS-inspired editorial theme for all inner pages
+   Inner-page hero overlay
+   Match the homepage behaviour: the hero stays behind while
+   the main content sheet scrolls upward and covers it.
    ========================================================= */
 
-body:not(.home-page) {
-  color: #263e5a;
+body:not(.home-page)[data-page] .page-hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: clamp(128px, 15vh, 178px);
+  padding-bottom: clamp(78px, 10vh, 116px);
+  isolation: isolate;
 }
 
-body:not(.home-page) .page-sheet {
-  background:
-    radial-gradient(circle at 92% 8%, rgba(0,48,130,.035), transparent 26%),
-    linear-gradient(180deg, #f9fbfe 0%, #f5f8fc 100%);
+body:not(.home-page)[data-page] .page-hero-inner {
+  width: min(100%, var(--editorial-max, 1240px));
+  align-items: center;
 }
 
-/* ---------- Hero ---------- */
-body:not(.home-page) .page-hero {
+/* The article becomes the white sheet that rises over the hero. */
+body:not(.home-page)[data-page] main.page-sheet {
   position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(255,201,23,.22), transparent 28%),
-    radial-gradient(circle at 88% 72%, rgba(36,107,198,.13), transparent 34%),
-    linear-gradient(145deg, #fbfdff 0%, #eef5fc 58%, #e6f0fb 100%);
-  border-bottom: 1px solid rgba(0,48,130,.08);
+  z-index: 4;
+  border-radius: 46px 46px 0 0;
+  box-shadow:
+    0 -24px 82px rgba(0, 48, 130, .12),
+    inset 0 1px 0 rgba(255,255,255,.96);
+  overflow: clip;
 }
 
-body:not(.home-page) .page-hero::before {
+body:not(.home-page)[data-page] main.page-sheet::before {
   content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ffc917 0 34%, #003082 34% 100%);
-  opacity: .9;
-}
-
-body:not(.home-page) .page-hero::after {
-  content: "";
-  position: absolute;
-  right: -5%;
-  bottom: 14%;
-  width: min(500px, 40vw);
-  height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(0,48,130,.16) 0 40px, transparent 40px 56px);
-  transform: rotate(-7deg);
+  display: block;
+  width: 56px;
+  height: 5px;
+  margin: 14px auto -19px;
+  border-radius: 999px;
+  background: rgba(0,48,130,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
   pointer-events: none;
 }
 
-body:not(.home-page) .page-hero-inner {
-  position: relative;
-  z-index: 1;
-}
-
-body:not(.home-page) .page-hero h1 {
-  color: #0d2d55;
-  letter-spacing: -.045em;
-}
-
-body:not(.home-page) .hero-copy {
-  color: #3d5672;
-  line-height: 1.9;
-}
-
-body:not(.home-page) .eyebrow {
-  color: #003082;
-  font-weight: 750;
-}
-
-body:not(.home-page) .page-badge {
-  border: 1px solid rgba(255,255,255,.92);
-  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(240,247,255,.68));
-  box-shadow: 0 22px 54px rgba(0,48,130,.12), inset 0 1px 0 rgba(255,255,255,.98);
-  -webkit-backdrop-filter: blur(20px) saturate(145%);
-  backdrop-filter: blur(20px) saturate(145%);
-}
-
-body:not(.home-page) .page-badge .big {
-  color: #003082;
-  letter-spacing: -.045em;
-}
-
-body:not(.home-page) .page-badge p {
-  color: #425c78;
-  line-height: 1.65;
-}
-
-/* ---------- Main article cards ---------- */
-body:not(.home-page) .article-section {
-  position: relative;
-  padding: clamp(30px, 4vw, 48px);
-  margin-bottom: 30px;
-  border: 1px solid rgba(0,48,130,.10);
-  border-radius: 30px;
-  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,250,254,.94));
-  box-shadow: 0 16px 44px rgba(25,58,96,.075);
-  overflow: hidden;
-}
-
-body:not(.home-page) .article-section::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(180deg, #ffc917, #003082 62%, rgba(0,48,130,.18));
-}
-
-body:not(.home-page) .article-section h2 {
-  position: relative;
-  margin-bottom: 22px;
-  padding-bottom: 13px;
-  color: #0f315b;
-  letter-spacing: -.035em;
-  line-height: 1.25;
-}
-
-body:not(.home-page) .article-section h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 58px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #ffc917 0 45%, #003082 45% 100%);
-}
-
-body:not(.home-page) .article-section > p {
-  color: #354f6c;
-  line-height: 1.95;
-  text-align: justify;
-  text-justify: inter-character;
-  text-align-last: left;
-  text-indent: 5em;
-  word-break: normal;
-  overflow-wrap: break-word;
-  hyphens: none;
-  font-kerning: normal;
-}
-
-body:not(.home-page) .article-section > p + p {
-  margin-top: 1.2rem;
-}
-
-body:not(.home-page) .article-section .kicker {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  margin-bottom: 10px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  background: rgba(0,48,130,.075);
-  color: #003082;
-  font-weight: 760;
-  letter-spacing: .02em;
-}
-
-/* ---------- Information cards ---------- */
-body:not(.home-page) .info-grid,
-body:not(.home-page) .country-grid,
-body:not(.home-page) .impact-grid {
-  gap: 16px;
-}
-
-body:not(.home-page) .info-card,
-body:not(.home-page) .country-card,
-body:not(.home-page) .impact-card,
-body:not(.home-page) .term {
-  border: 1px solid rgba(0,48,130,.11);
-  background: rgba(255,255,255,.94);
-  box-shadow: 0 12px 30px rgba(0,48,130,.065);
-  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
-
-body:not(.home-page) .info-card:hover,
-body:not(.home-page) .country-card:hover,
-body:not(.home-page) .impact-card:hover,
-body:not(.home-page) .term:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0,48,130,.20);
-  box-shadow: 0 16px 34px rgba(0,48,130,.09);
-}
-
-body:not(.home-page) .info-card h3,
-body:not(.home-page) .country-card h3,
-body:not(.home-page) .impact-card h3,
-body:not(.home-page) .term dt {
-  color: #123a69;
-}
-
-body:not(.home-page) .info-card p,
-body:not(.home-page) .country-card p,
-body:not(.home-page) .impact-card p,
-body:not(.home-page) .term dd {
-  color: #415b76;
-  line-height: 1.72;
-}
-
-body:not(.home-page) .info-card .icon,
-body:not(.home-page) .impact-card .num {
-  color: #003082;
-  background: rgba(255,201,23,.22);
-  border-color: rgba(255,201,23,.48);
-}
-
-/* ---------- Diagram ---------- */
-body:not(.home-page) .signal-diagram {
-  border: 1px solid rgba(0,48,130,.11);
-  background: linear-gradient(145deg, rgba(248,252,255,.98), rgba(239,246,253,.92));
-  box-shadow: 0 14px 34px rgba(0,48,130,.065);
-}
-
-body:not(.home-page) .diagram-node {
-  border: 1px solid rgba(0,48,130,.11);
-  background: rgba(255,255,255,.94);
-  box-shadow: 0 8px 20px rgba(0,48,130,.045);
-}
-
-body:not(.home-page) .diagram-node strong {
-  color: #0e396c;
-}
-
-body:not(.home-page) .diagram-node small {
-  color: #526a83;
-  line-height: 1.55;
-}
-
-/* Status page: keep all four Tranche steps evenly distributed. */
-body[data-page="status.html"] #tranche1 .signal-diagram {
-  padding: 26px;
-}
-
-body[data-page="status.html"] #tranche1 .diagram-flow {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  width: 100%;
-  align-items: stretch;
-}
-
-body[data-page="status.html"] #tranche1 .diagram-node {
-  width: 100%;
-  min-width: 0;
-  min-height: 245px;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 22px 17px;
-  text-align: center;
-}
-
-body[data-page="status.html"] #tranche1 .diagram-node strong {
-  width: 100%;
-  min-height: 3.4em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.45;
-}
-
-body[data-page="status.html"] #tranche1 .diagram-node small {
-  display: block;
-  margin-top: 10px;
-}
-
-/* ---------- Tables ---------- */
-body:not(.home-page) .compare-table-wrap {
-  border: 1px solid rgba(0,48,130,.11);
-  border-radius: 20px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 12px 30px rgba(0,48,130,.055);
-}
-
-body:not(.home-page) .compare-table-wrap table {
-  margin: 0;
-}
-
-body:not(.home-page) .compare-table-wrap th {
-  background: #eaf2fb;
-  color: #0e315d;
-  border-color: rgba(0,48,130,.10);
-}
-
-body:not(.home-page) .compare-table-wrap td {
-  color: #3e5873;
-  border-color: rgba(0,48,130,.08);
-}
-
-body:not(.home-page) .compare-table-wrap tbody tr:nth-child(even) td {
-  background: rgba(244,248,252,.72);
-}
-
-body:not(.home-page) .compare-table-wrap tbody tr:hover td {
-  background: rgba(255,201,23,.07);
-}
-
-/* ---------- Callouts ---------- */
-body:not(.home-page) .callout {
-  border: 1px solid rgba(219,166,0,.34);
-  border-left: 5px solid #ffc917;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #fff8da, #fffdf3);
-  color: #304a65;
-  line-height: 1.75;
-  box-shadow: 0 10px 24px rgba(117,90,0,.055);
-}
-
-body:not(.home-page) .callout strong {
-  color: #574600;
-}
-
-/* ---------- Generic timelines ---------- */
-body:not(.home-page) .timeline {
-  position: relative;
-}
-
-body:not(.home-page) .timeline-card {
-  border: 1px solid rgba(0,48,130,.11);
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 12px 28px rgba(0,48,130,.06);
-}
-
-body:not(.home-page) .timeline-card h3,
-body:not(.home-page) .timeline-year {
-  color: #003082;
-}
-
-body:not(.home-page) .timeline-card p {
-  color: #405a75;
-  line-height: 1.75;
-}
-
-/* ---------- Sidebar ---------- */
-body:not(.home-page) .aside {
-  border: 1px solid rgba(0,48,130,.11);
-  background: rgba(255,255,255,.88);
-  box-shadow: 0 14px 36px rgba(0,48,130,.075);
-  -webkit-backdrop-filter: blur(16px) saturate(125%);
-  backdrop-filter: blur(16px) saturate(125%);
-}
-
-body:not(.home-page) .aside-title {
-  color: #12345f;
-  font-weight: 780;
-}
-
-body:not(.home-page) .aside a {
-  border-radius: 11px;
-  color: #425d79;
-  transition: color .18s ease, background-color .18s ease, transform .18s ease;
-}
-
-body:not(.home-page) .aside a:hover,
-body:not(.home-page) .aside a:focus-visible {
-  background: rgba(0,48,130,.07);
-  color: #003082;
-  transform: translateX(2px);
-}
-
-/* ---------- Reference/source links when present ---------- */
-body:not(.home-page) .source-link {
-  border-color: rgba(0,48,130,.11);
-  background: rgba(255,255,255,.92);
-  color: #244766;
-}
-
-body:not(.home-page) .source-link:hover,
-body:not(.home-page) .source-link:focus-visible {
-  border-color: rgba(0,48,130,.24);
-  color: #003082;
-  box-shadow: 0 10px 24px rgba(0,48,130,.07);
-}
-
-/* ---------- Accessibility / focus ---------- */
-body:not(.home-page) .article-section a:focus-visible,
-body:not(.home-page) .aside a:focus-visible,
-body:not(.home-page) .source-link:focus-visible {
-  outline: 3px solid rgba(255,201,23,.7);
-  outline-offset: 3px;
+/* Give the first section enough breathing room below the overlay handle. */
+body:not(.home-page)[data-page] main.page-sheet > .section:first-child {
+  padding-top: clamp(92px, 9vw, 118px);
 }
 
 @media (max-width: 920px) {
-  body:not(.home-page) .article-section {
-    padding: 30px 26px 34px;
+  body:not(.home-page)[data-page] .page-hero {
+    min-height: 100svh;
+    padding-top: 118px;
+    padding-bottom: 74px;
   }
 
-  body[data-page="status.html"] #tranche1 .diagram-flow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  body[data-page="status.html"] #tranche1 .diagram-node {
-    min-height: 220px;
+  body:not(.home-page)[data-page] main.page-sheet {
+    border-radius: 34px 34px 0 0;
   }
 }
 
 @media (max-width: 720px) {
-  body:not(.home-page) .article-section {
-    padding: 26px 20px 28px;
-    border-radius: 23px;
-    margin-bottom: 22px;
+  body:not(.home-page)[data-page] .page-hero {
+    min-height: 100svh;
+    height: auto;
+    padding: 108px 18px 68px;
+    align-items: center;
   }
 
-  body:not(.home-page) .article-section h2 {
-    padding-bottom: 11px;
+  body:not(.home-page)[data-page] .page-hero-inner {
+    gap: 28px;
   }
 
-  body:not(.home-page) .article-section > p {
-    line-height: 1.9;
+  body:not(.home-page)[data-page] main.page-sheet {
+    border-radius: 28px 28px 0 0;
+    box-shadow:
+      0 -18px 56px rgba(0,48,130,.11),
+      inset 0 1px 0 rgba(255,255,255,.96);
   }
 
-  body:not(.home-page) .hero-copy {
-    color: #36516d;
+  body:not(.home-page)[data-page] main.page-sheet::before {
+    width: 46px;
+    height: 4px;
+    margin-top: 11px;
   }
 
-  body:not(.home-page) .page-badge p,
-  body:not(.home-page) .diagram-node small,
-  body:not(.home-page) .info-card p,
-  body:not(.home-page) .country-card p,
-  body:not(.home-page) .impact-card p {
-    color: #3f5974;
-  }
-}
-
-@media (max-width: 560px) {
-  body[data-page="status.html"] #tranche1 .signal-diagram {
-    padding: 16px;
-  }
-
-  body[data-page="status.html"] #tranche1 .diagram-flow {
-    grid-template-columns: 1fr;
-  }
-
-  body[data-page="status.html"] #tranche1 .diagram-node {
-    min-height: 0;
+  body:not(.home-page)[data-page] main.page-sheet > .section:first-child {
+    padding-top: 76px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body:not(.home-page) .info-card,
-  body:not(.home-page) .country-card,
-  body:not(.home-page) .impact-card,
-  body:not(.home-page) .term,
-  body:not(.home-page) .aside a {
-    transition: none !important;
+  body:not(.home-page)[data-page] .page-hero {
+    scroll-behavior: auto;
   }
 }
