@@ -1,265 +1,650 @@
 /* =========================================================
-   Impact page — legacy fleet retrofit section
+   Impact page — visual editorial layout
+   Keeps the NS blue/yellow language while reducing text density.
    ========================================================= */
 
-body[data-page="impact.html"] .retrofit-lead {
-  margin-bottom: 26px;
+body[data-page="impact.html"] {
+  --impact-blue: #003082;
+  --impact-blue-2: #145fa8;
+  --impact-ink: #12365f;
+  --impact-text: #405a73;
+  --impact-yellow: #ffc917;
+  --impact-soft: #eef5fc;
+  --impact-line: rgba(0,48,130,.11);
 }
 
-body[data-page="impact.html"] .retrofit-grid {
+body[data-page="impact.html"] .article-section {
+  margin-bottom: clamp(64px, 8vw, 104px);
+}
+
+body[data-page="impact.html"] .article-section > h2 {
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+
+body[data-page="impact.html"] .impact-lead,
+body[data-page="impact.html"] .retrofit-copy p,
+body[data-page="impact.html"] .virm-story-copy > p,
+body[data-page="impact.html"] .fleet-side p,
+body[data-page="impact.html"] .longdistance-layout > p,
+body[data-page="impact.html"] .transition-strip p {
+  text-indent: 0 !important;
+  text-align: left !important;
+  max-width: none;
+}
+
+body[data-page="impact.html"] .impact-lead {
+  max-width: 800px;
+  color: #49627b;
+  font-size: 1.03rem;
+  line-height: 1.85;
+}
+
+/* ---------- Snapshot ---------- */
+body[data-page="impact.html"] .impact-snapshot {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin: 28px 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 32px 0 26px;
+  overflow: hidden;
+  border: 1px solid var(--impact-line);
+  border-radius: 24px;
+  background: var(--impact-line);
+  box-shadow: 0 16px 36px rgba(0,48,130,.06);
 }
 
-body[data-page="impact.html"] .retrofit-card {
-  position: relative;
-  min-height: 230px;
-  padding: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(0,48,130,.10);
+body[data-page="impact.html"] .snapshot-item {
+  min-height: 150px;
+  padding: 24px 22px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255,201,23,.12), transparent 28%),
+    rgba(255,255,255,.96);
+}
+
+body[data-page="impact.html"] .snapshot-item > span {
+  color: #8798aa;
+  font-size: .67rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+body[data-page="impact.html"] .snapshot-item strong {
+  display: block;
+  margin-top: 15px;
+  color: var(--impact-blue);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+body[data-page="impact.html"] .snapshot-item small {
+  display: block;
+  margin-top: 9px;
+  color: #5b7086;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+/* ---------- Six compact effects ---------- */
+body[data-page="impact.html"] .impact-grid-modern {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+body[data-page="impact.html"] .impact-grid-modern .impact-card {
+  min-height: 205px;
+  padding: 24px 22px;
+  border: 1px solid var(--impact-line);
   border-radius: 22px;
   background:
-    radial-gradient(circle at 92% 8%, rgba(255,201,23,.12), transparent 25%),
-    linear-gradient(145deg, #fff, #f8fbff);
-  box-shadow: 0 12px 30px rgba(0,48,130,.055);
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(247,250,254,.96));
+  box-shadow: 0 10px 26px rgba(0,48,130,.045);
 }
 
-body[data-page="impact.html"] .retrofit-card::after {
+body[data-page="impact.html"] .impact-grid-modern .num {
+  color: var(--impact-yellow);
+  font-size: 2rem;
+  text-shadow: none;
+}
+
+body[data-page="impact.html"] .impact-grid-modern h3 {
+  margin: 14px 0 9px;
+  color: var(--impact-ink);
+  font-size: 1.02rem;
+  line-height: 1.38;
+}
+
+body[data-page="impact.html"] .impact-grid-modern p {
+  margin: 0;
+  color: #4a6279;
+  font-size: .88rem;
+  line-height: 1.7;
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+/* ---------- Shared image cards ---------- */
+body[data-page="impact.html"] .impact-media {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 26px;
+  background: #dfeaf5;
+  box-shadow: 0 20px 48px rgba(0,48,130,.10);
+  isolation: isolate;
+}
+
+body[data-page="impact.html"] .impact-media::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 5px;
+  inset: 48% 0 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(4,28,61,.82));
+}
+
+body[data-page="impact.html"] .impact-media img {
+  width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #ffc917, #003082);
-  opacity: .92;
+  display: block;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.22,.78,.22,1);
 }
 
-body[data-page="impact.html"] .retrofit-card .retrofit-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 16px;
-  border-radius: 13px;
-  background: #edf4fb;
-  color: #003082;
+body[data-page="impact.html"] .impact-media figcaption {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  right: 22px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #fff;
+}
+
+body[data-page="impact.html"] .impact-media figcaption strong {
+  font-size: 1rem;
+  font-weight: 850;
+}
+
+body[data-page="impact.html"] .impact-media figcaption span {
+  color: rgba(255,255,255,.82);
   font-size: .75rem;
-  font-weight: 900;
-  letter-spacing: .02em;
-}
-
-body[data-page="impact.html"] .retrofit-card h3 {
-  margin: 0 0 10px;
-  color: #173f6c;
-  font-size: 1.08rem;
   line-height: 1.45;
 }
 
-body[data-page="impact.html"] .retrofit-card p {
-  margin: 0;
-  color: #425b74;
-  line-height: 1.78;
+/* ---------- Retrofit showcase ---------- */
+body[data-page="impact.html"] .retrofit-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+  gap: 28px;
+  align-items: stretch;
+  margin: 30px 0 24px;
 }
 
-body[data-page="impact.html"] .retrofit-card strong {
-  color: #173f6c;
+body[data-page="impact.html"] .impact-media-virm {
+  min-height: 420px;
 }
 
-body[data-page="impact.html"] .virm-case {
-  position: relative;
-  margin: 34px 0 28px;
-  padding: clamp(24px, 4vw, 38px);
-  overflow: hidden;
-  border: 1px solid rgba(0,48,130,.12);
-  border-radius: 28px;
+body[data-page="impact.html"] .impact-media-virm img {
+  object-position: center 48%;
+}
+
+body[data-page="impact.html"] .retrofit-copy {
+  padding: clamp(26px, 4vw, 42px);
+  border: 1px solid var(--impact-line);
+  border-radius: 26px;
   background:
-    radial-gradient(circle at 86% 18%, rgba(255,201,23,.18), transparent 27%),
-    linear-gradient(135deg, #eef6ff, #fff 58%);
-  box-shadow: 0 18px 42px rgba(0,48,130,.08);
+    radial-gradient(circle at 92% 8%, rgba(255,201,23,.16), transparent 25%),
+    linear-gradient(145deg, #f5f9fe, #fff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
 }
 
-body[data-page="impact.html"] .virm-case::before {
-  content: "VIRM";
-  position: absolute;
-  right: 22px;
-  bottom: -24px;
-  color: rgba(0,48,130,.045);
-  font-size: clamp(5rem, 13vw, 9rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -.07em;
-  pointer-events: none;
-}
-
-body[data-page="impact.html"] .virm-case-head {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 22px;
-  margin-bottom: 24px;
-}
-
-body[data-page="impact.html"] .virm-case-head span {
+body[data-page="impact.html"] .impact-label {
   display: inline-flex;
   padding: 6px 10px;
   border-radius: 999px;
-  background: #003082;
-  color: #fff;
-  font-size: .7rem;
-  font-weight: 800;
-  letter-spacing: .06em;
+  background: #e7f0fa;
+  color: var(--impact-blue);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .075em;
 }
 
-body[data-page="impact.html"] .virm-case h3 {
-  margin: 10px 0 0;
-  color: #123d70;
-  font-size: clamp(1.45rem, 3vw, 2.15rem);
+body[data-page="impact.html"] .retrofit-copy h3,
+body[data-page="impact.html"] .virm-story-copy h3 {
+  margin: 16px 0 14px;
+  color: var(--impact-ink);
+  font-size: clamp(1.45rem, 2.6vw, 2.1rem);
   line-height: 1.3;
+  letter-spacing: -.025em;
 }
 
-body[data-page="impact.html"] .virm-case-metric {
-  flex: 0 0 auto;
-  text-align: right;
-}
-
-body[data-page="impact.html"] .virm-case-metric strong {
-  display: block;
-  color: #003082;
-  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
-  line-height: 1;
-  letter-spacing: -.05em;
-}
-
-body[data-page="impact.html"] .virm-case-metric small {
-  display: block;
-  margin-top: 6px;
-  color: #61758a;
-  font-size: .72rem;
-}
-
-body[data-page="impact.html"] .virm-facts {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-body[data-page="impact.html"] .virm-fact {
-  padding: 17px 18px;
-  border: 1px solid rgba(0,48,130,.08);
-  border-radius: 16px;
-  background: rgba(255,255,255,.75);
-  color: #405a73;
-  line-height: 1.68;
-}
-
-body[data-page="impact.html"] .virm-fact strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #173f6c;
-}
-
-body[data-page="impact.html"] .fleet-compare {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin: 26px 0;
-}
-
-body[data-page="impact.html"] .fleet-compare > div {
-  padding: 22px;
-  border-radius: 20px;
-  border: 1px solid rgba(0,48,130,.10);
-}
-
-body[data-page="impact.html"] .fleet-compare .legacy {
-  background: #fff9df;
-  border-color: rgba(177,132,0,.20);
-}
-
-body[data-page="impact.html"] .fleet-compare .newer {
-  background: #edf6ff;
-}
-
-body[data-page="impact.html"] .fleet-compare h3 {
-  margin: 0 0 10px;
-  color: #173f6c;
-}
-
-body[data-page="impact.html"] .fleet-compare p {
+body[data-page="impact.html"] .retrofit-copy p,
+body[data-page="impact.html"] .virm-story-copy > p {
   margin: 0;
-  color: #405a73;
-  line-height: 1.75;
+  color: var(--impact-text);
+  line-height: 1.78;
 }
 
-body[data-page="impact.html"] .evidence-note {
-  margin: 28px 0;
-  padding: 20px 22px;
-  border-radius: 18px;
+body[data-page="impact.html"] .retrofit-mini-facts,
+body[data-page="impact.html"] .fleet-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+body[data-page="impact.html"] .retrofit-mini-facts span,
+body[data-page="impact.html"] .fleet-tags span {
+  padding: 7px 10px;
   border: 1px solid rgba(0,48,130,.10);
-  background: linear-gradient(135deg, #f4f8fd, #fff);
-  color: #405a73;
-  line-height: 1.75;
+  border-radius: 999px;
+  background: rgba(255,255,255,.84);
+  color: #47617a;
+  font-size: .7rem;
+  font-weight: 750;
 }
 
-body[data-page="impact.html"] .evidence-note strong {
-  color: #003082;
+/* ---------- Four core constraints ---------- */
+body[data-page="impact.html"] .retrofit-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin: 18px 0;
 }
 
-body[data-page="impact.html"] #retrofit .source-list {
+body[data-page="impact.html"] .retrofit-point {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--impact-line);
+  border-radius: 19px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 8px 20px rgba(0,48,130,.035);
+}
+
+body[data-page="impact.html"] .retrofit-point > span {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #edf4fb;
+  color: var(--impact-blue);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+
+body[data-page="impact.html"] .retrofit-point h3 {
+  margin: 2px 0 6px;
+  color: var(--impact-ink);
+  font-size: 1rem;
+}
+
+body[data-page="impact.html"] .retrofit-point p {
+  margin: 0;
+  color: #526a81;
+  font-size: .84rem;
+  line-height: 1.65;
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+body[data-page="impact.html"] .transition-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 22px;
+  background: rgba(0,48,130,.10);
+}
+
+body[data-page="impact.html"] .transition-strip > div {
+  padding: 24px;
+  background: linear-gradient(145deg, #073d83, #003082);
+  color: #fff;
+}
+
+body[data-page="impact.html"] .transition-strip > div:last-child {
+  background: linear-gradient(145deg, #fff7d3, #fffdf5);
+  color: var(--impact-ink);
+}
+
+body[data-page="impact.html"] .transition-strip span {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffc917;
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+body[data-page="impact.html"] .transition-strip > div:last-child span { color: #7a5b00; }
+
+body[data-page="impact.html"] .transition-strip strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 1rem;
+}
+
+body[data-page="impact.html"] .transition-strip p {
+  margin: 0;
+  color: rgba(255,255,255,.76);
+  font-size: .82rem;
+  line-height: 1.65;
+}
+
+body[data-page="impact.html"] .transition-strip > div:last-child p { color: #52677e; }
+
+/* ---------- VIRM case study ---------- */
+body[data-page="impact.html"] .virm-story {
+  display: grid;
+  grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: stretch;
   margin-top: 28px;
 }
 
-body[data-page="impact.html"] #retrofit .source-list::before {
-  content: "แหล่งข้อมูลที่ใช้ในส่วนนี้";
-  display: block;
-  margin: 0 0 10px 2px;
-  color: #173f6c;
-  font-size: .78rem;
-  font-weight: 850;
-  letter-spacing: .04em;
+body[data-page="impact.html"] .impact-media-cab {
+  min-height: 455px;
 }
 
-html[lang="en"] body[data-page="impact.html"] #retrofit .source-list::before {
-  content: "Sources used in this section";
+body[data-page="impact.html"] .impact-media-cab img { object-position: 50% 48%; }
+
+body[data-page="impact.html"] .virm-story-copy {
+  padding: clamp(26px, 4vw, 42px);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255,201,23,.14), transparent 24%),
+    #f8fbff;
+  border: 1px solid var(--impact-line);
+}
+
+body[data-page="impact.html"] .virm-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 26px;
+}
+
+body[data-page="impact.html"] .virm-metrics > div {
+  min-height: 126px;
+  padding: 16px 14px;
+  border: 1px solid rgba(0,48,130,.09);
+  border-radius: 17px;
+  background: #fff;
+}
+
+body[data-page="impact.html"] .virm-metrics strong {
+  display: block;
+  color: var(--impact-blue);
+  font-size: clamp(1.15rem, 2.2vw, 1.8rem);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+}
+
+body[data-page="impact.html"] .virm-metrics span {
+  display: block;
+  margin-top: 8px;
+  color: #5d7288;
+  font-size: .72rem;
+  line-height: 1.55;
+}
+
+/* ---------- Fleet visual comparison ---------- */
+body[data-page="impact.html"] .fleet-visual-compare {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(300px, 1.15fr) minmax(0, .8fr);
+  gap: 15px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+
+body[data-page="impact.html"] .fleet-side {
+  padding: 26px 24px;
+  border: 1px solid var(--impact-line);
+  border-radius: 23px;
+}
+
+body[data-page="impact.html"] .legacy-side {
+  background: linear-gradient(145deg, #fff8d9, #fffdf5);
+  border-color: rgba(178,132,0,.20);
+}
+
+body[data-page="impact.html"] .newer-side {
+  background: linear-gradient(145deg, #edf6ff, #fbfdff);
+}
+
+body[data-page="impact.html"] .fleet-side-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+body[data-page="impact.html"] .fleet-side-head > span {
+  color: #7a5a00;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+body[data-page="impact.html"] .newer-side .fleet-side-head > span { color: var(--impact-blue); }
+
+body[data-page="impact.html"] .fleet-side-head strong {
+  color: var(--impact-ink);
+  font-size: 1.16rem;
+}
+
+body[data-page="impact.html"] .fleet-side p {
+  margin: 0;
+  color: #526a80;
+  font-size: .88rem;
+  line-height: 1.72;
+}
+
+body[data-page="impact.html"] .impact-media-icng {
+  min-height: 340px;
+}
+
+body[data-page="impact.html"] .impact-media-icng img { object-position: center; }
+
+/* ---------- Long-distance ---------- */
+body[data-page="impact.html"] .longdistance-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+body[data-page="impact.html"] .longdistance-layout > p {
+  margin: 0;
+  padding: 26px;
+  border-left: 5px solid var(--impact-yellow);
+  border-radius: 0 20px 20px 0;
+  background: #fbfdff;
+  color: #445e77;
+  line-height: 1.85;
+}
+
+body[data-page="impact.html"] .longdistance-points {
+  display: grid;
+  gap: 10px;
+}
+
+body[data-page="impact.html"] .longdistance-points > div {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid var(--impact-line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+body[data-page="impact.html"] .longdistance-points strong {
+  color: var(--impact-yellow);
+  font-size: 1.4rem;
+}
+
+body[data-page="impact.html"] .longdistance-points span {
+  color: #405a73;
+  font-size: .88rem;
+  line-height: 1.55;
+}
+
+/* ---------- Balance board ---------- */
+body[data-page="impact.html"] .balance-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+
+body[data-page="impact.html"] .balance-side {
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid var(--impact-line);
+}
+
+body[data-page="impact.html"] .migration-side {
+  background: linear-gradient(145deg, #fff8dc, #fffef8);
+  border-color: rgba(177,132,0,.20);
+}
+
+body[data-page="impact.html"] .mature-side {
+  background: linear-gradient(145deg, #eaf4ff, #fbfdff);
+}
+
+body[data-page="impact.html"] .balance-side > span {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  color: var(--impact-blue);
+  font-size: .7rem;
+  font-weight: 850;
+}
+
+body[data-page="impact.html"] .balance-side ul {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+body[data-page="impact.html"] .balance-side li {
+  margin: 0 0 12px;
+  color: #405a73;
+  line-height: 1.65;
+}
+
+body[data-page="impact.html"] .balance-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--impact-blue);
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+body[data-page="impact.html"] .reference-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: 22px;
+  padding: 20px 22px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 20px;
+  background: #f7faff;
+}
+
+body[data-page="impact.html"] .reference-cta div > span {
+  display: block;
+  color: #72859a;
+  font-size: .67rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+body[data-page="impact.html"] .reference-cta strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--impact-ink);
+  font-size: .92rem;
+}
+
+body[data-page="impact.html"] .reference-cta a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--impact-blue);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 @media (hover:hover) and (pointer:fine) {
-  body[data-page="impact.html"] .retrofit-card:hover {
+  body[data-page="impact.html"] .impact-media:hover img { transform: scale(1.035); }
+  body[data-page="impact.html"] .impact-grid-modern .impact-card:hover,
+  body[data-page="impact.html"] .retrofit-point:hover {
     transform: translateY(-4px);
     border-color: rgba(0,48,130,.20);
-    box-shadow: 0 18px 36px rgba(0,48,130,.09);
+    box-shadow: 0 16px 32px rgba(0,48,130,.08);
   }
+  body[data-page="impact.html"] .reference-cta a:hover { transform: translateY(-2px); }
+}
+
+@media (max-width: 1040px) {
+  body[data-page="impact.html"] .impact-grid-modern { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body[data-page="impact.html"] .retrofit-showcase,
+  body[data-page="impact.html"] .virm-story,
+  body[data-page="impact.html"] .longdistance-layout { grid-template-columns: 1fr; }
+  body[data-page="impact.html"] .fleet-visual-compare { grid-template-columns: 1fr 1fr; }
+  body[data-page="impact.html"] .impact-media-icng { grid-column: 1 / -1; grid-row: 1; }
 }
 
 @media (max-width: 720px) {
-  body[data-page="impact.html"] .retrofit-grid,
-  body[data-page="impact.html"] .virm-facts,
-  body[data-page="impact.html"] .fleet-compare {
+  body[data-page="impact.html"] .impact-snapshot,
+  body[data-page="impact.html"] .impact-grid-modern,
+  body[data-page="impact.html"] .retrofit-points,
+  body[data-page="impact.html"] .transition-strip,
+  body[data-page="impact.html"] .virm-metrics,
+  body[data-page="impact.html"] .fleet-visual-compare {
     grid-template-columns: 1fr;
   }
 
-  body[data-page="impact.html"] .retrofit-card {
-    min-height: 0;
-  }
-
-  body[data-page="impact.html"] .virm-case-head {
-    flex-direction: column;
-  }
-
-  body[data-page="impact.html"] .virm-case-metric {
-    text-align: left;
-  }
+  body[data-page="impact.html"] .snapshot-item { min-height: 0; }
+  body[data-page="impact.html"] .impact-media-virm,
+  body[data-page="impact.html"] .impact-media-cab,
+  body[data-page="impact.html"] .impact-media-icng { min-height: 280px; }
+  body[data-page="impact.html"] .retrofit-point { grid-template-columns: 54px 1fr; padding: 17px; }
+  body[data-page="impact.html"] .retrofit-point > span { width: 46px; height: 46px; border-radius: 14px; }
+  body[data-page="impact.html"] .balance-board { grid-template-columns: 1fr; }
+  body[data-page="impact.html"] .balance-arrow { transform: rotate(90deg); min-height: 42px; }
+  body[data-page="impact.html"] .reference-cta { align-items: flex-start; flex-direction: column; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body[data-page="impact.html"] .retrofit-card {
+  body[data-page="impact.html"] .impact-media img,
+  body[data-page="impact.html"] .impact-card,
+  body[data-page="impact.html"] .retrofit-point,
+  body[data-page="impact.html"] .reference-cta a {
     transition: none !important;
   }
 }
