@@ -22,11 +22,11 @@
       <div class="reveal">
         <div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 04.1 • Updated 2026</div>
         <h1>เนเธอร์แลนด์ <span style="color:#ae1c28">×</span> เบลเยียม <span style="color:#ae1c28">×</span> เยอรมนี</h1>
-        <p class="hero-copy">ทั้งสามประเทศใช้มาตรฐานยุโรปเดียวกันเป็นเป้าหมาย แต่เริ่มต้นจากระบบเดิมที่ต่างกัน มีขนาดโครงข่ายต่างกัน และเลือกวิธีเปลี่ยนผ่านไม่เหมือนกัน จึงทำให้ความเร็วและความซับซ้อนของการติดตั้ง ETCS แตกต่างกันอย่างชัดเจน</p>
+        <p class="hero-copy">ทั้งสามประเทศมีเป้าหมายเดียวกัน คือเปลี่ยนไปใช้มาตรฐาน ERTMS/ETCS ของยุโรป แต่แต่ละประเทศเริ่มจากระบบเดิม ขนาดโครงข่าย และวิธีดำเนินงานที่ต่างกัน จึงทำให้จังหวะการเปลี่ยนผ่านไม่เหมือนกัน</p>
       </div>
       <div class="page-badge glass-card reveal">
         <div class="big">Past → 2026</div>
-        <p>เปรียบเทียบระบบเดิม • จุดเริ่ม ETCS • วิธี rollout • สถานะปัจจุบัน • บทเรียนข้ามพรมแดน</p>
+        <p>ระบบเดิม • จุดเริ่ม ETCS • วิธีขยายระบบ • สถานะล่าสุด • การเดินรถข้ามพรมแดน</p>
       </div>
     </div>
   </header>
@@ -39,7 +39,7 @@
           <section class="article-section reveal" id="overview">
             <div class="kicker">2026 snapshot</div>
             <h2>ภาพรวมล่าสุดของทั้งสามประเทศ</h2>
-            <p>หากดูเฉพาะคำว่า “ใช้ ETCS หรือไม่” ทั้งสามประเทศดูเหมือนกำลังมุ่งไปในทิศทางเดียวกัน แต่เมื่อดูรายละเอียดจะเห็นความแตกต่างมาก เบลเยียมเร่งติดตั้งแบบครอบคลุมทั้งประเทศและทำโครงสร้างพื้นฐานสำเร็จแล้ว ขณะที่เนเธอร์แลนด์เลือกเรียนรู้เป็น Tranche ก่อนขยาย และเยอรมนียังอยู่ในช่วงเปลี่ยนระบบขนาดใหญ่ซึ่งต้องประสาน ETCS กับ PZB, LZB และการปรับระบบ interlocking จำนวนมาก</p>
+            <p>หากมองเพียงว่าแต่ละประเทศ “มี ETCS หรือยัง” ทั้งสามประเทศอาจดูคล้ายกัน แต่สถานะจริงต่างกันมาก เบลเยียมติดตั้ง ETCS ครบโครงข่ายหลักแล้ว เนเธอร์แลนด์กำลังขยายระบบเป็นช่วงย่อยหรือ <strong>Tranche</strong> เพื่อเรียนรู้และทดสอบก่อนขยายต่อ ส่วนเยอรมนียังต้องติดตั้ง ETCS ควบคู่กับระบบเดิมและการปรับระบบควบคุมเส้นทางและสัญญาณ (interlocking) บนโครงข่ายขนาดใหญ่มาก</p>
 
             <div class="country-grid comparison-country-grid">
               <div class="country-card glass-card comparison-country-card">
@@ -47,7 +47,7 @@
                 <span class="comparison-status-chip">กำลังเปลี่ยนผ่าน</span>
                 <h3>เนเธอร์แลนด์</h3>
                 <div class="metric">Tranche 1 · 419 km</div>
-                <p>มีประสบการณ์ ERTMS บน Betuweroute, HSL-Zuid, Hanzelijn และ Amsterdam–Utrecht อยู่ก่อนแล้ว ปัจจุบันโครงการใหม่เดินหน้าแบบ Tranche โดย Tranche 1 ครอบคลุม Northern Lines, Zeeuwse lijn และ Kijfhoek–Belgian border</p>
+                <p>เนเธอร์แลนด์มีประสบการณ์ ERTMS จาก Betuweroute, HSL-Zuid, Hanzelijn และ Amsterdam–Utrecht อยู่ก่อนแล้ว ปัจจุบันโครงการใหม่เดินหน้าเป็นช่วงย่อย โดย Tranche 1 ครอบคลุม Northern Lines, Zeeuwse lijn และ Kijfhoek–ชายแดนเบลเยียม</p>
               </div>
 
               <div class="country-card glass-card comparison-country-card comparison-country-card-leading">
@@ -55,35 +55,56 @@
                 <span class="comparison-status-chip">ติดตั้งครบโครงข่ายหลัก</span>
                 <h3>เบลเยียม</h3>
                 <div class="metric">100% ETCS</div>
-                <p>เมื่อ 14 ธันวาคม 2025 เบลเยียมติดตั้ง ETCS ครบโครงข่ายหลักประมาณ 6,400 track-km ตาม ETCS Masterplan และกลายเป็นประเทศที่สองในสหภาพยุโรปต่อจากลักเซมเบิร์กที่ทำได้ครบทั้งโครงข่ายหลัก</p>
+                <p>วันที่ 14 ธันวาคม 2025 เบลเยียมติดตั้ง ETCS ครบโครงข่ายหลักประมาณ 6,400 track-km ตาม ETCS Masterplan โดย track-km เป็นการนับความยาวของรางแต่ละทางแยกกัน ไม่ใช่ความยาวเส้นทางแบบเดียวกับตัวเลขของเยอรมนี</p>
               </div>
 
               <div class="country-card glass-card comparison-country-card">
                 <div class="flag de"></div>
-                <span class="comparison-status-chip">กำลังขยายและปรับแผน</span>
+                <span class="comparison-status-chip">กำลังขยายและทบทวนแผน</span>
                 <h3>เยอรมนี</h3>
                 <div class="metric">683 km · end-2025</div>
-                <p>DB InfraGO รายงานว่าความยาวเส้นทางที่ติดตั้ง ETCS เพิ่มเป็น 683 km ณ สิ้นปี 2025 บนโครงข่ายขนาดกว่า 33,000 km ขณะเดียวกันรายละเอียดแผน migration กำลังถูกปรับใหม่ให้สอดคล้องกับความพร้อมของรถและงบประมาณ</p>
+                <p>DB InfraGO รายงานว่า ณ สิ้นปี 2025 มีเส้นทางที่ติดตั้ง ETCS รวม 683 km บนโครงข่ายมากกว่า 33,000 km ขณะเดียวกันเยอรมนีกำลังทบทวนแผนการเปลี่ยนผ่านให้สอดคล้องกับความพร้อมของขบวนรถและงบประมาณ</p>
               </div>
             </div>
 
-            <div class="callout comparison-data-note"><strong>อ่านตัวเลขอย่างระมัดระวัง:</strong> ตัวเลขของเบลเยียมมักรายงานเป็น track-km ขณะที่เยอรมนีรายงาน “Streckenlänge” หรือความยาวเส้นทาง และเนเธอร์แลนด์ยังไม่มีเปอร์เซ็นต์ completion รวมอย่างเป็นทางการ จึงไม่ควรนำตัวเลขกิโลเมตรทั้งสามประเทศมาหารเป็นเปอร์เซ็นต์แล้วเทียบกันตรง ๆ</div>
+            <div class="comparison-photo-grid" aria-label="พื้นที่สำหรับภาพประกอบสถานะ ETCS ของสามประเทศ">
+              <figure class="comparison-media-placeholder" data-slot="comparison-netherlands.webp">
+                <div class="comparison-media-icon" aria-hidden="true">NL</div>
+                <figcaption><strong>ภาพเนเธอร์แลนด์</strong><span>แนะนำ: รถไฟหรือเส้นทางที่ใช้ ERTMS เช่น Betuweroute / HSL-Zuid / Hanzelijn</span><small>ชื่อไฟล์: comparison-netherlands.webp · สัดส่วน 4:3</small></figcaption>
+              </figure>
+              <figure class="comparison-media-placeholder" data-slot="comparison-belgium.webp">
+                <div class="comparison-media-icon" aria-hidden="true">BE</div>
+                <figcaption><strong>ภาพเบลเยียม</strong><span>แนะนำ: โครงสร้างพื้นฐาน ETCS หรือรถไฟของ SNCB/NMBS บนเส้นทางที่ใช้ ETCS</span><small>ชื่อไฟล์: comparison-belgium.webp · สัดส่วน 4:3</small></figcaption>
+              </figure>
+              <figure class="comparison-media-placeholder" data-slot="comparison-germany.webp">
+                <div class="comparison-media-icon" aria-hidden="true">DE</div>
+                <figcaption><strong>ภาพเยอรมนี</strong><span>แนะนำ: ETCS Level 2, Digital Rail Germany หรือเส้นทาง Freiburg–Basel</span><small>ชื่อไฟล์: comparison-germany.webp · สัดส่วน 4:3</small></figcaption>
+              </figure>
+            </div>
+
+            <div class="callout comparison-data-note"><strong>ข้อควรระวังในการเทียบตัวเลข:</strong> เบลเยียมมักรายงานเป็น track-km ส่วนเยอรมนีรายงานเป็นความยาวเส้นทาง (route length) และเนเธอร์แลนด์ยังไม่มีเปอร์เซ็นต์ความสำเร็จรวมที่ประกาศอย่างเป็นทางการ จึงไม่ควรนำตัวเลขกิโลเมตรของทั้งสามประเทศมาหารเป็นเปอร์เซ็นต์แล้วเปรียบเทียบกันโดยตรง</div>
           </section>
 
           <section class="article-section reveal" id="timeline">
             <div class="kicker">Historical comparison</div>
-            <h2>จากระบบประจำชาติ สู่มาตรฐานยุโรปเดียวกัน</h2>
-            <p>ความแตกต่างในปัจจุบันเกิดจาก “จุดตั้งต้น” ที่ไม่เหมือนกัน แต่ละประเทศสร้างระบบป้องกันรถไฟของตนเองมานานก่อน ERTMS จะถือกำเนิด ดังนั้นการเปลี่ยนไปใช้ ETCS จึงไม่ใช่แค่ติดตั้งอุปกรณ์ใหม่ แต่ต้องเชื่อมเทคโนโลยีเดิม รถไฟ และวิธีปฏิบัติงานที่สะสมมาหลายสิบปีเข้าด้วยกัน</p>
+            <h2>จากระบบของแต่ละประเทศ สู่มาตรฐานยุโรปร่วมกัน</h2>
+            <p>ก่อนมี ERTMS แต่ละประเทศพัฒนาระบบป้องกันรถไฟของตนเองมาหลายสิบปี การเปลี่ยนมาใช้ ETCS จึงไม่ได้หมายถึงการเปลี่ยนอุปกรณ์เพียงชิ้นเดียว แต่ต้องทำให้ระบบเดิม ขบวนรถ โครงสร้างพื้นฐาน ซอฟต์แวร์ และวิธีปฏิบัติงานค่อย ๆ เปลี่ยนไปพร้อมกันอย่างปลอดภัย</p>
+
+            <div class="comparison-legend" aria-label="คำย่อประเทศใน Timeline">
+              <span><b class="legend-dot nl-dot"></b>NL · เนเธอร์แลนด์</span>
+              <span><b class="legend-dot be-dot"></b>BE · เบลเยียม</span>
+              <span><b class="legend-dot de-dot"></b>DE · เยอรมนี</span>
+            </div>
 
             <div class="comparison-timeline">
               <article class="comparison-era">
                 <div class="comparison-era-year">ก่อนปี 2000</div>
                 <div class="comparison-era-body">
-                  <h3>ยุคระบบป้องกันรถไฟประจำชาติ</h3>
+                  <h3>ยุคที่แต่ละประเทศใช้ระบบของตนเอง</h3>
                   <div class="comparison-era-grid">
-                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>ATB กลายเป็นระบบหลัก</strong><p>หลังอุบัติเหตุ Harmelen ปี 1962 เนเธอร์แลนด์เร่งนำ ATB-EG มาใช้ตั้งแต่ปลายทศวรรษ 1960 และใช้เวลาประมาณ 30 ปีจึงครอบคลุมโครงข่ายส่วนใหญ่</p></div>
-                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>Memor / TBL และ TBL1+</strong><p>เบลเยียมใช้ระบบเตือนและหยุดรถหลายรุ่น เช่น Memor-Crocodile และ TBL ก่อนพัฒนา TBL1+ เพื่อเพิ่มการตรวจความเร็วบริเวณจุดเสี่ยง</p></div>
-                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>PZB และ LZB</strong><p>เยอรมนีพึ่งพา PZB สำหรับการควบคุมแบบเป็นจุด และ LZB สำหรับการควบคุมต่อเนื่อง โดยเฉพาะเส้นทางความเร็วสูงและเส้นทางที่ต้องการความสามารถสูง</p></div>
+                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>ATB กลายเป็นระบบหลัก</strong><p>หลังอุบัติเหตุ Harmelen ปี 1962 เนเธอร์แลนด์เร่งติดตั้ง ATB-EG ตั้งแต่ปลายทศวรรษ 1960 และใช้เวลาประมาณ 30 ปีจึงครอบคลุมโครงข่ายส่วนใหญ่</p></div>
+                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>Memor-Crocodile และ TBL</strong><p>เบลเยียมใช้ระบบเตือนและป้องกันรถไฟหลายรุ่น เช่น Memor-Crocodile และ TBL ก่อนพัฒนาระบบรุ่นใหม่ขึ้นในเวลาต่อมา</p></div>
+                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>PZB และ LZB</strong><p>เยอรมนีใช้ PZB สำหรับการควบคุมแบบเป็นจุด และ LZB สำหรับการควบคุมต่อเนื่อง โดยเฉพาะบนเส้นทางความเร็วสูงหรือเส้นทางที่ต้องการสมรรถนะสูง</p></div>
                   </div>
                 </div>
               </article>
@@ -93,9 +114,9 @@
                 <div class="comparison-era-body">
                   <h3>ETCS เริ่มเข้าสู่การใช้งานจริง</h3>
                   <div class="comparison-era-grid">
-                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>2007 / 2009 / 2012</strong><p>Betuweroute เริ่มใช้ ERTMS ในปี 2007 ตามด้วย HSL-Zuid ในปี 2009 และ Hanzelijn ในปี 2012 ทำให้เนเธอร์แลนด์มีประสบการณ์ตั้งแต่ช่วงแรกของการใช้งานจริงในยุโรป</p></div>
-                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>2009 → 2012</strong><p>HSL 3 ไปเยอรมนีและ HSL 4 ไปเนเธอร์แลนด์เปิดในปี 2009 และติดตั้ง ETCS ต่อมาอุบัติเหตุ Buizingen ปี 2010 ทำให้ความปลอดภัยเป็นวาระแห่งชาติ และ ETCS Masterplan เริ่มดำเนินงานในปี 2012</p></div>
-                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>2005 pilot</strong><p>Deutsche Bahn ทดสอบ ETCS Level 2 บนช่วง Jüterbog–Leipzig ประมาณ 100 km และให้รถโดยสารตามตารางเดินรถทดลองใช้งาน ETCS ตั้งแต่ปี 2005</p></div>
+                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>2007 / 2009 / 2012</strong><p>Betuweroute เริ่มใช้ ERTMS ในปี 2007 ตามด้วย HSL-Zuid ในปี 2009 และ Hanzelijn ในปี 2012 ทำให้เนเธอร์แลนด์มีประสบการณ์ใช้งานระบบค่อนข้างเร็วเมื่อเทียบกับหลายประเทศในยุโรป</p></div>
+                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>2009 → 2012</strong><p>HSL 3 ไปเยอรมนีและ HSL 4 ไปเนเธอร์แลนด์เป็นเส้นทางความเร็วสูงยุคแรกที่ใช้ ETCS ต่อมาอุบัติเหตุ Buizingen ปี 2010 ทำให้การยกระดับระบบความปลอดภัยได้รับความสำคัญมากขึ้น และ ETCS Masterplan เริ่มดำเนินงานในปี 2012</p></div>
+                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>การทดสอบปี 2005</strong><p>Deutsche Bahn ทดสอบ ETCS Level 2 บนช่วง Jüterbog–Leipzig ประมาณ 100 km และนำรถโดยสารตามตารางจริงมาใช้ทดสอบระบบตั้งแต่ปี 2005</p></div>
                   </div>
                 </div>
               </article>
@@ -103,11 +124,11 @@
               <article class="comparison-era">
                 <div class="comparison-era-year">2014–2019</div>
                 <div class="comparison-era-body">
-                  <h3>แต่ละประเทศเลือก “รูปแบบการขยาย” ของตนเอง</h3>
+                  <h3>แต่ละประเทศเลือกวิธีขยายระบบที่ต่างกัน</h3>
                   <div class="comparison-era-grid">
-                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>จากเส้นทางเฉพาะ → นโยบายระดับประเทศ</strong><p>ปี 2014 รัฐบาลเลือก ERTMS เป็นทิศทางระยะยาว และปี 2019 อนุมัติ Programmabeslissing เพื่อเข้าสู่ระยะดำเนินโครงการระดับประเทศ</p></div>
-                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>Masterplan แบบทั้งโครงข่าย</strong><p>เบลเยียมกำหนดแนวทางผสม ETCS Level 1 Full Supervision, Level 1 Limited Supervision และ Level 2 Full Supervision เพื่อให้เหมาะกับแต่ละเส้นทางและเร่ง coverage ทั้งประเทศ</p></div>
-                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>เน้นเส้นทางและโครงการขนาดใหญ่</strong><p>เยอรมนีขยาย ETCS ผ่าน corridor และเส้นทางใหม่/ปรับปรุง โดยต้องทำงานร่วมกับ PZB, LZB และ interlocking ที่มีอยู่บนโครงข่ายขนาดใหญ่มาก</p></div>
+                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>จากบางเส้นทางสู่นโยบายระดับประเทศ</strong><p>ปี 2014 รัฐบาลเนเธอร์แลนด์เลือก ERTMS เป็นทิศทางระยะยาว และในปี 2019 อนุมัติให้โครงการเข้าสู่ระยะดำเนินงานระดับประเทศ</p></div>
+                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>Masterplan ครอบคลุมทั้งประเทศ</strong><p>เบลเยียมใช้ ETCS หลายรูปแบบ ได้แก่ Level 1 Full Supervision, Level 1 Limited Supervision และ Level 2 Full Supervision เพื่อให้เหมาะกับลักษณะของแต่ละเส้นทางและเร่งการติดตั้งทั่วประเทศ</p></div>
+                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>ขยายผ่านเส้นทางและโครงการขนาดใหญ่</strong><p>เยอรมนีขยาย ETCS ผ่านเส้นทางหลัก เส้นทางใหม่ และโครงการปรับปรุง โดยต้องเชื่อมระบบใหม่เข้ากับ PZB, LZB และระบบควบคุมเส้นทางเดิมจำนวนมาก</p></div>
                   </div>
                 </div>
               </article>
@@ -115,11 +136,11 @@
               <article class="comparison-era">
                 <div class="comparison-era-year">2022–2024</div>
                 <div class="comparison-era-body">
-                  <h3>ช่องว่างของความเร็วในการติดตั้งเริ่มเห็นชัด</h3>
+                  <h3>ความแตกต่างของความเร็วในการติดตั้งเริ่มชัดขึ้น</h3>
                   <div class="comparison-era-grid">
-                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>ทบทวนวิธีดำเนินโครงการ</strong><p>การเชื่อมรถ ระบบกลาง ซอฟต์แวร์ บุคลากร และโครงสร้างพื้นฐานซับซ้อนกว่าที่คาด ทำให้โครงการหันไปสู่การแบ่งงานเป็น Tranche ที่เล็กและควบคุมได้มากขึ้น</p></div>
-                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>49% → 79%</strong><p>Infrabel รายงาน ETCS coverage เพิ่มจาก 49% ของโครงข่ายในปี 2022 เป็น 79% ของ main track ณ สิ้นปี 2024 และเร่งงานช่วงสุดท้ายเพื่อให้ครบในปี 2025</p></div>
-                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>Digital Rail + ETCS</strong><p>เยอรมนีพยายามผูก ETCS เข้ากับการเปลี่ยน interlocking และสถาปัตยกรรมรถไฟดิจิทัล ทำให้ผลลัพธ์ระยะยาวมีขอบเขตกว้าง แต่การเปลี่ยนพร้อมกันหลายระบบเพิ่มความซับซ้อน</p></div>
+                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>ปรับวิธีดำเนินโครงการ</strong><p>การทำให้ขบวนรถ ระบบกลาง ซอฟต์แวร์ บุคลากร และโครงสร้างพื้นฐานทำงานร่วมกันซับซ้อนกว่าที่คาด จึงปรับไปใช้ Tranche ที่เล็กลงและควบคุมได้มากขึ้น</p></div>
+                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>49% → 79%</strong><p>Infrabel รายงานว่าสัดส่วนการติดตั้ง ETCS เพิ่มจาก 49% ในปี 2022 เป็น 79% ของ main track ณ สิ้นปี 2024 ก่อนเร่งงานช่วงสุดท้ายในปี 2025</p></div>
+                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>Digital Rail + ETCS</strong><p>เยอรมนีเชื่อมการติดตั้ง ETCS เข้ากับการเปลี่ยนระบบควบคุมเส้นทางและโครงสร้างดิจิทัลอื่น ๆ ทำให้เป้าหมายกว้างกว่า ETCS เพียงอย่างเดียว แต่ก็เพิ่มความซับซ้อนในการดำเนินงาน</p></div>
                   </div>
                 </div>
               </article>
@@ -127,32 +148,38 @@
               <article class="comparison-era comparison-era-current">
                 <div class="comparison-era-year">2025–2026</div>
                 <div class="comparison-era-body">
-                  <h3>สถานะปัจจุบันแตกต่างกันมากที่สุด</h3>
+                  <h3>ปัจจุบันทั้งสามประเทศอยู่คนละช่วงของการเปลี่ยนผ่าน</h3>
                   <div class="comparison-era-grid">
-                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>Tranche 1 เข้าสู่งานภาคสนาม</strong><p>Tranche 1 ครอบคลุม 419 km และปี 2026 งานติดตั้งจริงเริ่มบน Harlingen Haven–Leeuwarden ขณะที่วันเปิดใช้ ERTMS และวันปิด ATB ของแต่ละพื้นที่ยังไม่ถูกกำหนดเป็นวันสุดท้ายอย่างเป็นทางการ</p></div>
-                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>100% infrastructure</strong><p>14 ธันวาคม 2025 เบลเยียมทำ ETCS Masterplan สำเร็จ ครอบคลุมโครงข่ายหลักประมาณ 6,400 track-km และในปี 2025 กองรถของ NMBS ก็ได้รับ ETCS ครบทั้งหมดเช่นกัน</p></div>
-                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>683 km และแผนกำลังปรับใหม่</strong><p>สิ้นปี 2025 DB InfraGO มี ETCS 683 km และเปิด ETCS L2 ราว 100 km ระหว่าง Freiburg–Basel ขณะเดียวกัน migration strategy ปี 2024 ถูกถอนในปี 2025 และกำลังปรับร่วมกับรัฐบาลและภาคอุตสาหกรรม</p></div>
+                    <div class="comparison-era-country"><span class="country-code nl-code">NL</span><strong>Tranche 1 เข้าสู่งานภาคสนาม</strong><p>Tranche 1 ครอบคลุม 419 km และในปี 2026 เริ่มติดตั้งอุปกรณ์จริงบน Harlingen Haven–Leeuwarden ส่วนวันเปิดใช้ ERTMS และวันปิด ATB ของแต่ละพื้นที่ยังไม่ได้กำหนดเป็นวันสุดท้ายอย่างเป็นทางการ</p></div>
+                    <div class="comparison-era-country"><span class="country-code be-code">BE</span><strong>ติดตั้ง ETCS ครบโครงข่ายหลัก</strong><p>วันที่ 14 ธันวาคม 2025 เบลเยียมทำ ETCS Masterplan สำเร็จ ครอบคลุมโครงข่ายหลักประมาณ 6,400 track-km และในปี 2025 กองรถของ NMBS/SNCB ก็ได้รับการติดตั้ง ETCS ครบเช่นกัน</p></div>
+                    <div class="comparison-era-country"><span class="country-code de-code">DE</span><strong>683 km และกำลังทบทวนแผน</strong><p>สิ้นปี 2025 DB InfraGO รายงาน ETCS 683 km และเปิดใช้ ETCS Level 2 ราว 100 km ระหว่าง Freiburg–Basel ขณะเดียวกันแผนการเปลี่ยนผ่านฉบับปี 2024 ถูกถอนในปี 2025 เพื่อจัดทำแผนใหม่ร่วมกับรัฐบาลและภาคอุตสาหกรรม</p></div>
                   </div>
                 </div>
               </article>
             </div>
+
+            <figure class="comparison-media-placeholder comparison-media-wide" data-slot="comparison-history.webp">
+              <div class="comparison-media-icon" aria-hidden="true">HISTORY</div>
+              <figcaption><strong>ภาพประกอบประวัติการเปลี่ยนสู่ ETCS</strong><span>แนะนำ: ภาพยุคเริ่มใช้งาน ETCS เช่น Betuweroute, HSL 4 หรือการทดสอบ ETCS ในเยอรมนี</span><small>ชื่อไฟล์: comparison-history.webp · สัดส่วน 16:9</small></figcaption>
+            </figure>
           </section>
 
           <section class="article-section reveal" id="table">
             <div class="kicker">Strategy</div>
-            <h2>เปรียบเทียบเชิงยุทธศาสตร์ในปี 2026</h2>
+            <h2>เปรียบเทียบแนวทางของทั้งสามประเทศในปี 2026</h2>
+            <p>ตารางนี้สรุปให้เห็นว่าแต่ละประเทศเริ่มจากระบบใด เลือกวิธีขยาย ETCS แบบไหน และกำลังเผชิญความท้าทายอะไร โดยตัวเลขและกำหนดการควรอ่านตามบริบทของแต่ละประเทศ ไม่ควรตีความว่าเป็นการแข่งขันว่าใคร “เร็วกว่า” เพียงอย่างเดียว</p>
             <div class="compare-table-wrap">
               <table>
                 <thead><tr><th>ประเด็น</th><th>เนเธอร์แลนด์</th><th>เบลเยียม</th><th>เยอรมนี</th></tr></thead>
                 <tbody>
                   <tr><td>ระบบเดิมหลัก</td><td>ATB-EG / ATB-NG</td><td>Memor-Crocodile, TBL1 / TBL1+</td><td>PZB / LZB</td></tr>
-                  <tr><td>ETCS ยุคแรก</td><td>Betuweroute 2007, HSL-Zuid 2009, Hanzelijn 2012</td><td>HSL 3 และ HSL 4 ใช้ ETCS บนเส้นทางระหว่างประเทศยุคแรก</td><td>ETCS L2 pilot Jüterbog–Leipzig ราว 100 km ในปี 2005</td></tr>
-                  <tr><td>รูปแบบ rollout</td><td>แบ่งเป็น Tranche เรียนรู้จากง่ายไปยาก เน้น ETCS Level 2</td><td>Masterplan ระดับประเทศ ใช้ L1 FS + L1 LS + L2 FS ผสมกัน</td><td>Corridor / node / renewal projects เชื่อม ETCS กับ digital interlocking</td></tr>
-                  <tr><td>สถานะปี 2026</td><td>Tranche 1 จำนวน 419 km กำลังดำเนินงาน; ยังไม่มี % completion รวมทางการ</td><td>โครงข่ายหลักติดตั้ง ETCS ครบ 100% ตั้งแต่ 14 ธ.ค. 2025</td><td>683 km ณ สิ้นปี 2025; rollout และ migration plan ยังอยู่ระหว่างปรับ</td></tr>
-                  <tr><td>การปิดระบบเดิม</td><td>วางแผนถอด ATB หลัง ERTMS พร้อมใช้งานในแต่ละพื้นที่</td><td>เดินหน้าลดการพึ่งระบบประจำชาติหลัง ETCS ครอบคลุมทั้งโครงข่าย</td><td>กำลังวางแผนการเลิกใช้ PZB/LZB ตามจังหวะ ETCS และความพร้อมของรถ</td></tr>
-                  <tr><td>ทิศทางระยะยาว</td><td>NIP วางเป้าแทน Class B ด้วย ERTMS ทั่วประเทศภายใน 2050</td><td>โครงสร้างพื้นฐานถึงเป้าหมาย Masterplan แล้ว; ขั้นต่อไปคือการใช้งานเต็มรูปแบบและการจัดการวงจรชีวิต</td><td>European Commission เคยระบุกรอบการติดตั้งทั่วโครงข่ายภายใน 2040 แต่รายละเอียด migration ล่าสุดกำลังถูกปรับใหม่</td></tr>
-                  <tr><td>จุดแข็ง</td><td>ลดความเสี่ยงด้วยการเรียนรู้เป็นขั้นและทดสอบ end-to-end</td><td>เป้าหมายระดับประเทศชัด ทำซ้ำแบบอุตสาหกรรม และส่งมอบตรงตาม Masterplan</td><td>เชื่อม ETCS กับการปรับสถาปัตยกรรมดิจิทัลของโครงข่ายขนาดใหญ่</td></tr>
-                  <tr><td>ความท้าทายหลัก</td><td>การพึ่งพากันของรถ ระบบกลาง โครงสร้างพื้นฐาน และบุคลากร</td><td>ดูแลหลาย ETCS level และทำให้ rolling stock/operator ทุกกลุ่มพร้อมใช้ระบบ</td><td>โครงข่ายใหญ่มาก รถจำนวนมาก และความซับซ้อนจาก PZB + LZB + ETCS ระหว่าง migration</td></tr>
+                  <tr><td>ETCS ช่วงแรก</td><td>Betuweroute 2007, HSL-Zuid 2009, Hanzelijn 2012</td><td>HSL 3 และ HSL 4 เป็นเส้นทางระหว่างประเทศยุคแรกที่ใช้ ETCS</td><td>ทดสอบ ETCS Level 2 บน Jüterbog–Leipzig ราว 100 km ตั้งแต่ปี 2005</td></tr>
+                  <tr><td>วิธีขยายระบบ</td><td>แบ่งเป็น Tranche จากพื้นที่ซับซ้อนน้อยไปหาพื้นที่ซับซ้อนมาก โดย ETCS Level 2 เป็นแกนหลัก</td><td>ใช้ Masterplan ระดับประเทศ และเลือก L1 FS, L1 LS หรือ L2 FS ให้เหมาะกับแต่ละพื้นที่</td><td>ขยายผ่านเส้นทางหลัก จุดยุทธศาสตร์ และโครงการปรับปรุง พร้อมเปลี่ยนระบบ interlocking</td></tr>
+                  <tr><td>สถานะปี 2026</td><td>Tranche 1 จำนวน 419 km กำลังดำเนินงาน และยังไม่มีเปอร์เซ็นต์ความสำเร็จรวมที่ประกาศอย่างเป็นทางการ</td><td>โครงข่ายหลักติดตั้ง ETCS ครบ 100% ตั้งแต่ 14 ธันวาคม 2025</td><td>683 km ณ สิ้นปี 2025 และแผนขยายระบบระยะยาวยังอยู่ระหว่างทบทวน</td></tr>
+                  <tr><td>การเลิกใช้ระบบเดิม</td><td>ถอด ATB หลังพิสูจน์ว่า ERTMS พร้อมใช้งานอย่างปลอดภัยในแต่ละพื้นที่</td><td>ลดการพึ่งพาระบบเดิมระดับชาติหลัง ETCS ครอบคลุมโครงข่ายหลัก</td><td>ต้องวางจังหวะการเลิกใช้ PZB/LZB ให้สัมพันธ์กับการติดตั้ง ETCS และความพร้อมของขบวนรถ</td></tr>
+                  <tr><td>ทิศทางระยะยาว</td><td>แผนระดับชาติ (NIP) วางเป้าแทนระบบเดิมระดับชาติหรือ Class B ด้วย ERTMS ทั่วประเทศภายในปี 2050</td><td>เป้าหมายด้านโครงสร้างพื้นฐานของ Masterplan สำเร็จแล้ว ขั้นต่อไปคือการใช้งาน การอัปเกรด และการดูแลระบบในระยะยาว</td><td>กรอบยุโรปเคยวางเป้าการติดตั้ง ETCS ทั่วโครงข่ายภายในปี 2040 แต่รายละเอียดการเปลี่ยนผ่านล่าสุดกำลังถูกปรับใหม่</td></tr>
+                  <tr><td>จุดแข็ง</td><td>ลดความเสี่ยงด้วยการเรียนรู้เป็นขั้นและทดสอบทั้งระบบตั้งแต่รถถึงโครงสร้างพื้นฐาน</td><td>มีเป้าหมายระดับประเทศชัดเจน ใช้รูปแบบที่ทำซ้ำได้ และส่งมอบโครงสร้างพื้นฐานตาม Masterplan</td><td>นำ ETCS ไปเชื่อมกับการปรับโครงข่ายสู่ระบบดิจิทัลในวงกว้าง</td></tr>
+                  <tr><td>ความท้าทายหลัก</td><td>ขบวนรถ ระบบกลาง โครงสร้างพื้นฐาน และบุคลากรต้องพร้อมสัมพันธ์กัน</td><td>ต้องดูแล ETCS หลายรูปแบบ และทำให้ขบวนรถกับผู้ให้บริการทุกกลุ่มพร้อมใช้งานจริง</td><td>โครงข่ายและกองรถมีขนาดใหญ่มาก และต้องบริหาร PZB + LZB + ETCS พร้อมกันในช่วงเปลี่ยนผ่าน</td></tr>
                 </tbody>
               </table>
             </div>
@@ -161,33 +188,39 @@
           <section class="article-section reveal" id="lessons">
             <div class="kicker">What can be learned?</div>
             <h2>เนเธอร์แลนด์เรียนรู้อะไรจากเบลเยียมและเยอรมนีได้บ้าง</h2>
-            <p>ข้อมูลจากทั้งสามประเทศชี้ให้เห็นว่าไม่มีวิธี rollout แบบเดียวที่เหมาะกับทุกโครงข่าย เบลเยียมแสดงให้เห็นข้อดีของการกำหนดเป้าหมายระดับประเทศที่ชัดเจน ใช้แบบมาตรฐานซ้ำได้ และเร่งงานเป็นอุตสาหกรรม ส่วนเยอรมนีแสดงให้เห็นอีกด้านหนึ่งว่าเมื่อโครงข่ายใหญ่และระบบเดิมหลายชั้น การติดตั้ง ETCS แบบซ้อนกับ PZB และ LZB สามารถเพิ่มความซับซ้อนอย่างมาก</p>
+            <p>ข้อมูลของทั้งสามประเทศแสดงให้เห็นว่าไม่มีวิธีเดียวที่เหมาะกับทุกโครงข่าย เบลเยียมแสดงข้อดีของการมีเป้าหมายระดับประเทศที่ชัดและใช้รูปแบบงานที่ทำซ้ำได้ ส่วนเยอรมนีแสดงให้เห็นว่าการเปลี่ยนระบบบนโครงข่ายขนาดใหญ่ ซึ่งยังต้องใช้ระบบเดิมหลายชนิดพร้อมกัน สามารถเพิ่มความซับซ้อนของการออกแบบ ทดสอบ และอนุมัติได้มาก</p>
             <div class="info-grid comparison-lessons-grid">
-              <div class="info-card glass-card"><div class="icon">BE</div><h3>บทเรียนจากเบลเยียม</h3><p>ความต่อเนื่องของ Masterplan, การเลือก technical configuration ที่ชัด และการทำซ้ำแบบอุตสาหกรรมช่วยให้ coverage เติบโตจาก 49% ในปี 2022 เป็น 100% ในปี 2025</p></div>
-              <div class="info-card glass-card"><div class="icon">DE</div><h3>บทเรียนจากเยอรมนี</h3><p>โครงการ Freiburg–Basel แสดงให้เห็นว่าการให้ PZB, LZB และ ETCS ทำงานพร้อมกันช่วยให้เปลี่ยนผ่านได้ แต่แลกกับการออกแบบ ทดสอบ และอนุมัติที่ซับซ้อนขึ้น</p></div>
-              <div class="info-card glass-card"><div class="icon">NL</div><h3>สิ่งที่เหมาะกับเนเธอร์แลนด์</h3><p>แนวทาง Tranche อาจทำให้ coverage เพิ่มช้ากว่าแบบเร่งทั่วประเทศ แต่ช่วยให้ปัญหาจากรถ ระบบกลาง และกระบวนการปฏิบัติงานถูกพบในพื้นที่ควบคุมก่อนขยายไปยังโครงข่ายที่หนาแน่นกว่า</p></div>
+              <div class="info-card glass-card"><div class="icon">BE</div><h3>บทเรียนจากเบลเยียม</h3><p>ความต่อเนื่องของ Masterplan และรูปแบบทางเทคนิคที่ชัดเจนช่วยให้สัดส่วนการติดตั้งเพิ่มจาก 49% ในปี 2022 เป็น 100% ในปี 2025</p></div>
+              <div class="info-card glass-card"><div class="icon">DE</div><h3>บทเรียนจากเยอรมนี</h3><p>โครงการ Freiburg–Basel แสดงให้เห็นว่า PZB, LZB และ ETCS สามารถทำงานร่วมกันในช่วงเปลี่ยนผ่านได้ แต่ต้องแลกกับการออกแบบ การทดสอบ และการรับรองที่ซับซ้อนขึ้น</p></div>
+              <div class="info-card glass-card"><div class="icon">NL</div><h3>สิ่งที่เหมาะกับเนเธอร์แลนด์</h3><p>แนวทาง Tranche ช่วยให้ปัญหาของขบวนรถ ระบบกลาง และขั้นตอนปฏิบัติงานถูกพบในพื้นที่ที่ควบคุมได้ ก่อนขยายไปยังเส้นทางที่หนาแน่นและซับซ้อนกว่า</p></div>
             </div>
-            <div class="callout"><strong>หมายเหตุ:</strong> ส่วน “บทเรียน” เป็นการวิเคราะห์จากข้อมูลและผลการดำเนินงานของแต่ละประเทศ ไม่ใช่ข้อสรุปอย่างเป็นทางการของรัฐบาลเนเธอร์แลนด์ เบลเยียม หรือเยอรมนี</div>
+            <div class="callout"><strong>หมายเหตุ:</strong> “บทเรียน” ในส่วนนี้เป็นการวิเคราะห์จากข้อมูลและผลการดำเนินงานของแต่ละประเทศ ไม่ใช่ข้อสรุปอย่างเป็นทางการของรัฐบาลเนเธอร์แลนด์ เบลเยียม หรือเยอรมนี</div>
           </section>
 
           <section class="article-section reveal" id="border">
             <div class="kicker">Cross-border</div>
-            <h2>ทำไมความต่างของสามประเทศยังสำคัญต่อรถไฟข้ามพรมแดน</h2>
-            <p>ETCS ถูกสร้างขึ้นเพื่อลดปัญหาที่รถไฟระหว่างประเทศต้องพกระบบป้องกันรถไฟหลายแบบ แต่ในช่วงเปลี่ยนผ่าน “มาตรฐานเดียว” ยังไม่ได้หมายความว่ารถทุกขบวนสามารถข้ามพรมแดนได้โดยไม่ต้องสนใจระบบเดิม ตัวอย่างที่เห็นชัดคือ Drielandentrein ระหว่าง Aachen–Maastricht–Liège ซึ่งรถต้องรองรับ ETCS สำหรับเบลเยียม พร้อมระบบ ATB สำหรับเนเธอร์แลนด์และ PZB สำหรับเยอรมนีในช่วงที่โครงสร้างพื้นฐานยังเปลี่ยนไม่พร้อมกัน</p>
-            <p>ฝั่งเบลเยียมมี ETCS ครบโครงข่ายหลักแล้ว แต่ฝั่งเนเธอร์แลนด์บริเวณ Kijfhoek–Belgian border ยังเป็นหนึ่งในพื้นที่ Tranche 1 ส่วนฝั่งเยอรมนียังคงใช้ PZB/LZB อย่างกว้างขวางและค่อย ๆ เพิ่ม ETCS ดังนั้นในระยะสั้นผู้ประกอบการรถไฟระหว่างประเทศยังต้องบริหารรถหลายระบบ ซอฟต์แวร์หลายเวอร์ชัน และขั้นตอนเปลี่ยนระบบที่พรมแดน</p>
+            <h2>ทำไมความแตกต่างของทั้งสามประเทศยังสำคัญต่อรถไฟข้ามพรมแดน</h2>
+            <p>ETCS ถูกพัฒนาขึ้นเพื่อลดความจำเป็นที่รถไฟระหว่างประเทศต้องติดตั้งระบบป้องกันรถไฟหลายแบบ แต่ในช่วงเปลี่ยนผ่าน การมี “มาตรฐานเดียว” ยังไม่ได้หมายความว่ารถทุกขบวนจะใช้ระบบเดียวได้ตลอดเส้นทาง ตัวอย่างคือ Drielandentrein ระหว่าง Aachen–Maastricht–Liège ซึ่งต้องรองรับ ETCS สำหรับเบลเยียม, ATB สำหรับเนเธอร์แลนด์ และ PZB สำหรับเยอรมนีในช่วงที่โครงสร้างพื้นฐานของแต่ละประเทศยังเปลี่ยนไม่พร้อมกัน</p>
+            <p>เบลเยียมมี ETCS ครบโครงข่ายหลักแล้ว ขณะที่เนเธอร์แลนด์ยังอยู่ระหว่างขยาย ERTMS และเยอรมนียังใช้ PZB/LZB อย่างกว้างขวาง ดังนั้นในระยะสั้น ผู้ให้บริการรถไฟระหว่างประเทศยังต้องบริหารขบวนรถหลายระบบ ซอฟต์แวร์หลายเวอร์ชัน และขั้นตอนการเปลี่ยนระบบเมื่อข้ามพรมแดน</p>
             <div class="comparison-border-flow glass-card">
-              <div><span class="flag-mini nl"></span><strong>เนเธอร์แลนด์</strong><small>ATB + ERTMS ระหว่าง migration</small></div>
+              <div><span class="flag-mini nl"></span><strong>เนเธอร์แลนด์</strong><small>ATB + ERTMS ระหว่างการเปลี่ยนผ่าน</small></div>
               <span class="border-arrow">→</span>
               <div><span class="flag-mini be"></span><strong>เบลเยียม</strong><small>ETCS ครบโครงข่ายหลัก</small></div>
               <span class="border-arrow">↔</span>
               <div><span class="flag-mini de"></span><strong>เยอรมนี</strong><small>PZB / LZB + ETCS</small></div>
             </div>
+
+            <figure class="comparison-media-placeholder comparison-media-wide" data-slot="comparison-crossborder.webp">
+              <div class="comparison-media-icon" aria-hidden="true">↔</div>
+              <figcaption><strong>ภาพรถไฟข้ามพรมแดน</strong><span>แนะนำ: Drielandentrein, เส้นทาง Aachen–Maastricht–Liège หรือภาพรถไฟระหว่างเนเธอร์แลนด์–เบลเยียม–เยอรมนี</span><small>ชื่อไฟล์: comparison-crossborder.webp · สัดส่วน 16:9</small></figcaption>
+            </figure>
           </section>
 
           <section class="article-section reveal" id="sources">
             <div class="kicker">References</div>
             <h2>แหล่งอ้างอิง</h2>
-            <p>แหล่งอ้างอิงทั้งหมดของหัวข้อนี้ถูกรวมไว้ในหน้า “อื่น ๆ” เพื่อให้ตรวจสอบย้อนหลังได้จากที่เดียว</p>
+            <p>แหล่งอ้างอิงทั้งหมดของหัวข้อนี้ถูกรวมไว้ในหน้า “อื่น ๆ” และแยกไว้ในหมวด Chapter 04.1 เพื่อให้ตรวจสอบย้อนกลับได้จากจุดเดียว</p>
+            <a class="source-link comparison-reference-link" href="other.html#ref-comparison"><span>เปิดแหล่งอ้างอิงของหัวข้อเปรียบเทียบ</span><span>↗</span></a>
           </section>
         </article>
 
