@@ -4,40 +4,50 @@
 .language-switcher {
   position: relative;
   flex: 0 0 auto;
-  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
 }
 
+/* Match the language control to the exact visual rhythm of .nav-links a.
+   It should read as one more navigation item, not as a separate oversized button. */
 .language-toggle {
-  min-height: 38px;
+  min-height: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 8px 11px;
-  border: 1px solid rgba(0,48,130,.10);
+  gap: 6px;
+  padding: 9px 10px;
+  border: 0;
   border-radius: 999px;
-  background: rgba(255,255,255,.62);
-  color: #173b68;
+  background: transparent;
+  color: #3d4c60;
   font: inherit;
-  font-size: .82rem;
+  font-size: .87rem;
   font-weight: 750;
-  line-height: 1;
+  line-height: 1.72;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
-  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  box-shadow: none;
+  transition: background-color .22s ease, color .22s ease, box-shadow .22s ease;
 }
 
 .language-toggle:hover,
 .language-switcher.open .language-toggle {
-  background: rgba(255,255,255,.84);
-  border-color: rgba(0,48,130,.18);
-  box-shadow: 0 7px 20px rgba(0,48,130,.09), inset 0 1px 0 rgba(255,255,255,.92);
+  background: rgba(255,255,255,.65);
+  color: #003082;
+  box-shadow: none;
 }
 
 .language-toggle:focus-visible {
   outline: 3px solid rgba(255,201,23,.72);
   outline-offset: 2px;
+}
+
+.language-name {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 /* Use real SVG flag artwork instead of Unicode flag emoji.
@@ -46,14 +56,14 @@
 .language-option > span:first-child {
   position: relative;
   display: inline-block;
-  width: 23px;
-  height: 16px;
-  flex: 0 0 23px;
+  width: 21px;
+  height: 14px;
+  flex: 0 0 21px;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 2.5px;
   font-size: 0;
   line-height: 0;
-  box-shadow: 0 0 0 1px rgba(0,48,130,.12), 0 2px 5px rgba(14,38,70,.10);
+  box-shadow: 0 0 0 1px rgba(0,48,130,.11), 0 1px 4px rgba(14,38,70,.09);
 }
 
 .language-flag::before,
@@ -79,8 +89,9 @@ body[data-lang="en"] .language-flag::before,
 }
 
 .language-chevron {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
   transition: transform .2s ease;
 }
 
@@ -306,7 +317,10 @@ html[lang="en"] body[data-page="other.html"] .reference-note::after {
 
 @media (max-width: 1120px) {
   .language-toggle .language-name { display: none; }
-  .language-toggle { width: 40px; padding-inline: 8px; }
+  .language-toggle {
+    width: 38px;
+    padding-inline: 8px;
+  }
   .language-chevron { display: none; }
 }
 
@@ -323,9 +337,11 @@ html[lang="en"] body[data-page="other.html"] .reference-note::after {
     justify-content: flex-start;
     padding: 10px 13px;
     border-radius: 13px;
+    background: rgba(255,255,255,.42);
+    line-height: 1.35;
   }
 
-  .language-toggle .language-name { display: inline; }
+  .language-toggle .language-name { display: inline-flex; }
   .language-chevron { display: block; margin-left: auto; }
 
   .language-menu {
