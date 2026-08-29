@@ -72,7 +72,19 @@ body[data-page="status.html"] .article-section h2 {
 
 body[data-page="status.html"] .article-section > p {
   color: #465b73;
-  line-height: 1.88;
+  line-height: 1.95;
+  text-align: justify;
+  text-justify: inter-character;
+  text-align-last: left;
+  text-indent: 5em !important;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  font-kerning: normal;
+}
+
+body[data-page="status.html"] .article-section > p + p {
+  margin-top: 1.2rem;
 }
 
 body[data-page="status.html"] .article-section .kicker {
@@ -372,6 +384,10 @@ body[data-page="status.html"] .page-badge p::after {
   body[data-page="status.html"] .article-section {
     padding: 26px 20px 28px;
     border-radius: 23px;
+  }
+
+  body[data-page="status.html"] .article-section > p {
+    line-height: 1.9;
   }
 
   body[data-page="status.html"] #timeline .status-list {
