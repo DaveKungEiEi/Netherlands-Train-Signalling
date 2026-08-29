@@ -225,6 +225,47 @@ body:not(.home-page) .diagram-node small {
   line-height: 1.55;
 }
 
+/* Status page: keep all four Tranche steps evenly distributed. */
+body[data-page="status.html"] #tranche1 .signal-diagram {
+  padding: 26px;
+}
+
+body[data-page="status.html"] #tranche1 .diagram-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  align-items: stretch;
+}
+
+body[data-page="status.html"] #tranche1 .diagram-node {
+  width: 100%;
+  min-width: 0;
+  min-height: 245px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 22px 17px;
+  text-align: center;
+}
+
+body[data-page="status.html"] #tranche1 .diagram-node strong {
+  width: 100%;
+  min-height: 3.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.45;
+}
+
+body[data-page="status.html"] #tranche1 .diagram-node small {
+  display: block;
+  margin-top: 10px;
+}
+
 /* ---------- Tables ---------- */
 body:not(.home-page) .compare-table-wrap {
   border: 1px solid rgba(0,48,130,.11);
@@ -346,6 +387,14 @@ body:not(.home-page) .source-link:focus-visible {
   body:not(.home-page) .article-section {
     padding: 30px 26px 34px;
   }
+
+  body[data-page="status.html"] #tranche1 .diagram-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="status.html"] #tranche1 .diagram-node {
+    min-height: 220px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -373,6 +422,20 @@ body:not(.home-page) .source-link:focus-visible {
   body:not(.home-page) .country-card p,
   body:not(.home-page) .impact-card p {
     color: #3f5974;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-page="status.html"] #tranche1 .signal-diagram {
+    padding: 16px;
+  }
+
+  body[data-page="status.html"] #tranche1 .diagram-flow {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="status.html"] #tranche1 .diagram-node {
+    min-height: 0;
   }
 }
 
