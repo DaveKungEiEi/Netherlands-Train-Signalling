@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ปัญหาและความท้าทายในการเปลี่ยนจาก ATB สู่ ETCS ในเนเธอร์แลนด์">
+  <meta name="description" content="ปัญหาและความท้าทายในการเปลี่ยนจาก ATB สู่ ERTMS/ETCS ของเนเธอร์แลนด์ ทั้งความล่าช้า ต้นทุน ความน่าเชื่อถือ และผลต่อผู้ประกอบการขนส่งสินค้า">
   <meta name="theme-color" content="#003082">
   <title>ปัญหาและความท้าทาย | Netherlands Train System</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -11,21 +11,164 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="problems-style.css">
 </head>
 <body data-page="problems.html">
   <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
   <div data-site-header></div>
-  
-<header class="page-hero"><div class="page-hero-inner"><div class="reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 03.2</div><h1>ปัญหาและความท้าทาย <span style="color:#ae1c28">ระหว่างการเปลี่ยนระบบ</span></h1><p class="hero-copy">การเปลี่ยน ERTMS ไม่ใช่เพียง “เปลี่ยนอุปกรณ์” แต่เป็นการย้ายทั้ง ecosystem ของรถไฟ โครงสร้างพื้นฐาน ซอฟต์แวร์ กระบวนการทำงาน และบุคลากรไปสู่ระบบดิจิทัลชุดใหม่</p></div><div class="page-badge glass-card reveal"><div class="big">System-of-systems</div><p>ความเสี่ยงเกิดจากการเชื่อมต่อระหว่างระบบ มากกว่าชิ้นส่วนใดชิ้นส่วนหนึ่ง</p></div></div></header>
-<main id="main" class="page-sheet"><section class="section"><div class="container content-grid"><article class="article">
-<section class="article-section reveal" id="dual"><div class="kicker">Challenge 01</div><h2>ช่วงเวลาที่ต้องรองรับ ATB และ ETCS พร้อมกัน</h2><p>ในช่วงเปลี่ยนผ่าน รถไฟที่ถูกดัดแปลงเป็น ERTMS แล้วจะยังต้องวิ่งบนเส้นทาง ATB ด้วย จึงต้องมี STM-ATB เพื่อแปลสัญญาณ ATB ให้ระบบ ERTMS บนรถเข้าใจ การรับรองความเข้ากันได้ของ hardware และ software จึงกลายเป็นงานสำคัญก่อนเปลี่ยนโครงสร้างพื้นฐาน</p></section>
-<section class="article-section reveal" id="integration"><div class="kicker">Challenge 02</div><h2>การบูรณาการรถไฟ–ทาง–ศูนย์ควบคุม</h2><div class="info-grid"><div class="info-card glass-card"><div class="icon">01</div><h3>หลายผู้ผลิต</h3><p>อุปกรณ์รถไฟ อุปกรณ์ภาคพื้น interlocking และ radio/CSS อาจมาจากผู้ผลิตต่างราย แต่ต้องทำงานเป็นระบบเดียวกัน</p></div><div class="info-card glass-card"><div class="icon">02</div><h3>หลายรุ่นซอฟต์แวร์</h3><p>การอัปเดตส่วนหนึ่งอาจกระทบ compatibility ของอีกส่วน จึงต้องมี configuration management และ regression testing ที่เข้มงวด</p></div><div class="info-card glass-card"><div class="icon">03</div><h3>หลายผู้ประกอบการ</h3><p>โครงข่ายดัตช์มีทั้ง NS ผู้ประกอบการภูมิภาค และผู้ขนส่งสินค้า ทำให้การวางแผนทดสอบและการอนุมัติซับซ้อน</p></div><div class="info-card glass-card"><div class="icon">04</div><h3>ข้ามพรมแดน</h3><p>รถไฟระหว่างประเทศต้องเปลี่ยนจากระบบหนึ่งสู่อีกระบบอย่างปลอดภัย โดยเฉพาะจุดต่อกับเบลเยียมและเยอรมนี</p></div></div></section>
-<section class="article-section reveal" id="service"><div class="kicker">Challenge 03</div><h2>การทำงานบนโครงข่ายที่ยังต้องให้บริการทุกวัน</h2><p>การติดตั้ง ERTMS เกิดขึ้นบนระบบรถไฟที่ใช้งานหนาแน่น การปิดทาง การปรับ interlocking การติดตั้ง balise และการทดสอบจึงต้องจัดตารางอย่างรอบคอบ ProRail ระบุว่าการเปลี่ยนโครงสร้างพื้นฐานมีแนวโน้มก่อให้เกิดความไม่สะดวกต่อการเดินรถ แม้จะพยายามจำกัดผลกระทบก็ตาม</p><div class="callout"><strong>ความท้าทายเชิงปฏิบัติ:</strong> การทดสอบในห้องปฏิบัติการไม่สามารถจำลองทุกเหตุการณ์ของสนามจริงได้ทั้งหมด ตัวอย่างการทดสอบรถไฟสามระบบบริเวณ Aachen เคยพบ balise ที่ตั้งค่าไม่ถูกต้อง ทำให้รถหยุดอัตโนมัติจนต้องแก้ซอฟต์แวร์และทดสอบใหม่</div></section>
-<section class="article-section reveal" id="people"><div class="kicker">Challenge 04</div><h2>บุคลากรและวิธีปฏิบัติงานใหม่</h2><p>พนักงานขับรถไฟ ผู้ควบคุมการเดินรถ ช่างซ่อมบำรุง ผู้ทดสอบ และฝ่ายปฏิบัติการต้องเรียนรู้ interface และ procedure ใหม่ การเปลี่ยนผ่านจึงต้องเดินคู่กับการฝึกอบรม การรับรองความสามารถ และการปรับคู่มือปฏิบัติงาน</p></section>
-<section class="article-section reveal" id="cost"><div class="kicker">Challenge 05</div><h2>ต้นทุน เวลา และการบริหาร scope</h2><p>ERTMS เป็นโครงการระยะยาวที่พึ่งพากันระหว่างการดัดแปลงรถ การพัฒนา central system การปรับทาง และการทดสอบ การล่าช้าของส่วนหนึ่งอาจเลื่อนไทม์ไลน์ทั้งระบบ นี่เป็นเหตุผลที่เนเธอร์แลนด์เปลี่ยนมาบริหาร rollout แบบ tranche เพื่อให้ scope มีขนาดควบคุมได้และนำบทเรียนจากแต่ละช่วงไปใช้ต่อ</p></section>
-<section class="article-section reveal" id="sources"><div class="kicker">Sources</div><h2>แหล่งข้อมูล</h2><div class="source-list"><a class="source-link" href="https://ertms.nl/kennisbank/i/eUyTD/stm-atb" target="_blank" rel="noopener"><span>Programma ERTMS — STM-ATB และ dual operation</span><span>↗</span></a><a class="source-link" href="https://ertms.nl/nieuws/i/nGqxY/de-drielandentrein-en-het-baken-van-aken" target="_blank" rel="noopener"><span>Programma ERTMS — บทเรียนจาก Aachen</span><span>↗</span></a><a class="source-link" href="https://www.prorail.nl/siteassets/homepage/samenwerken/vervoerders/documenten/2026-netverklaring/network-statement-2026---initial-issue-dated-13-december-2024.pdf" target="_blank" rel="noopener"><span>ProRail Network Statement 2026 — migration & nuisance</span><span>↗</span></a></div></section>
-</article><aside class="aside glass-card"><p class="aside-title">ในหน้านี้</p><a href="#dual">ATB + ETCS</a><a href="#integration">System integration</a><a href="#service">ผลต่อการให้บริการ</a><a href="#people">บุคลากร</a><a href="#cost">ต้นทุนและเวลา</a><a href="#sources">แหล่งข้อมูล</a></aside></div></section></main>
+
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Chapter 03.2 • Updated 2026</div>
+        <h1>ปัญหาและความท้าทาย <span style="color:#ae1c28">ระหว่างการเปลี่ยนระบบ</span></h1>
+        <p class="hero-copy">การเปลี่ยนจาก ATB สู่ ERTMS/ETCS ไม่ใช่การเปลี่ยนอุปกรณ์ชิ้นเดียว แต่ต้องทำให้รถไฟ ทาง ระบบควบคุม ซอฟต์แวร์ บุคลากร และผู้ประกอบการหลายรายพร้อมใช้งานร่วมกัน ความล่าช้าของส่วนหนึ่งจึงสามารถส่งผลต่อทั้งโครงการได้</p>
+      </div>
+      <div class="page-badge glass-card reveal">
+        <div class="big">1 railway · many systems</div>
+        <p>ความท้าทายสำคัญอยู่ที่การทำให้ทุกส่วนพร้อมในเวลาเดียวกัน</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-sheet">
+    <section class="section">
+      <div class="container content-grid">
+        <article class="article">
+
+          <section class="article-section reveal problem-overview" id="overview">
+            <div class="kicker">Challenge map</div>
+            <h2>ปัญหาหลักไม่ได้เกิดจากสาเหตุเดียว</h2>
+            <p class="problem-lead">ข้อมูลจากรายงานความคืบหน้าของโครงการและเอกสารของรัฐบาลชี้ว่า ความยากของ ERTMS เกิดจากหลายเรื่องที่เชื่อมโยงกัน ตั้งแต่การพัฒนาระบบกลาง การดัดแปลงรถไฟ การรักษา ATB ให้ใช้งานต่อได้ ไปจนถึงการฝึกคนและการจัดการเหตุขัดข้องในระบบดิจิทัล</p>
+            <div class="problem-snapshot">
+              <div class="problem-snapshot-card"><span>TIME</span><strong>กำหนดการเลื่อน</strong><small>ระบบบางส่วนใช้เวลาพัฒนาและทดสอบมากกว่าที่คาด</small></div>
+              <div class="problem-snapshot-card"><span>€</span><strong>ต้นทุนเพิ่มตามเวลา</strong><small>ยิ่งเปลี่ยนช้า ยิ่งต้องลงทุนดูแลทั้ง ATB เดิมและ ERTMS ใหม่พร้อมกัน</small></div>
+              <div class="problem-snapshot-card"><span>R</span><strong>ความน่าเชื่อถือ</strong><small>ต้องมองทั้งรถ ทาง วิทยุ ซอฟต์แวร์ และวิธีแก้เหตุขัดข้องเป็นระบบเดียวกัน</small></div>
+              <div class="problem-snapshot-card"><span>F</span><strong>ขนส่งสินค้า</strong><small>ผู้ประกอบการต้องดัดแปลงหัวรถจักร รับภาระค่าใช้จ่ายบางส่วน และจัดรถให้พอใช้งานระหว่างการปรับปรุง</small></div>
+            </div>
+          </section>
+
+          <section class="article-section reveal" id="delay">
+            <div class="kicker">Why the plan slipped</div>
+            <h2>สาเหตุที่การเปลี่ยนผ่านล่าช้ากว่าแผนเดิม</h2>
+            <p>สาเหตุสำคัญไม่ใช่เพียง “งานก่อสร้างช้า” แต่เป็นเพราะแผนเดิมต้องพึ่งหลายระบบที่ยังอยู่ระหว่างการพัฒนาและต้องพิสูจน์ว่าใช้งานร่วมกันได้จริง ในปี 2024 โครงการยอมรับว่ารูปแบบดำเนินงานและกำหนดการเดิมไม่สมจริงเพียงพอ จึงเริ่มปรับแนวทางใหม่และแบ่งงานเป็น <strong>Tranche</strong> ที่เล็กลง เพื่อควบคุมความเสี่ยงและเรียนรู้จากแต่ละพื้นที่ก่อนขยายต่อ</p>
+
+            <div class="delay-grid">
+              <article class="delay-card glass-card"><span>01</span><h3>Central Safety System ใช้เวลาพัฒนามากขึ้น</h3><p>CSS เป็นหนึ่งในระบบสำคัญที่เชื่อมข้อมูลจากรถไฟกับโครงสร้างพื้นฐาน รายงานปี 2025 ระบุว่ากำหนดการของ CSS เลื่อนออกไป และข้อกำหนดใหม่จากกฎยุโรปทำให้ต้องมีงานพัฒนาเพิ่มเติม</p></article>
+              <article class="delay-card glass-card"><span>02</span><h3>STM ATB-NG ยากกว่าที่คาด</h3><p>รถ ERTMS บนเส้นทางที่ยังใช้ ATB-NG ต้องมีโมดูลแปลข้อมูลให้สองระบบเข้าใจกัน การพัฒนา STM ATB-NG สำหรับรถบนเส้นทางภาคเหนือมีความซับซ้อนและแพงกว่าที่คาด โดยรัฐบาลรายงานผลกระทบด้านต้นทุนเพิ่ม €6 ล้านในครึ่งแรกของปี 2025</p></article>
+              <article class="delay-card glass-card"><span>03</span><h3>ต้องทดสอบทั้งระบบ ไม่ใช่ทดสอบแยกชิ้น</h3><p>แม้อุปกรณ์แต่ละส่วนจะผ่านการทดสอบแล้ว แต่ยังต้องพิสูจน์ว่ารถไฟ ระบบบนทาง ระบบสื่อสาร และซอฟต์แวร์ทำงานร่วมกันได้จริง การพบข้อผิดพลาดหนึ่งจุดอาจทำให้ต้องแก้ซอฟต์แวร์ ทดสอบซ้ำ และขออนุมัติใหม่</p></article>
+              <article class="delay-card glass-card"><span>04</span><h3>ต้องเปลี่ยนระบบบนทางรถไฟที่ยังใช้งานทุกวัน</h3><p>การติดตั้งและทดสอบต้องแทรกอยู่ในตารางรถปกติ จึงต้องใช้ช่วงปิดทางและเวลาทดสอบอย่างระมัดระวัง เพื่อไม่ให้กระทบผู้โดยสารและการขนส่งสินค้ามากเกินไป</p></article>
+            </div>
+
+            <div class="problem-note"><strong>สรุปง่าย ๆ:</strong> แผนที่เลื่อนออกไปไม่ได้เกิดจากปัญหาเดียว แต่เกิดจาก “การพึ่งพากันของหลายงาน” ถ้า CSS, STM, รถไฟ หรือการทดสอบส่วนใดส่วนหนึ่งยังไม่พร้อม เส้นทางนั้นก็ยังเปิดใช้ ERTMS เต็มรูปแบบไม่ได้</div>
+          </section>
+
+          <section class="article-section reveal" id="cost">
+            <div class="kicker">Cost impact</div>
+            <h2>ผลกระทบต่อต้นทุน</h2>
+            <p>การเปลี่ยนระบบต้องลงทุนพร้อมกันทั้งอุปกรณ์บนรถ โครงสร้างพื้นฐาน ระบบควบคุม ซอฟต์แวร์ การทดสอบ และการฝึกบุคลากร ขณะเดียวกัน ATB เดิมยังต้องได้รับการบำรุงรักษาให้อยู่ในสภาพพร้อมใช้งานจนกว่าแต่ละพื้นที่จะเปลี่ยนเป็น ERTMS สำเร็จ การเปลี่ยนผ่านที่ยาวขึ้นจึงทำให้เกิดช่วงเวลาที่ต้องจ่ายให้ “ระบบเก่าและระบบใหม่” พร้อมกันนานขึ้น</p>
+
+            <div class="cost-metrics">
+              <div class="cost-metric"><small>กลางปี 2025</small><strong>€163m</strong><span>ความตึงตัวของงบประมาณที่รายงานสำหรับ Tranche 1</span></div>
+              <div class="cost-metric featured"><small>ปลายปี 2025 · รายงาน เม.ย. 2026</small><strong>≈€219m</strong><span>ช่องว่างงบประมาณที่อาจเกิดขึ้น โดยส่วนเพิ่มเกือบทั้งหมดเกี่ยวข้องกับการชดเชยราคาที่ได้รับไม่เต็มจำนวน</span></div>
+              <div class="cost-metric"><small>Risk picture</small><strong>≈€100m</strong><span>ความเสี่ยงด้านค่าใช้จ่ายเพิ่มเติมที่รายงาน โดยส่วนใหญ่เกี่ยวกับกำหนดการ Tranche 1 ที่เลื่อนออกไป</span></div>
+            </div>
+
+            <div class="problem-note warning"><strong>อย่านำตัวเลขทั้งสามมาบวกกัน:</strong> ตัวเลขเหล่านี้มาจากคนละช่วงเวลาและคนละวิธีรายงาน บางส่วนเป็น “ช่องว่างงบประมาณ” และบางส่วนเป็น “ความเสี่ยงที่อาจเกิดขึ้น” ไม่ใช่ค่าใช้จ่ายที่เกิดขึ้นแล้วทั้งหมด</div>
+            <p>รัฐบาลยังระบุด้วยว่าเมื่อกำหนดส่งมอบเลื่อนออกไป ค่าใช้จ่ายของระบบป้องกันรถไฟเดิมจะเพิ่มขึ้น เพราะ ATB ต้องถูกดูแลให้นานกว่าเดิม ดังนั้นการลดความล่าช้าจึงเป็นหนึ่งในวิธีสำคัญที่สุดในการจำกัดต้นทุนระยะยาว</p>
+          </section>
+
+          <section class="article-section reveal" id="dual">
+            <div class="kicker">Dual operation</div>
+            <h2>ช่วงที่ ATB และ ERTMS ต้องอยู่ร่วมกัน</h2>
+            <p>เนเธอร์แลนด์ไม่สามารถเปลี่ยนทั้งประเทศในวันเดียวได้ รถไฟที่ติด ERTMS แล้วจึงยังต้องวิ่งบนเส้นทางที่ใช้ ATB อยู่ สิ่งนี้ทำให้รถหนึ่งขบวนต้องรองรับทั้งเทคโนโลยีใหม่และเทคโนโลยีเดิมในช่วงเปลี่ยนผ่าน</p>
+            <div class="dual-bridge glass-card" aria-label="การทำงานร่วมกันของ ATB STM และ ETCS">
+              <div class="dual-node legacy"><span>ระบบบนทางเดิม</span><strong>ATB</strong><small>ส่งข้อมูลตามระบบเดิม</small></div>
+              <div class="dual-arrow" aria-hidden="true">→</div>
+              <div class="dual-node bridge"><span>ตัวแปล</span><strong>STM-ATB</strong><small>แปลงข้อมูลให้ระบบบนรถเข้าใจ</small></div>
+              <div class="dual-arrow" aria-hidden="true">→</div>
+              <div class="dual-node target"><span>ระบบบนรถใหม่</span><strong>ERTMS / ETCS</strong><small>นำข้อมูลไปใช้กับการควบคุมรถ</small></div>
+            </div>
+            <p>ความซับซ้อนอยู่ที่ฮาร์ดแวร์ ซอฟต์แวร์ และการตั้งค่าของรถแต่ละรุ่นต้องเข้ากันได้ หากมีการปรับรุ่นซอฟต์แวร์หรือข้อกำหนดของระบบ ก็ต้องตรวจสอบผลกระทบต่อส่วนอื่นด้วย</p>
+          </section>
+
+          <section class="article-section reveal" id="reliability">
+            <div class="kicker">Reliability</div>
+            <h2>ความน่าเชื่อถือของระบบ</h2>
+            <p><strong>ความปลอดภัย</strong> กับ <strong>ความน่าเชื่อถือในการให้บริการ</strong> เป็นคนละเรื่องกัน ETCS ถูกออกแบบให้หยุดรถเมื่อระบบไม่มั่นใจว่าการเดินรถปลอดภัย แต่การหยุดเพื่อความปลอดภัยก็ยังสามารถทำให้รถล่าช้าหรือหยุดอยู่กลางเส้นทางได้ ดังนั้นเป้าหมายของโครงการไม่ใช่เพียงให้ระบบ “ปลอดภัย” แต่ต้องทำให้ระบบทำงานได้ต่อเนื่องและแก้เหตุขัดข้องได้รวดเร็วด้วย</p>
+
+            <div class="reliability-layout">
+              <div class="reliability-story glass-card">
+                <span class="impact-label">REAL CASE</span>
+                <h3>Balise ที่ Aachen: ระบบหยุดรถเพราะอ่านคำสั่งไม่ได้</h3>
+                <p>ระหว่างการทดสอบรถไฟสามประเทศของ Arriva พบ balise ใกล้ Aachen Hbf ที่โปรแกรมไม่ถูกต้อง รถจึงไม่สามารถตีความคำสั่งและหยุดอัตโนมัติเพื่อความปลอดภัย หลังจากแก้ซอฟต์แวร์แล้ว ยังต้องทดสอบและอนุมัติอีกครั้งก่อนเปิดบริการ</p>
+              </div>
+              <div class="reliability-principles">
+                <div><strong>มองทั้งห่วงโซ่</strong><span>สาเหตุของเหตุขัดข้องอาจอยู่ที่รถ ทาง วิทยุ ซอฟต์แวร์ หรือการทำงานร่วมกันหลายส่วน</span></div>
+                <div><strong>แบ่งปันข้อมูล</strong><span>ProRail และผู้ประกอบการกำลังใช้ข้อมูลจากทั้งรถและโครงสร้างพื้นฐานเพื่อหาสาเหตุได้เร็วขึ้น</span></div>
+                <div><strong>จัดการการอัปเดต</strong><span>การเปลี่ยนซอฟต์แวร์ส่วนหนึ่งอาจกระทบอีกส่วน จึงต้องมีการทดสอบและควบคุมรุ่นระบบอย่างเป็นขั้นตอน</span></div>
+              </div>
+            </div>
+
+            <div class="problem-note"><strong>บทเรียนจาก Betuweroute:</strong> ในปี 2025 ทีมบริหารระบบร่วมกับผู้ประกอบการขนส่งสินค้า 4 ราย ศึกษาเหตุรบกวนการเดินรถและผลของการอัปเดตระบบ เพื่อนำบทเรียนไปใช้กับการรับ ERTMS เข้าสู่การใช้งานในพื้นที่ใหม่</div>
+          </section>
+
+          <section class="article-section reveal" id="freight">
+            <div class="kicker">Freight operators</div>
+            <h2>ผลต่อฝ่ายผู้ประกอบการขนส่งสินค้า</h2>
+            <p>ผู้ประกอบการขนส่งสินค้ามีความท้าทายต่างจากรถโดยสารหลายด้าน เพราะหัวรถจักรมักวิ่งข้ามประเทศ ใช้งานหลายเส้นทาง และมีเจ้าของรถหลายรูปแบบ เมื่อเส้นทางในเครือข่ายยุโรปเปลี่ยนเป็น ERTMS หัวรถจักรที่ใช้เส้นทางเหล่านั้นก็ต้องมี ETCS ที่รองรับข้อกำหนดใหม่ด้วย</p>
+
+            <div class="freight-panel">
+              <div class="freight-main glass-card">
+                <span class="impact-label">2025 SUPPORT SCHEME</span>
+                <h3>รัฐบาลมีเงินช่วยเหลือ แต่ผู้ประกอบการยังมีต้นทุนของตนเอง</h3>
+                <p>ตั้งแต่ปี 2025 เนเธอร์แลนด์มีโครงการอุดหนุนชั่วคราวสำหรับการอัปเกรดหรือ retrofit หัวรถจักรสินค้าให้รองรับ ETCS รุ่นที่กำหนด รัฐบาลระบุโดยตรงว่าการดัดแปลงมีค่าใช้จ่ายสูงและไม่มีผลตอบแทนโดยตรงในทันที จึงต้องมีเงินช่วยเหลือเพื่อไม่ให้ความสามารถในการแข่งขันของการขนส่งสินค้าทางรางเสียเปรียบมากเกินไป</p>
+                <div class="freight-stats"><div><strong>185–205</strong><span>หัวรถจักรที่โครงการอุดหนุนปี 2025 ประเมินว่าสามารถช่วยดัดแปลงได้</span></div><div><strong>2</strong><span>ต้นแบบหัวรถจักรที่สามารถได้รับการสนับสนุนด้านการพัฒนา</span></div></div>
+              </div>
+              <div class="freight-side">
+                <article><span>01</span><h3>รถหยุดทำเงินระหว่างดัดแปลง</h3><p>เมื่อหัวรถจักรเข้าศูนย์เพื่อติดตั้งและทดสอบ ETCS จะไม่สามารถใช้งานตามปกติ และการเช่ารถทดแทนก็มีค่าใช้จ่าย</p></article>
+                <article><span>02</span><h3>ต้องรองรับทั้ง ATB และ ETCS</h3><p>จนกว่าโครงข่ายจะเปลี่ยนครบ หัวรถจักรหลายคันยังต้องทำงานกับระบบเดิมและระบบใหม่พร้อมกัน</p></article>
+                <article><span>03</span><h3>ต้นทุนส่งผลต่อการแข่งขัน</h3><p>หากค่าใช้จ่ายถูกผลักไปยังลูกค้ามากเกินไป การขนส่งสินค้าทางรางอาจเสียเปรียบการขนส่งรูปแบบอื่น</p></article>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section reveal" id="people-tech">
+            <div class="kicker">People · Operations · Digital</div>
+            <h2>คน การเดินรถ และระบบดิจิทัลก็ต้องเปลี่ยนพร้อมกัน</h2>
+            <div class="people-tech-grid">
+              <article class="glass-card"><span>PEOPLE</span><h3>บุคลากรต้องเรียนรู้ระบบใหม่</h3><p>พนักงานขับ ผู้ควบคุมการเดินรถ ช่าง และผู้ทดสอบต้องเรียนรู้หน้าจอ กฎ และวิธีรับมือเหตุผิดปกติของ ERTMS ในช่วงเปลี่ยนผ่านบางคนยังต้องเข้าใจทั้ง ATB และ ERTMS</p></article>
+              <article class="glass-card"><span>OPERATION</span><h3>งานติดตั้งต้องอยู่ร่วมกับตารางรถจริง</h3><p>การปิดทาง ติดตั้ง balise ปรับระบบควบคุม และวิ่งทดสอบต้องวางแผนในช่วงที่รถไฟยังให้บริการอยู่ จึงต้องลดผลกระทบต่อผู้โดยสารและลูกค้าขนส่งสินค้าให้มากที่สุด</p></article>
+              <article class="glass-card"><span>DIGITAL</span><h3>ซอฟต์แวร์และ Cybersecurity สำคัญขึ้น</h3><p>ERTMS เชื่อมรถ ทาง ระบบควบคุม และเครือข่ายสื่อสารเข้าด้วยกันมากขึ้น การควบคุมรุ่นซอฟต์แวร์ การเข้ารหัสข้อมูล และการป้องกันการโจมตีทางไซเบอร์จึงเป็นส่วนหนึ่งของการดูแลระบบ ไม่ใช่เรื่องเสริมภายหลัง</p></article>
+            </div>
+          </section>
+
+          <section class="article-section reveal problem-conclusion" id="conclusion">
+            <div class="kicker">What this means</div>
+            <h2>เหตุผลที่เนเธอร์แลนด์เลือกเปลี่ยนแบบค่อยเป็นค่อยไป</h2>
+            <p>ข้อมูลทั้งหมดชี้ไปในทิศทางเดียวกันว่า การเปลี่ยนจาก ATB สู่ ERTMS เป็นการเปลี่ยนทั้งระบบรถไฟ ไม่ใช่โครงการติดตั้งอุปกรณ์ธรรมดา การแบ่งเป็น Tranche จึงมีเป้าหมายให้แก้ปัญหาในพื้นที่ที่ควบคุมได้ก่อน แล้วค่อยนำบทเรียนไปใช้กับเส้นทางที่ซับซ้อนกว่า โดยเฉพาะเส้นทางที่มีผู้ประกอบการหลายรายและการเดินรถข้ามพรมแดน</p>
+            <a class="reference-jump" href="other.html#ref-problems"><span>ตรวจสอบแหล่งอ้างอิงของ Chapter 03.2</span><strong>Reference Library →</strong></a>
+          </section>
+
+        </article>
+
+        <aside class="aside glass-card">
+          <p class="aside-title">ในหน้านี้</p>
+          <a href="#overview">ภาพรวมปัญหา</a>
+          <a href="#delay">เหตุผลที่ล่าช้า</a>
+          <a href="#cost">ผลกระทบต่อต้นทุน</a>
+          <a href="#dual">ATB + ERTMS</a>
+          <a href="#reliability">ความน่าเชื่อถือ</a>
+          <a href="#freight">ผู้ประกอบการขนส่งสินค้า</a>
+          <a href="#people-tech">คนและระบบดิจิทัล</a>
+          <a href="other.html#ref-problems">แหล่งอ้างอิง</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
   <div data-site-footer></div>
   <script src="script.js"></script>
+  <script src="problems-en.js"></script>
 </body>
 </html>
