@@ -6,6 +6,7 @@ const pages = [
   ['problems.html', { th: 'ปัญหา', en: 'Challenges' }],
   ['comparison.html', { th: 'เปรียบเทียบ', en: 'Comparison' }],
   ['impact.html', { th: 'ผลกระทบ', en: 'Impact' }],
+  ['summary.html', { th: 'บทสรุป', en: 'Conclusion' }],
   ['other.html', { th: 'อื่น ๆ', en: 'More' }]
 ];
 
