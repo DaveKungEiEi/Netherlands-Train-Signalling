@@ -1,0 +1,217 @@
+/* =========================================================
+   Chapter 05 — reader-friendly summary visuals
+   ========================================================= */
+
+body[data-page="summary.html"] .article-section {
+  overflow: visible;
+}
+
+body[data-page="summary.html"] .summary-intro-note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(242,248,255,.84));
+  color: #34506f;
+  line-height: 1.75;
+}
+
+body[data-page="summary.html"] .summary-intro-note strong {
+  color: #003082;
+}
+
+body[data-page="summary.html"] .summary-visual,
+body[data-page="summary.html"] .summary-visual-card {
+  position: relative;
+  margin: 28px 0;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 26px;
+  background: #eaf1f8;
+  box-shadow: 0 20px 50px rgba(18,54,96,.12);
+}
+
+body[data-page="summary.html"] .summary-visual {
+  min-height: 360px;
+}
+
+body[data-page="summary.html"] .summary-visual img,
+body[data-page="summary.html"] .summary-visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body[data-page="summary.html"] .summary-visual img {
+  position: absolute;
+  inset: 0;
+}
+
+body[data-page="summary.html"] .summary-visual::after,
+body[data-page="summary.html"] .summary-visual-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(4,27,56,.78) 0%, rgba(4,27,56,.12) 48%, transparent 72%);
+}
+
+body[data-page="summary.html"] .summary-visual figcaption,
+body[data-page="summary.html"] .summary-visual-card figcaption {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0,0,0,.34);
+}
+
+body[data-page="summary.html"] .summary-visual figcaption strong,
+body[data-page="summary.html"] .summary-visual-card figcaption strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+body[data-page="summary.html"] .summary-visual figcaption span,
+body[data-page="summary.html"] .summary-visual-card figcaption span {
+  display: block;
+  max-width: 760px;
+  font-size: .9rem;
+  line-height: 1.55;
+  opacity: .94;
+}
+
+body[data-page="summary.html"] .summary-visual figcaption small,
+body[data-page="summary.html"] .summary-visual-card figcaption small {
+  display: block;
+  margin-top: 7px;
+  font-size: .72rem;
+  line-height: 1.45;
+  opacity: .78;
+}
+
+body[data-page="summary.html"] .summary-visual-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+body[data-page="summary.html"] .summary-visual-card {
+  min-height: 300px;
+  margin: 0;
+}
+
+body[data-page="summary.html"] .summary-visual-card img {
+  position: absolute;
+  inset: 0;
+}
+
+body[data-page="summary.html"] .summary-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 26px 0 8px;
+  color: #003082;
+  font-weight: 760;
+  font-size: .84rem;
+}
+
+body[data-page="summary.html"] .summary-section-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffc917;
+  box-shadow: 0 0 0 5px rgba(255,201,23,.16);
+}
+
+body[data-page="summary.html"] .summary-takeaway {
+  position: relative;
+  margin: 30px 0 0;
+  padding: 24px 26px 24px 30px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(0,48,130,.98), rgba(20,80,153,.96));
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(0,48,130,.18);
+}
+
+body[data-page="summary.html"] .summary-takeaway::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 22px 0 0 22px;
+  background: #ffc917;
+}
+
+body[data-page="summary.html"] .summary-takeaway strong {
+  color: #fff;
+}
+
+body[data-page="summary.html"] .summary-takeaway p {
+  margin: 7px 0 0;
+  color: rgba(255,255,255,.88);
+  line-height: 1.75;
+}
+
+body[data-page="summary.html"] .summary-country-note {
+  margin-top: 14px;
+  color: #62768d;
+  font-size: .84rem;
+  line-height: 1.7;
+}
+
+body[data-page="summary.html"] .page-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-page="summary.html"] .page-badge::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -64px;
+  bottom: -78px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,201,23,.28), rgba(255,201,23,0) 68%);
+  pointer-events: none;
+}
+
+@media (max-width: 820px) {
+  body[data-page="summary.html"] .summary-visual-pair {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="summary.html"] .summary-visual,
+  body[data-page="summary.html"] .summary-visual-card {
+    min-height: 300px;
+    border-radius: 22px;
+  }
+
+  body[data-page="summary.html"] .summary-visual figcaption,
+  body[data-page="summary.html"] .summary-visual-card figcaption {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-page="summary.html"] .summary-visual,
+  body[data-page="summary.html"] .summary-visual-card {
+    min-height: 250px;
+  }
+
+  body[data-page="summary.html"] .summary-takeaway {
+    padding: 21px 20px 21px 25px;
+  }
+}
