@@ -310,6 +310,19 @@ body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active::after {
     width: 100%;
   }
 
+  /* Mobile menu always sits on a light glass panel, so the current page
+     must stay dark-blue as well. This overrides the white desktop active
+     state from both the home hero and the scrolled island. */
+  .site-header .nav-main-link.active,
+  .site-header.scrolled .nav-main-link.active,
+  .home-page .site-header:not(.scrolled) .nav-main-link.active,
+  body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active {
+    color: #003082 !important;
+    background: rgba(0,48,130,.08) !important;
+    box-shadow: inset 0 0 0 1px rgba(0,48,130,.06) !important;
+    text-shadow: none !important;
+  }
+
   .nav-main-link.active::after,
   .nav-item.has-submenu::after {
     display: none;
