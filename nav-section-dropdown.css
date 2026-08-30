@@ -47,10 +47,10 @@ body:not(.home-page)[data-page] .content-grid > .aside {
     backdrop-filter .28s ease;
 }
 
-/* Force the homepage TOP state to be truly clear. This intentionally beats
-   the shared glass .nav-shell defaults from styles.css. */
+/* Every desktop page uses the same top-state: fully transparent.
+   This intentionally overrides the shared glass defaults in styles.css. */
 @media (min-width: 1041px) {
-  .home-page .site-header:not(.scrolled) .nav-shell {
+  .site-header:not(.scrolled) .nav-shell {
     border-color: transparent !important;
     background: transparent !important;
     background-image: none !important;
@@ -167,6 +167,14 @@ body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active::after {
   height: 20px;
   background: transparent;
   pointer-events: auto;
+}
+
+/* Home is a direct link only: never show a submenu for the first nav item. */
+.nav-links > .nav-item:first-child > .nav-submenu {
+  display: none !important;
+}
+.nav-links > .nav-item:first-child.has-submenu::after {
+  content: none !important;
 }
 
 /* ---------- Dropdown ---------- */
