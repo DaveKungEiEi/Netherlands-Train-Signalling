@@ -297,6 +297,26 @@
   transform: translateY(-50%);
 }
 
+/* Keep the footer credit spelling correct even if an older cached script
+   still contains the previous misspelling. */
+.footer-v3-meta span:last-child {
+  font-size: 0;
+}
+
+.footer-v3-meta span:last-child::after {
+  font-size: .75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .66);
+}
+
+body[data-lang="th"] .footer-v3-meta span:last-child::after {
+  content: "ออกแบบและพัฒนาโดย Thakarn Jaitham";
+}
+
+body[data-lang="en"] .footer-v3-meta span:last-child::after {
+  content: "Designed & developed by Thakarn Jaitham";
+}
+
 .footer-to-top {
   appearance: none;
   border: 0;
