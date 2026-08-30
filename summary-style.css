@@ -1,15 +1,8 @@
 /* =========================================================
    Chapter 05 — reader-friendly summary visuals
+   The shared runtime now observes dynamically inserted reveal elements,
+   so the summary hero can use the same animation system as every page.
    ========================================================= */
-
-/* summary-en.js refreshes the hero content after script.js has already
-   registered its reveal observers. Make those dynamically inserted hero
-   elements visible immediately so the title never disappears. */
-body[data-page="summary.html"] .page-hero .reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
-}
 
 body[data-page="summary.html"] .article-section {
   overflow: visible;
@@ -180,9 +173,7 @@ body[data-page="summary.html"] .summary-country-note {
   line-height: 1.7;
 }
 
-/* Switzerland uses .flag.ch in the dynamically generated summary markup.
-   The original Swiss flag rules are scoped to comparison.html, so recreate
-   the flag geometry here instead of leaving the summary card blank. */
+/* Switzerland uses .flag.ch in the dynamically generated summary markup. */
 body[data-page="summary.html"] .flag.ch {
   position: relative;
   overflow: hidden;
