@@ -1,0 +1,208 @@
+/* =========================================================
+   Inner-page hero title treatment
+   Editorial NS-inspired typography for photographic heroes.
+   The homepage is intentionally excluded and keeps its own design.
+   ========================================================= */
+
+body:not(.home-page)[data-page] .page-hero h1 {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 930px;
+  margin: 18px 0 24px;
+  color: #fff !important;
+  font-size: clamp(3.15rem, 5.55vw, 6rem);
+  font-weight: 790;
+  line-height: 1.055;
+  letter-spacing: -.058em;
+  text-wrap: balance;
+  text-shadow:
+    0 2px 2px rgba(0,0,0,.24),
+    0 8px 30px rgba(0,0,0,.42),
+    0 20px 60px rgba(0,0,0,.20);
+}
+
+/* A short railway-yellow stroke anchors every title visually. */
+body:not(.home-page)[data-page] .page-hero h1::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: .01em;
+  bottom: -.16em;
+  width: clamp(92px, 21%, 210px);
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffc917 0 76%, rgba(255,201,23,.28) 76% 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 5px 22px rgba(255,201,23,.20);
+  transform: skewX(-18deg);
+  transform-origin: left center;
+}
+
+/* Small signal-like accent on the left edge of the headline. */
+body:not(.home-page)[data-page] .page-hero h1::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: .10em;
+  width: 5px;
+  height: .72em;
+  border-radius: 999px;
+  background: #ffc917;
+  box-shadow:
+    0 0 0 4px rgba(255,201,23,.10),
+    0 0 22px rgba(255,201,23,.34);
+}
+
+/* Recreate the yellow marker behind selected words that the earlier
+   light-background design used, while keeping the letters white for
+   maximum contrast on photographs. */
+body:not(.home-page)[data-page] .page-hero h1 > span {
+  position: relative;
+  z-index: 0;
+  display: inline;
+  padding: 0 .045em;
+  color: #fff !important;
+  background-image: linear-gradient(
+    180deg,
+    transparent 0 63%,
+    rgba(255,201,23,.94) 63% 88%,
+    transparent 88% 100%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow:
+    0 2px 2px rgba(0,0,0,.22),
+    0 7px 24px rgba(0,0,0,.38);
+}
+
+/* ERTMS uses the slash as punctuation; keep that mark yellow and reserve
+   the marker treatment for the descriptive phrase. */
+body[data-page="ertms.html"] .page-hero h1 > span:first-of-type {
+  padding-inline: .02em;
+  color: #ffc917 !important;
+  background-image: none;
+  text-shadow: 0 4px 22px rgba(0,0,0,.38);
+}
+
+/* On the comparison page the spans are multiplication separators, not
+   phrases. Treat them as bright yellow separators instead of markers. */
+body[data-page="comparison.html"] .page-hero h1 > span {
+  padding-inline: .055em;
+  color: #ffc917 !important;
+  background-image: none;
+  text-shadow:
+    0 3px 20px rgba(0,0,0,.44),
+    0 0 22px rgba(255,201,23,.10);
+}
+
+/* The four-country title is naturally longer, so give it a slightly more
+   compact scale without losing the strong editorial hierarchy. */
+body[data-page="comparison.html"] .page-hero h1 {
+  max-width: 1040px;
+  font-size: clamp(2.75rem, 4.65vw, 5rem);
+  line-height: 1.08;
+}
+
+/* Extra breathing room around the supporting copy so the title remains
+   the hero's dominant element. */
+body:not(.home-page)[data-page] .page-hero .hero-copy {
+  max-width: 820px;
+  margin-top: 30px;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.82;
+  font-weight: 520;
+  text-shadow:
+    0 2px 13px rgba(0,0,0,.58),
+    0 8px 26px rgba(0,0,0,.22);
+}
+
+/* Chapter label: clearer on photography without becoming a heavy panel. */
+body:not(.home-page)[data-page] .page-hero .eyebrow {
+  padding: 8px 13px !important;
+  border-color: rgba(255,255,255,.34) !important;
+  background-color: rgba(0,0,0,.27) !important;
+  color: rgba(255,255,255,.97) !important;
+  font-weight: 760 !important;
+  letter-spacing: .065em;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 8px 28px rgba(0,0,0,.12);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+}
+
+@media (max-width: 920px) {
+  body:not(.home-page)[data-page] .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.85rem, 8vw, 5rem);
+  }
+
+  body[data-page="comparison.html"] .page-hero h1 {
+    font-size: clamp(2.45rem, 7.1vw, 4.4rem);
+  }
+}
+
+@media (max-width: 720px) {
+  body:not(.home-page)[data-page] .page-hero h1 {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    font-size: clamp(2.55rem, 11.5vw, 4.1rem);
+    line-height: 1.08;
+    letter-spacing: -.052em;
+  }
+
+  body[data-page="comparison.html"] .page-hero h1 {
+    font-size: clamp(2.2rem, 9.8vw, 3.55rem);
+    line-height: 1.12;
+  }
+
+  body:not(.home-page)[data-page] .page-hero h1::before {
+    display: none;
+  }
+
+  body:not(.home-page)[data-page] .page-hero h1::after {
+    bottom: -.13em;
+    width: 120px;
+    height: 6px;
+  }
+
+  body:not(.home-page)[data-page] .page-hero h1 > span {
+    background-image: linear-gradient(
+      180deg,
+      transparent 0 66%,
+      rgba(255,201,23,.94) 66% 89%,
+      transparent 89% 100%
+    );
+  }
+
+  body[data-page="ertms.html"] .page-hero h1 > span:first-of-type,
+  body[data-page="comparison.html"] .page-hero h1 > span {
+    background-image: none;
+  }
+
+  body:not(.home-page)[data-page] .page-hero .hero-copy {
+    margin-top: 25px;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.home-page)[data-page] .page-hero .reveal.visible h1::after {
+    animation: heroTitleStroke .72s cubic-bezier(.2,.75,.2,1) .12s both;
+    transform-origin: left center;
+  }
+}
+
+@keyframes heroTitleStroke {
+  from {
+    opacity: 0;
+    transform: skewX(-18deg) scaleX(.20);
+  }
+  to {
+    opacity: 1;
+    transform: skewX(-18deg) scaleX(1);
+  }
+}
