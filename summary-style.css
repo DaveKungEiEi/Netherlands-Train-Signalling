@@ -180,6 +180,38 @@ body[data-page="summary.html"] .summary-country-note {
   line-height: 1.7;
 }
 
+/* Switzerland uses .flag.ch in the dynamically generated summary markup.
+   The original Swiss flag rules are scoped to comparison.html, so recreate
+   the flag geometry here instead of leaving the summary card blank. */
+body[data-page="summary.html"] .flag.ch {
+  position: relative;
+  overflow: hidden;
+  background: #da291c !important;
+  background-image: none !important;
+}
+
+body[data-page="summary.html"] .flag.ch::before,
+body[data-page="summary.html"] .flag.ch::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+  background: #fff;
+}
+
+body[data-page="summary.html"] .flag.ch::before {
+  width: 54%;
+  height: 20%;
+}
+
+body[data-page="summary.html"] .flag.ch::after {
+  width: 20%;
+  height: 62%;
+}
+
 body[data-page="summary.html"] .page-badge {
   position: relative;
   overflow: hidden;
