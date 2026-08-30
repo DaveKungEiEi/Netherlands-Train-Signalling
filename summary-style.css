@@ -2,6 +2,15 @@
    Chapter 05 — reader-friendly summary visuals
    ========================================================= */
 
+/* summary-en.js refreshes the hero content after script.js has already
+   registered its reveal observers. Make those dynamically inserted hero
+   elements visible immediately so the title never disappears. */
+body[data-page="summary.html"] .page-hero .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
 body[data-page="summary.html"] .article-section {
   overflow: visible;
 }
