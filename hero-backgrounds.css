@@ -18,51 +18,51 @@ body:not(.home-page)[data-page] .page-hero {
   border-bottom-color: rgba(255,255,255,.14) !important;
 }
 
-/* ATB — onboard ATB equipment / legacy Dutch train protection. */
+/* ATB — uploaded 4K background. */
 body[data-page="atb.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ATB-Fahrzeugeinrichtung.jpg?width=2200");
+  --hero-image: url("ATB-4K.png");
   --hero-position: center 48%;
 }
 
-/* ERTMS / ETCS — digital railway communication equipment in a Dutch cab. */
+/* ERTMS / ETCS — uploaded 4K background. */
 body[data-page="ertms.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/GSM-R%20NL.jpg?width=2200");
+  --hero-image: url("ETCS-4K.png");
   --hero-position: center 48%;
 }
 
-/* Status — Harlingen Haven, directly connected with Northern Lines / Tranche 1. */
+/* Status — uploaded 4K background. */
 body[data-page="status.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Harlingen%20station%20haven%20met%20RS2%20naar%20Leeuwarden%20%282023%29.jpg?width=2400");
+  --hero-image: url("Status-4K.png");
   --hero-position: center 52%;
 }
 
-/* Challenges — railway engineering works on an operating network. */
+/* Challenges — uploaded 4K background. */
 body[data-page="problems.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HUA-153431-Afbeelding%20van%20werkzaamheden%20aan%20het%20spoor%20in%20de%20nacht%20bij%20het%20N.S.-station%20Eindhoven%20Beukenlaan%20te%20Eindhoven.jpg?width=2400");
+  --hero-image: url("Problem-4K.png");
   --hero-position: center 55%;
 }
 
-/* Comparison — ETCS installation in Belgium, fitting the cross-country chapter. */
+/* Comparison — uploaded 4K background. */
 body[data-page="comparison.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Athus-Meuse%20ETCS%20R01.jpg?width=2400");
+  --hero-image: url("Compare-4K.png");
   --hero-position: center 52%;
 }
 
-/* Impact — VIRM rolling stock at a workshop, fitting retrofit and fleet availability. */
+/* Impact — uploaded 4K background. */
 body[data-page="impact.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Onnen%20NedTrain%20VIRM%20buiten%20onderhoud.jpg?width=2400");
+  --hero-image: url("Impact-4K.png");
   --hero-position: center 48%;
 }
 
-/* Summary — a Dutch NS train at Utrecht Centraal as a broad visual conclusion. */
+/* Summary — uploaded 4K background. */
 body[data-page="summary.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/NS%20train%20at%20Utrecht%20CS.jpg?width=2400");
+  --hero-image: url("Sum-4K.png");
   --hero-position: center 50%;
 }
 
-/* More / references — the Dutch Railway Museum, appropriate for source context. */
+/* More / references — uploaded 4K background. */
 body[data-page="other.html"] .page-hero {
-  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/The%20Spoorwegmuseum%20%28Railway%20Museum%29%20main%20building.jpg?width=2400");
+  --hero-image: url("Other-4K.png");
   --hero-position: center 48%;
 }
 
