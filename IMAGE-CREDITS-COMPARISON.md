@@ -26,6 +26,13 @@ Images used on `comparison.html` are selected to avoid repeating the imagery alr
 - Licence: https://creativecommons.org/licenses/by/3.0/
 - Use on site: onboard ETCS equipment and German rolling-stock conversion.
 
+## Switzerland — Mattstetten–Rothrist ETCS Level 2
+- File: **CH ETCS L2.JPG**
+- Source / author: **Swiss Federal Office of Transport (BAV/FOT)**, file prepared on Commons by Plutowiki from an official BAV information handout
+- Source: https://commons.wikimedia.org/wiki/File:CH_ETCS_L2.JPG
+- Licence: **Public Domain — Swiss official document**
+- Use on site: one of Switzerland's early ETCS Level 2 deployments on Mattstetten–Rothrist.
+
 ## Historical context — Harmelen memorial
 - File: **Monument treinramp Harmelen 26052012 07.JPG**
 - Author: **Onderwijsgek**
@@ -41,3 +48,25 @@ Images used on `comparison.html` are selected to avoid repeating the imagery alr
 - Licence: **CC BY-SA 4.0**
 - Licence: https://creativecommons.org/licenses/by-sa/4.0/
 - Use on site: Aachen–Maastricht cross-border LIMAX / Drielandentrein context.
+
+---
+
+# Switzerland research sources used on the comparison page
+
+These are the primary sources used to check the Swiss ETCS facts added in August 2026.
+
+1. **Swiss Federal Office of Transport (FOT/BAV) — European Train Control System (ETCS)**  
+   https://www.bav.admin.ch/en/european-train-control-system-etcs  
+   Used for: current Swiss ETCS architecture; Level 1 Limited Supervision on conventionally signalled lines; Level 2 on ten routes/sections; long-term objective of cab signalling across the standard-gauge network; rolling-stock requirements.
+
+2. **SBB — Train protection**  
+   https://company.sbb.ch/en/railway-development/services-rus/railway-environment/etcs.html  
+   Used for: ETCS Level 1 rollout completed in 2018; standard-gauge network operable without an additional national train-protection system; explanation of L1 LS, L2, GSM-R/RBC operation and the long-term move toward ETCS L2.
+
+3. **European Commission — ERTMS in Switzerland**  
+   https://transport.ec.europa.eu/transport-modes/rail/ertms/who-involved-ertms-deployment/countries/switzerland_en  
+   Used for: Switzerland's role on the Rhine–Alpine corridor; the Swiss National Implementation Plan; mixed ETCS levels and the replacement of SIGNUM/ZUB requirements for new vehicles from 2018.
+
+4. **Swiss Federal Office of Transport — Swiss transport policy from A to Z**  
+   https://www.bav.admin.ch/dam/en/sd-web/VrHZBswOYwJ2/schweizer_verkehrspolitikvonabisz.pdf  
+   Used for: early Swiss ETCS milestones, including Mattstetten–Rothrist (2004) and the Lötschberg Base Tunnel (2007), plus the later Gotthard and Ceneri base-tunnel context.
