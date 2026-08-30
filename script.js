@@ -24,9 +24,6 @@ localStorage.setItem('nts-language', currentLang);
 document.documentElement.lang = currentLang;
 document.body.dataset.lang = currentLang;
 
-// Keep the chapter/update label identical across every content page.
-// Page-specific English scripts may rebuild the hero after script.js runs,
-// so a lightweight observer reapplies the shared label whenever needed.
 const chapterNumbers = {
   'atb.html': '01',
   'ertms.html': '02',
@@ -63,7 +60,6 @@ const applyChapterUpdateLabel = () => {
 
 applyChapterUpdateLabel();
 window.addEventListener('load', () => window.setTimeout(applyChapterUpdateLabel, 0), { once: true });
-
 const chapterLabelObserver = new MutationObserver(() => applyChapterUpdateLabel());
 chapterLabelObserver.observe(document.body, { childList: true, subtree: true });
 
@@ -86,7 +82,7 @@ const text = {
     currentStatus: 'สถานะปัจจุบัน',
     challenges: 'ปัญหาและความท้าทาย',
     impact: 'ผลกระทบ',
-    comparison: 'เปรียบเทียบประเทศเพื่อนบ้าน',
+    comparison: 'เปรียบเทียบประเทศ',
     references: 'คำศัพท์และแหล่งอ้างอิง',
     home: 'หน้าแรก',
     backTop: 'กลับด้านบน',
@@ -112,7 +108,7 @@ const text = {
     currentStatus: 'Current status',
     challenges: 'Problems and challenges',
     impact: 'Impact',
-    comparison: 'Neighbouring-country comparison',
+    comparison: 'Country comparison',
     references: 'Glossary and references',
     home: 'Home',
     backTop: 'Back to top',
@@ -123,11 +119,102 @@ const text = {
 }[currentLang];
 
 const pageHref = (page) => currentLang === 'en' ? `${page}?lang=en` : page;
+const sectionHref = (page, hash) => `${pageHref(page)}${hash || ''}`;
 
-// Shared styles loaded on every page.
+const navSections = {
+  'index.html': [
+    ['#ns-history', { th: 'ประวัติการรถไฟเนเธอร์แลนด์', en: 'Dutch railway history' }]
+  ],
+  'atb.html': [
+    ['#what', { th: 'ATB คืออะไร', en: 'What is ATB?' }],
+    ['#history', { th: 'ประวัติ ATB', en: 'History of ATB' }],
+    ['#working', { th: 'หลักการทำงาน', en: 'How ATB works' }],
+    ['other.html#ref-atb', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'ertms.html': [
+    ['#what', { th: 'ERTMS/ETCS คืออะไร', en: 'What is ERTMS/ETCS?' }],
+    ['#history', { th: 'ประวัติและ Timeline', en: 'History and timeline' }],
+    ['#working', { th: 'หลักการทำงาน', en: 'How ERTMS/ETCS works' }],
+    ['#netherlands', { th: 'แนวทางของเนเธอร์แลนด์', en: 'Dutch approach' }],
+    ['other.html#ref-ertms', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'status.html': [
+    ['#overview', { th: 'ภาพรวมปี 2026', en: '2026 overview' }],
+    ['#timeline', { th: 'ลำดับการเปลี่ยนระบบ', en: 'Migration timeline' }],
+    ['#decision', { th: 'จุดเปลี่ยนสำคัญ', en: 'Key decisions' }],
+    ['#tranche1', { th: 'แผน Tranche 1', en: 'Tranche 1' }],
+    ['#latest', { th: 'ความคืบหน้าล่าสุด', en: 'Latest progress' }],
+    ['#systems', { th: 'ระบบที่ต้องเปลี่ยนพร้อมกัน', en: 'Systems changing together' }],
+    ['#future', { th: 'หลังปี 2026', en: 'After 2026' }],
+    ['other.html#ref-status', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'problems.html': [
+    ['#overview', { th: 'ภาพรวมปัญหา', en: 'Overview' }],
+    ['#delay', { th: 'สาเหตุที่ล่าช้า', en: 'Why it is delayed' }],
+    ['#cost', { th: 'ผลกระทบต่อต้นทุน', en: 'Cost impact' }],
+    ['#dual', { th: 'การใช้ ATB และ ERTMS ร่วมกัน', en: 'ATB and ERTMS together' }],
+    ['#reliability', { th: 'ความน่าเชื่อถือของระบบ', en: 'System reliability' }],
+    ['#freight', { th: 'ผู้ประกอบการขนส่งสินค้า', en: 'Freight operators' }],
+    ['#people-tech', { th: 'บุคลากรและระบบดิจิทัล', en: 'People and digital systems' }],
+    ['other.html#ref-problems', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'comparison.html': [
+    ['#overview', { th: 'ภาพรวมปี 2026', en: '2026 overview' }],
+    ['#timeline', { th: 'Timeline อดีต–ปัจจุบัน', en: 'Historical timeline' }],
+    ['#table', { th: 'ตารางเปรียบเทียบ', en: 'Comparison table' }],
+    ['#lessons', { th: 'บทเรียนจากประเทศเปรียบเทียบ', en: 'Lessons from the comparison' }],
+    ['#border', { th: 'ประเด็นข้ามพรมแดน', en: 'Cross-border issues' }],
+    ['other.html#ref-comparison', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'impact.html': [
+    ['#effects', { th: 'ภาพรวมผลกระทบ', en: 'Impact overview' }],
+    ['#retrofit', { th: 'การติดตั้ง ETCS บนรถรุ่นเดิม', en: 'Legacy fleet retrofit' }],
+    ['#virm-case', { th: 'กรณีศึกษา VIRM', en: 'VIRM case study' }],
+    ['#fleet-compare', { th: 'รถรุ่นเดิมกับรถรุ่นใหม่', en: 'Legacy vs newer fleets' }],
+    ['#longdistance', { th: 'รถไฟทางไกล', en: 'Long-distance services' }],
+    ['#balance', { th: 'ช่วงเปลี่ยนผ่านกับระยะยาว', en: 'Transition vs long term' }],
+    ['other.html#ref-impact', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'summary.html': [
+    ['#overview', { th: 'ภาพรวม', en: 'Overview' }],
+    ['#findings', { th: 'ข้อค้นพบสำคัญ', en: 'Key findings' }],
+    ['#status', { th: 'สถานะปี 2026', en: '2026 status' }],
+    ['#comparison', { th: 'บทเรียนจากประเทศเปรียบเทียบ', en: 'International lessons' }],
+    ['#impact', { th: 'ผลต่อรถไฟทางไกล', en: 'Long-distance impact' }],
+    ['#conclusion', { th: 'บทสรุปสุดท้าย', en: 'Final conclusion' }],
+    ['other.html#sources', { th: 'แหล่งอ้างอิง', en: 'References' }]
+  ],
+  'other.html': [
+    ['#glossary', { th: 'คำศัพท์สำคัญ', en: 'Glossary' }],
+    ['#method', { th: 'วิธีใช้ข้อมูล', en: 'How sources are used' }],
+    ['#sources', { th: 'คลังแหล่งอ้างอิง', en: 'Reference library' }]
+  ]
+};
+
+const navSubmenuHref = (page, target) => {
+  if (target.startsWith('#')) return sectionHref(page, target);
+  const [targetPage, targetHash = ''] = target.split('#');
+  return sectionHref(targetPage, targetHash ? `#${targetHash}` : '');
+};
+
+const renderNavItem = ([href, labels]) => {
+  const submenu = navSections[href] || [];
+  const submenuMarkup = submenu.length
+    ? `<div class="nav-submenu" aria-label="${labels[currentLang]}">
+        ${submenu.map(([target, itemLabels]) => `<a href="${navSubmenuHref(href, target)}">${itemLabels[currentLang]}</a>`).join('')}
+      </div>`
+    : '';
+
+  return `<div class="nav-item${submenu.length ? ' has-submenu' : ''}">
+    <a href="${pageHref(href)}" class="nav-main-link ${currentPage === href ? 'active' : ''}">${labels[currentLang]}</a>
+    ${submenuMarkup}
+  </div>`;
+};
+
 [
   'footer-style.css',
-  'language-style.css'
+  'language-style.css',
+  'nav-section-dropdown.css'
 ].forEach((href) => {
   if (!document.querySelector(`link[href="${href}"]`)) {
     const stylesheet = document.createElement('link');
@@ -137,7 +224,6 @@ const pageHref = (page) => currentLang === 'en' ? `${page}?lang=en` : page;
   }
 });
 
-// Shared NS-inspired design system for all content pages.
 if (currentPage !== 'index.html' && !document.querySelector('link[href="content-page-style.css"]')) {
   const contentStylesheet = document.createElement('link');
   contentStylesheet.rel = 'stylesheet';
@@ -145,7 +231,6 @@ if (currentPage !== 'index.html' && !document.querySelector('link[href="content-
   document.head.appendChild(contentStylesheet);
 }
 
-// Page-specific visual systems.
 const pageStyles = {
   'status.html': 'status-style.css',
   'other.html': 'reference-style.css'
@@ -157,8 +242,6 @@ if (pageStyles[currentPage] && !document.querySelector(`link[href="${pageStyles[
   document.head.appendChild(pageStylesheet);
 }
 
-// Final geometry pass for all timeline designs. This stylesheet is deliberately
-// loaded after shared and page-specific CSS so every page uses the same axis rule.
 if (!document.querySelector('link[href="timeline-align.css"]')) {
   const timelineStylesheet = document.createElement('link');
   timelineStylesheet.rel = 'stylesheet';
@@ -166,8 +249,6 @@ if (!document.querySelector('link[href="timeline-align.css"]')) {
   document.head.appendChild(timelineStylesheet);
 }
 
-// Status photography uses ::after on sections that already had a decorative
-// ::after. Load the collision fix last so those photographs remain in normal flow.
 if (currentPage === 'status.html' && !document.querySelector('link[href="status-visual-fix.css"]')) {
   const statusVisualFix = document.createElement('link');
   statusVisualFix.rel = 'stylesheet';
@@ -202,7 +283,7 @@ if (header) {
           <span>Netherlands Train System</span>
         </a>
         <nav class="nav-links" id="mainNav" aria-label="${text.navLabel}">
-          ${pages.map(([href, labels]) => `<a href="${pageHref(href)}" class="${currentPage === href ? 'active' : ''}">${labels[currentLang]}</a>`).join('')}
+          ${pages.map(renderNavItem).join('')}
           ${languageSwitcherMarkup}
         </nav>
         <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="${currentLang === 'en' ? 'Open menu' : 'เปิดเมนู'}"><span>☰</span></button>
@@ -243,7 +324,6 @@ if (footer) {
     </footer>`;
 }
 
-// Language dropdown behaviour.
 const languageSwitcher = document.querySelector('.language-switcher');
 const languageToggle = document.querySelector('.language-toggle');
 if (languageSwitcher && languageToggle) {
@@ -277,7 +357,6 @@ if (languageSwitcher && languageToggle) {
   });
 }
 
-// Load manually written English content only when English is active.
 const translationReady = new Promise((resolve) => {
   if (currentLang !== 'en') {
     resolve();
@@ -299,10 +378,8 @@ const translationReady = new Promise((resolve) => {
 });
 
 translationReady.then(() => {
-  // Reapply after the shared English translator updates the page hero.
   applyChapterUpdateLabel();
 
-  // Centralise source references in other.html.
   const referenceTargets = {
     'atb.html': 'ref-atb',
     'ertms.html': 'ref-ertms',
@@ -315,16 +392,10 @@ translationReady.then(() => {
   if (currentPage !== 'other.html' && referenceTargets[currentPage]) {
     const oldSourcesSection = document.getElementById('sources');
     if (oldSourcesSection) oldSourcesSection.remove();
-
-    const oldSourcesNav = document.querySelector('.aside a[href="#sources"]');
-    if (oldSourcesNav) {
-      oldSourcesNav.href = `${pageHref('other.html')}#${referenceTargets[currentPage]}`;
-      oldSourcesNav.textContent = text.sourceLink;
-      oldSourcesNav.setAttribute('aria-label', text.sourceAria);
-    }
   }
 
-  // Keep English navigation in English when following internal HTML links.
+  document.querySelectorAll('.content-grid > .aside').forEach((aside) => aside.setAttribute('aria-hidden', 'true'));
+
   if (currentLang === 'en') {
     document.querySelectorAll('a[href]').forEach((link) => {
       const href = link.getAttribute('href');
@@ -339,7 +410,6 @@ translationReady.then(() => {
     });
   }
 
-  // Homepage history formatting and historical images.
   if (currentPage === 'index.html') {
     if (!document.querySelector('link[href="history-fix.css"]')) {
       const historyFixStylesheet = document.createElement('link');
@@ -386,7 +456,6 @@ translationReady.then(() => {
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
   }
 
-  // Footer route animation.
   const footerRoute = document.querySelector('.footer-route');
   if (footerRoute) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -433,7 +502,7 @@ translationReady.then(() => {
   const siteHeader = document.querySelector('.site-header');
   const updateHeaderState = () => {
     if (!siteHeader) return;
-    siteHeader.classList.toggle('scrolled', window.scrollY > 32);
+    siteHeader.classList.toggle('scrolled', window.scrollY > 56);
   };
   window.addEventListener('scroll', updateHeaderState, { passive: true });
   updateHeaderState();
@@ -448,13 +517,8 @@ translationReady.then(() => {
     const updateHistoryLine = () => {
       const rect = historyTimeline.getBoundingClientRect();
       const markerRect = historyNowMarker.getBoundingClientRect();
-      const endAtNow = Math.max(
-        0,
-        Math.min(rect.height, markerRect.top + markerRect.height / 2 - rect.top)
-      );
+      const endAtNow = Math.max(0, Math.min(rect.height, markerRect.top + markerRect.height / 2 - rect.top));
 
-      // The pale guide line and the animated colour fill both end at the
-      // exact centre of the final "Present (Now)" marker.
       historyLine.style.bottom = 'auto';
       historyLine.style.height = `${endAtNow}px`;
 
