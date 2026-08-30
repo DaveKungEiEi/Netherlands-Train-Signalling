@@ -141,14 +141,23 @@ body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active::after {
   min-height: 40px;
   white-space: nowrap;
 }
+
+/* Keep the active underline centered on the label.
+   styles.css animates nav underlines from left:50% with translateX(-50%).
+   The previous active rule switched to left/right offsets but kept that
+   transform, which shifted the line to the left only in the top state. */
 .nav-main-link.active::after {
   content: "";
   position: absolute;
-  left: 10px;
-  right: 10px;
+  left: 50%;
+  right: auto;
   bottom: 3px;
+  width: calc(100% - 20px);
   height: 2px;
   border-radius: 999px;
+  transform: translateX(-50%) scaleX(1);
+  transform-origin: center;
+  opacity: 1;
 }
 
 /* No chevrons or dropdown icons. */
