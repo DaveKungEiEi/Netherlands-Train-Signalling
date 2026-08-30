@@ -61,26 +61,27 @@ body[data-page="comparison.html"] .ch-code {
   color: #a61910 !important;
 }
 
-/* Switzerland image — official BAV/FOT material published on Commons. */
+/* Switzerland image — a real ETCS Level 2 shunting-border installation
+   at Flüelen, Switzerland. */
 body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] {
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/CH%20ETCS%20L2.JPG?width=1200");
-  background-position: center 50%;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/SBB%20-%20ETCS%20Shunting%20Border%20%2830339113611%29.jpg?width=1600");
+  background-position: center 52%;
 }
 
 body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::before {
-  content: "Mattstetten–Rothrist — หนึ่งในเส้นทาง ETCS Level 2 ยุคแรกของสวิตเซอร์แลนด์";
+  content: "Flüelen — จุดขอบเขตการสับเปลี่ยนรถในพื้นที่ ETCS Level 2 ของสวิตเซอร์แลนด์";
 }
 
 body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::after {
-  content: "ภาพ/เอกสาร: Swiss Federal Office of Transport (BAV/FOT) · Wikimedia Commons · Public Domain";
+  content: "ภาพ: Kecko · Wikimedia Commons · CC BY 2.0";
 }
 
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::before {
-  content: "Mattstetten–Rothrist — one of Switzerland's early ETCS Level 2 routes";
+  content: "Flüelen — an ETCS Level 2 shunting-border installation in Switzerland";
 }
 
 html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::after {
-  content: "Image/document: Swiss Federal Office of Transport (BAV/FOT) · Wikimedia Commons · Public Domain";
+  content: "Image: Kecko · Wikimedia Commons · CC BY 2.0";
 }
 
 /* Compact evidence bar: primary official sources for the Swiss facts. */
