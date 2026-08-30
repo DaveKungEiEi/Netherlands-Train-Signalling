@@ -1,0 +1,238 @@
+/* =========================================================
+   Switzerland extension — Chapter 04.1
+   Keeps the existing NS-inspired comparison design while
+   expanding the page from three to four countries.
+   ========================================================= */
+
+body[data-page="comparison.html"] .comparison-country-grid,
+body[data-page="comparison.html"] .comparison-photo-grid,
+body[data-page="comparison.html"] .comparison-era-grid,
+body[data-page="comparison.html"] .comparison-lessons-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+body[data-page="comparison.html"] .comparison-country-card {
+  min-height: 370px;
+}
+
+body[data-page="comparison.html"] .comparison-country-card-switzerland {
+  border-color: rgba(218, 41, 28, .20);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(218, 41, 28, .085), transparent 36%),
+    linear-gradient(145deg, rgba(255,255,255,.99), rgba(255,248,248,.95));
+}
+
+/* Swiss flag — real cross geometry, no emoji dependency. */
+body[data-page="comparison.html"] .flag.ch,
+body[data-page="comparison.html"] .flag-mini.ch {
+  position: relative;
+  overflow: hidden;
+  background: #da291c !important;
+  background-image: none !important;
+}
+
+body[data-page="comparison.html"] .flag.ch::before,
+body[data-page="comparison.html"] .flag-mini.ch::before,
+body[data-page="comparison.html"] .flag.ch::after,
+body[data-page="comparison.html"] .flag-mini.ch::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+  background: #fff;
+}
+
+body[data-page="comparison.html"] .flag.ch::before { width: 54%; height: 20%; }
+body[data-page="comparison.html"] .flag.ch::after  { width: 20%; height: 62%; }
+body[data-page="comparison.html"] .flag-mini.ch::before { width: 58%; height: 22%; }
+body[data-page="comparison.html"] .flag-mini.ch::after  { width: 22%; height: 64%; }
+
+body[data-page="comparison.html"] .ch-dot {
+  background: #da291c;
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px rgba(218,41,28,.28);
+}
+
+body[data-page="comparison.html"] .ch-code {
+  border-color: rgba(218,41,28,.22) !important;
+  background: #fff0ef !important;
+  color: #a61910 !important;
+}
+
+/* Switzerland image — official BAV/FOT material published on Commons. */
+body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/CH%20ETCS%20L2.JPG?width=1200");
+  background-position: center 50%;
+}
+
+body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::before {
+  content: "Mattstetten–Rothrist — หนึ่งในเส้นทาง ETCS Level 2 ยุคแรกของสวิตเซอร์แลนด์";
+}
+
+body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::after {
+  content: "ภาพ/เอกสาร: Swiss Federal Office of Transport (BAV/FOT) · Wikimedia Commons · Public Domain";
+}
+
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::before {
+  content: "Mattstetten–Rothrist — one of Switzerland's early ETCS Level 2 routes";
+}
+
+html[lang="en"] body[data-page="comparison.html"] [data-slot="comparison-switzerland.webp"] figcaption::after {
+  content: "Image/document: Swiss Federal Office of Transport (BAV/FOT) · Wikimedia Commons · Public Domain";
+}
+
+/* Compact evidence bar: primary official sources for the Swiss facts. */
+body[data-page="comparison.html"] .comparison-swiss-sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(218,41,28,.13);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fff, #fff8f7);
+  color: #405873;
+  font-size: .75rem;
+  line-height: 1.55;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-sources strong {
+  color: #8d2118;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 9px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 999px;
+  background: #f4f8fc;
+  color: #164b82;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-sources a:hover {
+  border-color: rgba(0,48,130,.25);
+  background: #edf5fd;
+}
+
+/* The fourth table column needs a little more horizontal room. */
+body[data-page="comparison.html"] .compare-table-wrap table {
+  min-width: 1160px;
+}
+
+body[data-page="comparison.html"] .compare-table-wrap th:last-child {
+  background: rgba(218,41,28,.055);
+}
+
+/* Switzerland / Rhine–Alpine cross-border context is a separate case;
+   do not imply that Switzerland is part of the Drielandentrein route. */
+body[data-page="comparison.html"] .comparison-swiss-corridor {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid rgba(218,41,28,.14);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(218,41,28,.07), transparent 34%),
+    linear-gradient(145deg, #fff, #fafcff);
+}
+
+body[data-page="comparison.html"] .comparison-swiss-corridor-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 9px;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-corridor-head .flag-mini {
+  flex: 0 0 auto;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-corridor h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #173e69;
+}
+
+body[data-page="comparison.html"] .comparison-swiss-corridor p {
+  margin: 0;
+  color: #405974;
+  font-size: .9rem;
+  line-height: 1.75;
+  text-indent: 0 !important;
+}
+
+body[data-page="comparison.html"] .comparison-corridor-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+body[data-page="comparison.html"] .comparison-corridor-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 999px;
+  background: #f5f9fd;
+  color: #244b73;
+  font-size: .74rem;
+  font-weight: 780;
+}
+
+body[data-page="comparison.html"] .comparison-corridor-arrow {
+  color: #8aa0b7;
+  font-weight: 900;
+}
+
+/* Keep four-country cards comfortable before collapsing to mobile. */
+@media (max-width: 1220px) {
+  body[data-page="comparison.html"] .comparison-country-grid,
+  body[data-page="comparison.html"] .comparison-photo-grid,
+  body[data-page="comparison.html"] .comparison-era-grid,
+  body[data-page="comparison.html"] .comparison-lessons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body[data-page="comparison.html"] .comparison-country-card {
+    min-height: 330px;
+  }
+
+  body[data-page="comparison.html"] .comparison-country-grid > *,
+  body[data-page="comparison.html"] .comparison-photo-grid > * {
+    width: auto !important;
+    max-width: none !important;
+    grid-column: auto !important;
+    justify-self: stretch !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="comparison.html"] .comparison-country-grid,
+  body[data-page="comparison.html"] .comparison-photo-grid,
+  body[data-page="comparison.html"] .comparison-era-grid,
+  body[data-page="comparison.html"] .comparison-lessons-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body[data-page="comparison.html"] .comparison-country-card {
+    min-height: 0;
+  }
+
+  body[data-page="comparison.html"] .comparison-swiss-sources {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  body[data-page="comparison.html"] .comparison-corridor-route {
+    align-items: flex-start;
+  }
+}
