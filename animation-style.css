@@ -1,68 +1,65 @@
 /* =========================================================
    Netherlands Train System — shared motion system
    Calm, editorial motion for every page.
-   Relies on the existing .reveal -> .visible IntersectionObserver.
+   JavaScript adds .motion-ready and .visible.
+   Without JavaScript, content remains visible by default.
    ========================================================= */
 
 :root {
   --motion-fast: 260ms;
-  --motion-medium: 560ms;
-  --motion-slow: 760ms;
+  --motion-medium: 520ms;
+  --motion-slow: 720ms;
   --motion-ease: cubic-bezier(.22, .78, .22, 1);
   --motion-ease-soft: cubic-bezier(.2, .7, .2, 1);
 }
 
 /* ---------- Base reveal ---------- */
-.reveal {
+html.motion-ready .reveal {
   opacity: 0;
-  transform: translate3d(0, 24px, 0) scale(.992);
-  filter: blur(5px);
+  transform: translate3d(0, 22px, 0) scale(.994);
+  filter: blur(2px);
   transition:
     opacity var(--motion-slow) var(--motion-ease),
     transform var(--motion-slow) var(--motion-ease),
     filter var(--motion-medium) ease;
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
-.reveal.visible {
+html.motion-ready .reveal.visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
+  will-change: auto;
 }
 
 /* ---------- Navbar entrance ---------- */
 .site-header .nav-shell {
-  animation: nts-nav-enter 680ms var(--motion-ease) both;
+  animation: nts-nav-enter 620ms var(--motion-ease) both;
   transform-origin: 50% 0;
 }
 
 @keyframes nts-nav-enter {
-  from { opacity: 0; transform: translateY(-18px) scale(.985); }
+  from { opacity: 0; transform: translateY(-14px) scale(.988); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ---------- Hero ---------- */
-.hero-editorial .hero-editorial-inner.reveal,
-.page-hero .page-hero-inner > .reveal {
-  transform: translate3d(0, 34px, 0) scale(.985);
+html.motion-ready .hero-editorial .hero-editorial-inner.reveal,
+html.motion-ready .page-hero .page-hero-inner > .reveal {
+  transform: translate3d(0, 30px, 0) scale(.988);
 }
 
-.hero-editorial .hero-editorial-inner.reveal.visible,
-.page-hero .page-hero-inner > .reveal.visible {
+html.motion-ready .hero-editorial .hero-editorial-inner.reveal.visible,
+html.motion-ready .page-hero .page-hero-inner > .reveal.visible {
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-.page-hero .page-badge.reveal.visible {
-  transition-delay: 90ms;
+html.motion-ready .page-hero .page-badge.reveal.visible {
+  transition-delay: 80ms;
 }
 
-.hero-orb-yellow {
-  animation: nts-orb-float-a 8s ease-in-out infinite alternate;
-}
-
-.hero-orb-blue {
-  animation: nts-orb-float-b 10s ease-in-out infinite alternate;
-}
+.hero-orb-yellow { animation: nts-orb-float-a 8s ease-in-out infinite alternate; }
+.hero-orb-blue { animation: nts-orb-float-b 10s ease-in-out infinite alternate; }
 
 @keyframes nts-orb-float-a {
   from { transform: translate3d(0, 0, 0) scale(1); }
@@ -75,43 +72,43 @@
 }
 
 /* ---------- Section heading sequence ---------- */
-.article-section.reveal > .kicker,
-.article-section.reveal > h2,
-.article-section.reveal > p,
-.section-head.reveal .kicker,
-.section-head.reveal h2,
-.section-head.reveal .lead {
+html.motion-ready .article-section.reveal > .kicker,
+html.motion-ready .article-section.reveal > h2,
+html.motion-ready .article-section.reveal > p,
+html.motion-ready .section-head.reveal .kicker,
+html.motion-ready .section-head.reveal h2,
+html.motion-ready .section-head.reveal .lead {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 540ms var(--motion-ease), transform 540ms var(--motion-ease);
+  transform: translateY(11px);
+  transition: opacity 520ms var(--motion-ease), transform 520ms var(--motion-ease);
 }
 
-.article-section.reveal.visible > .kicker,
-.section-head.reveal.visible .kicker {
+html.motion-ready .article-section.reveal.visible > .kicker,
+html.motion-ready .section-head.reveal.visible .kicker {
   opacity: 1;
   transform: none;
-  transition-delay: 60ms;
+  transition-delay: 50ms;
 }
 
-.article-section.reveal.visible > h2,
-.section-head.reveal.visible h2 {
+html.motion-ready .article-section.reveal.visible > h2,
+html.motion-ready .section-head.reveal.visible h2 {
   opacity: 1;
   transform: none;
-  transition-delay: 125ms;
+  transition-delay: 110ms;
 }
 
-.article-section.reveal.visible > p,
-.section-head.reveal.visible .lead {
+html.motion-ready .article-section.reveal.visible > p,
+html.motion-ready .section-head.reveal.visible .lead {
   opacity: 1;
   transform: none;
-  transition-delay: 190ms;
+  transition-delay: 170ms;
 }
 
-.article-section.reveal.visible > p:nth-of-type(2) { transition-delay: 230ms; }
-.article-section.reveal.visible > p:nth-of-type(3) { transition-delay: 270ms; }
+html.motion-ready .article-section.reveal.visible > p:nth-of-type(2) { transition-delay: 215ms; }
+html.motion-ready .article-section.reveal.visible > p:nth-of-type(3) { transition-delay: 255ms; }
 
 /* ---------- Generic staggered content ---------- */
-.article-section.reveal :is(
+html.motion-ready .article-section.reveal :is(
   .info-card,
   .impact-card,
   .country-card,
@@ -124,13 +121,19 @@
   .comparison-media-placeholder,
   .ertms-media-placeholder,
   .ref-card,
-  .reference-card
+  .reference-card,
+  .atb-quick-card,
+  .atb-version-card,
+  .atb-history-card,
+  .summary-visual,
+  .summary-visual-card,
+  .summary-takeaway
 ) {
   opacity: 0;
-  transform: translateY(18px) scale(.985);
+  transform: translateY(16px) scale(.988);
 }
 
-.article-section.reveal.visible :is(
+html.motion-ready .article-section.reveal.visible :is(
   .info-card,
   .impact-card,
   .country-card,
@@ -143,134 +146,152 @@
   .comparison-media-placeholder,
   .ertms-media-placeholder,
   .ref-card,
-  .reference-card
+  .reference-card,
+  .atb-quick-card,
+  .atb-version-card,
+  .atb-history-card,
+  .summary-visual,
+  .summary-visual-card,
+  .summary-takeaway
 ) {
   opacity: 1;
   transform: none;
-  animation: nts-card-rise 640ms var(--motion-ease) backwards;
+  animation: nts-card-rise 610ms var(--motion-ease) backwards;
 }
 
-.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(2) { animation-delay: 70ms; }
-.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(3) { animation-delay: 140ms; }
-.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(4) { animation-delay: 210ms; }
-.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(5) { animation-delay: 280ms; }
-.article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(6) { animation-delay: 350ms; }
+html.motion-ready .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.atb-quick-card,.atb-version-card):nth-child(2) { animation-delay: 65ms; }
+html.motion-ready .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.atb-quick-card,.atb-version-card):nth-child(3) { animation-delay: 125ms; }
+html.motion-ready .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.atb-quick-card,.atb-version-card):nth-child(4) { animation-delay: 185ms; }
+html.motion-ready .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(5) { animation-delay: 245ms; }
+html.motion-ready .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country):nth-child(6) { animation-delay: 305ms; }
 
 @keyframes nts-card-rise {
-  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  from { opacity: 0; transform: translateY(16px) scale(.988); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* Supporting blocks that are not card grids still receive a gentle reveal. */
+html.motion-ready .article-section.reveal > :is(.callout, .signal-diagram, figure, table) {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 560ms var(--motion-ease), transform 560ms var(--motion-ease);
+}
+
+html.motion-ready .article-section.reveal.visible > :is(.callout, .signal-diagram, figure, table) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 180ms;
+}
+
 /* ---------- Homepage history ---------- */
-.history-item.reveal .history-marker {
+html.motion-ready .history-item.reveal .history-marker {
   opacity: 0;
-  transform: scale(.72);
+  transform: scale(.76);
 }
 
-.history-item.reveal .history-copy,
-.history-item.reveal .history-visual {
+html.motion-ready .history-item.reveal .history-copy,
+html.motion-ready .history-item.reveal .history-visual {
   opacity: 0;
-  transition: opacity 680ms var(--motion-ease), transform 680ms var(--motion-ease);
+  transition: opacity 640ms var(--motion-ease), transform 640ms var(--motion-ease);
 }
 
-.history-item.reveal .history-copy { transform: translateX(-24px); }
-.history-item.reveal .history-visual { transform: translateX(24px); }
-.history-item-reverse.reveal .history-copy { transform: translateX(24px); }
-.history-item-reverse.reveal .history-visual { transform: translateX(-24px); }
+html.motion-ready .history-item.reveal .history-copy { transform: translateX(-22px); }
+html.motion-ready .history-item.reveal .history-visual { transform: translateX(22px); }
+html.motion-ready .history-item-reverse.reveal .history-copy { transform: translateX(22px); }
+html.motion-ready .history-item-reverse.reveal .history-visual { transform: translateX(-22px); }
 
-.history-item.reveal.visible .history-marker {
-  animation: nts-marker-pop 540ms var(--motion-ease) 90ms both;
+html.motion-ready .history-item.reveal.visible .history-marker {
+  animation: nts-marker-pop 520ms var(--motion-ease) 80ms both;
 }
 
-.history-item.reveal.visible .history-copy,
-.history-item.reveal.visible .history-visual {
+html.motion-ready .history-item.reveal.visible .history-copy,
+html.motion-ready .history-item.reveal.visible .history-visual {
   opacity: 1;
   transform: none;
 }
 
-.history-item.reveal.visible .history-copy { transition-delay: 130ms; }
-.history-item.reveal.visible .history-visual { transition-delay: 220ms; }
+html.motion-ready .history-item.reveal.visible .history-copy { transition-delay: 115ms; }
+html.motion-ready .history-item.reveal.visible .history-visual { transition-delay: 195ms; }
 
 @keyframes nts-marker-pop {
-  0% { opacity: 0; transform: scale(.68); }
-  68% { opacity: 1; transform: scale(1.08); }
+  0% { opacity: 0; transform: scale(.72); }
+  68% { opacity: 1; transform: scale(1.06); }
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* ---------- Status / ERTMS / comparison timeline ---------- */
-.article-section.reveal .ertms-milestone,
-.article-section.reveal .comparison-era,
-body[data-page="status.html"] #timeline.reveal .status-row {
+/* ---------- Status / ERTMS / comparison timelines ---------- */
+html.motion-ready .article-section.reveal .ertms-milestone,
+html.motion-ready .article-section.reveal .comparison-era,
+html.motion-ready body[data-page="status.html"] #timeline.reveal .status-row {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(14px);
 }
 
-.article-section.reveal.visible .ertms-milestone,
-.article-section.reveal.visible .comparison-era,
-body[data-page="status.html"] #timeline.reveal.visible .status-row {
+html.motion-ready .article-section.reveal.visible .ertms-milestone,
+html.motion-ready .article-section.reveal.visible .comparison-era,
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row {
   opacity: 1;
   transform: none;
-  animation: nts-timeline-row 620ms var(--motion-ease) backwards;
+  animation: nts-timeline-row 590ms var(--motion-ease) backwards;
 }
 
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(2),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(2) { animation-delay: 80ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(3),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(3) { animation-delay: 150ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(4),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(4) { animation-delay: 220ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(5),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(5) { animation-delay: 290ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(6),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(6) { animation-delay: 360ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(7),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(7) { animation-delay: 430ms; }
-.article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(8),
-body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(8) { animation-delay: 500ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(2),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(2) { animation-delay: 70ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(3),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(3) { animation-delay: 135ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(4),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(4) { animation-delay: 200ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(5),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(5) { animation-delay: 265ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(6),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(6) { animation-delay: 330ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(7),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(7) { animation-delay: 395ms; }
+html.motion-ready .article-section.reveal.visible :is(.ertms-milestone,.comparison-era):nth-child(8),
+html.motion-ready body[data-page="status.html"] #timeline.reveal.visible .status-row:nth-child(8) { animation-delay: 460ms; }
 
 @keyframes nts-timeline-row {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Current timeline dots softly breathe after appearing. */
 body[data-page="ertms.html"] .ertms-milestone.current::before,
 body[data-page="comparison.html"] .comparison-era-current::before {
-  animation: nts-current-pulse 2.4s ease-in-out infinite;
+  animation: nts-current-pulse 2.6s ease-in-out infinite;
 }
 
 @keyframes nts-current-pulse {
   0%, 100% { filter: drop-shadow(0 0 0 rgba(255,201,23,0)); }
-  50% { filter: drop-shadow(0 0 7px rgba(255,201,23,.48)); }
+  50% { filter: drop-shadow(0 0 6px rgba(255,201,23,.42)); }
 }
 
 /* ---------- Tables ---------- */
-.article-section.reveal table tbody tr {
+html.motion-ready .article-section.reveal table tbody tr {
   opacity: 0;
-  transform: translateX(-10px);
+  transform: translateX(-8px);
 }
 
-.article-section.reveal.visible table tbody tr {
+html.motion-ready .article-section.reveal.visible table tbody tr {
   opacity: 1;
   transform: none;
-  animation: nts-table-row 500ms var(--motion-ease-soft) backwards;
+  animation: nts-table-row 470ms var(--motion-ease-soft) backwards;
 }
 
-.article-section.reveal.visible table tbody tr:nth-child(2) { animation-delay: 55ms; }
-.article-section.reveal.visible table tbody tr:nth-child(3) { animation-delay: 110ms; }
-.article-section.reveal.visible table tbody tr:nth-child(4) { animation-delay: 165ms; }
-.article-section.reveal.visible table tbody tr:nth-child(5) { animation-delay: 220ms; }
-.article-section.reveal.visible table tbody tr:nth-child(6) { animation-delay: 275ms; }
-.article-section.reveal.visible table tbody tr:nth-child(7) { animation-delay: 330ms; }
-.article-section.reveal.visible table tbody tr:nth-child(8) { animation-delay: 385ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(2) { animation-delay: 50ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(3) { animation-delay: 100ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(4) { animation-delay: 150ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(5) { animation-delay: 200ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(6) { animation-delay: 250ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(7) { animation-delay: 300ms; }
+html.motion-ready .article-section.reveal.visible table tbody tr:nth-child(8) { animation-delay: 350ms; }
 
 @keyframes nts-table-row {
-  from { opacity: 0; transform: translateX(-10px); }
+  from { opacity: 0; transform: translateX(-8px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 /* ---------- Micro interactions ---------- */
-:is(.info-card,.impact-card,.country-card,.stat,.term,.source-link,.comparison-media-placeholder,.ertms-media-placeholder) {
+:is(.info-card,.impact-card,.country-card,.stat,.term,.source-link,.comparison-media-placeholder,.ertms-media-placeholder,.atb-quick-card,.atb-version-card,.summary-visual,.summary-visual-card) {
   transition:
     transform var(--motion-fast) var(--motion-ease),
     box-shadow var(--motion-fast) ease,
@@ -278,12 +299,13 @@ body[data-page="comparison.html"] .comparison-era-current::before {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  :is(.info-card,.impact-card,.country-card,.stat,.term,.source-link):hover {
+  .article-section.reveal.visible :is(.info-card,.impact-card,.country-card,.stat,.term,.source-link,.atb-quick-card,.atb-version-card,.summary-visual,.summary-visual-card):hover,
+  :is(.info-card,.impact-card,.country-card,.stat,.term,.source-link,.atb-quick-card,.atb-version-card,.summary-visual,.summary-visual-card):hover {
     transform: translateY(-4px);
   }
 
-  .comparison-media-placeholder:hover,
-  .ertms-media-placeholder:hover {
+  .article-section.reveal.visible :is(.comparison-media-placeholder,.ertms-media-placeholder):hover,
+  :is(.comparison-media-placeholder,.ertms-media-placeholder):hover {
     transform: translateY(-4px) scale(1.008);
   }
 
@@ -295,37 +317,35 @@ body[data-page="comparison.html"] .comparison-era-current::before {
 }
 
 /* ---------- Sheet handle ---------- */
-main.page-sheet::before {
-  animation: nts-handle-breathe 3.2s ease-in-out infinite;
-}
+main.page-sheet::before { animation: nts-handle-breathe 3.6s ease-in-out infinite; }
 
 @keyframes nts-handle-breathe {
-  0%,100% { opacity: .72; transform: scaleX(1); }
-  50% { opacity: 1; transform: scaleX(1.14); }
+  0%,100% { opacity: .76; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.08); }
 }
 
 /* ---------- Footer ---------- */
-.footer-v3-brand,
-.footer-v3-nav {
-  animation: nts-footer-enter 720ms var(--motion-ease) both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 32%;
+html.motion-ready .footer-v3-brand.reveal,
+html.motion-ready .footer-v3-nav.reveal {
+  transform: translateY(18px);
 }
 
-@keyframes nts-footer-enter {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+html.motion-ready .footer-v3-brand.reveal.visible,
+html.motion-ready .footer-v3-nav.reveal.visible {
+  transform: none;
 }
+
+html.motion-ready .footer-v3-nav.reveal.visible { transition-delay: 80ms; }
 
 /* ---------- Mobile: lighter transforms ---------- */
 @media (max-width: 720px) {
-  .reveal { transform: translate3d(0, 16px, 0); filter: blur(3px); }
+  html.motion-ready .reveal { transform: translate3d(0, 14px, 0); filter: none; }
 
-  .history-item.reveal .history-copy,
-  .history-item.reveal .history-visual,
-  .history-item-reverse.reveal .history-copy,
-  .history-item-reverse.reveal .history-visual {
-    transform: translateY(14px);
+  html.motion-ready .history-item.reveal .history-copy,
+  html.motion-ready .history-item.reveal .history-visual,
+  html.motion-ready .history-item-reverse.reveal .history-copy,
+  html.motion-ready .history-item-reverse.reveal .history-visual {
+    transform: translateY(12px);
   }
 }
 
@@ -338,14 +358,14 @@ main.page-sheet::before {
     scroll-behavior: auto !important;
   }
 
-  .reveal,
-  .reveal.visible,
-  .article-section.reveal > *,
-  .article-section.reveal :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.comparison-media-placeholder,.ertms-media-placeholder,.ertms-milestone,.comparison-era),
-  .history-item.reveal .history-marker,
-  .history-item.reveal .history-copy,
-  .history-item.reveal .history-visual,
-  .article-section.reveal table tbody tr {
+  html.motion-ready .reveal,
+  html.motion-ready .reveal.visible,
+  html.motion-ready .article-section.reveal > *,
+  html.motion-ready .article-section.reveal :is(.info-card,.impact-card,.country-card,.stat,.status-row,.diagram-node,.term,.source-link,.comparison-era-country,.comparison-media-placeholder,.ertms-media-placeholder,.ertms-milestone,.comparison-era,.atb-quick-card,.atb-version-card,.atb-history-card,.summary-visual,.summary-visual-card,.summary-takeaway),
+  html.motion-ready .history-item.reveal .history-marker,
+  html.motion-ready .history-item.reveal .history-copy,
+  html.motion-ready .history-item.reveal .history-visual,
+  html.motion-ready .article-section.reveal table tbody tr {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
