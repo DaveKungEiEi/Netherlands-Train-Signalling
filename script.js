@@ -1,3 +1,18 @@
+(() => {
+  if (!document.querySelector('link[href^="glossary-links.css"]')) {
+    const glossaryStyles = document.createElement('link');
+    glossaryStyles.rel = 'stylesheet';
+    glossaryStyles.href = 'glossary-links.css?v=20260830-1';
+    document.head.appendChild(glossaryStyles);
+  }
+  if (!document.querySelector('script[src^="glossary-links.js"]')) {
+    const glossaryScript = document.createElement('script');
+    glossaryScript.src = 'glossary-links.js?v=20260830-1';
+    glossaryScript.async = true;
+    document.head.appendChild(glossaryScript);
+  }
+})();
+
 document.documentElement.classList.add('js', 'motion-ready');
 
 const pages = [
@@ -89,7 +104,7 @@ const text = {
     sourceLink: 'แหล่งอ้างอิง',
     sourceAria: 'เปิดแหล่งอ้างอิงของหัวข้อนี้ในหน้าอื่น ๆ',
     academicSite: 'เว็บไซต์งานวิชาการด้านระบบราง · 2026',
-    designedBy: 'ออกแบบและพัฒนาโดย Thakrn Jaitham'
+    designedBy: 'ออกแบบและพัฒนาโดย Thakarn Jaitham'
   },
   en: {
     navLabel: 'Main navigation',
@@ -117,7 +132,7 @@ const text = {
     sourceLink: 'References',
     sourceAria: 'Open the references for this topic in the More page',
     academicSite: 'Academic Railway Research Website · 2026',
-    designedBy: 'Designed & developed by Thakrn Jaitham'
+    designedBy: 'Designed & developed by Thakarn Jaitham'
   }
 }[currentLang];
 
