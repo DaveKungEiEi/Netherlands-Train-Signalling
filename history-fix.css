@@ -1,4 +1,5 @@
 @import url("animation-style.css");
+@import url("site-visual-density.css");
 
 /* Homepage history photo cleanup */
 #ns-history .history-visual::before,
