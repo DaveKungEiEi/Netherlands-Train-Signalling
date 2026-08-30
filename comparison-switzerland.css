@@ -4,6 +4,33 @@
    expanding the page from three to four countries.
    ========================================================= */
 
+/* ---------------------------------------------------------
+   Full-width comparison layout
+   The comparison page now has four countries, a wider timeline
+   and a five-column table. The old "On this page" sidebar used
+   valuable horizontal space and left an empty lower-right area.
+   Hide it only on this page and give that space back to content.
+   Section IDs remain unchanged, so direct anchor links still work.
+   --------------------------------------------------------- */
+body[data-page="comparison.html"] .content-grid {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 !important;
+}
+
+body[data-page="comparison.html"] .content-grid > .article {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0;
+}
+
+body[data-page="comparison.html"] .content-grid > .aside {
+  display: none !important;
+}
+
+body[data-page="comparison.html"] .container.content-grid {
+  width: min(100%, 1220px);
+}
+
 body[data-page="comparison.html"] .comparison-country-grid,
 body[data-page="comparison.html"] .comparison-photo-grid,
 body[data-page="comparison.html"] .comparison-era-grid,
