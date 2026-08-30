@@ -1,0 +1,211 @@
+/* =========================================================
+   Section navigation dropdown
+   Replaces the right-side "ในหน้านี้ / On this page" card on
+   every inner page with a compact Liquid Glass dropdown below
+   the active navbar item.
+
+   The original <aside> stays in the DOM as the semantic source
+   of section links, but it no longer occupies article space.
+   ========================================================= */
+
+/* Give the article the full width that used to be reserved for the sidebar. */
+body:not(.home-page)[data-page] .content-grid {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 !important;
+}
+
+body:not(.home-page)[data-page] .container.content-grid {
+  width: min(100%, 1240px);
+}
+
+body:not(.home-page)[data-page] .content-grid > .article {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+/* The active top-level link is the hover/focus trigger. */
+body:not(.home-page)[data-page] .nav-links > a.active {
+  position: relative;
+  anchor-name: --section-nav-anchor;
+  padding-right: 27px;
+}
+
+body:not(.home-page)[data-page] .nav-links > a.active::before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.7px solid currentColor;
+  border-bottom: 1.7px solid currentColor;
+  transform: translateY(-68%) rotate(45deg);
+  opacity: .78;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .nav-links > a.active::before,
+body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .nav-links > a.active::before,
+body:not(.home-page)[data-page]:has(.aside:hover) .nav-links > a.active::before,
+body:not(.home-page)[data-page]:has(.aside:focus-within) .nav-links > a.active::before {
+  transform: translateY(-30%) rotate(225deg);
+  opacity: 1;
+}
+
+/* Hidden state: fixed so it never consumes a grid column. */
+body:not(.home-page)[data-page] .content-grid > .aside {
+  position: fixed !important;
+  top: 76px !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 180 !important;
+  display: block !important;
+  width: min(320px, calc(100vw - 28px)) !important;
+  max-height: min(68vh, 560px);
+  margin: 0 !important;
+  padding: 12px !important;
+  overflow: auto !important;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(255,255,255,.88) !important;
+  border-radius: 22px !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.91), rgba(241,247,254,.82)) !important;
+  box-shadow:
+    0 22px 58px rgba(0,48,130,.17),
+    inset 0 1px 0 rgba(255,255,255,.96) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(150%) !important;
+  backdrop-filter: blur(26px) saturate(150%) !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-30%, -8px) scale(.975) !important;
+  transform-origin: 50% 0;
+  transition:
+    opacity .18s ease,
+    transform .2s cubic-bezier(.2,.75,.2,1),
+    visibility 0s linear .2s;
+}
+
+/* Modern browsers: position the dropdown precisely below the active nav item. */
+@supports (position-anchor: --section-nav-anchor) {
+  body:not(.home-page)[data-page] .content-grid > .aside {
+    position-anchor: --section-nav-anchor;
+    top: calc(anchor(bottom) - 1px) !important;
+    left: clamp(14px, calc(anchor(center) - 160px), calc(100vw - 334px)) !important;
+    transform: translateY(-7px) scale(.975) !important;
+  }
+}
+
+/* Open while the active nav item or the dropdown itself is hovered/focused. */
+body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .content-grid > .aside,
+body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .content-grid > .aside,
+body:not(.home-page)[data-page]:has(.content-grid > .aside:hover) .content-grid > .aside,
+body:not(.home-page)[data-page]:has(.content-grid > .aside:focus-within) .content-grid > .aside {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-30%, 0) scale(1) !important;
+  transition-delay: 0s;
+}
+
+@supports (position-anchor: --section-nav-anchor) {
+  body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .content-grid > .aside,
+  body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .content-grid > .aside,
+  body:not(.home-page)[data-page]:has(.content-grid > .aside:hover) .content-grid > .aside,
+  body:not(.home-page)[data-page]:has(.content-grid > .aside:focus-within) .content-grid > .aside {
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+/* Dropdown content */
+body:not(.home-page)[data-page] .content-grid > .aside .aside-title {
+  display: block !important;
+  margin: 2px 4px 7px !important;
+  padding: 6px 8px 8px;
+  border-bottom: 1px solid rgba(0,48,130,.10);
+  color: #123d70 !important;
+  font-size: .72rem !important;
+  font-weight: 850 !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase;
+}
+
+body:not(.home-page)[data-page] .content-grid > .aside a {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  min-height: 38px;
+  margin: 2px 0;
+  padding: 8px 35px 8px 11px !important;
+  border: 1px solid transparent;
+  border-radius: 12px !important;
+  background: transparent;
+  color: #405b78 !important;
+  font-size: .82rem !important;
+  font-weight: 680 !important;
+  line-height: 1.42;
+  text-decoration: none;
+  white-space: normal !important;
+  transition: background-color .16s ease, color .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+body:not(.home-page)[data-page] .content-grid > .aside a::after {
+  content: "→";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7c96b0;
+  font-size: .78rem;
+  opacity: .72;
+}
+
+body:not(.home-page)[data-page] .content-grid > .aside a:hover,
+body:not(.home-page)[data-page] .content-grid > .aside a:focus-visible {
+  border-color: rgba(0,48,130,.08) !important;
+  background: rgba(0,48,130,.065) !important;
+  color: #003082 !important;
+  transform: translateX(2px) !important;
+}
+
+body:not(.home-page)[data-page] .content-grid > .aside a:hover::after,
+body:not(.home-page)[data-page] .content-grid > .aside a:focus-visible::after {
+  color: #003082;
+  opacity: 1;
+}
+
+/* A small visual bridge keeps hover continuous from nav link to dropdown. */
+body:not(.home-page)[data-page] .content-grid > .aside::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -8px;
+  height: 10px;
+  background: transparent;
+}
+
+/* Touch / compact navigation has no reliable hover state. Keep the old
+   side card removed rather than letting a floating panel cover the menu. */
+@media (max-width: 1040px) {
+  body:not(.home-page)[data-page] .nav-links > a.active {
+    padding-right: 10px;
+  }
+
+  body:not(.home-page)[data-page] .nav-links > a.active::before {
+    display: none;
+  }
+
+  body:not(.home-page)[data-page] .content-grid > .aside {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home-page)[data-page] .content-grid > .aside,
+  body:not(.home-page)[data-page] .nav-links > a.active::before {
+    transition: none !important;
+  }
+}
