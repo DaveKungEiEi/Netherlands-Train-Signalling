@@ -187,7 +187,7 @@ body[data-page="atb.html"] .atb-history-dot {
   height: var(--article-timeline-dot-size);
   box-sizing: content-box;
   margin: 0;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   border: var(--article-timeline-dot-border) solid var(--article-timeline-blue);
   border-radius: 50%;
   background: #fff;
