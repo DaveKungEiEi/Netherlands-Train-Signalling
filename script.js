@@ -166,6 +166,15 @@ if (!document.querySelector('link[href="timeline-align.css"]')) {
   document.head.appendChild(timelineStylesheet);
 }
 
+// Status photography uses ::after on sections that already had a decorative
+// ::after. Load the collision fix last so those photographs remain in normal flow.
+if (currentPage === 'status.html' && !document.querySelector('link[href="status-visual-fix.css"]')) {
+  const statusVisualFix = document.createElement('link');
+  statusVisualFix.rel = 'stylesheet';
+  statusVisualFix.href = 'status-visual-fix.css';
+  document.head.appendChild(statusVisualFix);
+}
+
 const languageSwitcherMarkup = `
   <div class="language-switcher">
     <button class="language-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="${text.languageLabel}">
@@ -431,16 +440,32 @@ translationReady.then(() => {
 
   const historyTimeline = document.getElementById('historyTimeline');
   const historyLineFill = document.getElementById('historyLineFill');
-  if (historyTimeline && historyLineFill) {
+  const historyLine = historyTimeline?.querySelector('.history-line');
+  const historyItems = historyTimeline ? Array.from(historyTimeline.querySelectorAll('.history-item')) : [];
+  const historyNowMarker = historyItems.length ? historyItems[historyItems.length - 1].querySelector('.history-marker') : null;
+
+  if (historyTimeline && historyLineFill && historyLine && historyNowMarker) {
     const updateHistoryLine = () => {
       const rect = historyTimeline.getBoundingClientRect();
+      const markerRect = historyNowMarker.getBoundingClientRect();
+      const endAtNow = Math.max(
+        0,
+        Math.min(rect.height, markerRect.top + markerRect.height / 2 - rect.top)
+      );
+
+      // The pale guide line and the animated colour fill both end at the
+      // exact centre of the final "Present (Now)" marker.
+      historyLine.style.bottom = 'auto';
+      historyLine.style.height = `${endAtNow}px`;
+
       const viewportMiddle = window.innerHeight * 0.58;
-      const travelled = viewportMiddle - rect.top;
-      const ratio = Math.max(0, Math.min(1, travelled / rect.height));
-      historyLineFill.style.height = `${ratio * 100}%`;
+      const travelled = Math.max(0, Math.min(endAtNow, viewportMiddle - rect.top));
+      historyLineFill.style.height = `${travelled}px`;
     };
+
     window.addEventListener('scroll', updateHistoryLine, { passive: true });
     window.addEventListener('resize', updateHistoryLine);
-    updateHistoryLine();
+    window.addEventListener('load', updateHistoryLine, { once: true });
+    requestAnimationFrame(updateHistoryLine);
   }
 });
