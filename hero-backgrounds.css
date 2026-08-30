@@ -1,0 +1,201 @@
+/* =========================================================
+   Topic-specific photographic hero backgrounds
+   Inner pages now follow the homepage's Main BG1 treatment:
+   full-bleed photography, a dark readability overlay and white type.
+   Images reuse the project's existing Wikimedia Commons sources.
+   ========================================================= */
+
+body:not(.home-page)[data-page] .page-hero {
+  --hero-image: none;
+  --hero-position: center center;
+  background-color: #0b2748 !important;
+  background-image:
+    linear-gradient(90deg, rgba(4,22,45,.90) 0%, rgba(6,30,60,.77) 42%, rgba(7,34,66,.55) 70%, rgba(7,34,66,.42) 100%),
+    linear-gradient(180deg, rgba(3,17,34,.28) 0%, rgba(3,17,34,.08) 42%, rgba(3,17,34,.50) 100%),
+    var(--hero-image) !important;
+  background-size: cover !important;
+  background-position: var(--hero-position) !important;
+  background-repeat: no-repeat !important;
+  border-bottom-color: rgba(255,255,255,.12) !important;
+}
+
+/* ATB — onboard ATB equipment / legacy Dutch train protection. */
+body[data-page="atb.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ATB-Fahrzeugeinrichtung.jpg?width=2200");
+  --hero-position: center 48%;
+}
+
+/* ERTMS / ETCS — digital railway communication equipment in a Dutch cab. */
+body[data-page="ertms.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/GSM-R%20NL.jpg?width=2200");
+  --hero-position: center 48%;
+}
+
+/* Status — Harlingen Haven, directly connected with Northern Lines / Tranche 1. */
+body[data-page="status.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Harlingen%20station%20haven%20met%20RS2%20naar%20Leeuwarden%20%282023%29.jpg?width=2400");
+  --hero-position: center 52%;
+}
+
+/* Challenges — railway engineering works on an operating network. */
+body[data-page="problems.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HUA-153431-Afbeelding%20van%20werkzaamheden%20aan%20het%20spoor%20in%20de%20nacht%20bij%20het%20N.S.-station%20Eindhoven%20Beukenlaan%20te%20Eindhoven.jpg?width=2400");
+  --hero-position: center 55%;
+}
+
+/* Comparison — ETCS installation in Belgium, fitting the cross-country chapter. */
+body[data-page="comparison.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Athus-Meuse%20ETCS%20R01.jpg?width=2400");
+  --hero-position: center 52%;
+}
+
+/* Impact — VIRM rolling stock at a workshop, fitting retrofit and fleet availability. */
+body[data-page="impact.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Onnen%20NedTrain%20VIRM%20buiten%20onderhoud.jpg?width=2400");
+  --hero-position: center 48%;
+}
+
+/* Summary — a Dutch NS train at Utrecht Centraal as a broad visual conclusion. */
+body[data-page="summary.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/NS%20train%20at%20Utrecht%20CS.jpg?width=2400");
+  --hero-position: center 50%;
+}
+
+/* More / references — the Dutch Railway Museum, appropriate for source context. */
+body[data-page="other.html"] .page-hero {
+  --hero-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/The%20Spoorwegmuseum%20%28Railway%20Museum%29%20main%20building.jpg?width=2400");
+  --hero-position: center 48%;
+}
+
+/* Replace the old decorative diagonal rule with a subtle photographic vignette. */
+body:not(.home-page)[data-page] .page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  right: auto;
+  bottom: auto;
+  z-index: 0;
+  transform: none;
+  background:
+    radial-gradient(circle at 78% 42%, rgba(255,255,255,.08), transparent 29%),
+    linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.16));
+  pointer-events: none;
+}
+
+body:not(.home-page)[data-page] .page-hero::before {
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 -1px 16px rgba(0,0,0,.14);
+}
+
+body:not(.home-page)[data-page] .page-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero typography is tuned for photography instead of the old pale background. */
+body:not(.home-page)[data-page] .page-hero h1 {
+  color: #fff !important;
+  text-shadow: 0 3px 28px rgba(0,0,0,.34);
+}
+
+body:not(.home-page)[data-page] .page-hero h1 span {
+  color: #ffc917 !important;
+}
+
+body:not(.home-page)[data-page] .page-hero .hero-copy {
+  color: rgba(255,255,255,.91) !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,.34);
+}
+
+body:not(.home-page)[data-page] .page-hero .eyebrow {
+  border-color: rgba(255,255,255,.26) !important;
+  background: rgba(7,29,56,.30) !important;
+  color: #fff !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  backdrop-filter: blur(16px) saturate(130%);
+  text-shadow: 0 1px 14px rgba(0,0,0,.30);
+}
+
+body:not(.home-page)[data-page] .page-hero .eyebrow-dot {
+  background: #ffc917;
+  box-shadow: 0 0 0 4px rgba(255,201,23,.20), 0 0 20px rgba(255,201,23,.38);
+}
+
+/* The hero badge becomes a darker liquid-glass panel over the photo. */
+body:not(.home-page)[data-page] .page-hero .page-badge {
+  border-color: rgba(255,255,255,.30) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.20), rgba(255,255,255,.09)) !important;
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.26) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(145%);
+  backdrop-filter: blur(25px) saturate(145%);
+}
+
+body:not(.home-page)[data-page] .page-hero .page-badge .big {
+  color: #ffc917 !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,.24);
+}
+
+body:not(.home-page)[data-page] .page-hero .page-badge p {
+  color: rgba(255,255,255,.91) !important;
+}
+
+/* Desktop navbar: transparent + white over all photographic heroes,
+   then the existing light liquid-glass island once the page is scrolled. */
+@media (min-width: 1041px) {
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .brand,
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .nav-main-link,
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .language-toggle {
+    color: #fff !important;
+    text-shadow: 0 1px 14px rgba(4,20,40,.48);
+  }
+
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .brand-mark {
+    background: rgba(255,255,255,.94) !important;
+    box-shadow: 0 5px 18px rgba(0,0,0,.14) !important;
+  }
+
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .nav-main-link:hover,
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .nav-main-link:focus-visible {
+    background: rgba(255,255,255,.14) !important;
+    color: #fff !important;
+  }
+
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .nav-main-link.active {
+    background: transparent !important;
+    color: #fff !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.home-page)[data-page] .site-header:not(.scrolled) .nav-main-link.active::after {
+    background: #fff !important;
+  }
+}
+
+/* Keep the subject visible on smaller screens while leaving room for text. */
+@media (max-width: 820px) {
+  body[data-page="atb.html"] .page-hero { --hero-position: 62% center; }
+  body[data-page="ertms.html"] .page-hero { --hero-position: 58% center; }
+  body[data-page="status.html"] .page-hero { --hero-position: 56% center; }
+  body[data-page="problems.html"] .page-hero { --hero-position: 52% center; }
+  body[data-page="comparison.html"] .page-hero { --hero-position: 58% center; }
+  body[data-page="impact.html"] .page-hero { --hero-position: 56% center; }
+  body[data-page="summary.html"] .page-hero { --hero-position: 54% center; }
+  body[data-page="other.html"] .page-hero { --hero-position: 58% center; }
+
+  body:not(.home-page)[data-page] .page-hero {
+    background-image:
+      linear-gradient(180deg, rgba(4,22,45,.76) 0%, rgba(4,22,45,.76) 50%, rgba(4,22,45,.86) 100%),
+      var(--hero-image) !important;
+  }
+
+  body:not(.home-page)[data-page] .page-hero .page-badge {
+    background: rgba(7,29,56,.42) !important;
+  }
+}
