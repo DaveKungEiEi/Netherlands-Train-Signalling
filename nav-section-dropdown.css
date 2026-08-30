@@ -1,5 +1,5 @@
 /* =========================================================
-   Navbar mega dropdown + transparent desktop hero navigation
+   Navbar mega dropdown + transparent-to-island behaviour
    ========================================================= */
 
 /* ---------- Article width: remove the old right sidebar everywhere ---------- */
@@ -19,9 +19,8 @@ body:not(.home-page)[data-page] .content-grid > .aside {
   display: none !important;
 }
 
-/* ---------- Header: keep the desktop navbar transparent at every scroll position ---------- */
-.site-header,
-.site-header.scrolled {
+/* ---------- Header: transparent on hero, island after scroll ---------- */
+.site-header {
   top: 12px;
   width: min(calc(100% - 48px), 1540px);
   transition:
@@ -29,11 +28,9 @@ body:not(.home-page)[data-page] .content-grid > .aside {
     top .34s cubic-bezier(.2,.75,.2,1);
 }
 
-.site-header .nav-shell,
-.site-header.scrolled .nav-shell {
+.site-header .nav-shell {
   position: relative;
   overflow: visible;
-  padding: 10px 12px 10px 15px;
   border-color: transparent;
   border-radius: 26px;
   background: transparent;
@@ -50,42 +47,68 @@ body:not(.home-page)[data-page] .content-grid > .aside {
     backdrop-filter .28s ease;
 }
 
-/* Home hero is photographic, so the desktop navigation stays white like the reference. */
-.home-page .site-header .brand,
-.home-page .site-header .nav-main-link,
-.home-page .site-header .language-toggle {
+.site-header.scrolled {
+  top: 14px;
+  width: min(calc(100% - 28px), 1240px);
+}
+
+.site-header.scrolled .nav-shell {
+  padding: 9px 11px 9px 14px;
+  border-color: rgba(255,255,255,.82);
+  border-radius: 999px;
+  background: rgba(255,255,255,.58);
+  box-shadow:
+    0 16px 46px rgba(24,61,104,.14),
+    inset 0 1px 0 rgba(255,255,255,.92);
+  -webkit-backdrop-filter: blur(26px) saturate(155%);
+  backdrop-filter: blur(26px) saturate(155%);
+}
+
+/* Home hero is photographic, so the unscrolled navigation is white. */
+.home-page .site-header:not(.scrolled) .brand,
+.home-page .site-header:not(.scrolled) .nav-main-link,
+.home-page .site-header:not(.scrolled) .language-toggle {
   color: #fff !important;
   text-shadow: 0 1px 14px rgba(5,24,45,.44);
 }
 
-.home-page .site-header .brand-mark {
+.home-page .site-header:not(.scrolled) .brand-mark {
   background: rgba(255,255,255,.94);
   box-shadow: 0 5px 18px rgba(0,0,0,.12);
 }
 
-.home-page .site-header .nav-main-link:hover,
-.home-page .site-header .nav-main-link:focus-visible {
+.home-page .site-header:not(.scrolled) .nav-main-link:hover,
+.home-page .site-header:not(.scrolled) .nav-main-link:focus-visible {
   background: rgba(255,255,255,.13);
   color: #fff !important;
 }
 
-.home-page .site-header .nav-main-link.active {
+.home-page .site-header:not(.scrolled) .nav-main-link.active {
   background: transparent;
   color: #fff !important;
   box-shadow: none;
 }
-.home-page .site-header .nav-main-link.active::after {
+.home-page .site-header:not(.scrolled) .nav-main-link.active::after {
   background: #fff;
 }
 
 /* Inner pages keep dark-blue text over their light hero while the shell stays clear. */
-body:not(.home-page) .site-header .nav-main-link.active {
+body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active {
   background: transparent;
   color: #003082;
   box-shadow: none;
 }
-body:not(.home-page) .site-header .nav-main-link.active::after {
+body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active::after {
   background: #003082;
+}
+
+.site-header.scrolled .nav-main-link.active {
+  background: #003082;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,48,130,.18);
+}
+.site-header.scrolled .nav-main-link.active::after {
+  display: none;
 }
 
 /* ---------- Top-level navigation ---------- */
@@ -236,9 +259,9 @@ body:not(.home-page) .site-header .nav-main-link.active::after {
     backdrop-filter: blur(24px) saturate(145%);
   }
 
-  .home-page .site-header .brand,
-  .home-page .site-header .nav-main-link,
-  .home-page .site-header .language-toggle {
+  .home-page .site-header:not(.scrolled) .brand,
+  .home-page .site-header:not(.scrolled) .nav-main-link,
+  .home-page .site-header:not(.scrolled) .language-toggle {
     color: #003082 !important;
     text-shadow: none;
   }
