@@ -1,0 +1,99 @@
+/* =========================================================
+   Status page visual collision fix
+   Keep the new photography in normal document flow instead
+   of inheriting the decorative ::after positioning from the
+   original status cards.
+   ========================================================= */
+
+/* Re-apply the status hero photograph after status-style.css. */
+body[data-page="status.html"] .page-badge {
+  min-height: 255px !important;
+  padding: 28px 28px 38px !important;
+  background-color: #dfeaf4 !important;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Harlingen%20station%20haven%20met%20RS2%20naar%20Leeuwarden%20%282023%29.jpg?width=1400") !important;
+  background-size: cover !important;
+  background-position: center 54% !important;
+  background-repeat: no-repeat !important;
+}
+
+body[data-page="status.html"] .page-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(3,24,52,.04) 18%, rgba(3,24,52,.18) 48%, rgba(3,24,52,.92) 100%);
+  pointer-events: none;
+}
+
+body[data-page="status.html"] .page-badge > * {
+  position: relative;
+  z-index: 2;
+  color: #fff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.42);
+}
+
+body[data-page="status.html"] .page-badge::after {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 14px;
+  top: auto;
+  width: auto;
+  height: auto;
+  z-index: 2;
+}
+
+/* The photo breaks use ::after too. The original status-card decoration
+   also used ::after with position:absolute and 96 x 96 px; explicitly
+   reset every geometry property so the photos participate in layout. */
+body[data-page="status.html"] #tranche1.article-section::after,
+body[data-page="status.html"] #timeline.article-section::after {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: clamp(280px, 36vw, 420px) !important;
+  box-sizing: border-box !important;
+  margin: 34px 0 0 !important;
+  padding: 100px 22px 19px !important;
+  border: 2px solid rgba(255,255,255,.96) !important;
+  border-radius: 23px !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Keep timeline rows above the photo break and remove any accidental
+   stacking interaction with the image pseudo-element. */
+body[data-page="status.html"] #timeline .status-list,
+body[data-page="status.html"] #tranche1 .signal-diagram {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 720px) {
+  body[data-page="status.html"] .page-badge {
+    min-height: 220px !important;
+    padding: 22px 22px 36px !important;
+  }
+
+  body[data-page="status.html"] .page-badge::after {
+    left: 22px;
+    right: 22px;
+  }
+
+  body[data-page="status.html"] #tranche1.article-section::after,
+  body[data-page="status.html"] #timeline.article-section::after {
+    min-height: 250px !important;
+    margin-top: 26px !important;
+    padding: 74px 16px 15px !important;
+    border-radius: 19px !important;
+  }
+}
