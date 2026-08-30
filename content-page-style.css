@@ -1,9 +1,9 @@
 @import url("content-page-style-base.css");
 @import url("animation-style.css");
 @import url("atb-media-style.css");
-@import url("site-visual-density.css");
+@import url("site-visual-density.css?v=20260830-2");
 @import url("nav-section-dropdown.css");
-@import url("hero-backgrounds.css");
+@import url("hero-backgrounds.css?v=20260830-2");
 
 /* =========================================================
    Inner-page hero overlay
