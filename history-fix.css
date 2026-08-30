@@ -1,6 +1,25 @@
 @import url("animation-style.css");
 @import url("site-visual-density.css");
 
+/* =========================================================
+   Homepage hero — keep the user's original Main BG1.jpg
+   site-visual-density.css adds imagery around the site, but the
+   homepage hero must retain the original supplied background.
+   ========================================================= */
+.home-page .hero-editorial {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(7, 29, 58, .10) 0%,
+      rgba(7, 29, 58, .20) 46%,
+      rgba(7, 29, 58, .30) 100%
+    ),
+    url("Main BG1.jpg") !important;
+  background-size: cover !important;
+  background-position: center 50% !important;
+  background-repeat: no-repeat !important;
+}
+
 /* Homepage history photo cleanup */
 #ns-history .history-visual::before,
 #ns-history .history-visual::after {
@@ -70,6 +89,21 @@
 }
 
 @media (max-width: 720px) {
+  /* Keep Main BG1 on mobile too; do not let the site-wide visual layer
+     swap it for another railway photograph. */
+  .home-page .hero-editorial {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(7, 29, 58, .12) 0%,
+        rgba(7, 29, 58, .22) 48%,
+        rgba(7, 29, 58, .34) 100%
+      ),
+      url("Main BG1.jpg") !important;
+    background-size: cover !important;
+    background-position: center 50% !important;
+  }
+
   #ns-history .history-copy p,
   #ns-history .section-head-editorial .lead {
     line-height: 1.9;
