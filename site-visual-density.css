@@ -1,0 +1,419 @@
+/* =========================================================
+   Site-wide visual density layer
+   Adds curated railway imagery to every page except summary.html.
+   Images are visual context only; core facts remain in the HTML.
+   ========================================================= */
+
+/* ---------- Homepage: modern railway context in the hero ---------- */
+body.home-page .hero-editorial {
+  background-image:
+    linear-gradient(90deg,
+      rgba(248,251,255,.98) 0%,
+      rgba(248,251,255,.96) 42%,
+      rgba(241,247,253,.84) 61%,
+      rgba(233,242,251,.42) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/NS%20train%20at%20Utrecht%20CS.jpg?width=1800");
+  background-size: cover, cover;
+  background-position: center, center 48%;
+  background-repeat: no-repeat;
+}
+
+body.home-page #ns-history::after {
+  content: "De Arend — รถจักรจำลองในงานครบรอบ 150 ปีรถไฟเนเธอร์แลนด์ • Rob Bogaerts / Anefo • CC BY-SA 3.0";
+  width: min(1240px, calc(100% - 40px));
+  min-height: clamp(300px, 38vw, 460px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  margin: 42px auto 0;
+  padding: 110px 24px 22px;
+  border: 3px solid rgba(255,255,255,.96);
+  border-radius: 28px;
+  background-image:
+    linear-gradient(180deg, transparent 42%, rgba(3,24,52,.12) 61%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/De%20Arend%20%281989%29.jpg?width=1800");
+  background-size: cover;
+  background-position: center 46%;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 720;
+  line-height: 1.5;
+  text-shadow: 0 2px 12px rgba(0,0,0,.48);
+  box-shadow: 0 20px 48px rgba(0,48,130,.12);
+}
+
+html[lang="en"] body.home-page #ns-history::after {
+  content: "De Arend replica during the 150 years of Dutch railways event • Rob Bogaerts / Anefo • CC BY-SA 3.0";
+}
+
+/* ---------- Image-backed hero badge cards ---------- */
+body[data-page="atb.html"] .page-badge,
+body[data-page="status.html"] .page-badge,
+body[data-page="problems.html"] .page-badge,
+body[data-page="comparison.html"] .page-badge,
+body[data-page="impact.html"] .page-badge,
+body[data-page="other.html"] .page-badge {
+  position: relative;
+  min-height: 255px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 28px 38px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  isolation: isolate;
+}
+
+body[data-page="atb.html"] .page-badge::before,
+body[data-page="status.html"] .page-badge::before,
+body[data-page="problems.html"] .page-badge::before,
+body[data-page="comparison.html"] .page-badge::before,
+body[data-page="impact.html"] .page-badge::before,
+body[data-page="other.html"] .page-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3,24,52,.05) 20%, rgba(3,24,52,.18) 48%, rgba(3,24,52,.92) 100%);
+}
+
+body[data-page="atb.html"] .page-badge > *,
+body[data-page="status.html"] .page-badge > *,
+body[data-page="problems.html"] .page-badge > *,
+body[data-page="comparison.html"] .page-badge > *,
+body[data-page="impact.html"] .page-badge > * {
+  position: relative;
+  z-index: 2;
+  color: #fff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.42);
+}
+
+body[data-page="atb.html"] .page-badge::after,
+body[data-page="status.html"] .page-badge::after,
+body[data-page="problems.html"] .page-badge::after,
+body[data-page="comparison.html"] .page-badge::after,
+body[data-page="impact.html"] .page-badge::after,
+body[data-page="other.html"] .page-badge::after {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 14px;
+  z-index: 2;
+  font-size: .58rem;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: .01em;
+}
+
+body[data-page="atb.html"] .page-badge {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ATB-Fahrzeugeinrichtung.jpg?width=1400");
+  background-position: center 52%;
+}
+body[data-page="atb.html"] .page-badge::after {
+  content: "ATB onboard equipment • Sebastian Terfloth • CC BY-SA 3.0";
+  color: rgba(255,255,255,.84);
+}
+
+body[data-page="status.html"] .page-badge {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Harlingen%20station%20haven%20met%20RS2%20naar%20Leeuwarden%20%282023%29.jpg?width=1400");
+  background-position: center 54%;
+}
+body[data-page="status.html"] .page-badge::after {
+  content: "Harlingen Haven • JoachimKohler-HB • CC BY-SA 4.0";
+  color: rgba(255,255,255,.84);
+}
+
+body[data-page="problems.html"] .page-badge {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/HUA-153431-Afbeelding%20van%20werkzaamheden%20aan%20het%20spoor%20in%20de%20nacht%20bij%20het%20N.S.-station%20Eindhoven%20Beukenlaan%20te%20Eindhoven.jpg?width=1400");
+  background-position: center 50%;
+}
+body[data-page="problems.html"] .page-badge::after {
+  content: "งานบนทางรถไฟช่วงกลางคืน • Nederlandse Spoorwegen / Het Utrechts Archief • CC0";
+  color: rgba(255,255,255,.84);
+}
+html[lang="en"] body[data-page="problems.html"] .page-badge::after {
+  content: "Night railway work • Nederlandse Spoorwegen / Het Utrechts Archief • CC0";
+}
+
+body[data-page="comparison.html"] .page-badge {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Athus-Meuse%20ETCS%20R01.jpg?width=1400");
+  background-position: center 54%;
+}
+body[data-page="comparison.html"] .page-badge::after {
+  content: "ETCS บนเส้นทาง Athus–Meuse ประเทศเบลเยียม • Marc Ryckaert • CC BY 3.0";
+  color: rgba(255,255,255,.84);
+}
+html[lang="en"] body[data-page="comparison.html"] .page-badge::after {
+  content: "ETCS on Belgium's Athus–Meuse line • Marc Ryckaert • CC BY 3.0";
+}
+
+body[data-page="impact.html"] .page-badge {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Onnen%20NedTrain%20VIRM%20buiten%20onderhoud.jpg?width=1400");
+  background-position: center 52%;
+}
+body[data-page="impact.html"] .page-badge::after {
+  content: "VIRM ที่ศูนย์ซ่อม Onnen • Rob Dammers • CC BY 2.0";
+  color: rgba(255,255,255,.84);
+}
+html[lang="en"] body[data-page="impact.html"] .page-badge::after {
+  content: "VIRM at the Onnen workshop • Rob Dammers • CC BY 2.0";
+}
+
+/* Reference Library uses a light map card instead of a dark photo card. */
+body[data-page="other.html"] .page-badge {
+  background-color: #eef5fb;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/RailwayMap%20The%20Netherlands.svg?width=1200");
+  background-size: 72% auto;
+  background-position: center 22%;
+}
+body[data-page="other.html"] .page-badge::before {
+  background: linear-gradient(180deg, rgba(246,250,254,.05) 12%, rgba(246,250,254,.68) 56%, rgba(246,250,254,.98) 84%);
+}
+body[data-page="other.html"] .page-badge > * {
+  position: relative;
+  z-index: 2;
+  color: #153b68 !important;
+  text-shadow: none;
+}
+body[data-page="other.html"] .page-badge::after {
+  content: "แผนที่โครงข่ายรถไฟเนเธอร์แลนด์ • Dentie3 • CC0";
+  color: #5c7187;
+}
+html[lang="en"] body[data-page="other.html"] .page-badge::after {
+  content: "Railway map of the Netherlands • Dentie3 • CC0";
+}
+
+/* ---------- Shared editorial photo breaks ---------- */
+body[data-page="ertms.html"] #what::after,
+body[data-page="ertms.html"] #netherlands::after,
+body[data-page="status.html"] #tranche1::after,
+body[data-page="status.html"] #timeline::after,
+body[data-page="problems.html"] #reliability::after,
+body[data-page="comparison.html"] #border::after,
+body[data-page="impact.html"] #virm-case::after,
+body[data-page="other.html"] #method::after {
+  min-height: clamp(280px, 36vw, 420px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 34px;
+  padding: 100px 22px 19px;
+  border: 2px solid rgba(255,255,255,.96);
+  border-radius: 23px;
+  background-color: #eaf2fa;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 710;
+  line-height: 1.5;
+  text-indent: 0 !important;
+  text-align: left !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.48);
+  box-shadow: 0 16px 38px rgba(0,48,130,.10);
+}
+
+body[data-page="ertms.html"] #what::after {
+  content: "GSM-R ในห้องขับ — ระบบวิทยุรถไฟเป็นส่วนสำคัญของการสื่อสารใน ERTMS • Trainsofholland • CC BY-SA 4.0";
+  background-image:
+    linear-gradient(180deg, transparent 36%, rgba(3,24,52,.10) 57%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/GSM-R%20NL.jpg?width=1600");
+  background-position: center 48%;
+}
+html[lang="en"] body[data-page="ertms.html"] #what::after {
+  content: "GSM-R in the cab — railway radio is an important part of ERTMS communications • Trainsofholland • CC BY-SA 4.0";
+}
+
+body[data-page="ertms.html"] #netherlands::after {
+  content: "ป้ายขอบเขตเครือข่าย GSM-R ตามมาตรฐาน ERTMS สำหรับเนเธอร์แลนด์ • Entbert • Public Domain";
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/ERTMS%20trackside%20board%2010%20-%20GSM-R%20network%20border%20marker%20-%20EN%2016494%20%28NL%29.svg?width=1000");
+  background-size: auto 82%;
+  background-position: center 34%;
+  background-color: #f4f8fc;
+  color: #294865;
+  text-shadow: none;
+  box-shadow: inset 0 -90px 72px -54px rgba(238,245,251,.98), 0 16px 38px rgba(0,48,130,.08);
+}
+html[lang="en"] body[data-page="ertms.html"] #netherlands::after {
+  content: "ERTMS GSM-R network-border marker for the Netherlands • Entbert • Public Domain";
+}
+
+body[data-page="status.html"] #tranche1::after {
+  content: "Vlissingen — ปลายด้านตะวันตกของ Zeeuwse lijn ซึ่งอยู่ในขอบเขต Tranche 1 • Marc Ryckaert • CC BY-SA 3.0 NL";
+  background-image:
+    linear-gradient(180deg, transparent 36%, rgba(3,24,52,.10) 58%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Vlissingen%20Station%20R02.jpg?width=1600");
+  background-position: center 48%;
+}
+html[lang="en"] body[data-page="status.html"] #tranche1::after {
+  content: "Vlissingen — the western end of the Zeeuwse lijn, included in Tranche 1 • Marc Ryckaert • CC BY-SA 3.0 NL";
+}
+
+body[data-page="status.html"] #timeline::after {
+  content: "Kijfhoek — จุดสำคัญของการเดินรถสินค้าทางตอนใต้ของเนเธอร์แลนด์ • Frans Berkelaar • CC BY-SA 2.0";
+  background-image:
+    linear-gradient(180deg, transparent 36%, rgba(3,24,52,.10) 58%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Dubbeltractie%20BR%20189%20en%20BR%20186%20-%20Rangeerterrein%20Kijfhoek%20-%20Zwijndrecht%20%2818929836561%29.jpg?width=1600");
+  background-position: center 54%;
+}
+html[lang="en"] body[data-page="status.html"] #timeline::after {
+  content: "Kijfhoek — an important freight-rail location in the southern Netherlands • Frans Berkelaar • CC BY-SA 2.0";
+}
+
+body[data-page="problems.html"] #reliability::after {
+  content: "Drielandentrein ที่ Aachen — ตัวอย่างการเดินรถที่ต้องทำงานข้ามระบบและข้ามประเทศ • Smiley.toerist • CC BY-SA 4.0";
+  background-image:
+    linear-gradient(180deg, transparent 36%, rgba(3,24,52,.10) 58%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Drielandentrein%20in%20Aken%20in%202019.jpg?width=1600");
+  background-position: center 50%;
+}
+html[lang="en"] body[data-page="problems.html"] #reliability::after {
+  content: "Three-Country Train at Aachen — a practical example of trains operating across systems and borders • Smiley.toerist • CC BY-SA 4.0";
+}
+
+body[data-page="comparison.html"] #border::after {
+  content: "แผนที่รถไฟระหว่างประเทศจากเนเธอร์แลนด์ — แสดงว่าการเดินรถข้ามพรมแดนเชื่อมหลายประเทศเข้าด้วยกัน • Ennomien • CC BY-SA 4.0";
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/International%20trains%20map%20the%20Netherlands.svg?width=1400");
+  background-size: auto 84%;
+  background-position: center 35%;
+  background-color: #f4f8fc;
+  color: #294865;
+  text-shadow: none;
+  box-shadow: inset 0 -100px 80px -58px rgba(238,245,251,.98), 0 16px 38px rgba(0,48,130,.08);
+}
+html[lang="en"] body[data-page="comparison.html"] #border::after {
+  content: "International trains from the Netherlands — showing how cross-border rail links several countries together • Ennomien • CC BY-SA 4.0";
+}
+
+body[data-page="impact.html"] #virm-case::after {
+  content: "VIRM และ VIRMm — รถรุ่นเดิมและรุ่นที่ผ่านการปรับปรุง สะท้อนว่าการปรับรถหนึ่งตระกูลสามารถมีหลายระยะ • Koplopermau • CC BY-SA 4.0";
+  background-image:
+    linear-gradient(180deg, transparent 36%, rgba(3,24,52,.10) 58%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Treinstel%20type%20VIRM%20%28boven%29%20en%20VIRMm%20%28onder%29%20van%20de%20Nederlandse%20Spoorwegen.jpg?width=1500");
+  background-position: center 52%;
+  min-height: clamp(340px, 48vw, 520px);
+}
+html[lang="en"] body[data-page="impact.html"] #virm-case::after {
+  content: "VIRM and VIRMm — original and modernised trains showing how one fleet can pass through several upgrade stages • Koplopermau • CC BY-SA 4.0";
+}
+
+body[data-page="other.html"] #method::after {
+  content: "Het Spoorwegmuseum, Utrecht — พิพิธภัณฑ์รถไฟแห่งชาติของเนเธอร์แลนด์ • Robert von Oliva • CC0";
+  background-image:
+    linear-gradient(180deg, transparent 38%, rgba(3,24,52,.10) 58%, rgba(3,24,52,.90) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/The%20Spoorwegmuseum%20%28Railway%20Museum%29%20main%20building.jpg?width=1600");
+  background-position: center 52%;
+}
+html[lang="en"] body[data-page="other.html"] #method::after {
+  content: "Het Spoorwegmuseum, Utrecht — the Dutch national railway museum • Robert von Oliva • CC0";
+}
+
+/* ---------- Motion for the new visual breaks ---------- */
+@keyframes siteVisualReveal {
+  from { opacity: 0; transform: translateY(18px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+body[data-page="ertms.html"] .article-section.visible::after,
+body[data-page="status.html"] .article-section.visible::after,
+body[data-page="problems.html"] .article-section.visible::after,
+body[data-page="comparison.html"] .article-section.visible::after,
+body[data-page="impact.html"] .article-section.visible::after,
+body[data-page="other.html"] .article-section.visible::after {
+  animation: siteVisualReveal .72s cubic-bezier(.2,.7,.2,1) .08s backwards;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  body[data-page="ertms.html"] #what::after,
+  body[data-page="ertms.html"] #netherlands::after,
+  body[data-page="status.html"] #tranche1::after,
+  body[data-page="status.html"] #timeline::after,
+  body[data-page="problems.html"] #reliability::after,
+  body[data-page="comparison.html"] #border::after,
+  body[data-page="impact.html"] #virm-case::after,
+  body[data-page="other.html"] #method::after,
+  body.home-page #ns-history::after {
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+  }
+
+  body[data-page="ertms.html"] #what:hover::after,
+  body[data-page="ertms.html"] #netherlands:hover::after,
+  body[data-page="status.html"] #tranche1:hover::after,
+  body[data-page="status.html"] #timeline:hover::after,
+  body[data-page="problems.html"] #reliability:hover::after,
+  body[data-page="comparison.html"] #border:hover::after,
+  body[data-page="impact.html"] #virm-case:hover::after,
+  body[data-page="other.html"] #method:hover::after,
+  body.home-page #ns-history:hover::after {
+    transform: translateY(-3px);
+    filter: saturate(1.03) contrast(1.02);
+    box-shadow: 0 22px 48px rgba(0,48,130,.14);
+  }
+}
+
+@media (max-width: 720px) {
+  body.home-page .hero-editorial {
+    background-image:
+      linear-gradient(180deg, rgba(248,251,255,.97) 0%, rgba(242,248,253,.90) 58%, rgba(235,244,252,.75) 100%),
+      url("https://commons.wikimedia.org/wiki/Special:FilePath/NS%20train%20at%20Utrecht%20CS.jpg?width=1000");
+    background-position: center, 65% center;
+  }
+
+  body[data-page="atb.html"] .page-badge,
+  body[data-page="status.html"] .page-badge,
+  body[data-page="problems.html"] .page-badge,
+  body[data-page="comparison.html"] .page-badge,
+  body[data-page="impact.html"] .page-badge,
+  body[data-page="other.html"] .page-badge {
+    min-height: 220px;
+    padding: 22px 22px 36px;
+  }
+
+  body[data-page="atb.html"] .page-badge::after,
+  body[data-page="status.html"] .page-badge::after,
+  body[data-page="problems.html"] .page-badge::after,
+  body[data-page="comparison.html"] .page-badge::after,
+  body[data-page="impact.html"] .page-badge::after,
+  body[data-page="other.html"] .page-badge::after {
+    left: 22px;
+    right: 22px;
+    font-size: .54rem;
+  }
+
+  body[data-page="ertms.html"] #what::after,
+  body[data-page="ertms.html"] #netherlands::after,
+  body[data-page="status.html"] #tranche1::after,
+  body[data-page="status.html"] #timeline::after,
+  body[data-page="problems.html"] #reliability::after,
+  body[data-page="comparison.html"] #border::after,
+  body[data-page="impact.html"] #virm-case::after,
+  body[data-page="other.html"] #method::after,
+  body.home-page #ns-history::after {
+    min-height: 250px;
+    margin-top: 26px;
+    padding: 74px 16px 15px;
+    border-radius: 19px;
+    font-size: .64rem;
+  }
+
+  body[data-page="other.html"] .page-badge {
+    background-size: 88% auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="ertms.html"] .article-section.visible::after,
+  body[data-page="status.html"] .article-section.visible::after,
+  body[data-page="problems.html"] .article-section.visible::after,
+  body[data-page="comparison.html"] .article-section.visible::after,
+  body[data-page="impact.html"] .article-section.visible::after,
+  body[data-page="other.html"] .article-section.visible::after,
+  body.home-page #ns-history::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
