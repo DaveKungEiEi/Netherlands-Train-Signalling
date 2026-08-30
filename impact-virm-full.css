@@ -1,30 +1,46 @@
 /* =========================================================
    Impact page — VIRM / VIRMm comparison image
-   Show the complete top-and-bottom comparison without cropping.
+   Show the complete top-and-bottom comparison without cropping
+   and without the empty navy side bars produced by `contain`.
+
+   Wikimedia source dimensions: 2560 × 2880 px = 8:9.
+   Matching the card to that aspect ratio lets the image fill the
+   entire frame while preserving every part of the comparison.
    ========================================================= */
 
 body[data-page="impact.html"] #virm-case::after {
-  /* The source file is itself a top/bottom comparison, so do not use cover. */
-  background-size: 100% 100%, contain !important;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 8 / 9;
+
+  /* First layer = credit/readability gradient, second layer = photo. */
+  background-size: 100% 100%, 100% 100% !important;
   background-position: center, center !important;
   background-repeat: no-repeat, no-repeat !important;
-  background-color: #0b2442 !important;
-  min-height: clamp(500px, 58vw, 720px) !important;
+  background-color: transparent !important;
 
-  /* Keep the credit readable while obscuring as little of the lower photo as possible. */
-  padding: 110px 22px 18px !important;
+  /* Keep the caption low and compact so it does not cover the comparison. */
+  padding: clamp(90px, 12vw, 150px) 22px 18px !important;
+  border-radius: 24px !important;
 }
 
 @media (max-width: 900px) {
   body[data-page="impact.html"] #virm-case::after {
-    min-height: clamp(430px, 72vw, 620px) !important;
+    aspect-ratio: 8 / 9;
+    padding: 90px 18px 16px !important;
   }
 }
 
 @media (max-width: 720px) {
   body[data-page="impact.html"] #virm-case::after {
-    min-height: clamp(360px, 92vw, 540px) !important;
-    background-size: 100% 100%, contain !important;
-    padding: 78px 16px 15px !important;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 8 / 9;
+    background-size: 100% 100%, 100% 100% !important;
+    padding: 70px 16px 14px !important;
+    border-radius: 19px !important;
   }
 }
