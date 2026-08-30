@@ -1,0 +1,30 @@
+/* =========================================================
+   Impact page — VIRM / VIRMm comparison image
+   Show the complete top-and-bottom comparison without cropping.
+   ========================================================= */
+
+body[data-page="impact.html"] #virm-case::after {
+  /* The source file is itself a top/bottom comparison, so do not use cover. */
+  background-size: 100% 100%, contain !important;
+  background-position: center, center !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-color: #0b2442 !important;
+  min-height: clamp(500px, 58vw, 720px) !important;
+
+  /* Keep the credit readable while obscuring as little of the lower photo as possible. */
+  padding: 110px 22px 18px !important;
+}
+
+@media (max-width: 900px) {
+  body[data-page="impact.html"] #virm-case::after {
+    min-height: clamp(430px, 72vw, 620px) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="impact.html"] #virm-case::after {
+    min-height: clamp(360px, 92vw, 540px) !important;
+    background-size: 100% 100%, contain !important;
+    padding: 78px 16px 15px !important;
+  }
+}
