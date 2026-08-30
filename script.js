@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js', 'motion-ready');
+
 const pages = [
   ['index.html', { th: 'หน้าแรก', en: 'Home' }],
   ['atb.html', { th: 'ATB', en: 'ATB' }],
@@ -19,6 +21,7 @@ const currentLang = explicitLanguage === 'en' || explicitLanguage === 'th'
   : storedLanguage === 'en'
     ? 'en'
     : 'th';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 localStorage.setItem('nts-language', currentLang);
 document.documentElement.lang = currentLang;
@@ -47,7 +50,8 @@ const applyChapterUpdateLabel = () => {
   if (!eyebrow) return;
 
   const lang = document.documentElement.lang === 'en' || document.body.dataset.lang === 'en' ? 'en' : 'th';
-  const expected = `Chapter ${chapter} • ${chapterUpdateText[lang]}`;
+  const prefix = lang === 'en' ? 'Chapter' : 'บทที่';
+  const expected = `${prefix} ${chapter} • ${chapterUpdateText[lang]}`;
   if (eyebrow.textContent.trim() === expected) return;
 
   let dot = eyebrow.querySelector('.eyebrow-dot');
@@ -57,11 +61,6 @@ const applyChapterUpdateLabel = () => {
   }
   eyebrow.replaceChildren(dot, document.createTextNode(` ${expected}`));
 };
-
-applyChapterUpdateLabel();
-window.addEventListener('load', () => window.setTimeout(applyChapterUpdateLabel, 0), { once: true });
-const chapterLabelObserver = new MutationObserver(() => applyChapterUpdateLabel());
-chapterLabelObserver.observe(document.body, { childList: true, subtree: true });
 
 const text = {
   th: {
@@ -75,7 +74,7 @@ const text = {
     legacy: 'ระบบเดิม',
     target: 'ระบบเป้าหมาย',
     transitionStatus: 'สถานะการเปลี่ยนผ่าน ≈6%',
-    transitionDetail: '≈25 km / 419 km ของ Tranche 1 เข้าสู่งานภาคสนาม',
+    transitionDetail: '≈25 กม. / 419 กม. ของ Tranche 1 เข้าสู่งานภาคสนาม',
     signalling: 'ระบบอาณัติสัญญาณ',
     transition: 'การเปลี่ยนผ่าน',
     explore: 'สำรวจเพิ่มเติม',
@@ -88,7 +87,9 @@ const text = {
     backTop: 'กลับด้านบน',
     footerNavLabel: 'เมนูท้ายเว็บไซต์',
     sourceLink: 'แหล่งอ้างอิง',
-    sourceAria: 'เปิดแหล่งอ้างอิงของหัวข้อนี้ในหน้าอื่น ๆ'
+    sourceAria: 'เปิดแหล่งอ้างอิงของหัวข้อนี้ในหน้าอื่น ๆ',
+    academicSite: 'เว็บไซต์งานวิชาการด้านระบบราง · 2026',
+    designedBy: 'ออกแบบและพัฒนาโดย Thakrn Jaitham'
   },
   en: {
     navLabel: 'Main navigation',
@@ -114,7 +115,9 @@ const text = {
     backTop: 'Back to top',
     footerNavLabel: 'Footer navigation',
     sourceLink: 'References',
-    sourceAria: 'Open the references for this topic in the More page'
+    sourceAria: 'Open the references for this topic in the More page',
+    academicSite: 'Academic Railway Research Website · 2026',
+    designedBy: 'Designed & developed by Thakrn Jaitham'
   }
 }[currentLang];
 
@@ -123,7 +126,7 @@ const sectionHref = (page, hash) => `${pageHref(page)}${hash || ''}`;
 
 const navSections = {
   'index.html': [
-    ['#ns-history', { th: 'ประวัติการรถไฟเนเธอร์แลนด์', en: 'Dutch railway history' }]
+    ['#ns-history', { th: 'ประวัติ NS และรถไฟเนเธอร์แลนด์', en: 'NS & Dutch railway history' }]
   ],
   'atb.html': [
     ['#what', { th: 'ATB คืออะไร', en: 'What is ATB?' }],
@@ -133,7 +136,7 @@ const navSections = {
   ],
   'ertms.html': [
     ['#what', { th: 'ERTMS/ETCS คืออะไร', en: 'What is ERTMS/ETCS?' }],
-    ['#history', { th: 'ประวัติและ Timeline', en: 'History and timeline' }],
+    ['#history', { th: 'ประวัติและลำดับเหตุการณ์', en: 'History and timeline' }],
     ['#working', { th: 'หลักการทำงาน', en: 'How ERTMS/ETCS works' }],
     ['#netherlands', { th: 'แนวทางของเนเธอร์แลนด์', en: 'Dutch approach' }],
     ['other.html#ref-ertms', { th: 'แหล่งอ้างอิง', en: 'References' }]
@@ -160,7 +163,7 @@ const navSections = {
   ],
   'comparison.html': [
     ['#overview', { th: 'ภาพรวมปี 2026', en: '2026 overview' }],
-    ['#timeline', { th: 'Timeline อดีต–ปัจจุบัน', en: 'Historical timeline' }],
+    ['#timeline', { th: 'ลำดับเหตุการณ์ อดีต–ปัจจุบัน', en: 'Historical timeline' }],
     ['#table', { th: 'ตารางเปรียบเทียบ', en: 'Comparison table' }],
     ['#lessons', { th: 'บทเรียนจากประเทศเปรียบเทียบ', en: 'Lessons from the comparison' }],
     ['#border', { th: 'ประเด็นข้ามพรมแดน', en: 'Cross-border issues' }],
@@ -211,50 +214,25 @@ const renderNavItem = ([href, labels]) => {
   </div>`;
 };
 
-[
-  'footer-style.css',
-  'language-style.css',
-  'nav-section-dropdown.css'
-].forEach((href) => {
-  if (!document.querySelector(`link[href="${href}"]`)) {
-    const stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = href;
-    document.head.appendChild(stylesheet);
-  }
-});
+const ensureStylesheet = (href, match = href) => {
+  if (document.querySelector(`link[href^="${match}"]`)) return;
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = href;
+  document.head.appendChild(stylesheet);
+};
 
-if (currentPage !== 'index.html' && !document.querySelector('link[href="content-page-style.css"]')) {
-  const contentStylesheet = document.createElement('link');
-  contentStylesheet.rel = 'stylesheet';
-  contentStylesheet.href = 'content-page-style.css';
-  document.head.appendChild(contentStylesheet);
-}
+['footer-style.css', 'language-style.css', 'nav-section-dropdown.css'].forEach((href) => ensureStylesheet(href));
+
+if (currentPage !== 'index.html') ensureStylesheet('content-page-style.css?v=20260830-6', 'content-page-style.css');
 
 const pageStyles = {
   'status.html': 'status-style.css',
   'other.html': 'reference-style.css'
 };
-if (pageStyles[currentPage] && !document.querySelector(`link[href="${pageStyles[currentPage]}"]`)) {
-  const pageStylesheet = document.createElement('link');
-  pageStylesheet.rel = 'stylesheet';
-  pageStylesheet.href = pageStyles[currentPage];
-  document.head.appendChild(pageStylesheet);
-}
-
-if (!document.querySelector('link[href="timeline-align.css"]')) {
-  const timelineStylesheet = document.createElement('link');
-  timelineStylesheet.rel = 'stylesheet';
-  timelineStylesheet.href = 'timeline-align.css';
-  document.head.appendChild(timelineStylesheet);
-}
-
-if (currentPage === 'status.html' && !document.querySelector('link[href="status-visual-fix.css"]')) {
-  const statusVisualFix = document.createElement('link');
-  statusVisualFix.rel = 'stylesheet';
-  statusVisualFix.href = 'status-visual-fix.css';
-  document.head.appendChild(statusVisualFix);
-}
+if (pageStyles[currentPage]) ensureStylesheet(pageStyles[currentPage]);
+ensureStylesheet('timeline-align.css');
+if (currentPage === 'status.html') ensureStylesheet('status-visual-fix.css');
 
 const languageSwitcherMarkup = `
   <div class="language-switcher">
@@ -297,7 +275,7 @@ if (footer) {
     <footer class="site-footer footer-v3">
       <div class="footer-v3-accent" aria-hidden="true"></div>
       <div class="footer-v3-main">
-        <section class="footer-v3-brand" aria-labelledby="footer-brand-title">
+        <section class="footer-v3-brand reveal" aria-labelledby="footer-brand-title">
           <a class="footer-v3-brand-link" href="${pageHref('index.html')}" aria-label="${text.brandLabel}">
             <span class="footer-v3-logo-wrap"><img src="logo.webp" alt="" class="footer-v3-logo" onerror="this.style.display='none'"></span>
             <span id="footer-brand-title">Netherlands Train System</span>
@@ -309,7 +287,7 @@ if (footer) {
             <div class="footer-route-stop footer-route-stop-etcs"><span class="footer-route-dot"></span><div><strong>ETCS</strong><small>${text.target}</small></div></div>
           </div>
         </section>
-        <nav class="footer-v3-nav" aria-label="${text.footerNavLabel}">
+        <nav class="footer-v3-nav reveal" aria-label="${text.footerNavLabel}">
           <section class="footer-link-group"><h2>${text.signalling}</h2><a href="${pageHref('atb.html')}">ATB</a><a href="${pageHref('ertms.html')}">ERTMS / ETCS</a></section>
           <section class="footer-link-group"><h2>${text.transition}</h2><a href="${pageHref('status.html')}">${text.currentStatus}</a><a href="${pageHref('problems.html')}">${text.challenges}</a><a href="${pageHref('impact.html')}">${text.impact}</a></section>
           <section class="footer-link-group"><h2>${text.explore}</h2><a href="${pageHref('comparison.html')}">${text.comparison}</a><a href="${pageHref('other.html')}#sources">${text.references}</a><a href="${pageHref('index.html')}">${text.home}</a></section>
@@ -317,7 +295,7 @@ if (footer) {
       </div>
       <div class="footer-v3-bottom">
         <div class="footer-v3-bottom-inner">
-          <div class="footer-v3-meta"><strong>Railway Technical School</strong><span>Academic Railway Research Website · 2026</span><span>Designed &amp; developed by Thakrn Jaitham</span></div>
+          <div class="footer-v3-meta"><strong>Railway Technical School</strong><span>${text.academicSite}</span><span>${text.designedBy}</span></div>
           <button class="footer-to-top" type="button" aria-label="${text.backTop}"><span>${text.backTop}</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
@@ -357,7 +335,27 @@ if (languageSwitcher && languageToggle) {
   });
 }
 
+const dedicatedTranslationPages = new Set([
+  'atb.html',
+  'problems.html',
+  'comparison.html',
+  'impact.html',
+  'summary.html'
+]);
+
+const waitForParserScripts = () => new Promise((resolve) => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', resolve, { once: true });
+  } else {
+    window.setTimeout(resolve, 0);
+  }
+});
+
 const translationReady = new Promise((resolve) => {
+  if (dedicatedTranslationPages.has(currentPage)) {
+    waitForParserScripts().then(resolve);
+    return;
+  }
   if (currentLang !== 'en') {
     resolve();
     return;
@@ -368,7 +366,8 @@ const translationReady = new Promise((resolve) => {
     return;
   }
   const translationScript = document.createElement('script');
-  translationScript.src = 'translations-en.js';
+  translationScript.src = 'translations-en.js?v=20260830-2';
+  translationScript.async = true;
   translationScript.onload = () => {
     if (typeof window.applyEnglishContent === 'function') window.applyEnglishContent(currentPage);
     resolve();
@@ -376,6 +375,25 @@ const translationReady = new Promise((resolve) => {
   translationScript.onerror = resolve;
   document.head.appendChild(translationScript);
 });
+
+const normalizeEnglishLinks = (root = document) => {
+  if (currentLang !== 'en') return;
+  const links = [];
+  if (root instanceof Element && root.matches('a[href]')) links.push(root);
+  if (root.querySelectorAll) links.push(...root.querySelectorAll('a[href]'));
+
+  links.forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|javascript:)/i.test(href) || href.includes('lang=en')) return;
+    const match = href.match(/^([^#?]+\.html)(\?[^#]*)?(#.*)?$/i);
+    if (!match) return;
+    const base = match[1];
+    const existingQuery = match[2] || '';
+    const hash = match[3] || '';
+    const query = existingQuery ? `${existingQuery}&lang=en` : '?lang=en';
+    link.setAttribute('href', `${base}${query}${hash}`);
+  });
+};
 
 translationReady.then(() => {
   applyChapterUpdateLabel();
@@ -395,32 +413,33 @@ translationReady.then(() => {
   }
 
   document.querySelectorAll('.content-grid > .aside').forEach((aside) => aside.setAttribute('aria-hidden', 'true'));
-
-  if (currentLang === 'en') {
-    document.querySelectorAll('a[href]').forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|javascript:)/i.test(href) || href.includes('lang=en')) return;
-      const match = href.match(/^([^#?]+\.html)(\?[^#]*)?(#.*)?$/i);
-      if (!match) return;
-      const base = match[1];
-      const existingQuery = match[2] || '';
-      const hash = match[3] || '';
-      const query = existingQuery ? `${existingQuery}&lang=en` : '?lang=en';
-      link.setAttribute('href', `${base}${query}${hash}`);
-    });
-  }
+  normalizeEnglishLinks(document);
 
   if (currentPage === 'index.html') {
-    if (!document.querySelector('link[href="history-fix.css"]')) {
-      const historyFixStylesheet = document.createElement('link');
-      historyFixStylesheet.rel = 'stylesheet';
-      historyFixStylesheet.href = 'history-fix.css';
-      document.head.appendChild(historyFixStylesheet);
-    }
+    ensureStylesheet('history-fix.css?v=20260830-3', 'history-fix.css');
 
-    document.querySelectorAll('#ns-history p').forEach((paragraph) => {
-      paragraph.style.textIndent = currentLang === 'en' ? '2em' : '5em';
-    });
+    if (currentLang === 'en') {
+      const historyTitle = document.querySelector('#ns-history .section-head-editorial h2');
+      const historyLead = document.querySelector('#ns-history .section-head-editorial .lead');
+      if (historyTitle) historyTitle.textContent = 'History of NS and Dutch railway development';
+      if (historyLead) historyLead.textContent = 'To understand why the Netherlands is moving from ATB to ERTMS/ETCS, it helps to look back at the development of Dutch railways and NS—from the first railway and the formation of Nederlandse Spoorwegen to the modern division of responsibilities between NS and infrastructure manager ProRail.';
+
+      const sourceButton = document.querySelector('#ns-history .hero-actions a');
+      if (sourceButton) sourceButton.textContent = 'Primary source: NS — History of NS ↗';
+
+      const topicLead = document.querySelector('.topic-section .section-head-editorial .lead');
+      if (topicLead) topicLead.textContent = 'The website moves from the legacy system to the new European standard, then examines deployment status, migration challenges, comparison with Belgium, Germany and Switzerland, and the direct effects on long-distance rail services.';
+
+      const topicRows = document.querySelectorAll('.topic-list .topic-row');
+      const comparisonTitle = topicRows[4]?.querySelector('h3');
+      if (comparisonTitle) comparisonTitle.textContent = 'Netherlands × Belgium × Germany × Switzerland';
+    } else {
+      const topicRows = document.querySelectorAll('.topic-list .topic-row');
+      const challengeText = topicRows[3]?.querySelector('p');
+      const impactText = topicRows[5]?.querySelector('p');
+      if (challengeText) challengeText.textContent = 'ขบวนรถ • การทดสอบ • การเปลี่ยนระบบ • บุคลากร';
+      if (impactText) impactText.textContent = 'ความปลอดภัย • ความจุ • การทำงานข้ามระบบ • การปฏิบัติการ';
+    }
 
     const historyImages = {
       '.visual-1800': '1800s.webp',
@@ -453,13 +472,16 @@ translationReady.then(() => {
       toggle.setAttribute('aria-expanded', String(open));
       toggle.querySelector('span').textContent = open ? '×' : '☰';
     });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.querySelector('span').textContent = '☰';
+    }));
   }
 
   const footerRoute = document.querySelector('.footer-route');
   if (footerRoute) {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
       footerRoute.classList.add('is-active', 'is-settled');
     } else {
       const footerRouteObserver = new IntersectionObserver((entries, observer) => {
@@ -469,67 +491,100 @@ translationReady.then(() => {
           window.setTimeout(() => footerRoute.classList.add('is-settled'), 1450);
           observer.unobserve(entry.target);
         });
-      }, { threshold: 0.45 });
+      }, { threshold: 0.35 });
       footerRouteObserver.observe(footerRoute);
     }
   }
 
   const footerTopButton = document.querySelector('.footer-to-top');
   if (footerTopButton) {
-    footerTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    footerTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
   }
 
   const progress = document.querySelector('.reading-progress');
-  const updateProgress = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
-  };
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
-
-  const reveal = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        reveal.unobserve(entry.target);
-      }
-    });
-  }, { threshold: .08 });
-  document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
-
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-
   const siteHeader = document.querySelector('.site-header');
-  const updateHeaderState = () => {
-    if (!siteHeader) return;
-    siteHeader.classList.toggle('scrolled', window.scrollY > 56);
-  };
-  window.addEventListener('scroll', updateHeaderState, { passive: true });
-  updateHeaderState();
-
   const historyTimeline = document.getElementById('historyTimeline');
   const historyLineFill = document.getElementById('historyLineFill');
   const historyLine = historyTimeline?.querySelector('.history-line');
   const historyItems = historyTimeline ? Array.from(historyTimeline.querySelectorAll('.history-item')) : [];
   const historyNowMarker = historyItems.length ? historyItems[historyItems.length - 1].querySelector('.history-marker') : null;
 
-  if (historyTimeline && historyLineFill && historyLine && historyNowMarker) {
-    const updateHistoryLine = () => {
+  const updateScrollState = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = `${max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0}%`;
+    if (siteHeader) siteHeader.classList.toggle('scrolled', window.scrollY > 56);
+
+    if (historyTimeline && historyLineFill && historyLine && historyNowMarker) {
       const rect = historyTimeline.getBoundingClientRect();
       const markerRect = historyNowMarker.getBoundingClientRect();
       const endAtNow = Math.max(0, Math.min(rect.height, markerRect.top + markerRect.height / 2 - rect.top));
-
       historyLine.style.bottom = 'auto';
       historyLine.style.height = `${endAtNow}px`;
-
       const viewportMiddle = window.innerHeight * 0.58;
       const travelled = Math.max(0, Math.min(endAtNow, viewportMiddle - rect.top));
       historyLineFill.style.height = `${travelled}px`;
-    };
+    }
+  };
 
-    window.addEventListener('scroll', updateHistoryLine, { passive: true });
-    window.addEventListener('resize', updateHistoryLine);
-    window.addEventListener('load', updateHistoryLine, { once: true });
-    requestAnimationFrame(updateHistoryLine);
+  let scrollFrame = 0;
+  const scheduleScrollState = () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateScrollState();
+    });
+  };
+  window.addEventListener('scroll', scheduleScrollState, { passive: true });
+  window.addEventListener('resize', scheduleScrollState);
+  window.addEventListener('load', scheduleScrollState, { once: true });
+  scheduleScrollState();
+
+  let revealObserver = null;
+  const makeVisible = (element) => {
+    if (!(element instanceof Element) || !element.classList.contains('reveal')) return;
+    element.classList.add('visible');
+  };
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
   }
+
+  const registerReveal = (element) => {
+    if (!(element instanceof Element) || !element.classList.contains('reveal') || element.classList.contains('visible')) return;
+    if (revealObserver) revealObserver.observe(element);
+    else makeVisible(element);
+  };
+
+  const registerRevealTree = (root) => {
+    if (root instanceof Element) registerReveal(root);
+    if (root?.querySelectorAll) root.querySelectorAll('.reveal').forEach(registerReveal);
+  };
+
+  registerRevealTree(document);
+
+  const dynamicContentObserver = new MutationObserver((mutations) => {
+    let hasNewContent = false;
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (!(node instanceof Element)) return;
+        hasNewContent = true;
+        registerRevealTree(node);
+        normalizeEnglishLinks(node);
+      });
+    });
+    if (hasNewContent) applyChapterUpdateLabel();
+  });
+  dynamicContentObserver.observe(document.body, { childList: true, subtree: true });
+
+  document.querySelectorAll('[data-year]').forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
+
+  applyChapterUpdateLabel();
 });
