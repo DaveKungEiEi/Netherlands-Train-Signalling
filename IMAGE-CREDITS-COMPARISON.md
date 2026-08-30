@@ -26,12 +26,14 @@ Images used on `comparison.html` are selected to avoid repeating the imagery alr
 - Licence: https://creativecommons.org/licenses/by/3.0/
 - Use on site: onboard ETCS equipment and German rolling-stock conversion.
 
-## Switzerland — Mattstetten–Rothrist ETCS Level 2
-- File: **CH ETCS L2.JPG**
-- Source / author: **Swiss Federal Office of Transport (BAV/FOT)**, file prepared on Commons by Plutowiki from an official BAV information handout
-- Source: https://commons.wikimedia.org/wiki/File:CH_ETCS_L2.JPG
-- Licence: **Public Domain — Swiss official document**
-- Use on site: one of Switzerland's early ETCS Level 2 deployments on Mattstetten–Rothrist.
+## Switzerland — ETCS Level 2 shunting border at Flüelen
+- File: **SBB - ETCS Shunting Border (30339113611).jpg**
+- Photographer: **Kecko**
+- Location/date: **Flüelen, Switzerland — 18 October 2016**
+- Source: https://commons.wikimedia.org/wiki/File:SBB_-_ETCS_Shunting_Border_(30339113611).jpg
+- Licence: **CC BY 2.0**
+- Licence: https://creativecommons.org/licenses/by/2.0/
+- Use on site: a real ETCS Level 2 shunting-border installation in Switzerland.
 
 ## Historical context — Harmelen memorial
 - File: **Monument treinramp Harmelen 26052012 07.JPG**
