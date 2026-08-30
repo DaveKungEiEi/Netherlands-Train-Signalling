@@ -1,10 +1,20 @@
 /* =========================================================
-   Timeline alignment system
-   One geometric rule for year labels, dots and rails.
-   Loaded after page-specific CSS so the axis stays consistent.
+   Unified timeline alignment + visual system
+
+   Canonical reference: Status page (#timeline)
+   Applies to article timelines on:
+   - ATB
+   - ERTMS / ETCS
+   - Status
+   - Comparison
+
+   IMPORTANT: Homepage history timeline intentionally keeps its own design.
    ========================================================= */
 
-/* ---------- Shared ATB timeline ---------- */
+/* =========================================================
+   Legacy generic timeline geometry
+   Kept for compatibility with older article markup.
+   ========================================================= */
 .timeline {
   --timeline-axis-x: 34px;
 }
@@ -14,19 +24,19 @@
   transform: translateX(-50%);
 }
 
-/* Align the dot vertically with the first line (year) inside the card. */
 .timeline-dot {
   margin-top: 24px;
 }
 
-/* ---------- Homepage history timeline ---------- */
-/* Desktop already uses a 50% axis; keep the rail centred on that exact axis. */
+/* =========================================================
+   HOMEPAGE — DO NOT RESTYLE
+   Only retain the existing geometric centring fixes.
+   ========================================================= */
 .history-line {
   transform: translateX(-50%);
 }
 
 @media (max-width: 1040px) {
-  /* First timeline column is 68px wide, so its centre is exactly 34px. */
   .history-line {
     left: 34px;
     transform: translateX(-50%);
@@ -34,135 +44,468 @@
 }
 
 @media (max-width: 760px) {
-  /* Mobile timeline column is 48px wide, so its centre is exactly 24px. */
   .history-line {
     left: 24px;
     transform: translateX(-50%);
   }
 }
 
-/* ---------- Status timeline ---------- */
-/*
-   The rail lives in .status-list while each dot lives in .status-row.
-   Those elements use different coordinate origins because .status-list has
-   left padding. Define one explicit axis and convert it into the row's local
-   coordinate system instead of compensating with a magic left-edge value.
-*/
+/* =========================================================
+   Shared article-timeline tokens
+   These dimensions are based directly on the Status page.
+   ========================================================= */
+body:not(.home-page)[data-page] {
+  --article-timeline-axis: 16px;
+  --article-timeline-offset: 34px;
+  --article-timeline-year-width: 112px;
+  --article-timeline-gap: 20px;
+  --article-timeline-dot-size: 14px;
+  --article-timeline-dot-border: 4px;
+  --article-timeline-dot-top: 27px;
+  --article-timeline-blue: #003082;
+  --article-timeline-mid-blue: #1264bd;
+  --article-timeline-yellow: #ffc917;
+  --article-timeline-year-bg: #edf4fb;
+  --article-timeline-row-hover: rgba(239,246,253,.72);
+}
+
+/* =========================================================
+   STATUS — canonical reference
+   Keep the rendered Status timeline as the master geometry.
+   ========================================================= */
 body[data-page="status.html"] #timeline .status-list {
-  --status-axis-x: 16px;
-  --status-content-offset: 34px;
+  --status-axis-x: var(--article-timeline-axis);
+  --status-content-offset: var(--article-timeline-offset);
+  position: relative;
+  padding-left: var(--article-timeline-offset);
 }
 
 body[data-page="status.html"] #timeline .status-list::before {
   left: var(--status-axis-x);
+  width: 3px;
   transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    var(--article-timeline-blue) 0%,
+    var(--article-timeline-mid-blue) 62%,
+    var(--article-timeline-yellow) 100%
+  );
+}
+
+body[data-page="status.html"] #timeline .status-row {
+  grid-template-columns: var(--article-timeline-year-width) minmax(0,1fr) auto;
+  gap: var(--article-timeline-gap);
 }
 
 body[data-page="status.html"] #timeline .status-row::before {
   left: calc(var(--status-axis-x) - var(--status-content-offset));
+  top: var(--article-timeline-dot-top);
+  width: var(--article-timeline-dot-size);
+  height: var(--article-timeline-dot-size);
+  box-sizing: content-box;
   transform: translateX(-50%);
+  background: #fff;
+  border: var(--article-timeline-dot-border) solid var(--article-timeline-blue);
+  box-shadow: 0 0 0 5px rgba(0,48,130,.09);
 }
 
-/* A horizontal hover translation would move the dot away from the fixed rail. */
+/* Moving the whole row horizontally would detach its dot from the fixed rail. */
 body[data-page="status.html"] #timeline .status-row:hover {
   transform: none;
 }
 
-/* ---------- ERTMS history timeline ---------- */
-/*
-   The rail belongs to .ertms-history-timeline, while each dot belongs to a
-   milestone whose local origin starts after the timeline's left padding.
-   Use one centre axis for both instead of inheriting the old 9px/-30px pair.
-*/
+/* =========================================================
+   ATB HISTORY — restyled to match Status
+   ========================================================= */
+body[data-page="atb.html"] .atb-history {
+  --atb-history-year: var(--article-timeline-year-width);
+  --atb-history-axis: var(--article-timeline-axis);
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+  padding-left: var(--article-timeline-offset);
+}
+
+body[data-page="atb.html"] .atb-history::before {
+  top: 14px;
+  bottom: 14px;
+  left: var(--atb-history-axis);
+  width: 3px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--article-timeline-blue) 0%,
+    var(--article-timeline-mid-blue) 62%,
+    var(--article-timeline-yellow) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(0,48,130,.035);
+}
+
+body[data-page="atb.html"] .atb-history-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--article-timeline-year-width) minmax(0,1fr);
+  gap: var(--article-timeline-gap);
+  align-items: start;
+  padding: 19px 20px 20px 24px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+body[data-page="atb.html"] .atb-history-item:hover {
+  border-color: rgba(0,48,130,.08);
+  background: var(--article-timeline-row-hover);
+}
+
+body[data-page="atb.html"] .atb-history-year {
+  display: inline-flex;
+  width: fit-content;
+  max-width: var(--article-timeline-year-width);
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: 10px;
+  background: var(--article-timeline-year-bg);
+  color: var(--article-timeline-blue);
+  font-size: .98rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page="atb.html"] .atb-history-dot {
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--article-timeline-axis) - var(--article-timeline-offset));
+  top: var(--article-timeline-dot-top);
+  width: var(--article-timeline-dot-size);
+  height: var(--article-timeline-dot-size);
+  box-sizing: content-box;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  border: var(--article-timeline-dot-border) solid var(--article-timeline-blue);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(0,48,130,.09);
+}
+
+body[data-page="atb.html"] .atb-history-item.current .atb-history-dot {
+  background: #fff;
+  border-color: var(--article-timeline-yellow);
+  box-shadow: 0 0 0 5px rgba(255,201,23,.20);
+}
+
+body[data-page="atb.html"] .atb-history-item.current .atb-history-year {
+  background: #fff3bf;
+  color: #5d4700;
+}
+
+body[data-page="atb.html"] .atb-history-card {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body[data-page="atb.html"] .atb-history-card h3 {
+  margin-top: 1px;
+}
+
+/* =========================================================
+   ERTMS HISTORY — restyled to match Status
+   ========================================================= */
 body[data-page="ertms.html"] .ertms-history-timeline {
-  --ertms-axis-x: 13px;
-  --ertms-content-offset: 32px;
+  --ertms-axis-x: var(--article-timeline-axis);
+  --ertms-content-offset: var(--article-timeline-offset);
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+  padding-left: var(--article-timeline-offset);
 }
 
 body[data-page="ertms.html"] .ertms-history-timeline::before {
   left: var(--ertms-axis-x);
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
   transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--article-timeline-blue) 0%,
+    var(--article-timeline-mid-blue) 62%,
+    var(--article-timeline-yellow) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(0,48,130,.035);
+}
+
+body[data-page="ertms.html"] .ertms-milestone {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--article-timeline-year-width) minmax(0,1fr) auto;
+  gap: var(--article-timeline-gap);
+  align-items: start;
+  padding: 19px 20px 20px 24px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+body[data-page="ertms.html"] .ertms-milestone:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+body[data-page="ertms.html"] .ertms-milestone:hover {
+  border-color: rgba(0,48,130,.08);
+  background: var(--article-timeline-row-hover);
 }
 
 body[data-page="ertms.html"] .ertms-milestone::before {
   left: calc(var(--ertms-axis-x) - var(--ertms-content-offset));
+  top: var(--article-timeline-dot-top);
+  width: var(--article-timeline-dot-size);
+  height: var(--article-timeline-dot-size);
+  box-sizing: content-box;
   transform: translateX(-50%);
+  background: #fff;
+  border: var(--article-timeline-dot-border) solid var(--article-timeline-blue);
+  box-shadow: 0 0 0 5px rgba(0,48,130,.09);
 }
 
-/* ---------- Three-country comparison timeline ---------- */
+body[data-page="ertms.html"] .ertms-milestone.current::before {
+  background: #fff;
+  border-color: var(--article-timeline-yellow);
+  box-shadow: 0 0 0 5px rgba(255,201,23,.20);
+}
+
+body[data-page="ertms.html"] .ertms-year {
+  display: inline-flex;
+  width: fit-content;
+  max-width: var(--article-timeline-year-width);
+  padding: 5px 9px;
+  border-radius: 10px;
+  background: var(--article-timeline-year-bg);
+  color: var(--article-timeline-blue);
+  font-size: .98rem;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page="ertms.html"] .ertms-milestone.current .ertms-year {
+  background: #fff3bf;
+  color: #5d4700;
+}
+
+/* =========================================================
+   COMPARISON HISTORY — restyled to match Status
+   ========================================================= */
 body[data-page="comparison.html"] .comparison-timeline {
-  --comparison-axis-x: 108px;
+  --comparison-axis-x: var(--article-timeline-axis);
+  --comparison-content-offset: var(--article-timeline-offset);
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+  padding-left: var(--article-timeline-offset);
 }
 
 body[data-page="comparison.html"] .comparison-timeline::before {
   left: var(--comparison-axis-x);
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
   transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--article-timeline-blue) 0%,
+    var(--article-timeline-mid-blue) 62%,
+    var(--article-timeline-yellow) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(0,48,130,.035);
 }
 
 body[data-page="comparison.html"] .comparison-era {
-  /* 86px year + 44px centre gap -> axis sits exactly 22px from either side. */
-  grid-template-columns: 86px minmax(0, 1fr);
-  gap: 44px;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--article-timeline-year-width) minmax(0,1fr);
+  gap: var(--article-timeline-gap);
+  align-items: start;
+  padding: 19px 20px 20px 24px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+body[data-page="comparison.html"] .comparison-era:hover {
+  border-color: rgba(0,48,130,.08);
+  background: var(--article-timeline-row-hover);
 }
 
 body[data-page="comparison.html"] .comparison-era::before {
-  left: var(--comparison-axis-x);
+  left: calc(var(--comparison-axis-x) - var(--comparison-content-offset));
+  top: var(--article-timeline-dot-top);
+  width: var(--article-timeline-dot-size);
+  height: var(--article-timeline-dot-size);
+  box-sizing: content-box;
   transform: translateX(-50%);
+  border: var(--article-timeline-dot-border) solid var(--article-timeline-blue);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(0,48,130,.09);
+}
+
+body[data-page="comparison.html"] .comparison-era-current::before {
+  background: #fff;
+  border-color: var(--article-timeline-yellow);
+  box-shadow: 0 0 0 5px rgba(255,201,23,.20);
 }
 
 body[data-page="comparison.html"] .comparison-era-year {
-  padding-top: 18px;
-  padding-right: 0;
-  text-align: right;
-  white-space: nowrap;
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  width: fit-content;
+  max-width: var(--article-timeline-year-width);
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: 10px;
+  background: var(--article-timeline-year-bg);
+  color: var(--article-timeline-blue);
+  font-size: .98rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+  font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Small screens ---------- */
-@media (max-width: 760px) {
-  body[data-page="status.html"] #timeline .status-list {
-    --status-axis-x: 12px;
-    --status-content-offset: 24px;
+body[data-page="comparison.html"] .comparison-era-current .comparison-era-year {
+  background: #fff3bf;
+  color: #5d4700;
+}
+
+/* Keep comparison's detailed multi-country content card, but make its outer
+   geometry feel like the Status timeline instead of a second timeline style. */
+body[data-page="comparison.html"] .comparison-era-body {
+  min-width: 0;
+  margin: 0;
+  border-radius: 18px;
+  box-shadow: 0 7px 18px rgba(0,48,130,.035);
+}
+
+/* =========================================================
+   TABLET
+   Status switches to stacked content at this breakpoint;
+   use the same behaviour everywhere else.
+   ========================================================= */
+@media (max-width: 920px) {
+  body[data-page="status.html"] #timeline .status-row,
+  body[data-page="ertms.html"] .ertms-milestone {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  body[data-page="comparison.html"] .comparison-timeline {
-    --comparison-axis-x: 12px;
-  }
-
-  body[data-page="comparison.html"] .comparison-timeline::before {
-    left: var(--comparison-axis-x);
-    transform: translateX(-50%);
-  }
-
+  body[data-page="atb.html"] .atb-history-item,
   body[data-page="comparison.html"] .comparison-era {
     grid-template-columns: 1fr;
     gap: 10px;
-    padding-left: 34px;
+  }
+
+  body[data-page="atb.html"] .atb-history-year,
+  body[data-page="ertms.html"] .ertms-year,
+  body[data-page="comparison.html"] .comparison-era-year {
+    max-width: min(100%, 180px);
+  }
+}
+
+/* =========================================================
+   MOBILE — same compact axis used by Status
+   ========================================================= */
+@media (max-width: 560px) {
+  body:not(.home-page)[data-page] {
+    --article-timeline-axis: 12px;
+    --article-timeline-offset: 24px;
+    --article-timeline-gap: 10px;
+    --article-timeline-dot-size: 12px;
+    --article-timeline-dot-border: 3px;
+    --article-timeline-dot-top: 24px;
+  }
+
+  body[data-page="status.html"] #timeline .status-list,
+  body[data-page="atb.html"] .atb-history,
+  body[data-page="ertms.html"] .ertms-history-timeline,
+  body[data-page="comparison.html"] .comparison-timeline {
+    padding-left: var(--article-timeline-offset);
+  }
+
+  body[data-page="status.html"] #timeline .status-row,
+  body[data-page="atb.html"] .atb-history-item,
+  body[data-page="ertms.html"] .ertms-milestone,
+  body[data-page="comparison.html"] .comparison-era {
+    padding: 17px 14px 18px 18px;
+  }
+
+  body[data-page="status.html"] #timeline .status-list::before,
+  body[data-page="atb.html"] .atb-history::before,
+  body[data-page="ertms.html"] .ertms-history-timeline::before,
+  body[data-page="comparison.html"] .comparison-timeline::before {
+    left: var(--article-timeline-axis);
+  }
+
+  body[data-page="atb.html"] .atb-history-dot {
+    left: calc(var(--article-timeline-axis) - var(--article-timeline-offset));
+    top: var(--article-timeline-dot-top);
+  }
+
+  body[data-page="ertms.html"] .ertms-milestone::before {
+    left: calc(var(--article-timeline-axis) - var(--article-timeline-offset));
+    top: var(--article-timeline-dot-top);
   }
 
   body[data-page="comparison.html"] .comparison-era::before {
-    left: var(--comparison-axis-x);
-    transform: translateX(-50%);
+    left: calc(var(--article-timeline-axis) - var(--article-timeline-offset));
+    top: var(--article-timeline-dot-top);
   }
 
+  body[data-page="atb.html"] .atb-history-year,
+  body[data-page="ertms.html"] .ertms-year,
   body[data-page="comparison.html"] .comparison-era-year {
-    padding-top: 4px;
-    text-align: left;
+    padding: 5px 9px;
+    font-size: .9rem;
+  }
+
+  body[data-page="comparison.html"] .comparison-era-body {
+    padding: 19px 16px;
+    border-radius: 18px;
   }
 }
 
-@media (max-width: 560px) {
-  body[data-page="ertms.html"] .ertms-history-timeline {
-    --ertms-axis-x: 9px;
-    --ertms-content-offset: 24px;
-  }
-}
-
-/* ---------- Reduced motion ---------- */
+/* =========================================================
+   Reduced motion
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .timeline-dot,
   .history-marker,
+  body[data-page="status.html"] #timeline .status-row,
   body[data-page="status.html"] #timeline .status-row::before,
+  body[data-page="atb.html"] .atb-history-item,
+  body[data-page="atb.html"] .atb-history-dot,
+  body[data-page="ertms.html"] .ertms-milestone,
   body[data-page="ertms.html"] .ertms-milestone::before,
+  body[data-page="comparison.html"] .comparison-era,
   body[data-page="comparison.html"] .comparison-era::before {
     transition: none !important;
   }
