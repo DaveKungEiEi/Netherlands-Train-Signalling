@@ -180,4 +180,27 @@ body[data-page="other.html"] .aside a[href^="#ref-"] {
   .reference-card {
     padding: 15px;
   }
+
+  /* The reference library is much taller than the mobile viewport. A
+     percentage-based IntersectionObserver threshold can therefore never be
+     reached, leaving the whole #sources section at opacity:0. Keep this long
+     library visible on phones and let the page scroll normally. This applies
+     equally to Thai and English because both languages share #sources. */
+  html.motion-ready body[data-page="other.html"] #sources.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+  }
+
+  html.motion-ready body[data-page="other.html"] #sources.reveal > .kicker,
+  html.motion-ready body[data-page="other.html"] #sources.reveal > h2,
+  html.motion-ready body[data-page="other.html"] #sources.reveal > p,
+  html.motion-ready body[data-page="other.html"] #sources.reveal .reference-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition-delay: 0s !important;
+  }
 }
