@@ -1,5 +1,5 @@
-@import url("animation-style.css");
-@import url("site-visual-density.css");
+@import url("animation-style.css?v=20260830-4");
+@import url("site-visual-density.css?v=20260830-2");
 
 /* =========================================================
    Homepage hero — keep the user's original Main BG1.jpg
@@ -37,9 +37,7 @@
     inset 0 0 0 1px rgba(0, 48, 130, 0.05) !important;
 }
 
-/* Thai-distributed-style paragraph formatting for the history section.
-   This keeps both left and right edges visually aligned while preserving
-   the requested academic first-line indent. */
+/* Thai body copy uses a clear academic first-line indent and balanced edges. */
 #ns-history .history-copy p,
 #ns-history .section-head-editorial .lead {
   text-align: justify;
@@ -51,6 +49,17 @@
   overflow-wrap: break-word;
   hyphens: none;
   font-kerning: normal;
+}
+
+/* English copy should not inherit the large Thai indent or inter-character
+   justification. This avoids stretched spacing and improves readability. */
+html[lang="en"] #ns-history .history-copy p,
+html[lang="en"] #ns-history .section-head-editorial .lead {
+  text-align: left;
+  text-justify: auto;
+  text-align-last: auto;
+  text-indent: 2em !important;
+  hyphens: auto;
 }
 
 #ns-history .history-copy p {
@@ -89,8 +98,6 @@
 }
 
 @media (max-width: 720px) {
-  /* Keep Main BG1 on mobile too; do not let the site-wide visual layer
-     swap it for another railway photograph. */
   .home-page .hero-editorial {
     background-image:
       linear-gradient(
@@ -107,6 +114,16 @@
   #ns-history .history-copy p,
   #ns-history .section-head-editorial .lead {
     line-height: 1.9;
+  }
+
+  html[lang="th"] #ns-history .history-copy p,
+  html[lang="th"] #ns-history .section-head-editorial .lead {
+    text-indent: 2.5em !important;
+  }
+
+  html[lang="en"] #ns-history .history-copy p,
+  html[lang="en"] #ns-history .section-head-editorial .lead {
+    text-indent: 1.5em !important;
   }
 
   #ns-history .history-marker span {
