@@ -24,6 +24,49 @@ localStorage.setItem('nts-language', currentLang);
 document.documentElement.lang = currentLang;
 document.body.dataset.lang = currentLang;
 
+// Keep the chapter/update label identical across every content page.
+// Page-specific English scripts may rebuild the hero after script.js runs,
+// so a lightweight observer reapplies the shared label whenever needed.
+const chapterNumbers = {
+  'atb.html': '01',
+  'ertms.html': '02',
+  'status.html': '03.1',
+  'problems.html': '03.2',
+  'comparison.html': '04.1',
+  'impact.html': '04.2',
+  'summary.html': '05'
+};
+
+const chapterUpdateText = {
+  th: 'อัปเดตล่าสุด 30 ส.ค. 2026',
+  en: 'Updated 30 Aug 2026'
+};
+
+const applyChapterUpdateLabel = () => {
+  const chapter = chapterNumbers[currentPage];
+  if (!chapter) return;
+
+  const eyebrow = document.querySelector('.page-hero .eyebrow');
+  if (!eyebrow) return;
+
+  const lang = document.documentElement.lang === 'en' || document.body.dataset.lang === 'en' ? 'en' : 'th';
+  const expected = `Chapter ${chapter} • ${chapterUpdateText[lang]}`;
+  if (eyebrow.textContent.trim() === expected) return;
+
+  let dot = eyebrow.querySelector('.eyebrow-dot');
+  if (!dot) {
+    dot = document.createElement('span');
+    dot.className = 'eyebrow-dot';
+  }
+  eyebrow.replaceChildren(dot, document.createTextNode(` ${expected}`));
+};
+
+applyChapterUpdateLabel();
+window.addEventListener('load', () => window.setTimeout(applyChapterUpdateLabel, 0), { once: true });
+
+const chapterLabelObserver = new MutationObserver(() => applyChapterUpdateLabel());
+chapterLabelObserver.observe(document.body, { childList: true, subtree: true });
+
 const text = {
   th: {
     navLabel: 'เมนูหลัก',
@@ -247,6 +290,9 @@ const translationReady = new Promise((resolve) => {
 });
 
 translationReady.then(() => {
+  // Reapply after the shared English translator updates the page hero.
+  applyChapterUpdateLabel();
+
   // Centralise source references in other.html.
   const referenceTargets = {
     'atb.html': 'ref-atb',
