@@ -1,211 +1,302 @@
 /* =========================================================
-   Section navigation dropdown
-   Replaces the right-side "ในหน้านี้ / On this page" card on
-   every inner page with a compact Liquid Glass dropdown below
-   the active navbar item.
-
-   The original <aside> stays in the DOM as the semantic source
-   of section links, but it no longer occupies article space.
+   Navbar mega dropdown + transparent-to-island behaviour
    ========================================================= */
 
-/* Give the article the full width that used to be reserved for the sidebar. */
+/* ---------- Article width: remove the old right sidebar everywhere ---------- */
 body:not(.home-page)[data-page] .content-grid {
   grid-template-columns: minmax(0, 1fr) !important;
   gap: 0 !important;
 }
-
 body:not(.home-page)[data-page] .container.content-grid {
   width: min(100%, 1240px);
 }
-
 body:not(.home-page)[data-page] .content-grid > .article {
   width: 100%;
   max-width: none;
   min-width: 0;
 }
-
-/* The active top-level link is the hover/focus trigger. */
-body:not(.home-page)[data-page] .nav-links > a.active {
-  position: relative;
-  anchor-name: --section-nav-anchor;
-  padding-right: 27px;
+body:not(.home-page)[data-page] .content-grid > .aside {
+  display: none !important;
 }
 
-body:not(.home-page)[data-page] .nav-links > a.active::before {
+/* ---------- Header: transparent on hero, island after scroll ---------- */
+.site-header {
+  top: 12px;
+  width: min(calc(100% - 48px), 1540px);
+  transition:
+    width .34s cubic-bezier(.2,.75,.2,1),
+    top .34s cubic-bezier(.2,.75,.2,1);
+}
+
+.site-header .nav-shell {
+  position: relative;
+  overflow: visible;
+  border-color: transparent;
+  border-radius: 26px;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition:
+    padding .34s cubic-bezier(.2,.75,.2,1),
+    border-color .28s ease,
+    border-radius .34s ease,
+    background-color .28s ease,
+    box-shadow .28s ease,
+    -webkit-backdrop-filter .28s ease,
+    backdrop-filter .28s ease;
+}
+
+.site-header.scrolled {
+  top: 14px;
+  width: min(calc(100% - 28px), 1240px);
+}
+
+.site-header.scrolled .nav-shell {
+  padding: 9px 11px 9px 14px;
+  border-color: rgba(255,255,255,.82);
+  border-radius: 999px;
+  background: rgba(255,255,255,.58);
+  box-shadow:
+    0 16px 46px rgba(24,61,104,.14),
+    inset 0 1px 0 rgba(255,255,255,.92);
+  -webkit-backdrop-filter: blur(26px) saturate(155%);
+  backdrop-filter: blur(26px) saturate(155%);
+}
+
+/* Home hero is photographic, so the unscrolled navigation is white. */
+.home-page .site-header:not(.scrolled) .brand,
+.home-page .site-header:not(.scrolled) .nav-main-link,
+.home-page .site-header:not(.scrolled) .language-toggle {
+  color: #fff !important;
+  text-shadow: 0 1px 14px rgba(5,24,45,.44);
+}
+
+.home-page .site-header:not(.scrolled) .brand-mark {
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 5px 18px rgba(0,0,0,.12);
+}
+
+.home-page .site-header:not(.scrolled) .nav-main-link:hover,
+.home-page .site-header:not(.scrolled) .nav-main-link:focus-visible {
+  background: rgba(255,255,255,.13);
+  color: #fff !important;
+}
+
+.home-page .site-header:not(.scrolled) .nav-main-link.active {
+  background: transparent;
+  color: #fff !important;
+  box-shadow: none;
+}
+.home-page .site-header:not(.scrolled) .nav-main-link.active::after {
+  background: #fff;
+}
+
+/* Inner pages keep dark-blue text over their light hero while the shell stays clear. */
+body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active {
+  background: transparent;
+  color: #003082;
+  box-shadow: none;
+}
+body:not(.home-page) .site-header:not(.scrolled) .nav-main-link.active::after {
+  background: #003082;
+}
+
+.site-header.scrolled .nav-main-link.active {
+  background: #003082;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,48,130,.18);
+}
+.site-header.scrolled .nav-main-link.active::after {
+  display: none;
+}
+
+/* ---------- Top-level navigation ---------- */
+.nav-links {
+  overflow: visible;
+}
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+.nav-main-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  white-space: nowrap;
+}
+.nav-main-link.active::after {
   content: "";
   position: absolute;
+  left: 10px;
   right: 10px;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  border-right: 1.7px solid currentColor;
-  border-bottom: 1.7px solid currentColor;
-  transform: translateY(-68%) rotate(45deg);
-  opacity: .78;
-  transition: transform .2s ease, opacity .2s ease;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 999px;
 }
 
-body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .nav-links > a.active::before,
-body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .nav-links > a.active::before,
-body:not(.home-page)[data-page]:has(.aside:hover) .nav-links > a.active::before,
-body:not(.home-page)[data-page]:has(.aside:focus-within) .nav-links > a.active::before {
-  transform: translateY(-30%) rotate(225deg);
-  opacity: 1;
+/* No chevrons or dropdown icons. */
+.nav-item > .nav-main-link::before {
+  content: none !important;
 }
 
-/* Hidden state: fixed so it never consumes a grid column. */
-body:not(.home-page)[data-page] .content-grid > .aside {
-  position: fixed !important;
-  top: 76px !important;
-  left: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  z-index: 180 !important;
-  display: block !important;
-  width: min(320px, calc(100vw - 28px)) !important;
-  max-height: min(68vh, 560px);
-  margin: 0 !important;
-  padding: 12px !important;
-  overflow: auto !important;
-  overscroll-behavior: contain;
-  border: 1px solid rgba(255,255,255,.88) !important;
-  border-radius: 22px !important;
+/* A real hover bridge: the pointer can travel downward without closing the menu. */
+.nav-item.has-submenu::after {
+  content: "";
+  position: absolute;
+  z-index: 205;
+  left: -8px;
+  right: -8px;
+  top: calc(100% - 3px);
+  height: 20px;
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* ---------- Dropdown ---------- */
+.nav-submenu {
+  position: absolute;
+  z-index: 210;
+  top: calc(100% + 13px);
+  left: 50%;
+  width: max-content;
+  min-width: 218px;
+  max-width: min(330px, calc(100vw - 28px));
+  padding: 11px;
+  border: 1px solid rgba(255,255,255,.92);
+  border-radius: 20px;
   background:
-    linear-gradient(145deg, rgba(255,255,255,.91), rgba(241,247,254,.82)) !important;
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(244,248,253,.90));
   box-shadow:
-    0 22px 58px rgba(0,48,130,.17),
-    inset 0 1px 0 rgba(255,255,255,.96) !important;
-  -webkit-backdrop-filter: blur(26px) saturate(150%) !important;
-  backdrop-filter: blur(26px) saturate(150%) !important;
+    0 24px 64px rgba(5,35,75,.18),
+    inset 0 1px 0 rgba(255,255,255,.98);
+  -webkit-backdrop-filter: blur(28px) saturate(155%);
+  backdrop-filter: blur(28px) saturate(155%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(-30%, -8px) scale(.975) !important;
+  transform: translate(-50%, -7px) scale(.985);
   transform-origin: 50% 0;
   transition:
-    opacity .18s ease,
-    transform .2s cubic-bezier(.2,.75,.2,1),
-    visibility 0s linear .2s;
+    opacity .16s ease,
+    transform .19s cubic-bezier(.2,.75,.2,1),
+    visibility 0s linear .19s;
 }
 
-/* Modern browsers: position the dropdown precisely below the active nav item. */
-@supports (position-anchor: --section-nav-anchor) {
-  body:not(.home-page)[data-page] .content-grid > .aside {
-    position-anchor: --section-nav-anchor;
-    top: calc(anchor(bottom) - 1px) !important;
-    left: clamp(14px, calc(anchor(center) - 160px), calc(100vw - 334px)) !important;
-    transform: translateY(-7px) scale(.975) !important;
-  }
+/* Edge menus do not overflow the viewport. */
+.nav-item:nth-last-of-type(-n+3) .nav-submenu {
+  left: auto;
+  right: 0;
+  transform: translateY(-7px) scale(.985);
+  transform-origin: 100% 0;
 }
 
-/* Open while the active nav item or the dropdown itself is hovered/focused. */
-body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .content-grid > .aside,
-body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .content-grid > .aside,
-body:not(.home-page)[data-page]:has(.content-grid > .aside:hover) .content-grid > .aside,
-body:not(.home-page)[data-page]:has(.content-grid > .aside:focus-within) .content-grid > .aside {
+.nav-item:hover > .nav-submenu,
+.nav-item:focus-within > .nav-submenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate(-30%, 0) scale(1) !important;
+  transform: translate(-50%, 0) scale(1);
   transition-delay: 0s;
 }
-
-@supports (position-anchor: --section-nav-anchor) {
-  body:not(.home-page)[data-page]:has(.nav-links > a.active:hover) .content-grid > .aside,
-  body:not(.home-page)[data-page]:has(.nav-links > a.active:focus-visible) .content-grid > .aside,
-  body:not(.home-page)[data-page]:has(.content-grid > .aside:hover) .content-grid > .aside,
-  body:not(.home-page)[data-page]:has(.content-grid > .aside:focus-within) .content-grid > .aside {
-    transform: translateY(0) scale(1) !important;
-  }
+.nav-item:nth-last-of-type(-n+3):hover > .nav-submenu,
+.nav-item:nth-last-of-type(-n+3):focus-within > .nav-submenu {
+  transform: translateY(0) scale(1);
 }
 
-/* Dropdown content */
-body:not(.home-page)[data-page] .content-grid > .aside .aside-title {
+.nav-submenu a {
   display: block !important;
-  margin: 2px 4px 7px !important;
-  padding: 6px 8px 8px;
-  border-bottom: 1px solid rgba(0,48,130,.10);
-  color: #123d70 !important;
-  font-size: .72rem !important;
-  font-weight: 850 !important;
-  letter-spacing: .045em !important;
-  text-transform: uppercase;
-}
-
-body:not(.home-page)[data-page] .content-grid > .aside a {
-  position: relative;
-  display: flex !important;
-  align-items: center;
-  min-height: 38px;
-  margin: 2px 0;
-  padding: 8px 35px 8px 11px !important;
-  border: 1px solid transparent;
-  border-radius: 12px !important;
-  background: transparent;
-  color: #405b78 !important;
-  font-size: .82rem !important;
-  font-weight: 680 !important;
-  line-height: 1.42;
+  width: 100%;
+  min-height: 40px;
+  margin: 0;
+  padding: 9px 12px !important;
+  border-radius: 11px !important;
+  background: transparent !important;
+  color: #263d58 !important;
+  font-size: .84rem !important;
+  font-weight: 700 !important;
+  line-height: 1.45;
+  text-align: left;
   text-decoration: none;
-  white-space: normal !important;
-  transition: background-color .16s ease, color .16s ease, border-color .16s ease, transform .16s ease;
+  white-space: normal;
+  box-shadow: none !important;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
 }
-
-body:not(.home-page)[data-page] .content-grid > .aside a::after {
-  content: "→";
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #7c96b0;
-  font-size: .78rem;
-  opacity: .72;
+.nav-submenu a::before,
+.nav-submenu a::after {
+  content: none !important;
 }
-
-body:not(.home-page)[data-page] .content-grid > .aside a:hover,
-body:not(.home-page)[data-page] .content-grid > .aside a:focus-visible {
-  border-color: rgba(0,48,130,.08) !important;
-  background: rgba(0,48,130,.065) !important;
+.nav-submenu a:hover,
+.nav-submenu a:focus-visible {
+  background: rgba(0,48,130,.07) !important;
   color: #003082 !important;
-  transform: translateX(2px) !important;
+  transform: translateX(2px);
 }
 
-body:not(.home-page)[data-page] .content-grid > .aside a:hover::after,
-body:not(.home-page)[data-page] .content-grid > .aside a:focus-visible::after {
-  color: #003082;
-  opacity: 1;
+/* ---------- Language menu coexists with the section dropdowns ---------- */
+.language-switcher {
+  z-index: 230;
 }
 
-/* A small visual bridge keeps hover continuous from nav link to dropdown. */
-body:not(.home-page)[data-page] .content-grid > .aside::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -8px;
-  height: 10px;
-  background: transparent;
-}
-
-/* Touch / compact navigation has no reliable hover state. Keep the old
-   side card removed rather than letting a floating panel cover the menu. */
+/* ---------- Tablet / mobile ---------- */
 @media (max-width: 1040px) {
-  body:not(.home-page)[data-page] .nav-links > a.active {
-    padding-right: 10px;
+  .site-header,
+  .site-header.scrolled {
+    top: 10px;
+    width: calc(100% - 18px);
   }
 
-  body:not(.home-page)[data-page] .nav-links > a.active::before {
+  .site-header .nav-shell,
+  .site-header.scrolled .nav-shell {
+    border: 1px solid rgba(255,255,255,.84);
+    border-radius: 20px;
+    background: rgba(255,255,255,.76);
+    box-shadow: 0 12px 36px rgba(24,61,104,.11);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+    backdrop-filter: blur(24px) saturate(145%);
+  }
+
+  .home-page .site-header:not(.scrolled) .brand,
+  .home-page .site-header:not(.scrolled) .nav-main-link,
+  .home-page .site-header:not(.scrolled) .language-toggle {
+    color: #003082 !important;
+    text-shadow: none;
+  }
+
+  .nav-links {
+    overflow-y: auto;
+    max-height: calc(100vh - 92px);
+  }
+
+  .nav-item {
+    display: block;
+    min-width: 0;
+  }
+
+  .nav-main-link {
+    width: 100%;
+  }
+
+  .nav-main-link.active::after,
+  .nav-item.has-submenu::after {
     display: none;
   }
 
-  body:not(.home-page)[data-page] .content-grid > .aside {
+  /* Keep mobile navigation simple: top-level links remain directly tappable.
+     Desktop hover dropdowns do not float over the compact menu. */
+  .nav-submenu {
     display: none !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body:not(.home-page)[data-page] .content-grid > .aside,
-  body:not(.home-page)[data-page] .nav-links > a.active::before {
+  .site-header,
+  .site-header .nav-shell,
+  .nav-submenu,
+  .nav-submenu a {
     transition: none !important;
   }
 }
