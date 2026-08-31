@@ -194,8 +194,14 @@
     document.querySelectorAll('main *, .page-badge').forEach(bindBackgroundElement);
 
     /* Several editorial photos are generated with ::after in the existing CSS.
-       Add a transparent zoom target over only that image area. */
-    document.querySelectorAll('main .article-section, body.home-page #ns-history').forEach(bindPseudoImage);
+       ATB uses ::after on the three version cards and on the working-principle
+       lead paragraph, so include those exact content-image hosts as well. */
+    document.querySelectorAll([
+      'main .article-section',
+      'body.home-page #ns-history',
+      'body[data-page="atb.html"] .atb-version-card',
+      'body[data-page="atb.html"] #working > .atb-lead'
+    ].join(',')).forEach(bindPseudoImage);
   };
 
   const init = () => {
