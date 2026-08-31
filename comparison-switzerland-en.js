@@ -159,9 +159,77 @@
     });
   };
 
+  const applyGermany2026 = () => {
+    if (document.body.dataset.page !== 'comparison.html') return;
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'th';
+
+    const overview = document.getElementById('overview');
+    if (overview) {
+      const germanyCard = Array.from(overview.querySelectorAll('.country-card')).find(card => card.querySelector('h3')?.textContent.trim() === (lang === 'en' ? 'Germany' : 'เยอรมนี'));
+      if (germanyCard) {
+        const chip = germanyCard.querySelector('.comparison-status-chip');
+        const metric = germanyCard.querySelector('.metric');
+        const p = germanyCard.querySelector('p');
+        if (chip) chip.textContent = lang === 'en' ? 'Updated L2oS plan to 2031' : 'มีแผน L2oS ใหม่ถึงปี 2031';
+        if (metric) metric.textContent = '683 km · end-2025 | 750 km planned to 2031';
+        if (p) p.textContent = lang === 'en'
+          ? 'DB InfraGO reported 683 km of ETCS-equipped route at the end of 2025. On 2 July 2026 it published an updated planning portfolio for 12 routes totalling about 750 km to move to ETCS Level 2 without signals (L2oS) by the end of 2031, with Class-B PZB/LZB withdrawal linked to those migrations.'
+          : 'DB InfraGO รายงานว่า ณ สิ้นปี 2025 มีเส้นทางที่ติดตั้ง ETCS รวม 683 km และเมื่อ 2 กรกฎาคม 2026 ได้เผยแพร่แผนปรับปรุงใหม่สำหรับ 12 เส้นทาง รวมราว 750 km ที่จะเปลี่ยนเป็น ETCS Level 2 without signals (L2oS) ภายในสิ้นปี 2031 พร้อมทยอยยุติ PZB/LZB ตามการเปลี่ยนระบบของแต่ละช่วงทาง';
+      }
+
+      if (!overview.querySelector('.comparison-germany-update-sources')) {
+        overview.insertAdjacentHTML('beforeend', `
+          <div class="comparison-swiss-sources comparison-germany-update-sources">
+            <strong>${lang === 'en' ? 'Germany 2026 update checked against:' : 'ข้อมูลอัปเดตเยอรมนี 2026 ตรวจสอบจาก:'}</strong>
+            <a href="https://www.dbinfrago.com/web/schienennetz/etcs/etcs-migrationsstrategie-11089586" target="_blank" rel="noopener">DB InfraGO — ETCS-Migrationsstrategie</a>
+            <a href="https://www.dbinfrago.com/web/aktuelles/kund-inneninformationen/kund-inneninformationen/2026-KW27-Planungsstand-ETCS-bis-2031-13960544" target="_blank" rel="noopener">DB InfraGO — ETCS measures to 2031</a>
+            <a href="https://www.dbinfrago.com/web/aktuelles/kund-inneninformationen/kund-inneninformationen/2026-KW27-Inbtn-ETCS-LvL-2-o-S-2031-13960542" target="_blank" rel="noopener">DB InfraGO — L2oS commissioning and system-version change</a>
+          </div>`);
+      }
+    }
+
+    const timeline = document.getElementById('timeline');
+    if (timeline) {
+      const currentEra = timeline.querySelector('.comparison-era-current');
+      const germany = currentEra ? Array.from(currentEra.querySelectorAll('.comparison-era-country')).find(card => card.querySelector('.de-code')) : null;
+      if (germany) {
+        const strong = germany.querySelector('strong');
+        const p = germany.querySelector('p');
+        if (strong) strong.textContent = lang === 'en' ? '683 km in service + new L2oS portfolio to 2031' : '683 km ใช้งานแล้ว + แผน L2oS ใหม่ถึงปี 2031';
+        if (p) p.textContent = lang === 'en'
+          ? 'At the end of 2025 DB InfraGO reported 683 km of ETCS-equipped route. In July 2026 it replaced the previous open-ended replanning status with a concrete portfolio: 12 routes, about 750 km in total, are planned for ETCS L2oS by December 2031. The change also includes planned PZB/LZB decommissioning and ETCS system-version migration on affected routes.'
+          : 'สิ้นปี 2025 DB InfraGO รายงานเส้นทางที่ติดตั้ง ETCS 683 km ต่อมาในเดือนกรกฎาคม 2026 ได้เผยแพร่แผนที่เป็นรูปธรรมมากขึ้น โดยกำหนด 12 เส้นทางรวมราว 750 km สำหรับ ETCS L2oS ภายในเดือนธันวาคม 2031 พร้อมแผนปิด PZB/LZB และการเปลี่ยน ETCS system version บนเส้นทางที่เกี่ยวข้อง';
+      }
+    }
+
+    const table = document.getElementById('table');
+    if (table) {
+      const rows = Array.from(table.querySelectorAll('tbody tr'));
+      const statusRow = rows.find(row => /2026|สถานะปี/.test(row.children[0]?.textContent || ''));
+      if (statusRow && statusRow.children.length >= 4) statusRow.children[3].textContent = lang === 'en'
+        ? '683 km at end-2025; July 2026 plan covers 12 L2oS routes totalling about 750 km by end-2031'
+        : '683 km ณ สิ้นปี 2025; แผนกรกฎาคม 2026 ครอบคลุม 12 เส้นทาง L2oS รวมราว 750 km ภายในสิ้นปี 2031';
+
+      const legacyRow = rows.find(row => /Legacy-system transition|การเลิกใช้ระบบเดิม/.test(row.children[0]?.textContent || ''));
+      if (legacyRow && legacyRow.children.length >= 4) legacyRow.children[3].textContent = lang === 'en'
+        ? 'PZB/LZB are planned to be decommissioned in step with selected L2oS commissioning; affected trains will need compatible ETCS onboard equipment'
+        : 'PZB/LZB จะทยอยปิดตามการเปิดใช้ L2oS ในเส้นทางที่กำหนด ทำให้รถที่เข้าสู่พื้นที่ดังกล่าวต้องมี ETCS onboard ที่เข้ากันได้';
+
+      const longTermRow = rows.find(row => /Long-term direction|ทิศทางระยะยาว/.test(row.children[0]?.textContent || ''));
+      if (longTermRow && longTermRow.children.length >= 4) longTermRow.children[3].textContent = lang === 'en'
+        ? 'Concrete L2oS portfolio is now published through 2031; the migration strategy from 2032 onward is still being developed'
+        : 'มีแผน L2oS ที่เป็นรูปธรรมถึงปี 2031 แล้ว ส่วนยุทธศาสตร์การเปลี่ยนผ่านตั้งแต่ปี 2032 เป็นต้นไปยังอยู่ระหว่างจัดทำ';
+    }
+  };
+
+  const applyAll = () => {
+    applySwissEnglish();
+    applyGermany2026();
+  };
+
   if (document.readyState === 'complete') {
-    window.setTimeout(applySwissEnglish, 0);
+    window.setTimeout(applyAll, 0);
   } else {
-    window.addEventListener('load', () => window.setTimeout(applySwissEnglish, 0), { once: true });
+    window.addEventListener('load', () => window.setTimeout(applyAll, 0), { once: true });
   }
 })();
