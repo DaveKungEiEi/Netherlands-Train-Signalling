@@ -1,4 +1,19 @@
 (() => {
+  if (!document.querySelector('link[href^="image-lightbox.css"]')) {
+    const lightboxStyles = document.createElement('link');
+    lightboxStyles.rel = 'stylesheet';
+    lightboxStyles.href = 'image-lightbox.css?v=20260831-1';
+    document.head.appendChild(lightboxStyles);
+  }
+  if (!document.querySelector('script[src^="image-lightbox.js"]')) {
+    const lightboxScript = document.createElement('script');
+    lightboxScript.src = 'image-lightbox.js?v=20260831-1';
+    lightboxScript.async = true;
+    document.head.appendChild(lightboxScript);
+  }
+})();
+
+(() => {
   const lang = () => document.documentElement.lang === 'en' || document.body.dataset.lang === 'en' ? 'en' : 'th';
   const terms = [
     ['STM-ATB', ['STM-ATB-NG','STM ATB-NG','STM-ATB','STM ATB'], 'โมดูลตัวกลางที่ทำให้รถซึ่งติด ERTMS ยังอ่านข้อมูล ATB เดิมได้ในช่วงเปลี่ยนผ่าน', 'A translation module that lets an ERTMS-equipped train continue to understand legacy ATB information during migration.', 'problems.html#dual'],
