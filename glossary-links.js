@@ -16,7 +16,7 @@
   }
   if (!document.querySelector('script[src^="image-lightbox.js"]')) {
     const lightboxScript = document.createElement('script');
-    lightboxScript.src = 'image-lightbox.js?v=20260831-1';
+    lightboxScript.src = 'image-lightbox.js?v=20260831-2';
     lightboxScript.async = true;
     document.head.appendChild(lightboxScript);
   }
