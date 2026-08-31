@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans+Thai:wght@100..800&display=swap');
+
+/* =========================================================
+   Global typography
+   Use Playpen Sans Thai across the entire site, including form controls
+   and any elements that would otherwise use browser-default fonts.
+   ========================================================= */
+html,
+body,
+body *,
+button,
+input,
+select,
+textarea {
+  font-family: "Playpen Sans Thai", sans-serif !important;
+}
+
 /* =========================================================
    Navbar mega dropdown + transparent-to-island behaviour
    ========================================================= */
