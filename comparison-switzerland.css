@@ -149,13 +149,41 @@ body[data-page="comparison.html"] .comparison-swiss-sources a:hover {
   background: #edf5fd;
 }
 
-/* The fourth table column needs a little more horizontal room. */
-body[data-page="comparison.html"] .compare-table-wrap table {
-  min-width: 1160px;
+/* Keep the five-column table inside its card at desktop/tablet widths.
+   The previous 1160px minimum was wider than the usable article area on
+   some tablets, so the Switzerland column was clipped by the card edge. */
+body[data-page="comparison.html"] .compare-table-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
+body[data-page="comparison.html"] .compare-table-wrap table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+body[data-page="comparison.html"] #table th,
+body[data-page="comparison.html"] #table td {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body[data-page="comparison.html"] #table th:first-child,
+body[data-page="comparison.html"] #table td:first-child {
+  width: 14%;
+}
+
+body[data-page="comparison.html"] #table th:not(:first-child),
+body[data-page="comparison.html"] #table td:not(:first-child) {
+  width: 21.5%;
+}
+
+/* Switzerland uses the same table-header treatment as the other countries. */
 body[data-page="comparison.html"] .compare-table-wrap th:last-child {
-  background: rgba(218,41,28,.055);
+  background: #eaf2fb;
+  color: #0e315d;
 }
 
 /* Switzerland / Rhine–Alpine cross-border context is a separate case;
@@ -240,6 +268,15 @@ body[data-page="comparison.html"] .comparison-corridor-arrow {
     max-width: none !important;
     grid-column: auto !important;
     justify-self: stretch !important;
+  }
+}
+
+/* On genuinely narrow screens retain readable cells and allow horizontal pan
+   instead of squeezing five columns until words become unreadable. */
+@media (max-width: 900px) {
+  body[data-page="comparison.html"] .compare-table-wrap table {
+    min-width: 940px;
+    table-layout: auto;
   }
 }
 
