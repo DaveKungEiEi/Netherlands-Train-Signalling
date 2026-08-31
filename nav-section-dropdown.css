@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Kanit:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
 /* =========================================================
    Global typography — European railway / technical theme
+   H1 & Footer  : Google Sans
    Heading & UI : IBM Plex Sans Thai
    Body         : Kanit
    Numeric/code : IBM Plex Mono
    ========================================================= */
 :root {
+  --font-display: "Google Sans", sans-serif;
   --font-heading: "IBM Plex Sans Thai", sans-serif;
   --font-body: "Kanit", sans-serif;
   --font-mono: "IBM Plex Mono", "IBM Plex Sans Thai", monospace;
@@ -23,7 +26,6 @@ textarea {
 }
 
 /* Engineering-style headings and interface text. */
-h1,
 h2,
 h3,
 h4,
@@ -38,8 +40,7 @@ th,
 .menu-toggle,
 .eyebrow,
 .kicker,
-.btn,
-.footer-brand {
+.btn {
   font-family: var(--font-heading) !important;
 }
 
@@ -50,6 +51,17 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+}
+
+/* H1 and the entire footer keep the original Google Sans identity. */
+h1,
+footer,
+footer *,
+.site-footer,
+.site-footer *,
+.site-footer-simple,
+.site-footer-simple * {
+  font-family: var(--font-display) !important;
 }
 
 /* Signal-system feel for years, sequence numbers and technical codes. */
