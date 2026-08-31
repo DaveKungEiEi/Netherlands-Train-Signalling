@@ -3,10 +3,10 @@
 
 /* =========================================================
    Global typography — European railway / technical theme
-   H1 & Footer  : Google Sans
-   Heading & UI : IBM Plex Sans Thai
-   Body         : Kanit
-   Numeric/code : IBM Plex Mono
+   H1 / Navbar / Footer : Google Sans
+   Secondary headings/UI: IBM Plex Sans Thai
+   Body                 : Kanit
+   Numeric/code         : IBM Plex Mono
    ========================================================= */
 :root {
   --font-display: "Google Sans", sans-serif;
@@ -25,19 +25,13 @@ textarea {
   font-family: var(--font-body) !important;
 }
 
-/* Engineering-style headings and interface text. */
+/* Engineering-style secondary headings and interface text. */
 h2,
 h3,
 h4,
 h5,
 h6,
 th,
-.brand,
-.nav-main-link,
-.nav-submenu a,
-.language-toggle,
-.language-option,
-.menu-toggle,
 .eyebrow,
 .kicker,
 .btn {
@@ -53,8 +47,10 @@ h6 {
   font-weight: 700;
 }
 
-/* H1 and the entire footer keep the original Google Sans identity. */
+/* Main title, the complete navbar and the complete footer use Google Sans. */
 h1,
+.site-header,
+.site-header *,
 footer,
 footer *,
 .site-footer,
