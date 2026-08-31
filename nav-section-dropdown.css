@@ -1,10 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Kanit:wght@400;500;600&display=swap');
 
 /* =========================================================
-   Global typography
-   Restore Google Sans across the entire site, including form controls
-   and any elements that would otherwise use browser-default fonts.
+   Global typography — European railway / technical theme
+   Heading & UI : IBM Plex Sans Thai
+   Body         : Kanit
+   Numeric/code : IBM Plex Mono
    ========================================================= */
+:root {
+  --font-heading: "IBM Plex Sans Thai", sans-serif;
+  --font-body: "Kanit", sans-serif;
+  --font-mono: "IBM Plex Mono", "IBM Plex Sans Thai", monospace;
+}
+
 html,
 body,
 body *,
@@ -12,7 +19,56 @@ button,
 input,
 select,
 textarea {
-  font-family: "Google Sans", sans-serif !important;
+  font-family: var(--font-body) !important;
+}
+
+/* Engineering-style headings and interface text. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th,
+.brand,
+.nav-main-link,
+.nav-submenu a,
+.language-toggle,
+.language-option,
+.menu-toggle,
+.eyebrow,
+.kicker,
+.btn,
+.footer-brand {
+  font-family: var(--font-heading) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+/* Signal-system feel for years, sequence numbers and technical codes. */
+code,
+pre,
+kbd,
+samp,
+.timeline-year,
+.comparison-era-year,
+.history-year,
+.history-marker span,
+.topic-index,
+.topic-card .index,
+.stat strong,
+.metric,
+[class*="year-label"],
+[class*="code-label"] {
+  font-family: var(--font-mono) !important;
+  font-variant-numeric: tabular-nums;
 }
 
 /* =========================================================
