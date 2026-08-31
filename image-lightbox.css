@@ -27,7 +27,9 @@ img.lightbox-zoomable:focus-visible {
   outline-offset: 4px;
 }
 
-/* Transparent click target placed over CSS-generated editorial images. */
+/* Transparent click target placed over CSS-generated editorial images.
+   It intentionally has no visible icon so CSS-backed photos behave just like
+   normal <img> content: click/tap the image itself to open the lightbox. */
 .lightbox-pseudo-source {
   position: relative !important;
 }
@@ -39,39 +41,13 @@ img.lightbox-zoomable:focus-visible {
   bottom: 0;
   width: 100%;
   border: 0;
-  padding: 14px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  padding: 0;
+  display: block;
   background: transparent;
-  color: #fff;
+  color: transparent;
   font: inherit;
-  text-align: right;
-}
-
-.lightbox-pseudo-trigger::after {
-  content: "＋";
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255,255,255,.72);
-  border-radius: 50%;
-  background: rgba(4,25,52,.56);
-  color: #fff;
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1;
-  box-shadow: 0 8px 24px rgba(0,0,0,.18);
-  -webkit-backdrop-filter: blur(12px) saturate(135%);
-  backdrop-filter: blur(12px) saturate(135%);
-  transition: transform .18s ease, background-color .18s ease;
-}
-
-.lightbox-pseudo-trigger:hover::after,
-.lightbox-pseudo-trigger:focus-visible::after {
-  transform: scale(1.06);
-  background: #003082;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 body.image-lightbox-open {
@@ -237,18 +213,12 @@ body.image-lightbox-open {
     border-radius: 14px;
     font-size: .72rem;
   }
-
-  .lightbox-pseudo-trigger::after {
-    width: 34px;
-    height: 34px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .image-lightbox,
   .image-lightbox-stage,
   .image-lightbox-close,
-  .lightbox-pseudo-trigger::after,
   img.lightbox-zoomable {
     transition: none !important;
   }
