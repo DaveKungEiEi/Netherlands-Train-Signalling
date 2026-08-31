@@ -1,4 +1,13 @@
 (() => {
+  if (!document.querySelector('script[src^="latest-ertms-data-20260831.js"]')) {
+    const latestDataScript = document.createElement('script');
+    latestDataScript.src = 'latest-ertms-data-20260831.js?v=20260831-1';
+    latestDataScript.async = true;
+    document.head.appendChild(latestDataScript);
+  }
+})();
+
+(() => {
   if (!document.querySelector('link[href^="image-lightbox.css"]')) {
     const lightboxStyles = document.createElement('link');
     lightboxStyles.rel = 'stylesheet';
