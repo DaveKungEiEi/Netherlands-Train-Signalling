@@ -1,0 +1,206 @@
+/* =========================================================
+   Dark-theme contrast fixes
+   Covers editorial homepage surfaces that use hard-coded light colors.
+   ========================================================= */
+
+html[data-theme="dark"] {
+  --sheet: #08131f;
+}
+
+/* ---------- Homepage content sheet ---------- */
+html[data-theme="dark"] body.home-page main.page-sheet.page-sheet-overlay {
+  background: #08131f !important;
+  box-shadow:
+    0 -22px 80px rgba(0, 0, 0, .34),
+    inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+html[data-theme="dark"] body.home-page main.page-sheet.page-sheet-overlay::before {
+  background: rgba(184, 211, 238, .24) !important;
+}
+
+html[data-theme="dark"] body.home-page .intro-section,
+html[data-theme="dark"] body.home-page .topic-section {
+  background: #08131f !important;
+}
+
+html[data-theme="dark"] body.home-page .thesis-section {
+  background: #07111d !important;
+}
+
+/* ---------- Editorial section headings ---------- */
+html[data-theme="dark"] body.home-page .section-head-editorial {
+  border-bottom-color: rgba(176, 207, 238, .18) !important;
+}
+
+html[data-theme="dark"] body.home-page .section-head-editorial h2 {
+  color: #eef5fd !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] body.home-page .section-head-editorial .lead {
+  color: #b8c8da !important;
+}
+
+html[data-theme="dark"] body.home-page .section-number {
+  color: rgba(126, 170, 220, .22) !important;
+}
+
+html[data-theme="dark"] body.home-page .kicker,
+html[data-theme="dark"] body.home-page .history-kicker {
+  color: #ff8f99 !important;
+}
+
+/* ---------- Research structure / topic list ---------- */
+html[data-theme="dark"] body.home-page .topic-list {
+  border-top-color: rgba(176, 207, 238, .18) !important;
+}
+
+html[data-theme="dark"] body.home-page .topic-row {
+  border-bottom-color: rgba(176, 207, 238, .15) !important;
+  color: #dce9f7 !important;
+}
+
+html[data-theme="dark"] body.home-page .topic-row:hover,
+html[data-theme="dark"] body.home-page .topic-row:focus-visible {
+  background: linear-gradient(90deg, rgba(255,201,23,.11), rgba(68,132,210,.10)) !important;
+}
+
+html[data-theme="dark"] body.home-page .topic-row h3 {
+  color: #e8f2fc !important;
+}
+
+html[data-theme="dark"] body.home-page .topic-row p {
+  color: #afc0d4 !important;
+}
+
+html[data-theme="dark"] body.home-page .topic-index {
+  background: #ffc917 !important;
+  color: #003082 !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 8px 20px rgba(0,0,0,.22);
+}
+
+html[data-theme="dark"] body.home-page .topic-arrow {
+  background: rgba(86, 148, 222, .14) !important;
+  color: #9ec8f5 !important;
+  box-shadow: inset 0 0 0 1px rgba(164, 201, 239, .08);
+}
+
+html[data-theme="dark"] body.home-page .topic-row:hover .topic-arrow,
+html[data-theme="dark"] body.home-page .topic-row:focus-visible .topic-arrow {
+  background: #1c65b8 !important;
+  color: #fff !important;
+}
+
+/* ---------- Homepage history timeline ---------- */
+html[data-theme="dark"] body.home-page .history-line {
+  background: rgba(176, 207, 238, .16) !important;
+}
+
+html[data-theme="dark"] body.home-page .history-marker {
+  background: rgba(15, 31, 50, .92) !important;
+  border-color: rgba(176, 207, 238, .18) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+html[data-theme="dark"] body.home-page .history-marker span {
+  color: #9fc7f2 !important;
+}
+
+html[data-theme="dark"] body.home-page .history-copy h3 {
+  color: #e7f1fc !important;
+}
+
+html[data-theme="dark"] body.home-page .history-copy p:not(.history-kicker) {
+  color: #b3c4d7 !important;
+}
+
+html[data-theme="dark"] body.home-page .history-visual {
+  border-color: rgba(176, 207, 238, .16) !important;
+  box-shadow: 0 26px 60px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+html[data-theme="dark"] body.home-page .visual-caption {
+  border-color: rgba(176, 207, 238, .16) !important;
+  background: rgba(7, 20, 35, .78) !important;
+  color: #d7e5f4 !important;
+}
+
+/* ---------- Homepage hero ---------- */
+html[data-theme="dark"] body.home-page .hero-editorial {
+  box-shadow: inset 0 0 0 100vmax rgba(2, 9, 16, .46);
+}
+
+html[data-theme="dark"] body.home-page .hero-editorial h1,
+html[data-theme="dark"] body.home-page .hero-switch,
+html[data-theme="dark"] body.home-page .hero-switch b:first-child,
+html[data-theme="dark"] body.home-page .hero-switch b:last-child {
+  color: #f4f8fd !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,.38);
+}
+
+html[data-theme="dark"] body.home-page .hero-editorial .hero-copy {
+  color: #d2deea !important;
+  text-shadow: 0 1px 14px rgba(0,0,0,.34);
+}
+
+html[data-theme="dark"] body.home-page .hero-editorial .eyebrow,
+html[data-theme="dark"] body.home-page .hero-meta {
+  border-color: rgba(203, 224, 245, .18) !important;
+  background: rgba(7, 20, 35, .58) !important;
+  color: #d7e5f4 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+html[data-theme="dark"] body.home-page .hero-meta b {
+  color: #b9d7f7 !important;
+}
+
+html[data-theme="dark"] body.home-page .scroll-down {
+  color: #b7d0ea !important;
+}
+
+/* ---------- Thesis panel ---------- */
+html[data-theme="dark"] body.home-page .thesis-panel {
+  border: 1px solid rgba(159, 195, 232, .14);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255,201,23,.16), transparent 28%),
+    linear-gradient(135deg, #071d3e, #0b3771 62%, #071b38) !important;
+  box-shadow: 0 30px 80px rgba(0,0,0,.30) !important;
+}
+
+html[data-theme="dark"] body.home-page .thesis-panel h2 {
+  color: #fff !important;
+}
+
+html[data-theme="dark"] body.home-page .thesis-panel p {
+  color: #d1dfed !important;
+}
+
+/* ---------- Generic hard-coded light text/surfaces missed by the first pass ---------- */
+html[data-theme="dark"] body .lead {
+  color: #b8c8da !important;
+}
+
+html[data-theme="dark"] body .section-head {
+  border-color: rgba(176,207,238,.16);
+}
+
+html[data-theme="dark"] body .topic-card,
+html[data-theme="dark"] body .status-row,
+html[data-theme="dark"] body .comparison-card {
+  border-color: rgba(171,204,237,.14) !important;
+}
+
+@media (max-width: 720px) {
+  html[data-theme="dark"] body.home-page .section-number {
+    color: rgba(126,170,220,.18) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] body.home-page .topic-row,
+  html[data-theme="dark"] body.home-page .topic-arrow {
+    transition: none !important;
+  }
+}
