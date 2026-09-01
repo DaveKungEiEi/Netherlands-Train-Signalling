@@ -25,6 +25,13 @@
     document.head.appendChild(themeStyles);
   }
 
+  if (!document.querySelector('link[href^="theme-contrast-fix.css"]')) {
+    const contrastStyles = document.createElement('link');
+    contrastStyles.rel = 'stylesheet';
+    contrastStyles.href = 'theme-contrast-fix.css?v=20260901-1';
+    document.head.appendChild(contrastStyles);
+  }
+
   if (!document.querySelector('script[src^="theme.js"]')) {
     const themeScript = document.createElement('script');
     themeScript.src = 'theme.js?v=20260901-1';
