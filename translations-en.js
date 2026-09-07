@@ -280,59 +280,33 @@
     setText('#sources h2', 'Reference library for the whole website');
     setText('#sources .reference-intro', 'Each group below identifies the chapter in which the source is used and links back to the relevant section.');
 
-    const groups = [
-      ['Home', 'History of Dutch railways and the role of NS', 'Used for the railway-history section'],
-      ['Chapter 01 • 1.1–1.3', 'ATB: definition, history and operating principles', 'Used in ATB sections 1.1–1.3'],
-      ['Chapter 02 • 2.1–2.3', 'ERTMS/ETCS: definition, history and operating principles', 'Used in ERTMS/ETCS sections 2.1–2.3'],
-      ['Chapter 03.1', 'Status of the ATB → ERTMS/ETCS transition', 'Used for the timeline, Tranche 1 and 2026 status'],
-      ['Chapter 03.2', 'Problems and challenges during migration', 'Used for dual operation, integration, service impact and cost'],
-      ['Chapter 04.1', 'Comparison: Netherlands, Belgium and Germany', 'Used for country overview, strategy and cross-border issues'],
-      ['Chapter 04.2', 'Direct impact on long-distance rail', 'Used for the six effects, long-distance services and transition balance']
-    ];
-    document.querySelectorAll('#sources .reference-group').forEach((group, index) => {
-      const data = groups[index];
+    const groups = {
+      'ref-home': ['Home', 'History of Dutch railways and the role of NS', 'Used in <a href="index.html#ns-history">NS history</a>'],
+      'ref-atb': ['Chapter 01 • 1.1–1.3', 'ATB: definition, history and operating principles', 'Used in <a href="atb.html#what">What is ATB?</a> • <a href="atb.html#history">History</a> • <a href="atb.html#working">Operating principles</a>'],
+      'ref-ertms': ['Chapter 02 • 2.1–2.3', 'ERTMS/ETCS: definition, history and operating principles', 'Used in <a href="ertms.html#what">What is ERTMS/ETCS?</a> • <a href="ertms.html#history">History</a> • <a href="ertms.html#working">Operating principles</a>'],
+      'ref-status': ['Chapter 03.1', 'Status of the ATB → ERTMS/ETCS transition', 'Used in <a href="status.html#timeline">Timeline</a> • <a href="status.html#tranche1">Tranche 1</a> • <a href="status.html#latest">Latest progress</a>'],
+      'ref-problems': ['Chapter 03.2', 'Problems and challenges during migration', 'Used in <a href="problems.html#dual">ATB + ETCS</a> • <a href="problems.html#reliability">Integration and reliability</a> • <a href="problems.html#people-tech">Operations</a> • <a href="problems.html#cost">Cost and time</a>'],
+      'ref-comparison': ['Chapter 04.1', 'Comparison: Netherlands, Belgium and Germany', 'Used in <a href="comparison.html#overview">Country overview</a> • <a href="comparison.html#table">Comparison table</a> • <a href="comparison.html#border">Cross-border issues</a>'],
+      'ref-impact': ['Chapter 04.2', 'Direct impact on long-distance rail and legacy fleet retrofit', 'Used in <a href="impact.html#effects">Impact overview</a> • <a href="impact.html#retrofit">Fleet retrofit</a> • <a href="impact.html#longdistance">Long-distance services</a> • <a href="impact.html#balance">Transition balance</a>']
+    };
+    document.querySelectorAll('#sources .reference-group').forEach((group) => {
+      const data = groups[group.id];
       if (!data) return;
       const chapter = group.querySelector('.reference-chapter');
       const h3 = group.querySelector('h3');
       const used = group.querySelector('.reference-used-in');
       if (chapter) chapter.textContent = data[0];
       if (h3) h3.textContent = data[1];
-      if (used) used.textContent = data[2];
+      if (used) used.innerHTML = data[2];
     });
 
-    const noteMap = [
-      'History of NS, organisational development and the Dutch railway sector.',
-      'Responsibilities of NS and other organisations on the Dutch rail network.',
-      'Background, development and limitations of ATB.',
-      'ATB-EG, ATB-NG, ATB-Vv and network train-protection requirements.',
-      'Primary source for the ERTMS historical timeline and European deployment development.',
-      'Definitions of ERTMS, ETCS, RMR and ATO, plus ETCS levels and baselines.',
-      '2023 CCS TSI, ATO, FRMCS and future ERTMS evolution.',
-      'Latest European deployment progress and the Third ERTMS Work Plan.',
-      'Dutch ERTMS approach, Level 2 strategy and programme rollout.',
-      'STM-ATB and operation of ERTMS-equipped trains on ATB routes.',
-      'ProRail’s role and ERTMS infrastructure programme.',
-      'National policy decision establishing ERTMS as the preferred direction.',
-      '2019 programme decision authorising implementation.',
-      'Current Tranche 1 scope and rollout sequence.',
-      'Explanation of the Tranche 1 learning approach.',
-      'Programme recalibration and updated milestones.',
-      '2026 programme progress and major issues.',
-      'Field installation work on Leeuwarden–Harlingen Haven in 2026.',
-      'Current ProRail ERTMS infrastructure projects.',
-      'Dual operation between ATB and ETCS.',
-      'Integration and testing lessons from the Aachen tri-country train.',
-      'Migration requirements and infrastructure-work impact on operations.',
-      'Belgian ETCS Masterplan and deployment targets.',
-      'Belgian ETCS coverage data at the end of 2024.',
-      'German ETCS Level 2 corridor implementation example.',
-      'Cross-border ETCS and digital interlocking project near Aachen.',
-      'Safety, capacity and interoperability context for long-term impacts.',
-      'High-speed and international-services context.',
-      'ERTMS-only infrastructure and rolling-stock migration requirements.'
-    ];
-    document.querySelectorAll('#sources .reference-source-note').forEach((note, index) => {
-      if (noteMap[index]) note.textContent = noteMap[index];
+    // Keep each translation attached to its source card; adding or reordering
+    // references must never move an unrelated description onto another source.
+    document.querySelectorAll('#sources .reference-source-note[data-en]').forEach((note) => {
+      note.textContent = note.dataset.en;
+    });
+    document.querySelectorAll('#sources .reference-source-name[data-en]').forEach((name) => {
+      name.textContent = name.dataset.en;
     });
 
     setHTML('.aside', `<p class="aside-title">On this page</p><a href="#glossary">Glossary</a><a href="#method">How sources are used</a><a href="#sources">Reference Library</a><a href="#ref-home">Home / NS history</a><a href="#ref-atb">1.1–1.3 ATB</a><a href="#ref-ertms">2.1–2.3 ERTMS/ETCS</a><a href="#ref-status">3.1 Status</a><a href="#ref-problems">3.2 Challenges</a><a href="#ref-comparison">4.1 Comparison</a><a href="#ref-impact">4.2 Impact</a>`);

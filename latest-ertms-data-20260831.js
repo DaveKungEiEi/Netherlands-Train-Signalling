@@ -2,30 +2,6 @@
   const PAGE = document.body?.dataset.page || '';
   const lang = () => (document.documentElement.lang === 'en' || document.body?.dataset.lang === 'en' ? 'en' : 'th');
 
-  const chapterNumbers = {
-    'atb.html': '01',
-    'ertms.html': '02',
-    'status.html': '03.1',
-    'problems.html': '03.2',
-    'comparison.html': '04.1',
-    'impact.html': '04.2',
-    'summary.html': '05'
-  };
-
-  const setChapterDate = () => {
-    const chapter = chapterNumbers[PAGE];
-    const eyebrow = document.querySelector('.page-hero .eyebrow');
-    if (!chapter || !eyebrow) return;
-    const isEn = lang() === 'en';
-    const text = `${isEn ? 'Chapter' : 'บทที่'} ${chapter} • ${isEn ? 'Updated 31 Aug 2026' : 'อัปเดตล่าสุด 31 ส.ค. 2026'}`;
-    let dot = eyebrow.querySelector('.eyebrow-dot');
-    if (!dot) {
-      dot = document.createElement('span');
-      dot.className = 'eyebrow-dot';
-    }
-    if (eyebrow.textContent.trim() !== text) eyebrow.replaceChildren(dot, document.createTextNode(` ${text}`));
-  };
-
   const findCountryCard = (section, pattern) => Array.from(section?.querySelectorAll('.country-card') || [])
     .find((card) => pattern.test(card.querySelector('h3')?.textContent || ''));
 
@@ -209,7 +185,6 @@
   };
 
   const apply = () => {
-    setChapterDate();
     updateStatus();
     updateComparison();
     updateSummary();
@@ -218,9 +193,5 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });
   else apply();
-  window.addEventListener('load', () => {
-    apply();
-    window.setTimeout(apply, 350);
-    window.setTimeout(apply, 1200);
-  }, { once: true });
+  document.addEventListener('nts:content-ready', apply);
 })();

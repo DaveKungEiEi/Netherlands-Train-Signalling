@@ -227,9 +227,9 @@
     applyGermany2026();
   };
 
-  if (document.readyState === 'complete') {
-    window.setTimeout(applyAll, 0);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyAll, { once: true });
   } else {
-    window.addEventListener('load', () => window.setTimeout(applyAll, 0), { once: true });
+    applyAll();
   }
 })();

@@ -35,6 +35,6 @@
     setHTML('.aside', `<p class="aside-title">On this page</p><a href="#effects">Impact overview</a><a href="#retrofit">Legacy fleet retrofit</a><a href="#virm-case">VIRM case study</a><a href="#fleet-compare">Legacy vs newer fleet</a><a href="#longdistance">Long-distance services</a><a href="#balance">Migration vs long term</a><a href="other.html?lang=en#ref-impact">References</a>`);
   };
 
-  if (document.readyState === 'complete') applyImpactEnglish();
-  else window.addEventListener('load', applyImpactEnglish, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyImpactEnglish, { once: true });
+  else applyImpactEnglish();
 })();

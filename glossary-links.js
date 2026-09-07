@@ -43,7 +43,7 @@
 (() => {
   if (!document.querySelector('script[src^="latest-ertms-data-20260831.js"]')) {
     const latestDataScript = document.createElement('script');
-    latestDataScript.src = 'latest-ertms-data-20260831.js?v=20260831-1';
+    latestDataScript.src = 'latest-ertms-data-20260831.js?v=20260907-1';
     latestDataScript.async = true;
     document.head.appendChild(latestDataScript);
   }
@@ -58,7 +58,7 @@
   }
   if (!document.querySelector('script[src^="image-lightbox.js"]')) {
     const lightboxScript = document.createElement('script');
-    lightboxScript.src = 'image-lightbox.js?v=20260831-2';
+    lightboxScript.src = 'image-lightbox.js?v=20260907-1';
     lightboxScript.async = true;
     document.head.appendChild(lightboxScript);
   }

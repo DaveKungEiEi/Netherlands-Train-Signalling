@@ -87,9 +87,14 @@
   };
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+    if (!lightbox || lightbox.hidden) return;
+    if (event.key === 'Escape') {
       event.preventDefault();
       closeLightbox();
+    } else if (event.key === 'Tab') {
+      // The close button is the dialog's only focusable control.
+      event.preventDefault();
+      closeButton?.focus({ preventScroll: true });
     }
   });
 
@@ -212,7 +217,13 @@
     window.addEventListener('load', scan, { once: true });
 
     let timer = 0;
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver((mutations) => {
+      // Scroll progress writes style every frame; they do not introduce images.
+      const needsScan = mutations.some((mutation) =>
+        mutation.type !== 'attributes' ||
+        !mutation.target.matches('.reading-progress, .history-line, #historyLineFill')
+      );
+      if (!needsScan) return;
       window.clearTimeout(timer);
       timer = window.setTimeout(scan, 90);
     });

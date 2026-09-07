@@ -32,6 +32,6 @@
     setHTML('.aside', `<p class="aside-title">On this page</p><a href="#overview">Overview</a><a href="#delay">Why the plan slipped</a><a href="#cost">Cost impact</a><a href="#dual">ATB + ERTMS</a><a href="#reliability">Reliability</a><a href="#freight">Freight operators</a><a href="#people-tech">People and digital systems</a><a href="other.html?lang=en#ref-problems">References</a>`);
   };
 
-  if (document.readyState === 'complete') applyProblemsEnglish();
-  else window.addEventListener('load', applyProblemsEnglish, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyProblemsEnglish, { once: true });
+  else applyProblemsEnglish();
 })();

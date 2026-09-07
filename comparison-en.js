@@ -223,6 +223,6 @@
   // script.js loads the shared English translation asynchronously. Waiting for
   // window.load ensures this page-specific comparison replaces the older shared
   // comparison translation after the shared translator has finished.
-  if (document.readyState === 'complete') applyComparisonEnglish2026();
-  else window.addEventListener('load', applyComparisonEnglish2026, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyComparisonEnglish2026, { once: true });
+  else applyComparisonEnglish2026();
 })();

@@ -24,6 +24,6 @@
     setHTML('.aside', `<p class="aside-title">On this page</p><a href="#what">1.1 What is ATB?</a><a href="#history">1.2 ATB history</a><a href="#working">1.3 How it works</a><a href="other.html?lang=en#ref-atb">References</a>`);
   };
 
-  if (document.readyState === 'complete') applyATBEnglish();
-  else window.addEventListener('load', applyATBEnglish, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyATBEnglish, { once: true });
+  else applyATBEnglish();
 })();

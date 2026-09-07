@@ -7,13 +7,13 @@
   }
   if (!document.querySelector('script[src^="glossary-links.js"]')) {
     const glossaryScript = document.createElement('script');
-    glossaryScript.src = 'glossary-links.js?v=20260830-1';
+    glossaryScript.src = 'glossary-links.js?v=20260907-1';
     glossaryScript.async = true;
     document.head.appendChild(glossaryScript);
   }
 })();
 
-document.documentElement.classList.add('js', 'motion-ready');
+document.documentElement.classList.add('js');
 
 const pages = [
   ['index.html', { th: 'หน้าแรก', en: 'Home' }],
@@ -30,7 +30,21 @@ const pages = [
 const currentPage = document.body.dataset.page || 'index.html';
 const languageParams = new URLSearchParams(window.location.search);
 const explicitLanguage = languageParams.get('lang');
-const storedLanguage = localStorage.getItem('nts-language');
+const readStoredLanguage = () => {
+  try {
+    return localStorage.getItem('nts-language');
+  } catch (_) {
+    return null;
+  }
+};
+const saveLanguage = (language) => {
+  try {
+    localStorage.setItem('nts-language', language);
+  } catch (_) {
+    // Language URLs still work when browser storage is unavailable.
+  }
+};
+const storedLanguage = readStoredLanguage();
 const currentLang = explicitLanguage === 'en' || explicitLanguage === 'th'
   ? explicitLanguage
   : storedLanguage === 'en'
@@ -38,7 +52,7 @@ const currentLang = explicitLanguage === 'en' || explicitLanguage === 'th'
     : 'th';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-localStorage.setItem('nts-language', currentLang);
+saveLanguage(currentLang);
 document.documentElement.lang = currentLang;
 document.body.dataset.lang = currentLang;
 
@@ -53,8 +67,8 @@ const chapterNumbers = {
 };
 
 const chapterUpdateText = {
-  th: 'อัปเดตล่าสุด 30 ส.ค. 2026',
-  en: 'Updated 30 Aug 2026'
+  th: 'อัปเดตล่าสุด 31 ส.ค. 2026',
+  en: 'Updated 31 Aug 2026'
 };
 
 const applyChapterUpdateLabel = () => {
@@ -136,13 +150,10 @@ const text = {
   }
 }[currentLang];
 
-const pageHref = (page) => currentLang === 'en' ? `${page}?lang=en` : page;
+const pageHref = (page) => `${page}?lang=${currentLang}`;
 const sectionHref = (page, hash) => `${pageHref(page)}${hash || ''}`;
 
 const navSections = {
-  'index.html': [
-    ['#ns-history', { th: 'ประวัติ NS และรถไฟเนเธอร์แลนด์', en: 'NS & Dutch railway history' }]
-  ],
   'atb.html': [
     ['#what', { th: 'ATB คืออะไร', en: 'What is ATB?' }],
     ['#history', { th: 'ประวัติ ATB', en: 'History of ATB' }],
@@ -224,7 +235,7 @@ const renderNavItem = ([href, labels]) => {
     : '';
 
   return `<div class="nav-item${submenu.length ? ' has-submenu' : ''}">
-    <a href="${pageHref(href)}" class="nav-main-link ${currentPage === href ? 'active' : ''}">${labels[currentLang]}</a>
+    <a href="${pageHref(href)}" class="nav-main-link ${currentPage === href ? 'active' : ''}"${currentPage === href ? ' aria-current="page"' : ''}>${labels[currentLang]}</a>
     ${submenuMarkup}
   </div>`;
 };
@@ -279,7 +290,7 @@ if (header) {
           ${pages.map(renderNavItem).join('')}
           ${languageSwitcherMarkup}
         </nav>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="${currentLang === 'en' ? 'Open menu' : 'เปิดเมนู'}"><span>☰</span></button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="${currentLang === 'en' ? 'Open menu' : 'เปิดเมนู'}"><span aria-hidden="true">☰</span></button>
       </div>
     </div>`;
 }
@@ -334,10 +345,9 @@ if (languageSwitcher && languageToggle) {
   document.querySelectorAll('[data-lang-option]').forEach((option) => {
     option.addEventListener('click', () => {
       const nextLanguage = option.dataset.langOption;
-      localStorage.setItem('nts-language', nextLanguage);
+      saveLanguage(nextLanguage);
       const nextUrl = new URL(window.location.href);
-      if (nextLanguage === 'en') nextUrl.searchParams.set('lang', 'en');
-      else nextUrl.searchParams.delete('lang');
+      nextUrl.searchParams.set('lang', nextLanguage);
       window.location.href = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
     });
   });
@@ -360,7 +370,7 @@ const dedicatedTranslationPages = new Set([
 
 const waitForParserScripts = () => new Promise((resolve) => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', resolve, { once: true });
+    document.addEventListener('DOMContentLoaded', () => window.setTimeout(resolve, 0), { once: true });
   } else {
     window.setTimeout(resolve, 0);
   }
@@ -381,7 +391,7 @@ const translationReady = new Promise((resolve) => {
     return;
   }
   const translationScript = document.createElement('script');
-  translationScript.src = 'translations-en.js?v=20260830-2';
+  translationScript.src = 'translations-en.js?v=20260907-1';
   translationScript.async = true;
   translationScript.onload = () => {
     if (typeof window.applyEnglishContent === 'function') window.applyEnglishContent(currentPage);
@@ -391,22 +401,21 @@ const translationReady = new Promise((resolve) => {
   document.head.appendChild(translationScript);
 });
 
-const normalizeEnglishLinks = (root = document) => {
-  if (currentLang !== 'en') return;
+const normalizeLanguageLinks = (root = document) => {
   const links = [];
   if (root instanceof Element && root.matches('a[href]')) links.push(root);
   if (root.querySelectorAll) links.push(...root.querySelectorAll('a[href]'));
 
   links.forEach((link) => {
     const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|javascript:)/i.test(href) || href.includes('lang=en')) return;
+    if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|javascript:)/i.test(href)) return;
     const match = href.match(/^([^#?]+\.html)(\?[^#]*)?(#.*)?$/i);
     if (!match) return;
     const base = match[1];
-    const existingQuery = match[2] || '';
     const hash = match[3] || '';
-    const query = existingQuery ? `${existingQuery}&lang=en` : '?lang=en';
-    link.setAttribute('href', `${base}${query}${hash}`);
+    const query = new URLSearchParams(match[2] || '');
+    query.set('lang', currentLang);
+    link.setAttribute('href', `${base}?${query}${hash}`);
   });
 };
 
@@ -423,12 +432,15 @@ translationReady.then(() => {
   };
 
   if (currentPage !== 'other.html' && referenceTargets[currentPage]) {
+    const referenceHref = sectionHref('other.html', `#${referenceTargets[currentPage]}`);
+    document.querySelectorAll('a[href="#sources"]').forEach((link) => link.setAttribute('href', referenceHref));
     const oldSourcesSection = document.getElementById('sources');
     if (oldSourcesSection) oldSourcesSection.remove();
+    if (window.location.hash === '#sources') window.location.replace(referenceHref);
   }
 
   document.querySelectorAll('.content-grid > .aside').forEach((aside) => aside.setAttribute('aria-hidden', 'true'));
-  normalizeEnglishLinks(document);
+  normalizeLanguageLinks(document);
 
   if (currentPage === 'index.html') {
     ensureStylesheet('history-fix.css?v=20260830-3', 'history-fix.css');
@@ -479,19 +491,41 @@ translationReady.then(() => {
     });
   }
 
+  document.dispatchEvent(new CustomEvent('nts:content-ready'));
+});
+
+// Navigation and content visibility must not wait for translation downloads.
+(() => {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-links');
   if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
+    const setMenuOpen = (open) => {
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', currentLang === 'en'
+        ? (open ? 'Close menu' : 'Open menu')
+        : (open ? 'ปิดเมนู' : 'เปิดเมนู'));
       toggle.querySelector('span').textContent = open ? '×' : '☰';
+      if (!open) {
+        languageSwitcher?.classList.remove('open');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+      }
+    };
+    toggle.addEventListener('click', () => setMenuOpen(!nav.classList.contains('open')));
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
     });
-    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.querySelector('span').textContent = '☰';
-    }));
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !nav.classList.contains('open')) return;
+      setMenuOpen(false);
+      toggle.focus({ preventScroll: true });
+    });
+    window.addEventListener('resize', () => {
+      if (!window.matchMedia('(max-width: 1040px)').matches) setMenuOpen(false);
+    });
   }
 
   const footerRoute = document.querySelector('.footer-route');
@@ -567,7 +601,7 @@ translationReady.then(() => {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
   }
 
   const registerReveal = (element) => {
@@ -582,6 +616,7 @@ translationReady.then(() => {
   };
 
   registerRevealTree(document);
+  document.documentElement.classList.add('motion-ready');
 
   const dynamicContentObserver = new MutationObserver((mutations) => {
     let hasNewContent = false;
@@ -590,7 +625,7 @@ translationReady.then(() => {
         if (!(node instanceof Element)) return;
         hasNewContent = true;
         registerRevealTree(node);
-        normalizeEnglishLinks(node);
+        normalizeLanguageLinks(node);
       });
     });
     if (hasNewContent) applyChapterUpdateLabel();
@@ -602,4 +637,4 @@ translationReady.then(() => {
   });
 
   applyChapterUpdateLabel();
-});
+})();
