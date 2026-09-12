@@ -42,6 +42,16 @@
     document.head.appendChild(regressionStyles);
   }
 
+  /* Later page extensions (notably Switzerland comparison and the lower
+     Impact layouts) arrived after the original theme pass. Keep their dark
+     overrides separate so the base compatibility layer stays easy to audit. */
+  if (!document.querySelector('link[href^="dark-mode-page-extensions.css"]')) {
+    const extensionStyles = document.createElement('link');
+    extensionStyles.rel = 'stylesheet';
+    extensionStyles.href = 'dark-mode-page-extensions.css?v=20260912-1';
+    document.head.appendChild(extensionStyles);
+  }
+
   if (!document.querySelector('script[src^="theme.js"]')) {
     const themeScript = document.createElement('script');
     themeScript.src = 'theme.js?v=20260901-1';
