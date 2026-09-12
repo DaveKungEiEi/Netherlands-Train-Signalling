@@ -32,6 +32,16 @@
     document.head.appendChild(contrastStyles);
   }
 
+  /* Loaded last on purpose: page styles and the base theme both contain
+     historical hard-coded light surfaces. This compatibility layer fixes
+     dark-mode regressions without changing the light theme. */
+  if (!document.querySelector('link[href^="dark-mode-regression-fix.css"]')) {
+    const regressionStyles = document.createElement('link');
+    regressionStyles.rel = 'stylesheet';
+    regressionStyles.href = 'dark-mode-regression-fix.css?v=20260912-1';
+    document.head.appendChild(regressionStyles);
+  }
+
   if (!document.querySelector('script[src^="theme.js"]')) {
     const themeScript = document.createElement('script');
     themeScript.src = 'theme.js?v=20260901-1';
