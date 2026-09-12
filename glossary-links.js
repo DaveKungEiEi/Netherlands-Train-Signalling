@@ -48,7 +48,7 @@
   if (!document.querySelector('link[href^="dark-mode-page-extensions.css"]')) {
     const extensionStyles = document.createElement('link');
     extensionStyles.rel = 'stylesheet';
-    extensionStyles.href = 'dark-mode-page-extensions.css?v=20260912-2';
+    extensionStyles.href = 'dark-mode-page-extensions.css?v=20260912-3';
     document.head.appendChild(extensionStyles);
   }
 
