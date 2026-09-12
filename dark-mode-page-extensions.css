@@ -110,3 +110,130 @@ html[data-theme="dark"] body[data-page="summary.html"] :is(.summary-visual, .sum
   border-color: var(--dm-border) !important;
   box-shadow: 0 18px 46px rgba(0,0,0,.24) !important;
 }
+
+/* =========================================================
+   Dark timeline interaction fix
+   timeline-align.css deliberately shares the same light-theme hover token
+   across ATB, ERTMS, Status and Comparison. Override those tokens only in
+   dark mode so hover never flashes a pale grey/white panel.
+   ========================================================= */
+html[data-theme="dark"] body:not(.home-page)[data-page] {
+  --article-timeline-blue: #7db8f5;
+  --article-timeline-mid-blue: #2d80d2;
+  --article-timeline-year-bg: #132d49;
+  --article-timeline-row-hover: rgba(57, 112, 171, .16);
+  --dm-muted: #c4d2e2;
+  --dm-text: #e1ebf6;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-item:hover,
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone:hover,
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row:hover,
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era:hover {
+  border-color: rgba(143, 195, 251, .22) !important;
+  background: rgba(57, 112, 171, .16) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+/* Timeline labels must stay readable both at rest and while the row is hovered. */
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-year,
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-year,
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era-year,
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row > strong:first-child {
+  border-color: rgba(143,195,251,.16) !important;
+  background: #132d49 !important;
+  color: #bdddff !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-item.current .atb-history-year,
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone.current .ertms-year,
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era-current .comparison-era-year {
+  border-color: rgba(255,201,23,.55) !important;
+  background: #ffc917 !important;
+  color: #062b55 !important;
+}
+
+/* Keep timeline copy bright enough after hover; page-specific light-mode
+   selectors otherwise leave some titles/body copy too dim against navy. */
+html[data-theme="dark"] body[data-page="atb.html"] :is(.atb-history-card h3, .atb-history-card p),
+html[data-theme="dark"] body[data-page="ertms.html"] :is(.ertms-milestone-copy strong, .ertms-milestone-copy span),
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row > span:nth-child(2),
+html[data-theme="dark"] body[data-page="comparison.html"] :is(.comparison-era-body > h3, .comparison-era-country strong, .comparison-era-country p) {
+  color: #d8e5f3 !important;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-card h3,
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone-copy strong,
+html[data-theme="dark"] body[data-page="comparison.html"] :is(.comparison-era-body > h3, .comparison-era-country strong) {
+  color: #f0f6fd !important;
+}
+
+/* =========================================================
+   Site-wide dark-mode typography/readability pass
+   ========================================================= */
+html[data-theme="dark"] body:not(.home-page) :is(
+  .article-section > p,
+  .info-card p,
+  .country-card p,
+  .impact-card p,
+  .term dd,
+  .timeline-card p,
+  .reference-source-note,
+  .reference-intro,
+  .reference-used-in,
+  .summary-country-note
+) {
+  color: #c4d2e2 !important;
+}
+
+html[data-theme="dark"] body:not(.home-page) :is(
+  .article-section h2,
+  .info-card h3,
+  .country-card h3,
+  .impact-card h3,
+  .term dt
+) {
+  color: #f0f6fd !important;
+}
+
+/* Information-card icon badges (ATB / ETCS / L2 / EU etc.) used dark NS blue
+   over a translucent yellow surface. In dark mode that combination becomes
+   muddy. Use an opaque NS-yellow badge with navy text for WCAG-friendly
+   contrast and a crisp visual hierarchy. */
+html[data-theme="dark"] body:not(.home-page) .info-card .icon {
+  border: 1px solid rgba(255, 229, 111, .72) !important;
+  background: #ffc917 !important;
+  color: #062b55 !important;
+  text-shadow: none !important;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.08),
+    0 8px 18px rgba(0,0,0,.16) !important;
+}
+
+/* Numeric impact badges share the old icon treatment. Keep them legible too,
+   but slightly calmer than the compact information-card badges. */
+html[data-theme="dark"] body:not(.home-page) .impact-card .num {
+  background: rgba(255,201,23,.16) !important;
+  color: #ffd95a !important;
+  border-color: rgba(255,201,23,.28) !important;
+  text-shadow: none !important;
+}
+
+/* Secondary chips and inline labels should not regress to dark-blue text on
+   low-luminance surfaces. */
+html[data-theme="dark"] body:not(.home-page) :is(
+  .article-section .kicker,
+  .summary-section-label
+) {
+  color: #a9d2ff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] body[data-page="atb.html"] .atb-history-item,
+  html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone,
+  html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row,
+  html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era {
+    transition: none !important;
+  }
+}
