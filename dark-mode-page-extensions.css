@@ -135,6 +135,16 @@ html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era:hover 
   box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
 }
 
+/* ATB's unified timeline intentionally uses one flat row. The first dark-mode
+   regression pass re-applied a card background to the inner history card,
+   which became obvious as a nested rectangle during hover. Restore the
+   transparent timeline treatment here. */
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history .atb-history-card {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Timeline labels must stay readable both at rest and while the row is hovered. */
 html[data-theme="dark"] body[data-page="atb.html"] .atb-history-year,
 html[data-theme="dark"] body[data-page="ertms.html"] .ertms-year,
