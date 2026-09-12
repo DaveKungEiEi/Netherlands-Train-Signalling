@@ -1,0 +1,598 @@
+/* =========================================================
+   Dark-mode regression compatibility layer
+   Loaded after theme.css / theme-contrast-fix.css.
+
+   Goals:
+   1) Preserve intentional photographic / diagram imagery that the global
+      dark-theme `background` shorthand can otherwise clear.
+   2) Cover newer page-specific components that still use hard-coded
+      light surfaces and light-theme text colours.
+   3) Leave light mode completely unchanged.
+   ========================================================= */
+
+html[data-theme="dark"] body[data-page] {
+  --dm-surface: #0d1c2e;
+  --dm-surface-2: #102238;
+  --dm-surface-3: #142943;
+  --dm-border: rgba(176, 208, 240, .15);
+  --dm-border-strong: rgba(176, 208, 240, .24);
+  --dm-text: #dbe8f6;
+  --dm-muted: #aebfd2;
+  --dm-heading: #eaf3fc;
+  --dm-blue: #8fc3fb;
+  --dm-yellow: #ffc917;
+  --dm-red: #ff8d98;
+}
+
+/* =========================================================
+   Image preservation
+   theme.css deliberately darkens .page-badge, but its background shorthand
+   also sets background-image:none. Re-declare only badges whose current
+   page design intentionally contains an image. Status is excluded because
+   status-visual-fix.css intentionally converted that badge to an info card.
+   ========================================================= */
+
+html[data-theme="dark"] body[data-page="atb.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(3,24,52,.08) 4%, rgba(3,24,52,.38) 48%, rgba(3,24,52,.96) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/ATB-EG.png?width=1200") !important;
+  background-size: cover, auto 86% !important;
+  background-position: center, center 34% !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="problems.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(3,24,52,.08) 18%, rgba(3,24,52,.30) 54%, rgba(3,24,52,.95) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/HUA-153431-Afbeelding%20van%20werkzaamheden%20aan%20het%20spoor%20in%20de%20nacht%20bij%20het%20N.S.-station%20Eindhoven%20Beukenlaan%20te%20Eindhoven.jpg?width=1400") !important;
+  background-size: cover, cover !important;
+  background-position: center, center 50% !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="comparison.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(3,24,52,.08) 18%, rgba(3,24,52,.30) 54%, rgba(3,24,52,.95) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Athus-Meuse%20ETCS%20R01.jpg?width=1400") !important;
+  background-size: cover, cover !important;
+  background-position: center, center 54% !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="impact.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(3,24,52,.08) 18%, rgba(3,24,52,.30) 54%, rgba(3,24,52,.95) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Onnen%20NedTrain%20VIRM%20buiten%20onderhoud.jpg?width=1400") !important;
+  background-size: cover, cover !important;
+  background-position: center, center 52% !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="summary.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(3,24,52,.16) 6%, rgba(3,24,52,.50) 48%, rgba(3,24,52,.97) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/DMI%20160%204114.svg?width=1400") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="other.html"] .page-hero .page-badge {
+  background-image:
+    linear-gradient(180deg, rgba(4,24,48,.64) 0%, rgba(4,24,48,.80) 52%, rgba(4,24,48,.97) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/RailwayMap%20The%20Netherlands.svg?width=1200") !important;
+  background-size: cover, 72% auto !important;
+  background-position: center, center 22% !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"] body[data-page="other.html"] .page-hero .page-badge::before {
+  background: transparent !important;
+}
+
+html[data-theme="dark"] body:is(
+  [data-page="atb.html"],
+  [data-page="problems.html"],
+  [data-page="comparison.html"],
+  [data-page="impact.html"],
+  [data-page="summary.html"],
+  [data-page="other.html"]
+) .page-hero .page-badge .big {
+  color: var(--dm-yellow) !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.42) !important;
+}
+
+html[data-theme="dark"] body:is(
+  [data-page="atb.html"],
+  [data-page="problems.html"],
+  [data-page="comparison.html"],
+  [data-page="impact.html"],
+  [data-page="summary.html"],
+  [data-page="other.html"]
+) .page-hero .page-badge p {
+  color: #f4f8fd !important;
+  text-shadow: 0 2px 14px rgba(0,0,0,.48) !important;
+}
+
+/* Status badge is intentionally image-free in status-visual-fix.css. */
+html[data-theme="dark"] body[data-page="status.html"] .page-hero .page-badge {
+  border-color: var(--dm-border) !important;
+  background-color: rgba(13, 30, 50, .92) !important;
+  background-image:
+    radial-gradient(circle at 88% 14%, rgba(255,201,23,.11), transparent 30%),
+    linear-gradient(145deg, rgba(14,31,51,.97), rgba(9,24,41,.94)) !important;
+  box-shadow: 0 22px 54px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] .page-hero .page-badge .big {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] .page-hero .page-badge > p {
+  color: var(--dm-muted) !important;
+}
+
+/* =========================================================
+   ATB page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="atb.html"] :is(
+  .atb-quick-card,
+  .atb-version-card,
+  .atb-now,
+  .atb-history-card,
+  .atb-process article,
+  .atb-speed-panel,
+  .atb-speed-ladder > div:not(:nth-child(5)),
+  .atb-limit-grid article,
+  .atb-family-compare article:not(.target),
+  .atb-reference-end,
+  .atb-reference-jump
+) {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, rgba(16,34,56,.98), rgba(11,25,42,.96)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] :is(
+  .atb-quick-card h3,
+  .atb-version-card h3,
+  .atb-version-intro h3,
+  .atb-now h3,
+  .atb-speed-copy h3,
+  .atb-limitations-head h3,
+  .atb-history-card h3,
+  .atb-process h3,
+  .atb-limit-grid h4,
+  .atb-family-compare strong,
+  .atb-reference-jump strong
+) {
+  color: var(--dm-heading) !important;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] :is(
+  .atb-quick-card p,
+  .atb-version-card p,
+  .atb-history-card p,
+  .atb-process p,
+  .atb-speed-panel p,
+  .atb-limit-grid p,
+  .atb-family-compare p,
+  .atb-now p,
+  .atb-version-intro > p,
+  .atb-reference-jump
+) {
+  color: var(--dm-muted) !important;
+}
+
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-year,
+html[data-theme="dark"] body[data-page="atb.html"] .atb-speed-ladder strong {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="atb.html"] .atb-speed-ladder span,
+html[data-theme="dark"] body[data-page="atb.html"] .atb-version-top small,
+html[data-theme="dark"] body[data-page="atb.html"] .atb-source-strip > span {
+  color: #9eb2c8 !important;
+}
+html[data-theme="dark"] body[data-page="atb.html"] .atb-history-dot {
+  border-color: var(--dm-surface) !important;
+}
+html[data-theme="dark"] body[data-page="atb.html"] .atb-source-strip {
+  border-top-color: var(--dm-border) !important;
+}
+html[data-theme="dark"] body[data-page="atb.html"] .atb-source-strip a {
+  border-color: var(--dm-border) !important;
+  background: #11253b !important;
+  color: #b9d4ef !important;
+}
+html[data-theme="dark"] body[data-page="atb.html"] .atb-version-intro {
+  border-bottom-color: var(--dm-border) !important;
+}
+
+/* =========================================================
+   ERTMS page
+   Keep real media and white-backed technical SVGs intact; only recolour the
+   timeline / explanatory UI around them.
+   ========================================================= */
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone {
+  border-bottom-color: var(--dm-border) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone::before {
+  background: var(--dm-surface) !important;
+  border-color: #4d96df !important;
+  box-shadow: 0 0 0 5px rgba(77,150,223,.12) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone.current::before {
+  border-color: var(--dm-yellow) !important;
+  box-shadow: 0 0 0 5px rgba(255,201,23,.15) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-year {
+  background: #132b46 !important;
+  color: #9fcafb !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone.current .ertms-year {
+  background: rgba(111,86,9,.44) !important;
+  color: #ffe58a !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone-copy strong {
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-milestone-copy span {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-scope.eu {
+  border-color: rgba(111,171,231,.24) !important;
+  background: rgba(25,77,128,.34) !important;
+  color: #a7d2ff !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-scope.nl {
+  border-color: rgba(255,201,23,.25) !important;
+  background: rgba(104,80,7,.36) !important;
+  color: #ffe58b !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .history-summary {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(135deg, #10243a, #171f25) !important;
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] .history-summary strong,
+html[data-theme="dark"] body[data-page="ertms.html"] #working .signal-diagram::before {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="ertms.html"] #working .signal-diagram::after {
+  color: #9fb2c8 !important;
+}
+
+/* =========================================================
+   Status page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="status.html"] .stat-value {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] .stat-label {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row:hover {
+  border-color: var(--dm-border) !important;
+  background: rgba(75,133,196,.10) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row::before {
+  background: var(--dm-surface) !important;
+  border-color: #4d96df !important;
+  box-shadow: 0 0 0 5px rgba(77,150,223,.12) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row > strong:first-child {
+  background: #132b46 !important;
+  color: #a7d2ff !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row > span:nth-child(2),
+html[data-theme="dark"] body[data-page="status.html"] .article-section:not(#timeline) .status-row > span:nth-child(2) {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] #timeline .status-row > span:nth-child(2) strong,
+html[data-theme="dark"] body[data-page="status.html"] .status-row > strong {
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] .article-section:not(#timeline) .status-row {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  box-shadow: 0 7px 18px rgba(0,0,0,.14) !important;
+}
+html[data-theme="dark"] body[data-page="status.html"] .aside a:hover,
+html[data-theme="dark"] body[data-page="status.html"] .aside a:focus-visible {
+  color: #d5eaff !important;
+  background: rgba(77,139,216,.13) !important;
+}
+
+/* =========================================================
+   Problems page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="problems.html"] :is(
+  .problem-snapshot-card,
+  .delay-card,
+  .problem-note,
+  .cost-metric:not(.featured),
+  .dual-bridge,
+  .dual-node,
+  .reliability-story,
+  .reliability-principles > div,
+  .freight-main,
+  .freight-stats > div,
+  .freight-side article,
+  .people-tech-grid article,
+  .problem-conclusion,
+  .reference-jump
+) {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+html[data-theme="dark"] body[data-page="problems.html"] .problem-note.warning,
+html[data-theme="dark"] body[data-page="problems.html"] .dual-node.bridge {
+  border-color: rgba(255,201,23,.22) !important;
+  background: linear-gradient(145deg, rgba(69,56,17,.72), #101c2a) !important;
+}
+html[data-theme="dark"] body[data-page="problems.html"] .dual-node.target {
+  background: linear-gradient(145deg, #112d49, #0c1b2d) !important;
+}
+html[data-theme="dark"] body[data-page="problems.html"] :is(
+  .problem-snapshot-card strong,
+  .delay-card h3,
+  .dual-node strong,
+  .reliability-story h3,
+  .reliability-principles strong,
+  .freight-main h3,
+  .freight-side h3,
+  .people-tech-grid h3,
+  .reference-jump strong
+) {
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="problems.html"] :is(
+  .problem-snapshot-card small,
+  .delay-card p,
+  .problem-note,
+  .cost-metric small,
+  .cost-metric span,
+  .dual-node > span,
+  .dual-node small,
+  .reliability-story p,
+  .reliability-principles span,
+  .freight-main > p,
+  .freight-stats span,
+  .freight-side p,
+  .people-tech-grid p,
+  .reference-jump
+) {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="problems.html"] .cost-metric:not(.featured) strong,
+html[data-theme="dark"] body[data-page="problems.html"] .freight-stats strong,
+html[data-theme="dark"] body[data-page="problems.html"] .problem-note strong {
+  color: var(--dm-blue) !important;
+}
+
+/* =========================================================
+   Comparison page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="comparison.html"] :is(
+  .comparison-country-card,
+  .comparison-era-body,
+  .comparison-era-country,
+  .comparison-border-flow,
+  .comparison-border-flow > div
+) {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.16) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-country-card-leading,
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era-current .comparison-era-body {
+  border-color: rgba(255,201,23,.28) !important;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255,201,23,.09), transparent 34%),
+    linear-gradient(145deg, #112238, #0c1b2d) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-status-chip,
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-legend span {
+  border-color: var(--dm-border) !important;
+  background: #132b46 !important;
+  color: #bed9f4 !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-country-card-leading .comparison-status-chip {
+  border-color: rgba(255,201,23,.26) !important;
+  background: rgba(105,80,7,.42) !important;
+  color: #ffe58b !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] :is(
+  .comparison-country-card .metric,
+  .comparison-era-year
+) {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] :is(
+  .comparison-country-card p,
+  .comparison-era-country p,
+  .comparison-border-flow small,
+  .comparison-lessons-grid .info-card p
+) {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] :is(
+  .comparison-era-body > h3,
+  .comparison-era-country strong,
+  .comparison-border-flow strong
+) {
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] .comparison-era::before {
+  border-color: var(--dm-surface) !important;
+}
+html[data-theme="dark"] body[data-page="comparison.html"] #table td:first-child {
+  color: #d7e9fb !important;
+  background: #13263b !important;
+}
+
+/* =========================================================
+   Impact page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="impact.html"] {
+  --impact-blue: #91c5fb;
+  --impact-blue-2: #78b4ef;
+  --impact-ink: #e7f1fc;
+  --impact-text: #b4c5d8;
+  --impact-soft: #102238;
+  --impact-line: rgba(176,208,240,.15);
+}
+html[data-theme="dark"] body[data-page="impact.html"] :is(
+  .snapshot-item,
+  .retrofit-copy,
+  .retrofit-point,
+  .virm-story-copy,
+  .virm-metrics > div,
+  .fleet-side,
+  .longdistance-layout,
+  .longdistance-layout > div,
+  .fleet-tags span,
+  .retrofit-mini-facts span
+) {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] .legacy-side,
+html[data-theme="dark"] body[data-page="impact.html"] .transition-strip > div:last-child {
+  border-color: rgba(255,201,23,.22) !important;
+  background: linear-gradient(145deg, rgba(72,57,16,.68), #101c2a) !important;
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] .transition-strip > div:last-child span {
+  color: #ffe58b !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] .transition-strip > div:last-child p {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] :is(
+  .impact-lead,
+  .snapshot-item small,
+  .impact-grid-modern p,
+  .retrofit-copy p,
+  .retrofit-point p,
+  .virm-story-copy > p,
+  .virm-metrics span,
+  .fleet-side p,
+  .longdistance-layout > p,
+  .retrofit-mini-facts span,
+  .fleet-tags span
+) {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] .snapshot-item > span {
+  color: #9fb2c8 !important;
+}
+html[data-theme="dark"] body[data-page="impact.html"] .impact-label,
+html[data-theme="dark"] body[data-page="impact.html"] .retrofit-point > span {
+  background: #132b46 !important;
+  color: #a9d2fa !important;
+}
+
+/* =========================================================
+   Summary page
+   Actual <img> media remains untouched.
+   ========================================================= */
+html[data-theme="dark"] body[data-page="summary.html"] .summary-intro-note {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="summary.html"] .summary-intro-note strong,
+html[data-theme="dark"] body[data-page="summary.html"] .summary-section-label {
+  color: var(--dm-blue) !important;
+}
+html[data-theme="dark"] body[data-page="summary.html"] .summary-country-note {
+  color: #9fb2c8 !important;
+}
+
+/* =========================================================
+   Reference library / Other page
+   ========================================================= */
+html[data-theme="dark"] body[data-page="other.html"] .reference-intro,
+html[data-theme="dark"] body[data-page="other.html"] .reference-used-in {
+  color: var(--dm-muted) !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-group {
+  border-color: var(--dm-border) !important;
+  background: linear-gradient(145deg, #102238, #0c1b2d) !important;
+  box-shadow: 0 14px 36px rgba(0,0,0,.18) !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-chapter,
+html[data-theme="dark"] body[data-page="other.html"] .reference-open {
+  background: #132b46 !important;
+  color: #acd3fb !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-group h3 {
+  color: var(--dm-heading) !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-used-in a {
+  color: #9ecbfa !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-note {
+  border-color: rgba(255,201,23,.24) !important;
+  background: rgba(79,64,17,.42) !important;
+  color: #d9d0a6 !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-card:hover {
+  border-color: var(--dm-border-strong) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.22) !important;
+}
+html[data-theme="dark"] body[data-page="other.html"] .reference-card:hover .reference-open {
+  background: #1a5da8 !important;
+  color: #fff !important;
+}
+
+/* =========================================================
+   Shared finishing pass
+   ========================================================= */
+html[data-theme="dark"] body[data-page] :is(
+  .atb-quick-card,
+  .atb-version-card,
+  .problem-snapshot-card,
+  .delay-card,
+  .comparison-country-card,
+  .comparison-era-body,
+  .retrofit-copy,
+  .retrofit-point,
+  .reference-group,
+  .summary-intro-note
+) {
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+html[data-theme="dark"] body[data-page] a:focus-visible,
+html[data-theme="dark"] body[data-page] button:focus-visible {
+  outline-color: var(--dm-yellow);
+}
+
+@media (max-width: 820px) {
+  html[data-theme="dark"] body[data-page="atb.html"] .page-hero .page-badge {
+    background-size: cover, auto 76% !important;
+    background-position: center, center 28% !important;
+  }
+  html[data-theme="dark"] body[data-page="other.html"] .page-hero .page-badge {
+    background-size: cover, 82% auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] body[data-page] :is(
+    .atb-quick-card,
+    .atb-version-card,
+    .problem-snapshot-card,
+    .delay-card,
+    .comparison-country-card,
+    .comparison-era-body,
+    .retrofit-copy,
+    .retrofit-point,
+    .reference-group,
+    .summary-intro-note
+  ) {
+    transition: none !important;
+  }
+}
