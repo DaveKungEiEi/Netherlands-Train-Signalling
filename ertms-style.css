@@ -1299,3 +1299,106 @@ html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-source-row a {
     animation: none !important;
   }
 }
+
+
+/* =========================================================
+   ETCS Level 2 interactive — geometry stability fix
+   Keep the source diagram completely stationary while only overlays and
+   explanatory copy change between steps.
+   ========================================================= */
+@media (min-width: 1121px) {
+  body[data-page="ertms.html"] .etcs-l2-stage {
+    /* A fixed information column prevents different text lengths from
+       renegotiating the image column width at every step. */
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: start;
+  }
+}
+
+body[data-page="ertms.html"] .etcs-l2-visual {
+  /* Isolate the diagram's geometry from text reflow in the neighbouring panel. */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  contain: layout paint;
+  transform: none !important;
+  transition: none !important;
+}
+
+body[data-page="ertms.html"] .etcs-l2-visual > img,
+body[data-page="ertms.html"] .etcs-l2-visual > img.lightbox-zoomable {
+  /* Positioning the image against the fixed 16:9 box makes its rendered
+     dimensions independent from the changing step text. */
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain;
+  transform: none !important;
+  scale: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-svg {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Step changes should emphasize the selected marker without physically
+   scaling it, which keeps the overlay feeling calm on touch/tablet screens. */
+body[data-page="ertms.html"] .etcs-l2-hotspot,
+body[data-page="ertms.html"] .etcs-l2-hotspot:hover,
+body[data-page="ertms.html"] .etcs-l2-hotspot:focus-visible,
+body[data-page="ertms.html"] .etcs-l2-hotspot.is-active {
+  transform: translate(-50%, -50%) !important;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-panel {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Keep copy changes visually smooth without transitioning layout properties. */
+body[data-page="ertms.html"] .etcs-l2-step-panel :is(
+  [data-etcs-step-short],
+  [data-etcs-step-title],
+  [data-etcs-step-copy],
+  [data-etcs-flow-from],
+  [data-etcs-flow-to],
+  [data-etcs-progress-text]
+) {
+  transition: color .16s ease, opacity .16s ease;
+}
+
+@media (max-width: 1120px) {
+  body[data-page="ertms.html"] .etcs-l2-stage {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-visual {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="ertms.html"] .etcs-l2-step-panel :is(
+    [data-etcs-step-short],
+    [data-etcs-step-title],
+    [data-etcs-step-copy],
+    [data-etcs-flow-from],
+    [data-etcs-flow-to],
+    [data-etcs-progress-text]
+  ) {
+    transition: none !important;
+  }
+}
