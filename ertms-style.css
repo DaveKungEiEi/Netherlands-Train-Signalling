@@ -1073,6 +1073,42 @@ body[data-page="ertms.html"] .etcs-l2-cycle-note p {
   line-height: 1.7;
 }
 
+
+body[data-page="ertms.html"] .etcs-l2-scope-note {
+  margin-top: 15px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-left: 4px solid #003082;
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+}
+
+body[data-page="ertms.html"] .etcs-l2-scope-note strong {
+  color: #123d70;
+  font-size: .78rem;
+}
+
+body[data-page="ertms.html"] .etcs-l2-scope-note p {
+  margin: 5px 0 0;
+  color: #50677f;
+  font-size: .78rem;
+  line-height: 1.68;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-scope-note {
+  border-color: rgba(176,208,240,.13);
+  border-left-color: #6eb0f1;
+  background: rgba(16,34,56,.80);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-scope-note strong {
+  color: #dceaff;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-scope-note p {
+  color: #b9c9db;
+}
+
 body[data-page="ertms.html"] .etcs-l2-source-row {
   display: flex;
   flex-wrap: wrap;
