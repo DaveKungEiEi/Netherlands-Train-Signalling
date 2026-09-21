@@ -112,6 +112,105 @@ body[data-page="ertms.html"] .ertms-media-card {
   aspect-ratio: 4 / 3;
 }
 
+
+/* DMI explainer requested for section 2.1.
+   Keep the source graphic itself on a neutral white canvas so its labels stay
+   faithful in both themes; only the surrounding editorial card changes. */
+body[data-page="ertms.html"] .ertms-dmi-explainer {
+  margin: 4px 0 30px;
+  overflow: hidden;
+  border: 1px solid rgba(0,48,130,.13);
+  border-radius: 26px;
+  background: #f7fbff;
+  box-shadow: 0 16px 38px rgba(0,48,130,.075);
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer-image {
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 4vw, 34px);
+  background: #fff;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer img {
+  display: block;
+  width: min(100%, 640px);
+  height: auto;
+  max-height: 640px;
+  object-fit: contain;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption {
+  display: grid;
+  gap: 6px;
+  padding: 20px 22px 22px;
+  border-top: 1px solid rgba(0,48,130,.09);
+  background: linear-gradient(145deg, #f8fbff, #eef5fc);
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption strong {
+  color: #123d70;
+  font-size: 1.03rem;
+  line-height: 1.4;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption span {
+  color: #405a74;
+  font-size: .86rem;
+  line-height: 1.7;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption small {
+  color: #708399;
+  font-size: .7rem;
+  line-height: 1.55;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption a {
+  width: fit-content;
+  margin-top: 3px;
+  color: #003082;
+  font-size: .74rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption a:hover,
+body[data-page="ertms.html"] .ertms-dmi-explainer figcaption a:focus-visible {
+  text-decoration: underline;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer {
+  border-color: rgba(176,208,240,.15);
+  background: #0d1c2e;
+  box-shadow: 0 18px 46px rgba(0,0,0,.24);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer-image {
+  background: #fff;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer figcaption {
+  border-top-color: rgba(176,208,240,.12);
+  background: linear-gradient(145deg, #102238, #0c1b2d);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer figcaption strong {
+  color: #f0f6fd;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer figcaption span {
+  color: #c4d2e2;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer figcaption small {
+  color: #9fb2c8;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .ertms-dmi-explainer figcaption a {
+  color: #9ecbfa;
+}
+
 body[data-page="ertms.html"] .ertms-history-media {
   min-height: 285px;
   margin: 18px 0 22px 18px;
