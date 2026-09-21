@@ -707,3 +707,559 @@ body[data-page="ertms.html"] .history-summary strong {
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   ETCS Level 2 interactive explainer
+   Based on the European Commission Level 2 diagram.
+   ========================================================= */
+body[data-page="ertms.html"] .etcs-l2-interactive {
+  margin: 32px 0 28px;
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,201,23,.13), transparent 25%),
+    linear-gradient(145deg, #f7fbff, #edf5fc);
+  box-shadow: 0 18px 44px rgba(0,48,130,.075);
+}
+
+body[data-page="ertms.html"] .etcs-l2-interactive-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+body[data-page="ertms.html"] .etcs-l2-interactive-copy {
+  min-width: 0;
+  max-width: 780px;
+}
+
+body[data-page="ertms.html"] .etcs-l2-interactive-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #003082;
+  color: #ffc917;
+  font-size: .67rem;
+  font-weight: 900;
+  letter-spacing: .065em;
+}
+
+body[data-page="ertms.html"] .etcs-l2-interactive h3 {
+  margin: 13px 0 8px;
+  color: #123d70;
+  font-size: clamp(1.28rem, 2.2vw, 1.82rem);
+  line-height: 1.32;
+  letter-spacing: -.025em;
+}
+
+body[data-page="ertms.html"] .etcs-l2-interactive-copy > p {
+  margin: 0;
+  color: #45617c;
+  line-height: 1.72;
+}
+
+body[data-page="ertms.html"] .etcs-l2-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+body[data-page="ertms.html"] .etcs-l2-control {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 14px;
+  border: 1px solid rgba(0,48,130,.13);
+  border-radius: 999px;
+  background: #fff;
+  color: #21486f;
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+body[data-page="ertms.html"] .etcs-l2-control-primary {
+  background: #003082;
+  color: #fff;
+  border-color: #003082;
+}
+
+body[data-page="ertms.html"] .etcs-l2-control:hover,
+body[data-page="ertms.html"] .etcs-l2-control:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(0,48,130,.28);
+  box-shadow: 0 8px 18px rgba(0,48,130,.10);
+}
+
+body[data-page="ertms.html"] .etcs-l2-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+body[data-page="ertms.html"] .etcs-l2-visual {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(0,48,130,.12);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(0,48,130,.08);
+  isolation: isolate;
+}
+
+body[data-page="ertms.html"] .etcs-l2-visual > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-svg path {
+  fill: none;
+  stroke: #003082;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 12 10;
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgba(255,255,255,.95));
+  transition: opacity .2s ease;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-svg path.is-active {
+  opacity: .92;
+  animation: etcsFlowDash .85s linear infinite;
+}
+
+@keyframes etcsFlowDash {
+  to { stroke-dashoffset: -44; }
+}
+
+body[data-page="ertms.html"] .etcs-l2-hotspot {
+  position: absolute;
+  z-index: 4;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #003082;
+  color: #fff;
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(0,48,130,.25), 0 0 0 1px rgba(0,48,130,.12);
+  transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+body[data-page="ertms.html"] .etcs-l2-hotspot:hover,
+body[data-page="ertms.html"] .etcs-l2-hotspot:focus-visible {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+body[data-page="ertms.html"] .etcs-l2-hotspot.is-active {
+  background: #ffc917;
+  color: #062b55;
+  box-shadow:
+    0 8px 22px rgba(0,48,130,.22),
+    0 0 0 7px rgba(255,201,23,.28);
+  animation: etcsHotspotPulse 1.35s ease-in-out infinite;
+}
+
+@keyframes etcsHotspotPulse {
+  50% { box-shadow: 0 8px 22px rgba(0,48,130,.22), 0 0 0 13px rgba(255,201,23,.07); }
+}
+
+body[data-page="ertms.html"] .hotspot-1 { left: 95%; top: 79%; }
+body[data-page="ertms.html"] .hotspot-2 { left: 90%; top: 41%; }
+body[data-page="ertms.html"] .hotspot-3 { left: 51%; top: 78%; }
+body[data-page="ertms.html"] .hotspot-4 { left: 71%; top: 29%; }
+body[data-page="ertms.html"] .hotspot-5 { left: 90%; top: 24%; }
+body[data-page="ertms.html"] .hotspot-6 { left: 62%; top: 16%; }
+body[data-page="ertms.html"] .hotspot-7 { left: 31%; top: 61%; }
+body[data-page="ertms.html"] .hotspot-8 { left: 18%; top: 50%; }
+
+body[data-page="ertms.html"] .etcs-l2-image-credit {
+  position: absolute;
+  z-index: 5;
+  left: 12px;
+  bottom: 10px;
+}
+
+body[data-page="ertms.html"] .etcs-l2-image-credit a {
+  display: inline-flex;
+  padding: 5px 8px;
+  border-radius: 9px;
+  background: rgba(4,24,48,.82);
+  color: #fff;
+  font-size: .58rem;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 3vw, 30px);
+  border: 1px solid rgba(0,48,130,.11);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fff, #f7fbff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.92);
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #003082;
+  color: #ffc917;
+  font-size: .92rem;
+  font-weight: 900;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-short {
+  color: #ae1c28;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-panel h4 {
+  margin: 20px 0 10px;
+  color: #123d70;
+  font-size: clamp(1.14rem, 1.8vw, 1.45rem);
+  line-height: 1.38;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-panel > p {
+  margin: 0;
+  color: #405a74;
+  line-height: 1.8;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-label {
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #627a91;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+body[data-page="ertms.html"] .etcs-l2-flow-label strong {
+  color: #003082;
+}
+
+body[data-page="ertms.html"] .etcs-l2-progress-text {
+  margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,48,130,.09);
+  color: #72859a;
+  font-size: .68rem;
+  font-weight: 750;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0,1fr));
+  gap: 7px;
+  margin-top: 14px;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button {
+  min-width: 0;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 9px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 14px;
+  background: rgba(255,255,255,.80);
+  color: #45617c;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button > span {
+  color: #8aa0b6;
+  font-size: .61rem;
+  font-weight: 900;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button > strong {
+  min-width: 0;
+  color: #294e74;
+  font-size: .67rem;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button.is-active {
+  border-color: #003082;
+  background: #003082;
+  box-shadow: 0 8px 18px rgba(0,48,130,.15);
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button.is-active > span {
+  color: #ffc917;
+}
+
+body[data-page="ertms.html"] .etcs-l2-step-strip button.is-active > strong {
+  color: #fff;
+}
+
+body[data-page="ertms.html"] .etcs-l2-cycle-note {
+  margin-top: 15px;
+  padding: 17px 19px;
+  border: 1px solid rgba(255,201,23,.38);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff9df, #fffdf5);
+}
+
+body[data-page="ertms.html"] .etcs-l2-cycle-note strong {
+  color: #5e4800;
+}
+
+body[data-page="ertms.html"] .etcs-l2-cycle-note p {
+  margin: 6px 0 0;
+  color: #50667d;
+  font-size: .82rem;
+  line-height: 1.7;
+}
+
+body[data-page="ertms.html"] .etcs-l2-source-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: #71859a;
+  font-size: .68rem;
+}
+
+body[data-page="ertms.html"] .etcs-l2-source-row a {
+  display: inline-flex;
+  padding: 6px 9px;
+  border: 1px solid rgba(0,48,130,.10);
+  border-radius: 999px;
+  background: #fff;
+  color: #315a83;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-interactive {
+  border-color: rgba(176,208,240,.15);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,201,23,.07), transparent 25%),
+    linear-gradient(145deg, #102238, #0b1a2b);
+  box-shadow: 0 18px 44px rgba(0,0,0,.23);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-interactive h3,
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-panel h4 {
+  color: #f0f6fd;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-interactive-copy > p,
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-panel > p {
+  color: #c4d2e2;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-control {
+  border-color: rgba(176,208,240,.17);
+  background: #132b46;
+  color: #dceaff;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-control-primary {
+  border-color: #2f79c7;
+  background: #1a5da8;
+  color: #fff;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-panel {
+  border-color: rgba(176,208,240,.14);
+  background: linear-gradient(145deg, #102238, #0d1c2e);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-number {
+  background: #1a5da8;
+  color: #ffe16c;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-short {
+  color: #ff9ca5;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-flow-label {
+  color: #9fb2c8;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-flow-label strong {
+  color: #add4ff;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-progress-text {
+  border-top-color: rgba(176,208,240,.10);
+  color: #9fb2c8;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-strip button {
+  border-color: rgba(176,208,240,.13);
+  background: #102238;
+  color: #c4d2e2;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-strip button > span {
+  color: #8faccc;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-strip button > strong {
+  color: #d8e5f3;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-step-strip button.is-active {
+  border-color: #2f79c7;
+  background: #1a5da8;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-cycle-note {
+  border-color: rgba(255,201,23,.25);
+  background: linear-gradient(135deg, rgba(74,59,13,.55), #111d2b);
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-cycle-note strong {
+  color: #ffe58b;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-cycle-note p {
+  color: #c4d2e2;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-source-row {
+  color: #9fb2c8;
+}
+
+html[data-theme="dark"] body[data-page="ertms.html"] .etcs-l2-source-row a {
+  border-color: rgba(176,208,240,.13);
+  background: #132b46;
+  color: #bdddff;
+}
+
+@media (max-width: 1120px) {
+  body[data-page="ertms.html"] .etcs-l2-stage {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-step-panel {
+    min-height: 245px;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-step-strip {
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="ertms.html"] .etcs-l2-interactive {
+    padding: 18px;
+    border-radius: 23px;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-interactive-head {
+    flex-direction: column;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-control {
+    min-height: 44px;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-control-primary {
+    flex: 1 1 auto;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-visual {
+    border-radius: 18px;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-hotspot {
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+    font-size: .68rem;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-step-strip {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 430px) {
+  body[data-page="ertms.html"] .etcs-l2-step-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body[data-page="ertms.html"] .etcs-l2-image-credit {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="ertms.html"] .etcs-l2-flow-svg path.is-active,
+  body[data-page="ertms.html"] .etcs-l2-hotspot.is-active {
+    animation: none !important;
+  }
+}
