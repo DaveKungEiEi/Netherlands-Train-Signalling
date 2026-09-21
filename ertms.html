@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="ertms-style.css?v=20260921-1">
+  <link rel="stylesheet" href="ertms-style.css?v=20260921-2">
   <!-- Load layout styles before first paint to prevent expanded menus and layout flashes. -->
   <link rel="stylesheet" href="glossary-links.css?v=20260830-1">
   <link rel="stylesheet" href="footer-style.css">
@@ -129,6 +129,96 @@
             <p>ใน ETCS Level 2 รถไฟกับระบบภาคพื้นสื่อสารข้อมูลกันผ่านเครือข่ายวิทยุอย่างต่อเนื่อง รถไฟใช้ Eurobalise และระบบวัดระยะบนรถเพื่อช่วยระบุตำแหน่ง จากนั้นระบบภาคพื้นจะส่ง Movement Authority หรือขอบเขตที่อนุญาตให้รถไฟเคลื่อนที่กลับมายังรถไฟ</p>
             <p>คอมพิวเตอร์บนรถจะนำข้อมูลเส้นทาง ความเร็ว และระยะทางที่เหลือมาคำนวณเส้นโค้งการเบรก หากรถไฟเร็วเกินไปหรือกำลังเข้าใกล้จุดสิ้นสุดของพื้นที่ที่ได้รับอนุญาต ระบบจะเตือนพนักงานขับ และสามารถสั่งเบรกอัตโนมัติได้หากจำเป็น</p>
 
+
+            <section class="etcs-l2-interactive" data-etcs-l2-interactive aria-labelledby="etcs-l2-interactive-title">
+              <div class="etcs-l2-interactive-head">
+                <div class="etcs-l2-interactive-copy">
+                  <span class="etcs-l2-interactive-kicker" data-etcs-ui="kicker">INTERACTIVE • ETCS LEVEL 2</span>
+                  <h3 id="etcs-l2-interactive-title" data-etcs-ui="title">จากทางรถไฟถึงหน้าจอ DMI — ETCS Level 2 ทำงานอย่างไร</h3>
+                  <p data-etcs-ui="intro">กดหมายเลข 1–8 เพื่อดูข้อมูลไหลผ่านระบบทีละขั้น หรือกดเล่นอัตโนมัติเพื่อดูวงจรทั้งหมด</p>
+                </div>
+                <div class="etcs-l2-controls" aria-label="ตัวควบคุมแอนิเมชัน ETCS Level 2">
+                  <button class="etcs-l2-control" type="button" data-etcs-prev aria-label="ขั้นก่อนหน้า">←</button>
+                  <button class="etcs-l2-control etcs-l2-control-primary" type="button" data-etcs-play aria-pressed="false">
+                    <span class="etcs-l2-play-icon" aria-hidden="true">▶</span>
+                    <span data-etcs-play-label>เล่นอัตโนมัติ</span>
+                  </button>
+                  <button class="etcs-l2-control" type="button" data-etcs-next aria-label="ขั้นถัดไป">→</button>
+                </div>
+              </div>
+
+              <div class="etcs-l2-stage">
+                <div class="etcs-l2-visual" data-etcs-visual>
+                  <img
+                    src="https://transport.ec.europa.eu/sites/default/files/2020-11/etcs-level-2.png"
+                    alt="แผนภาพ ETCS Level 2 ของ European Commission แสดง Eurocab, GSM-R, Eurobalise, RBC, Interlocking และการรายงานความว่างของทาง"
+                    loading="lazy"
+                    decoding="async">
+                  <svg class="etcs-l2-flow-svg" viewBox="0 0 640 360" preserveAspectRatio="none" aria-hidden="true">
+                    <path data-etcs-path="1" d="M 620 290 L 620 155"></path>
+                    <path data-etcs-path="2" d="M 578 150 L 578 93"></path>
+                    <path data-etcs-path="3" d="M 326 286 C 292 286 252 281 220 274"></path>
+                    <path data-etcs-path="4" d="M 282 104 C 380 104 480 104 570 104"></path>
+                    <path data-etcs-path="5" d="M 576 90 C 601 70 611 88 592 105 C 575 119 560 99 576 90"></path>
+                    <path data-etcs-path="6" d="M 570 58 C 487 58 407 58 330 58"></path>
+                    <path data-etcs-path="7" d="M 235 239 C 215 218 192 190 166 157"></path>
+                    <path data-etcs-path="8" d="M 174 158 C 191 196 213 228 237 250"></path>
+                  </svg>
+
+                  <button class="etcs-l2-hotspot hotspot-1" type="button" data-etcs-step-select="1" aria-label="ขั้นที่ 1 ตรวจสอบความว่างของทาง">1</button>
+                  <button class="etcs-l2-hotspot hotspot-2" type="button" data-etcs-step-select="2" aria-label="ขั้นที่ 2 Interlocking">2</button>
+                  <button class="etcs-l2-hotspot hotspot-3" type="button" data-etcs-step-select="3" aria-label="ขั้นที่ 3 Eurobalise และตำแหน่งรถไฟ">3</button>
+                  <button class="etcs-l2-hotspot hotspot-4" type="button" data-etcs-step-select="4" aria-label="ขั้นที่ 4 Position Report">4</button>
+                  <button class="etcs-l2-hotspot hotspot-5" type="button" data-etcs-step-select="5" aria-label="ขั้นที่ 5 RBC">5</button>
+                  <button class="etcs-l2-hotspot hotspot-6" type="button" data-etcs-step-select="6" aria-label="ขั้นที่ 6 Movement Authority และ Track Data">6</button>
+                  <button class="etcs-l2-hotspot hotspot-7" type="button" data-etcs-step-select="7" aria-label="ขั้นที่ 7 EVC และ DMI">7</button>
+                  <button class="etcs-l2-hotspot hotspot-8" type="button" data-etcs-step-select="8" aria-label="ขั้นที่ 8 การควบคุมความเร็วและการเบรก">8</button>
+
+                  <div class="etcs-l2-image-credit">
+                    <a href="https://transport.ec.europa.eu/transport-modes/rail/ertms/what-ertms-and-how-does-it-work/etcs-levels-and-modes_en" target="_blank" rel="noopener">European Commission • ETCS Level 2 ↗</a>
+                  </div>
+                </div>
+
+                <aside class="etcs-l2-step-panel" aria-live="polite">
+                  <div class="etcs-l2-step-meta">
+                    <span class="etcs-l2-step-number" data-etcs-step-number>01</span>
+                    <span class="etcs-l2-step-short" data-etcs-step-short>ตรวจสอบเส้นทาง</span>
+                  </div>
+                  <h4 data-etcs-step-title>ระบบตรวจจับขบวนรถยืนยันว่าช่วงทางพร้อมใช้งาน</h4>
+                  <p data-etcs-step-copy>ก่อนอนุญาตให้รถเคลื่อนที่ ระบบภาคพื้นต้องรู้ว่าส่วนทางด้านหน้าว่างและเส้นทางปลอดภัย ข้อมูลการครอบครองทางจาก track circuit หรือ axle counter จะถูกรายงานเข้าสู่ระบบ interlocking</p>
+                  <div class="etcs-l2-flow-label">
+                    <span data-etcs-flow-from>Track detection</span>
+                    <span aria-hidden="true">→</span>
+                    <strong data-etcs-flow-to>Interlocking</strong>
+                  </div>
+                  <div class="etcs-l2-progress-text"><span data-etcs-progress-text>ขั้นที่ 1 จาก 8</span></div>
+                </aside>
+              </div>
+
+              <div class="etcs-l2-step-strip" aria-label="เลือกขั้นตอนการทำงาน">
+                <button type="button" data-etcs-step-select="1"><span>01</span><strong data-etcs-step-label="1">ตรวจทาง</strong></button>
+                <button type="button" data-etcs-step-select="2"><span>02</span><strong data-etcs-step-label="2">Interlocking</strong></button>
+                <button type="button" data-etcs-step-select="3"><span>03</span><strong data-etcs-step-label="3">ตำแหน่ง</strong></button>
+                <button type="button" data-etcs-step-select="4"><span>04</span><strong data-etcs-step-label="4">Position report</strong></button>
+                <button type="button" data-etcs-step-select="5"><span>05</span><strong data-etcs-step-label="5">RBC</strong></button>
+                <button type="button" data-etcs-step-select="6"><span>06</span><strong data-etcs-step-label="6">Movement Authority</strong></button>
+                <button type="button" data-etcs-step-select="7"><span>07</span><strong data-etcs-step-label="7">EVC + DMI</strong></button>
+                <button type="button" data-etcs-step-select="8"><span>08</span><strong data-etcs-step-label="8">Supervision</strong></button>
+              </div>
+
+              <div class="etcs-l2-cycle-note">
+                <strong data-etcs-ui="cycleTitle">ทำไมขั้นที่ 8 จึงกลับไปขั้นที่ 4?</strong>
+                <p data-etcs-ui="cycleText">เพราะ ETCS Level 2 เป็นการควบคุมแบบต่อเนื่อง รถไฟจะรายงานตำแหน่งและทิศทางกลับไปยัง RBC ซ้ำ ๆ และ RBC สามารถอัปเดต Movement Authority / ข้อมูลเส้นทางให้รถได้ตลอดการเดินรถ ไม่ใช่การส่งคำสั่งเพียงครั้งเดียว</p>
+              </div>
+
+              <div class="etcs-l2-source-row">
+                <span data-etcs-ui="sourceLabel">ตรวจสอบหลักการจาก:</span>
+                <a href="https://transport.ec.europa.eu/transport-modes/rail/ertms/what-ertms-and-how-does-it-work/etcs-levels-and-modes_en" target="_blank" rel="noopener">European Commission</a>
+                <a href="https://www.ertms.net/wp-content/uploads/2024/03/ERTMS-ETCS-LEVELS_Updated-factsheet_2024.pdf" target="_blank" rel="noopener">ERTMS Users Group • Level 2 Factsheet</a>
+                <a href="https://www.era.europa.eu/system/files/2022-11/2-ertms_presentation_en.pdf" target="_blank" rel="noopener">EU Agency for Railways</a>
+              </div>
+            </section>
+
             <div class="ertms-working-layout">
               <div class="signal-diagram glass-card"><div class="diagram-flow"><div class="diagram-node"><strong>Interlocking</strong><small>ตรวจสถานะทางและประแจ</small></div><div class="diagram-node"><strong>RBC / CSS</strong><small>ประมวลผลสิทธิการเคลื่อนที่</small></div><div class="diagram-node"><strong>Radio link</strong><small>ส่งข้อมูลระหว่างทางกับรถไฟ</small></div><div class="diagram-node"><strong>EVC + DMI</strong><small>คำนวณและแสดงข้อมูลให้พนักงานขับ</small></div><div class="diagram-node"><strong>Brake curve</strong><small>ควบคุมความเร็วให้หยุดได้อย่างปลอดภัย</small></div></div></div>
               <figure class="ertms-media-placeholder ertms-level2-media" data-slot="ertms-level2.webp">
@@ -182,5 +272,6 @@
 
   <div data-site-footer></div>
   <script src="script.js?v=20260907-1"></script>
+  <script src="ertms-level2-interactive.js?v=20260921-1"></script>
 </body>
 </html>
