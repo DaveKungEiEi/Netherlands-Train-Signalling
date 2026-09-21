@@ -14,7 +14,9 @@
         intro: 'กดหมายเลข 1–8 เพื่อดูข้อมูลไหลผ่านระบบทีละขั้น หรือกดเล่นอัตโนมัติเพื่อดูวงจรทั้งหมด',
         cycleTitle: 'ทำไมขั้นที่ 8 จึงกลับไปขั้นที่ 4?',
         cycleText: 'เพราะ ETCS Level 2 เป็นการควบคุมแบบต่อเนื่อง รถไฟจะรายงานตำแหน่งและทิศทางกลับไปยัง RBC ซ้ำ ๆ และ RBC สามารถอัปเดต Movement Authority / ข้อมูลเส้นทางให้รถได้ตลอดการเดินรถ ไม่ใช่การส่งคำสั่งเพียงครั้งเดียว',
-        sourceLabel: 'ตรวจสอบหลักการจาก:'
+        sourceLabel: 'ตรวจสอบหลักการจาก:',
+        scopeTitle: 'ขอบเขตของภาพนี้',
+        scopeText: 'Interactive นี้อธิบายกรณีเดียวกับรูป European Commission ที่คุณส่งมา ซึ่งการตรวจว่าช่วงทางว่างและการตรวจความครบถ้วนของขบวนรถยังทำโดยระบบ trackside นอกขอบเขต ERTMS โดยตรง ปัจจุบัน CCS TSI 2023 รวมฟังก์ชันที่เดิมเรียก ETCS Level 3 เข้ามาอยู่ภายใต้ Level 2 ด้วย จึงมีรูปแบบ Level 2 อื่นที่จัดการตำแหน่ง/ความครบถ้วนของขบวนภายใน ERTMS ได้มากขึ้น'
       },
       play: 'เล่นอัตโนมัติ',
       pause: 'หยุดชั่วคราว',
@@ -85,7 +87,9 @@
         intro: 'Select steps 1–8 to follow the data flow, or use Auto Play to watch the whole control loop.',
         cycleTitle: 'Why does step 8 loop back to step 4?',
         cycleText: 'ETCS Level 2 is continuously supervised. The train repeatedly sends its position and direction to the RBC, while the RBC can continuously update the Movement Authority and track data as the train moves.',
-        sourceLabel: 'Principle checked against:'
+        sourceLabel: 'Principle checked against:',
+        scopeTitle: 'Scope of this diagram',
+        scopeText: 'This interactive follows the European Commission diagram you shared, where track vacancy and train-integrity checks are performed by trackside systems outside ERTMS itself. CCS TSI 2023 merged functionality previously described as Level 3 into Level 2, so other Level 2 implementations may manage train location and integrity within ERTMS to a greater extent.'
       },
       play: 'Auto Play',
       pause: 'Pause',
